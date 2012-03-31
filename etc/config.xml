@@ -30,8 +30,24 @@
         <models>
             <hackathon_logger>
                 <class>Hackathon_Logger_Model</class>
+                <resourceModel>logger_resource</resourceModel>
             </hackathon_logger>
+            <logger_resource>
+                <class>Hackathon_Logger_Model_Resource</class>
+                <entities>
+                    <logger>
+                        <table>hackathon_logger</table>
+                    </logger>
+                </entities>
+            </logger_resource>
         </models>
+        <resources>
+            <logger_setup>
+                <setup>
+                    <module>Hackathon_Logger</module>
+                </setup>
+            </logger_setup>
+        </resources>
         <helpers>
             <hackathon_logger>
                 <class>Hackathon_Logger_Helper</class>
