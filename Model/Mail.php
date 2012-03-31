@@ -8,43 +8,54 @@
  */
 class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
 {
-	private $transport = null;
+    private $transport = null;
 
-	public function __construct($filename) {
-		parent::__construct($this->getMail());
-	}
+    public function __construct($filename)
+    {
+        parent::__construct($this->getMail());
+    }
 
-	public function _write($event){
-		//Lazy intatiation of underlying mailer
-		if($this->_mail === null) {
-			$this->_mail = $this->getMail();
-		}
-		parent::_write($event);
-		/*
-		$this->getMail()->setSubject('TestBetreff');
-		$this->getMail()->setBodyText('Das ist der Text des Mails.');
-		$this->getMail()->send($this->transport);
-		*/
-	}
+    public function _write($event)
+    {
+        //Lazy intatiation of underlying mailer
+        if ($this->_mail === null) {
+            $this->_mail = $this->getMail();
+        }
+        parent::_write($event);
+        /*
+          $this->getMail()->setSubject('TestBetreff');
+          $this->getMail()->setBodyText('Das ist der Text des Mails.');
+          $this->getMail()->send($this->transport);
+          */
+    }
 
-	public function getMail(){
-		if($this->_mail === null) {
-			//TODO: Read Config from backend or database
-			$this->_mail = new Zend_Mail();
-			$this->_mail->setFrom('hackathon@icyapp.de', 'Einige Sender');
-			$this->_mail->addTo('Karl.Spies@gmx.net', 'Einige Empfänger');
-		}
-		return $this->_mail;
-	}
+    public function getMail()
+    {
+        if ($this->_mail === null) {
 
-	public function getTransport() {
-		if($this->transport === null) {
-			//TODO: Read Config from backend or database
-			$config = array('auth' => 'login',
-							'username' => 'm02439fd',
-							'password' => 'hackathon2012');
-			$this->transport = new Zend_Mail_Transport_Smtp('icyapp.de', $config);
-		}
-		return $this->transport;
-	}
+            $this->_mail = new Zend_Mail();
+
+            /** @var $helper Hackathon_Logger_Helper_Data */
+            $helper = Mage::helper('hackathon_logger');
+
+            $this->_mail->setFrom($helper->getLoggerConfig('mailcofig/from'), 'Einige Sender');
+            $this->_mail->addTo($helper->getLoggerConfig('mailcofig/to'), 'Einige Empfänger');
+        }
+        return $this->_mail;
+    }
+
+    public function getTransport()
+    {
+        if ($this->transport === null) {
+            /** @var $helper Hackathon_Logger_Helper_Data */
+            $helper = Mage::helper('hackathon_logger');
+
+            $config = array('auth' => 'login',
+                'username' => $helper->getLoggerConfig('mailcofig/username'),
+                'password' => $helper->getLoggerConfig('mailcofig/password'));
+
+            $this->transport = new Zend_Mail_Transport_Smtp($helper->getLoggerConfig('mailcofig/hostname'), $config);
+        }
+        return $this->transport;
+    }
 }
