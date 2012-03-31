@@ -11,3 +11,5 @@ Logger Interfaces
 - XMPP
 - Graylog
 - Multiple-Targets
+
+For XMPP we use https://github.com/cweiske/xmpphp. Please copy it to lib/XMPPHP.

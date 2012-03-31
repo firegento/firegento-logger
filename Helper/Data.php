@@ -9,6 +9,7 @@
 class Hackathon_Logger_Helper_Data extends Mage_Core_Helper_Abstract
 {
     public function getLoggerConfig($value){
-        return Mage::getStoreConfig('logger/'.$value,Mage::app()->getStore()->getId());
+		//TODO: Load per Storeview
+        return Mage::getStoreConfig('logger/'.$value);
     }
 }

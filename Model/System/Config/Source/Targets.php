@@ -8,7 +8,7 @@
  */
 class Hackathon_Logger_Model_System_Config_Source_Targets
 {
-    public function toOptionArray()
+	public function toOptionArray()
     {
         $helper = Mage::helper('hackathon_logger');
         return array(
