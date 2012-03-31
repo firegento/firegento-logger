@@ -6,7 +6,12 @@
  * Time: 13:32
  * To change this template use File | Settings | File Templates.
  */
-class Hackathon_Logger_IndexContoller
+class Hackathon_Logger_IndexController extends Mage_Core_Controller_Front_Action
 {
+
+	public function indexAction()
+	{
+		Mage::log("Hello", Zend_Log::CRIT);
+	}
 
 }

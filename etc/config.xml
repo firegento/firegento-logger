@@ -5,4 +5,27 @@
             <version>0.0.1</version>
         </Hackathon_Logger>
     </modules>
+	<frontend>
+		<routers>
+			<hackathon_logger>
+				<use>standard</use>
+				<args>
+					<module>Hackathon_Logger</module>
+					<frontName>logger</frontName>
+				</args>
+			</hackathon_logger>
+		</routers>
+	</frontend>
+	<models>
+		<hackathon_logger>
+			<class>Hackathon_Logger_Model</class>
+		</hackathon_logger>
+	</models>
+	<global>
+		<log>
+			<core>
+				<writer_model>Hackathon_Logger_Model_Mail</writer_model>
+			</core>
+		</log>
+	</global>
 </config>
