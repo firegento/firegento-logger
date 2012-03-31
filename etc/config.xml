@@ -6,15 +6,15 @@
         </Hackathon_Logger>
     </modules>
     <admin>
-        <routers>
-            <hackathon_logger>
-                <use>admin</use>
-                <args>
-                    <module>Hackathon_Logger</module>
-                    <frontName>logger</frontName>
-                </args>
-            </hackathon_logger>
-        </routers>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<logger before="Mage_Adminhtml">Hackathon_Logger_Adminhtml</logger>
+					</modules>
+				</args>
+			</adminhtml>
+		</routers>
     </admin>
     <adminhtml>
         <menu>
@@ -24,7 +24,7 @@
                 <children>
                     <viewer module="hackathon_logger">
                         <title>View database log</title>
-                        <action>logger/view</action>
+                        <action>adminhtml/logger/index</action>
                     </viewer>
                 </children>
             </logger>
@@ -46,6 +46,15 @@
                 </admin>
             </resources>
         </acl>
+		<!--
+		<layout>
+			<updates>
+				<hackathon_logger>
+					<file>hackathon_logger.xml</file>
+				</hackathon_logger>
+			</updates>
+		</layout>
+		-->
     </adminhtml>
 
     <global>
