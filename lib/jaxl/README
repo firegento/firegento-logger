@@ -1,0 +1,46 @@
+1. Open config.ini.php and set an environment.
+   For example if you want to run JAXL with your local jabber server (e.g. ejabberd) set $env = "devel"
+   If you are running JAXL with Gtalk set $env = "prod"
+
+2. Update $key array with your development and production username and passwords.
+   For example your $key array must look something like this
+   $key = array("prod"=>array("user"=>"myGmailUsername",
+                              "pass"=>"myGmailPassword",
+                              "host"=>"talk.google.com",
+                              "port"=>5222,
+                              "domain"=>"gmail.com"
+                             ),
+               "devel"=>array("user"=>"admin",
+                              "pass"=>"adminPassword",
+                              "host"=>"localhost",
+                              "port"=>5222,
+                              "domain"=>"localhost"
+                             )
+               );
+
+3. If you want to log incoming messages and statuses in MySQL, set $logDB = TRUE
+
+4. Update $db array with your MySQL connection settings.
+   For example your $key must look like:
+   $db = array("prod"=>array("dbuser"=>"root",
+                             "dbpass"=>"password",
+                             "dbhost"=>"localhost",
+                             "dbname"=>"jaxl"
+                            ),
+              "devel"=>array("dbuser"=>"root",
+                             "dbpass"=>"password",
+                             "dbhost"=>"localhost",
+                             "dbname"=>"jaxl"
+                            )
+              );
+
+5. Customize eventMessage() and eventPresence() methods in jaxl.class.php to suit your application needs.
+   By default eventMessage() sends back a message "Hi, Thanks for your message" for every message received.
+
+6. Open a command line and migrate to the folder.
+   Run: php index.php 
+   from command line and monitor the logs under /logs folder
+
+7. For more documentation refer
+   http://abhinavsingh.com/blog/2009/01/introducing-jaxl-open-source-jabber-xmpp-library/
+   
