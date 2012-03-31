@@ -62,9 +62,9 @@
             <logger_resource>
                 <class>Hackathon_Logger_Model_Resource</class>
                 <entities>
-                    <logger>
+                    <db_entry>
                         <table>advanced_logger</table>
-                    </logger>
+                    </db_entry>
                 </entities>
             </logger_resource>
         </models>
