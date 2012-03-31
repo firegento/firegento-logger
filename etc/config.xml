@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Hackathon_Logger>
+            <version>0.0.1</version>
+        </Hackathon_Logger>
+    </modules>
+</config>
