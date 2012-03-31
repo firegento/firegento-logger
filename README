@@ -1,1 +1,13 @@
 Karl,Christoph,Christian,Claas, Damian
+
+Goals
+
+- Admin Konfiguration HTML
+-- choose Logger
+-- config Logger
+
+Logger Interfaces
+- E-Mail
+- XMPP
+- Graylog
+- Multiple-Targets
