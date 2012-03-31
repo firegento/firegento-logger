@@ -5,17 +5,60 @@
             <version>0.0.1</version>
         </Hackathon_Logger>
     </modules>
-	<frontend>
-		<routers>
-			<hackathon_logger>
-				<use>standard</use>
-				<args>
-					<module>Hackathon_Logger</module>
-					<frontName>logger</frontName>
-				</args>
-			</hackathon_logger>
-		</routers>
-	</frontend>
+    <frontend>
+        <routers>
+            <hackathon_logger>
+                <use>standard</use>
+                <args>
+                    <module>Hackathon_Logger</module>
+                    <frontName>logger</frontName>
+                </args>
+            </hackathon_logger>
+        </routers>
+    </frontend>
+    <admin>
+        <routers>
+            <hackathon_logger>
+                <use>admin</use>
+                <args>
+                    <module>Hackathon_Logger</module>
+                    <frontname>hackathon_logger</frontname>
+                </args>
+            </hackathon_logger>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <menu1 translate="title" module="hackathon_logger">
+                <title>View Error Log</title>
+                <sort_order>60</sort_order>
+                <children>
+                    <menuitem1 module="hackathon_logger">
+                        <title>Menu item 1</title>
+                        <action>hackathon_logger/view</action>
+                    </menuitem1>
+                </children>
+            </menu1>
+        </menu>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <menu1 translate="title" module="hackathon_logger">
+                            <title>View Error Log</title>
+                            <sort_order>60</sort_order>
+                            <children>
+                                <menuitem1>
+                                    <title>Logs</title>
+                                </menuitem1>
+                            </children>
+                        </menu1>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
     <global>
 		<log>
 			<core>
