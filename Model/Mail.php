@@ -11,7 +11,7 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
 	private $transport = null;
 
 	public function __construct($filename) {
-		parent::__construct(null);
+		parent::__construct($this->getMail());
 	}
 
 	public function _write($event){
