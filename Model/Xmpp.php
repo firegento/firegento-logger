@@ -38,7 +38,17 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 	public function __construct($filename)
 	{
 		$this->setFormatter(new Zend_Log_Formatter_Simple());
-	}
+        $helper = Mage::helper('hackathon_logger');
+
+        $this->options['host'] = $helper->getLoggerConfig('xmpp/host');
+        $this->options['port'] = $helper->getLoggerConfig('xmpp/port');
+        $this->options['user'] = $helper->getLoggerConfig('xmpp/username');
+        $this->options['password'] = $helper->getLoggerConfig('xmpp/password');
+        $this->options['resource'] = Mage::app()->getStore()->getName();
+        $this->options['server'] = $helper->getLoggerConfig('xmpp/domain');
+        $this->options['recipient'] = $helper->getLoggerConfig('xmpp/recipient');
+
+    }
 
 	/**
 	 * Construct a Zend_Log driver for xmpp servers
@@ -83,7 +93,7 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 		// Send message after successful authentication
 
 		$events = implode('', $this->_eventsToSend);
-		$jaxl->sendMessage($this->options['recipient'], $argv[2]);
+		$jaxl->sendMessage($this->options['recipient'], $events);
         	$jaxl->shutdown();
     	}
 
@@ -114,8 +124,8 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 				'resource' => $this->options['resource'],
 				'domain' => $this->options['server'], 
 				'logLevel' => 5,
-				'logPath' => '/tmp/jaxl.log',
-				'pidPath' => '/tmp'jaxl.pid') );
+				'logPath' => Mage::getConfig()->getVarDir('log').'jaxl.log',
+				'pidPath' => Mage::getConfig()->getVarDir('locks').'jaxl.pid') );
 
 			// Register callback on required hook (callback'd method will always receive 2 params)
     			$jaxl->addPlugin('jaxl_post_auth', 'postAuth');
