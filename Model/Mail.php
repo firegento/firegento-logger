@@ -38,7 +38,7 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
             /** @var $helper Hackathon_Logger_Helper_Data */
             $helper = Mage::helper('hackathon_logger');
 
-            $this->_mail->setFrom($helper->getLoggerConfig('mailcofig/from'), 'Einige Sender');
+            $this->_mail->setFrom($helper->getLoggerConfig('mailcofig/from'), Mage::app()->getStore()->getName());
             $this->_mail->addTo($helper->getLoggerConfig('mailcofig/to'), 'Einige Empfänger');
         }
         return $this->_mail;
