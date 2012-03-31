@@ -46,7 +46,7 @@
                         </targets_value>
                     </fields>
                 </targets>
-                <mailcofig translate="label">
+                <mailconfig translate="label">
                     <label>Mail Configuration</label>
                     <frontend_type>text</frontend_type>
                     <sort_order>3</sort_order>
@@ -93,7 +93,7 @@
                             <show_in_store>1</show_in_store>
                         </to>
                     </fields>
-                </mailcofig>
+                </mailconfig>
                 <xmpp translate="label">
                 <label>XMPP Configuration</label>
                 <frontend_type>text</frontend_type>

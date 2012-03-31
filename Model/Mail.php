@@ -10,11 +10,17 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
 {
     private $transport = null;
 
+    /**
+     * @param String $filename
+     */
     public function __construct($filename)
     {
         parent::__construct($this->getMail());
     }
 
+    /**
+     * @param $event
+     */
     public function _write($event)
     {
         //Lazy intatiation of underlying mailer
@@ -22,13 +28,11 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
             $this->_mail = $this->getMail();
         }
         parent::_write($event);
-        /*
-          $this->getMail()->setSubject('TestBetreff');
-          $this->getMail()->setBodyText('Das ist der Text des Mails.');
-          $this->getMail()->send($this->transport);
-          */
     }
 
+    /**
+     * @return Zend_Mail
+     */
     public function getMail()
     {
         if ($this->_mail === null) {
@@ -38,12 +42,15 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
             /** @var $helper Hackathon_Logger_Helper_Data */
             $helper = Mage::helper('hackathon_logger');
 
-            $this->_mail->setFrom($helper->getLoggerConfig('mailcofig/from'), Mage::app()->getStore()->getName());
-            $this->_mail->addTo($helper->getLoggerConfig('mailcofig/to'), 'Einige Empfänger');
+            $this->_mail->setFrom($helper->getLoggerConfig('mailconfig/from'), Mage::app()->getStore()->getName());
+            $this->_mail->addTo($helper->getLoggerConfig('mailconfig/to'), 'Einige Empfänger');
         }
         return $this->_mail;
     }
 
+    /**
+     * @return null
+     */
     public function getTransport()
     {
         if ($this->transport === null) {
@@ -51,10 +58,10 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
             $helper = Mage::helper('hackathon_logger');
 
             $config = array('auth' => 'login',
-                'username' => $helper->getLoggerConfig('mailcofig/username'),
-                'password' => $helper->getLoggerConfig('mailcofig/password'));
+                'username' => $helper->getLoggerConfig('mailconfig/username'),
+                'password' => $helper->getLoggerConfig('mailconfig/password'));
 
-            $this->transport = new Zend_Mail_Transport_Smtp($helper->getLoggerConfig('mailcofig/hostname'), $config);
+            $this->transport = new Zend_Mail_Transport_Smtp($helper->getLoggerConfig('mailconfig/hostname'), $config);
         }
         return $this->transport;
     }
