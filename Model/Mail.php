@@ -44,12 +44,13 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
 
             $this->_mail->setFrom($helper->getLoggerConfig('mailconfig/from'), Mage::app()->getStore()->getName());
             $this->_mail->addTo($helper->getLoggerConfig('mailconfig/to'), 'Einige Empfänger');
+            $this->_mail->setDefaultTransport($this->getTransport());
         }
         return $this->_mail;
     }
 
     /**
-     * @return null
+     * @return Zend_Mail_Transport_Abstract
      */
     public function getTransport()
     {

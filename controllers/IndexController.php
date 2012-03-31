@@ -12,6 +12,8 @@ class Hackathon_Logger_IndexController extends Mage_Core_Controller_Front_Action
 	public function indexAction()
 	{
 		Mage::log("Hello", Zend_Log::CRIT);
-	}
+        Mage::log("Hello2", Zend_Log::CRIT);
+
+    }
 
 }

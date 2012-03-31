@@ -39,11 +39,15 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 	/**
 	 * At the end of the request we write to the actual logger
 	 */
-	public function __destruct()
+	public function shutdown()
 	{
 		foreach($this->_logger_cache as $event){
 			$this->_logger_mock->_write($event);
 		}
+
+        // because Mail has own queue
+        $this->_logger_mock->shutdown();
+        return parent::shutdown();
 	}
 
 	/**
