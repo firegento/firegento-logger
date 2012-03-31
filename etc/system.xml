@@ -94,6 +94,30 @@
                         </to>
                     </fields>
                 </mailcofig>
+                <xmpp translate="label">
+                <label>XMPP Configuration</label>
+                <frontend_type>text</frontend_type>
+                <sort_order>4</sort_order>
+                <show_in_default>1</show_in_default>
+                <fields>
+                    <username translate="label">
+                        <label>Username</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>20</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </username>
+                    <password translate="label">
+                        <label>Password</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>30</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </password>
+                </fields>
+            </xmpp>
             </groups>
         </logger>
     </sections>
