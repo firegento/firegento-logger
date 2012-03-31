@@ -6,7 +6,7 @@
  * Time: 15:18
  * To change this template use File | Settings | File Templates.
  */
-require_once BP . DS . 'lib' . DS  . 'XMPPHP' . DS . 'XMPP.php';
+require_once BP . DS . 'lib' . DS  . 'jaxl' . DS . 'core' . DS . 'jaxl.class.php';
 
 class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 {
@@ -78,6 +78,15 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 		$this->_eventsToSend[] = $formattedEvent;
 	}
 
+    	protected function postAuth($payload, $jaxl)
+	{
+		// Send message after successful authentication
+
+		$events = implode('', $this->_eventsToSend);
+		$jaxl->sendMessage($this->options['recipient'], $argv[2]);
+        	$jaxl->shutdown();
+    	}
+
 
 	/**
 	 * Sends message recipient if log entries are present.
@@ -92,23 +101,28 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 			return;
 		}
 
-		$events = implode('', $this->_eventsToSend);
 
 		// Finally, send the IM, but re-throw any exceptions at the
 		// proper level of abstraction.
 		try {
-			$conn = new XMPPHP_XMPP($this->options['host'],
-				$this->options['port'],
-				$this->options['user'],
-				$this->options['password'],
-				$this->options['resource'],
-				$this->options['server'], true, XMPPHP_Log::LEVEL_DEBUG);
+			$jaxl = new JAXL(array(
+			        'host' => $this->options['host'],
+			      	'port' => $this->options['port'],
+				'user' => $this->options['user'],
+				'pass' => $this->options['password'],
+				'authType' => 'PLAIN',
+				'resource' => $this->options['resource'],
+				'domain' => $this->options['server'], 
+				'logLevel' => 5,
+				'logPath' => '/tmp/jaxl.log',
+				'pidPath' => '/tmp'jaxl.pid') );
 
-			$conn->connect();
-			$conn->processUntil('session_start');
-			$conn->presence();
-			$conn->message($this->options['recipient'], $events);
-			$conn->disconnect();
+			// Register callback on required hook (callback'd method will always receive 2 params)
+    			$jaxl->addPlugin('jaxl_post_auth', 'postAuth');
+
+    			// Start Jaxl core
+    			$jaxl->startCore('stream');
+
 		} catch (Exception $e) {
 			throw new Zend_Log_Exception(
 				$e->getMessage(),
