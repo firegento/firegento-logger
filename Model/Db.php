@@ -6,7 +6,7 @@
  * Time: 20:17
  * To change this template use File | Settings | File Templates.
  */
-class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Db
+class Hackathon_Logger_Model_Db extends Zend_Log_Writer_Db
 {
     /**
      * Database adapter instance
@@ -27,12 +27,12 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Db
      */
     private $_columnMap;
 
-    public function __construct($db, $table, $columnMap = null)
+    public function __construct($filename)
     {
         $resource = Mage::getSingleton('core/resource');
         $this->_db = $resource->getConnection('core_write');
         $this->_table = $resource->getTableName('hackathon_logger/logger');
-        $this->_columnMap = array('severtiy' => 'priority', 'message' => 'message');
+        $this->_columnMap = array('severity' => 'priority', 'message' => 'message');
         parent::__construct($this->_db, $this->_table, $this->_columnMap);
     }
 

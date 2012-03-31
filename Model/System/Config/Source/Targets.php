@@ -16,7 +16,7 @@ class Hackathon_Logger_Model_System_Config_Source_Targets extends Varien_Object
 	{
 		$helper = Mage::helper('hackathon_logger');
 		$this->_options[] = array('label' => $helper->__('Mail'), 'value' => 'mail', 'class' => 'Hackathon_Logger_Model_Mail');
-		$this->_options[] = array('label' => $helper->__('DB'), 'value' => 'db', 'class' => 'Zend_Log_Writer_Db');
+		$this->_options[] = array('label' => $helper->__('DB'), 'value' => 'db', 'class' => 'Hackathon_Logger_Model_Db');
 		$this->_options[] = array('label' => $helper->__('XMPP'), 'value' => 'xmpp', 'class' => 'Hackathon_Logger_Model_Mail');
 		$this->_options[] = array('label' => $helper->__('File'), 'value' => 'file', 'class' => self::ZEND_LOG_WRITER_STREAM);
 		$this->_options[] = array('label' => $helper->__('Dropbox'), 'value' => 'dropbox', 'class' => 'Hackathon_Logger_Model_Dropbox');

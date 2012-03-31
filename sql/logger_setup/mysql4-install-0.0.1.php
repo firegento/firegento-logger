@@ -7,16 +7,14 @@ $installer = $this;
 $installer->startSetup();
 
 $installer->run("
-
--- DROP TABLE if exists {$this->getTable('advanced_logger')};
+DROP TABLE if exists {$this->getTable('advanced_logger')};
 CREATE TABLE {$this->getTable('advanced_logger')} (
   `entity_id` int(10) unsigned NOT NULL auto_increment,
   `message` text,
   `severity` int(2),
-  `timestamp` datetime NOT NULL default '0000-00-00 00:00:00',
+  `timestamp` timestamp default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`entity_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
 ");
 
 $installer->endSetup();

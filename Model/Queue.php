@@ -23,6 +23,8 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 		$className = $converter->optionToClass($target);
 
 		$this->_logger_mock = new $className($filename);
+
+		$v = 0;
 	}
 
 	/**
