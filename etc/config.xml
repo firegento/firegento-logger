@@ -5,36 +5,52 @@
             <version>0.0.1</version>
         </Hackathon_Logger>
     </modules>
-	<frontend>
-		<routers>
-			<hackathon_logger>
-				<use>standard</use>
-				<args>
-					<module>Hackathon_Logger</module>
-					<frontName>logger</frontName>
-				</args>
-			</hackathon_logger>
-		</routers>
-	</frontend>
+    <frontend>
+        <routers>
+            <hackathon_logger>
+                <use>standard</use>
+                <args>
+                    <module>Hackathon_Logger</module>
+                    <frontName>logger</frontName>
+                </args>
+            </hackathon_logger>
+        </routers>
+    </frontend>
 
 
     <global>
-		<log>
-			<core>
-				<writer_model>Hackathon_Logger_Model_Mail</writer_model>
-			</core>
-		</log>
+        <log>
+            <core>
+                <writer_model>Hackathon_Logger_Model_Mail</writer_model>
+            </core>
+        </log>
 
         <models>
             <hackathon_logger>
                 <class>Hackathon_Logger_Model</class>
+                <resourceModel>logger_resource</resourceModel>
             </hackathon_logger>
+            <logger_resource>
+                <class>Hackathon_Logger_Model_Resource</class>
+                <entities>
+                    <logger>
+                        <table>hackathon_logger</table>
+                    </logger>
+                </entities>
+            </logger_resource>
         </models>
+        <resources>
+            <logger_setup>
+                <setup>
+                    <module>Hackathon_Logger</module>
+                </setup>
+            </logger_setup>
+        </resources>
 
         <helpers>
             <hackathon_logger>
                 <class>Hackathon_Logger_Helper</class>
             </hackathon_logger>
         </helpers>
-	</global>
+    </global>
 </config>
