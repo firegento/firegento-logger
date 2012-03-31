@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Hackathon_Logger>
+            <active>true</active>
+            <codePool>community</codePool>
+			<depends>
+				<Mage_Core />
+			</depends>
+        </Hackathon_Logger>
+    </modules>
+</config>
