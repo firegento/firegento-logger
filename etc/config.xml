@@ -16,16 +16,25 @@
 			</hackathon_logger>
 		</routers>
 	</frontend>
-	<models>
-		<hackathon_logger>
-			<class>Hackathon_Logger_Model</class>
-		</hackathon_logger>
-	</models>
-	<global>
+
+
+    <global>
 		<log>
 			<core>
 				<writer_model>Hackathon_Logger_Model_Mail</writer_model>
 			</core>
 		</log>
+
+        <models>
+            <hackathon_logger>
+                <class>Hackathon_Logger_Model</class>
+            </hackathon_logger>
+        </models>
+
+        <helpers>
+            <hackathon_logger>
+                <class>Hackathon_Logger_Helper</class>
+            </hackathon_logger>
+        </helpers>
 	</global>
 </config>

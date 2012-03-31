@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <logger translate="label" module="hackathon_logger">
+            <label>Advanced Logger</label>
+            <tab>advanced</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>399</sort_order>
+            <show_in_default>1</show_in_default>
+            <groups>
+                <severity translate="label">
+                        <label>Severity Level</label>
+                        <frontend_type>text</frontend_type>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    <fields>
+                        <severity_value translate="label">
+                            <label>Level</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>hackathon_logger/system_config_source_severitylevels</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </severity_value>
+                    </fields>
+                </severity>
+                <targets translate="label">
+                    <label>Targets</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <severity_value translate="label">
+                            <label>Level</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>hackathon_logger/system_config_source_targets</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </severity_value>
+                    </fields>
+                </targets>
+                <mailcofig translate="label">
+                    <label>Mail Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <hostname translate="label">
+                            <label>Hostname</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </hostname>
+                        <username translate="label">
+                            <label>Username</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </username>
+                        <password translate="label">
+                            <label>Password</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </password>
+                        <from translate="label">
+                            <label>From</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </from>
+                        <to translate="label">
+                            <label>To</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </to>
+                    </fields>
+                </mailcofig>
+            </groups>
+        </logger>
+    </sections>
+</config>
