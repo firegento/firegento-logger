@@ -46,7 +46,6 @@
                 </admin>
             </resources>
         </acl>
-		<!--
 		<layout>
 			<updates>
 				<hackathon_logger>
@@ -54,9 +53,7 @@
 				</hackathon_logger>
 			</updates>
 		</layout>
-		-->
     </adminhtml>
-
     <global>
 		<log>
 			<core>
@@ -89,5 +86,10 @@
                 <class>Hackathon_Logger_Helper</class>
             </hackathon_logger>
         </helpers>
+		<blocks>
+			<hackathon_logger>
+				<class>Hackathon_Logger_Block</class>
+			</hackathon_logger>
+		</blocks>
 	</global>
 </config>
