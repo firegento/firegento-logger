@@ -34,6 +34,7 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 		$this->setFormatter(new Zend_Log_Formatter_Simple());
         	$helper = Mage::helper('hackathon_logger');
         	$this->options['hostname'] = $helper->getLoggerConfig('graylog2/hostname');
+        	$this->options['port'] = $helper->getLoggerConfig('graylog2/port');
         	$this->options['filename'] = $filename;
     	}
 
@@ -92,7 +93,7 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 		// Finally, send the Event, but re-throw any exceptions at the
 		// proper level of abstraction.
 		try {
-			$graylog2 = new GELFMessagePublisher($this->options['hostname']);
+			$graylog2 = new GELFMessagePublisher($this->options['hostname'], $this->options['port']);
 
 			$msg = new GELFMessage();
 			//$msg->setShortMessage('something is broken.');
