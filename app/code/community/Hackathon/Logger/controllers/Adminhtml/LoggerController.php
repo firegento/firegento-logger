@@ -4,7 +4,14 @@ class Hackathon_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
 
     public function indexAction()
     {
-		$this->loadLayout();
+        Mage::log("Hello", Zend_Log::CRIT);
+        Mage::log("Hello2", Zend_Log::CRIT);
+
+        $this->loadLayout();
 		$this->renderLayout();
+    }
+
+    public function testAction(){
+        exit();
     }
 }

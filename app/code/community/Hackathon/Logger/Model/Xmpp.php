@@ -105,7 +105,7 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 		// Finally, send the IM, but re-throw any exceptions at the
 		// proper level of abstraction.
 		try {
-			$jaber = new XMPPHP_XMPP(
+			$jabber = new XMPPHP_XMPP(
 			        $this->options['host'],
 			      	$this->options['port'],
 				$this->options['user'],
@@ -117,12 +117,12 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 
 
 				 try {
-    				     $jabber->connect();
+    				 $jabber->connect();
 				     $jabber->processUntil('session_start');
 				     $jabber->presence();
 				     $events = implode('', $this->_eventsToSend);
-				     $jabber->message($this->options['recipient'], events);
-				     $conn->disconnect();
+				     $jabber->message($this->options['recipient'], $events);
+				     $jabber->disconnect();
 				 } catch(XMPPHP_Exception $e) {
     				      die($e->getMessage());
 				 }
