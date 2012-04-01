@@ -1,2 +1,4 @@
-lib lib
-app app
+lib/jaxl lib/jaxl
+app/code/community/Hackathon app/code/community/Hackathon
+app/etc/modules/* app/etc/modules
+app/design/adminhtml/default/default/layout/* app/design/adminhtml/default/default/layout
