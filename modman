@@ -1,4 +1,5 @@
 lib/XMPPHP lib/XMPPHP
+lib/Graylog2-gelf-php lib/Graylog2-gelf-php
 app/code/community/Hackathon app/code/community/Hackathon
 app/etc/modules/* app/etc/modules
 app/design/adminhtml/default/default/layout/* app/design/adminhtml/default/default/layout
