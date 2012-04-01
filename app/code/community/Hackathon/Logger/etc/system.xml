@@ -153,7 +153,7 @@
                 <graylog2 translate="label">
                     <label>Graylog2 Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>3</sort_order>
+                    <sort_order>5</sort_order>
                     <show_in_default>1</show_in_default>
                     <fields>
                         <hostname translate="label">

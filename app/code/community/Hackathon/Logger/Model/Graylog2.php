@@ -34,7 +34,7 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 		$this->setFormatter(new Zend_Log_Formatter_Simple());
         	$helper = Mage::helper('hackathon_logger');
         	$this->options['hostname'] = $helper->getLoggerConfig('graylog2/hostname');
-        	$this->options['flename'] = $filename;
+        	$this->options['filename'] = $filename;
     	}
 
 	/**
