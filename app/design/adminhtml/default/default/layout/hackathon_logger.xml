@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_logger_index>
+        <reference name="content">
+            <block type="hackathon_logger/adminhtml_logger" name="logger" />
+        </reference>
+    </adminhtml_logger_index>
+</layout>
