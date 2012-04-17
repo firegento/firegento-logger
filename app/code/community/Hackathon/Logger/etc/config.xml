@@ -92,4 +92,13 @@
 			</hackathon_logger>
 		</blocks>
 	</global>
+  <default>
+    <logger>
+      <graylog2>
+        <hostname>localhost</hostname>
+        <port>12201</port>
+        <chunk_size>1420</chunk_size>
+      </graylog2>
+    </logger>
+  </default>
 </config>
