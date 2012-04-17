@@ -6,15 +6,15 @@
         </Hackathon_Logger>
     </modules>
     <admin>
-		<routers>
-			<adminhtml>
-				<args>
-					<modules>
-						<logger before="Mage_Adminhtml">Hackathon_Logger_Adminhtml</logger>
-					</modules>
-				</args>
-			</adminhtml>
-		</routers>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <logger before="Mage_Adminhtml">Hackathon_Logger_Adminhtml</logger>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
     </admin>
     <adminhtml>
         <menu>
@@ -46,20 +46,15 @@
                 </admin>
             </resources>
         </acl>
-		<layout>
-			<updates>
-				<hackathon_logger>
-					<file>hackathon_logger.xml</file>
-				</hackathon_logger>
-			</updates>
-		</layout>
+        <layout>
+            <updates>
+                <hackathon_logger>
+                    <file>hackathon_logger.xml</file>
+                </hackathon_logger>
+            </updates>
+        </layout>
     </adminhtml>
     <global>
-		<log>
-			<core>
-				<writer_model>Hackathon_Logger_Model_Queue</writer_model>
-			</core>
-		</log>
         <models>
             <hackathon_logger>
                 <class>Hackathon_Logger_Model</class>
@@ -86,19 +81,31 @@
                 <class>Hackathon_Logger_Helper</class>
             </hackathon_logger>
         </helpers>
-		<blocks>
-			<hackathon_logger>
-				<class>Hackathon_Logger_Block</class>
-			</hackathon_logger>
-		</blocks>
-	</global>
-  <default>
-    <logger>
-      <graylog2>
-        <hostname>localhost</hostname>
-        <port>12201</port>
-        <chunk_size>1420</chunk_size>
-      </graylog2>
-    </logger>
-  </default>
+        <blocks>
+            <hackathon_logger>
+                <class>Hackathon_Logger_Block</class>
+            </hackathon_logger>
+        </blocks>
+        <writer_models>
+            <default><label>Files (Default)</label><class>Zend_Log_Writer_Stream</class></default>
+            <queue><label>Queue (supports multiple)</label><class>Hackathon_Logger_Model_Queue</class></queue>
+            <mail><label>Email</label><class>Hackathon_Logger_Model_Mail</class></mail>
+            <db><label>Database</label><class>Hackathon_Logger_Model_Db</class></db>
+            <xmpp><label>XMPP</label><class>Hackathon_Logger_Model_Xmpp</class></xmpp>
+            <dropbox><label>Dropbox</label><class>Hackathon_Logger_Model_Dropbox</class></dropbox>
+            <graylog2><label>Graylog2</label><class>Hackathon_Logger_Model_Graylog2</class></graylog2>
+        </writer_models>
+    </global>
+    <default>
+        <logger>
+            <general>
+                <severity>7</severity>
+            </general>
+            <graylog2>
+                <hostname>localhost</hostname>
+                <port>12201</port>
+                <chunk_size>1420</chunk_size>
+            </graylog2>
+        </logger>
+    </default>
 </config>

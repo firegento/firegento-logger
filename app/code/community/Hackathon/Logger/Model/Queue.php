@@ -6,23 +6,26 @@
  */
 class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 {
-	/** @var Zend_Log_Writer_Abstract */
-	private $_logger_mock = null;
+
+	/** @var Zend_Log_Writer_Abstract[] */
+	protected $_writers = null;
 
 	private $_logger_cache = array();
+
+	protected $_useQueue;
 
 	public function __construct($filename)
 	{
 		/** @var $helper Hackathon_Logger_Helper_Data */
 		$helper = Mage::helper('hackathon_logger');
-		$target = $helper->getLoggerConfig('targets/targets_value');
-		/** @var $converter Hackathon_Logger_Model_System_Config_Source_Targets */
-		$converter = Mage::getModel('hackathon_logger/system_config_source_targets');
-		$className = $converter->optionToClass($target);
-
-		$this->_logger_mock = new $className($filename);
-
-		$v = 0;
+		$targets = $helper->getLoggerConfig('queue/targets');
+		foreach(explode(',', $targets) as $target) {
+			$className = (string) Mage::app()->getConfig()->getNode('global/writer_models/'.$target.'/class');
+			if($className) {
+				$this->_writers = new $className($filename);
+			}
+		}
+		$this->_useQueue = Mage::getStoreConfigFlag('logger/queue/use_queue');
 	}
 
 	/**
@@ -33,24 +36,30 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 	 */
 	protected function _write($event)
 	{
-		//we write first to the internal array
-		$this->_logger_cache[] = $event;
+		if ($this->_useQueue) {
+			// Format now so that timestamps are correct
+			$this->_logger_cache[] = $this->_formatter->format($event);
+		} else {
+			foreach ($this->_writers as $writer) {
+				$writer->write($event);
+			}
+		}
 	}
 
 	/**
 	 * At the end of the request we write to the actual logger
-   *
-   * @return void
-   */
+	 *
+	 * @return void
+	 */
 	public function shutdown()
 	{
-		foreach($this->_logger_cache as $event){
-			$this->_logger_mock->_write($event);
+		$events = implode('', $this->_logger_cache);
+		foreach ($this->_writers as $writer) {
+			if ($events) {
+				$writer->write($events);
+			}
+			$writer->shutdown();
 		}
-
-        // because Mail has own queue
-        $this->_logger_mock->shutdown();
-        return parent::shutdown();
 	}
 
 }
