@@ -21,13 +21,14 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 	 */
 	public $options = array();
 
-  /**
-   * @param string $filename
-   * @return \Hackathon_Logger_Model_Graylog2
-   */
+	/**
+	 * @param string $filename
+	 * @return \Hackathon_Logger_Model_Graylog2
+	 */
 	public function __construct($filename)
 	{
 		$helper = Mage::helper('hackathon_logger'); /* @var $helper Hackathon_Logger_Helper_Data */
+		$helper->addPriorityFilter($this, 'logger/graylog2/priority');
 		$this->options['hostname'] = $helper->getLoggerConfig('graylog2/hostname');
 		$this->options['port'] = $helper->getLoggerConfig('graylog2/port');
 		$this->options['chunk_size'] = $helper->getLoggerConfig('graylog2/chunk_size');
@@ -38,7 +39,7 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 	 * Places event line into array of lines to be used as message body.
 	 *
 	 *
-	 * @param  array $event Event data
+	 * @param array $event Event data
 	 * @return void
 	 */
 	protected function _write($event)

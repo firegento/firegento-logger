@@ -9,7 +9,7 @@
 class Hackathon_Logger_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
-    const XML_PATH_SEVERITY_LEVEL = 'logger/general/severity';
+    const XML_PATH_PRIORITY = 'logger/general/priority';
 
     /**
      * @param string $path
@@ -25,12 +25,18 @@ class Hackathon_Logger_Helper_Data extends Mage_Core_Helper_Abstract
      * @param Zend_Log_Writer_Abstract $writer
      * @param null $configPath
      */
-    public function addSeverityFilter(Zend_Log_Writer_Abstract $writer, $configPath = NULL)
+    public function addPriorityFilter(Zend_Log_Writer_Abstract $writer, $configPath = NULL)
     {
-        if( ! $configPath) {
-            $configPath = self::XML_PATH_SEVERITY_LEVEL;
+        $priority = NULL;
+        if ($configPath) {
+            $priority = Mage::getStoreConfig($configPath);
         }
-        $writer->addFilter(new Zend_Log_Filter_Priority(Mage::getStoreConfig($configPath)));
+        if ( ! $configPath || ! strlen($priority)) {
+            $priority = Mage::getStoreConfig(self::XML_PATH_PRIORITY);
+        }
+        if ( $priority !== NULL && $priority != Zend_Log::WARN) {
+            $writer->addFilter(new Zend_Log_Filter_Priority((int)$priority));
+        }
     }
 
 }

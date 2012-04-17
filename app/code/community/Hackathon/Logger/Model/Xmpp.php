@@ -37,6 +37,7 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 	{
 		$this->setFormatter(new Zend_Log_Formatter_Simple());
         $helper = Mage::helper('hackathon_logger');
+        $helper->addPriorityFilter($this, 'logger/xmpp/priority');
 
         $this->options['host'] = $helper->getLoggerConfig('xmpp/host');
         $this->options['port'] = $helper->getLoggerConfig('xmpp/port');

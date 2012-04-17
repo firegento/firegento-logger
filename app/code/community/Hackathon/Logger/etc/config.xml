@@ -99,7 +99,7 @@
     <default>
         <logger>
             <general>
-                <severity>7</severity>
+                <priority>7</priority>
             </general>
             <graylog2>
                 <hostname>localhost</hostname>
