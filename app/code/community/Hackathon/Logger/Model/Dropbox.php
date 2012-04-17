@@ -30,15 +30,4 @@ class Hackathon_Logger_Model_Dropbox extends Zend_Log_Writer_Abstract
 
     }
 
-
-    /**
-     * Construct a Zend_Log driver
-     *
-     * @param  array|Zen_Config $config
-     * @return Zend_Log_FactoryInterface
-     */
-    static public function factory($config)
-    {
-        // TODO: Implement factory() method.
-    }
 }

@@ -1,12 +1,10 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
  * User: spies
  * Date: 31.03.12 (13 KW)
  * Time: 15:18
- * To change this template use File | Settings | File Templates.
  */
-require_once BP . DS . 'lib' . DS  . 'XMPPHP' . DS . 'XMPP.php';
+require_once 'lib/XMPPHP/XMPP.php';
 
 class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 {
@@ -31,10 +29,10 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 		'server' => '',
 		'recipient' => '');
 
-	/**
-	 * @param array $options xmpp connection information, mandatory: user, password, recipient
-	 * @return void
-	 */
+  /**
+   * @param $filename
+   * @return \Hackathon_Logger_Model_Xmpp
+   */
 	public function __construct($filename)
 	{
 		$this->setFormatter(new Zend_Log_Formatter_Simple());
@@ -49,30 +47,6 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
         $this->options['recipient'] = $helper->getLoggerConfig('xmpp/recipient');
 
     }
-
-	/**
-	 * Construct a Zend_Log driver for xmpp servers
-	 *
-	 * @param  array|Zend_Config $config
-	 * @return Zend_Log_FactoryInterface
-	 */
-	static public function factory($config)
-	{
-		$config = self::_parseConfig($config);
-		if (!isset($config['remoteIP'])) {
-			throw new InvalidArgumentException();
-		}
-
-		$instance = new self($config['remoteIP']);
-
-		foreach ($config as $key => $value) {
-			if (method_exists($instance, 'set' . ucfirst($key))) {
-				$instance->{'set' . ucfirst($key)}($value);
-			}
-		}
-
-		return $instance;
-	}
 
 	/**
 	 * Places event line into array of lines to be used as message body.

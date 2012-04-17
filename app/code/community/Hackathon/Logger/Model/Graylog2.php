@@ -3,10 +3,9 @@
  * User: cjhbabel
  * Date: 01.04.12 (13 KW)
  * Time: 12:18
- * To change this template use File | Settings | File Templates.
  */
-require_once BP . DS . 'lib' . DS  . 'Graylog2-php-gelf' . DS . 'GELFMessage.php';
-require_once BP . DS . 'lib' . DS  . 'Graylog2-php-gelf' . DS . 'GELFMessagePublisher.php';
+require_once 'lib/Graylog2-gelf-php/GELFMessage.php';
+require_once 'lib/Graylog2-gelf-php/GELFMessagePublisher.php';
 
 class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 {
@@ -18,48 +17,20 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 	protected $_eventsToSend = array();
 
 	/**
-	 * Array ofGraylog2 connection information. default to localhost
-	 *
 	 * @var array
 	 */
-	public $options = array(
-		'hostname' => 'localhost' );
+	public $options = array();
 
-	/**
-	 * @param array $optionsGRaylog2 connection information, mandatory: host
-	 * @return void
-	 */
+  /**
+   * @param string $filename
+   * @return \Hackathon_Logger_Model_Graylog2
+   */
 	public function __construct($filename)
 	{
-		$this->setFormatter(new Zend_Log_Formatter_Simple());
-        	$helper = Mage::helper('hackathon_logger');
-        	$this->options['hostname'] = $helper->getLoggerConfig('graylog2/hostname');
-        	$this->options['port'] = $helper->getLoggerConfig('graylog2/port');
-        	$this->options['filename'] = $filename;
-    	}
-
-	/**
-	 * Construct a Zend_Log driver forGraylog2 servers
-	 *
-	 * @param  array|Zend_Config $config
-	 * @return Zend_Log_FactoryInterface
-	 */
-	static public function factory($config)
-	{
-		$config = self::_parseConfig($config);
-		if (!isset($config['remoteIP'])) {
-			throw new InvalidArgumentException();
-		}
-
-		$instance = new self($config['remoteIP']);
-
-		foreach ($config as $key => $value) {
-			if (method_exists($instance, 'set' . ucfirst($key))) {
-				$instance->{'set' . ucfirst($key)}($value);
-			}
-		}
-
-		return $instance;
+		$helper = Mage::helper('hackathon_logger'); /* @var $helper Hackathon_Logger_Helper_Data */
+		$this->options['hostname'] = $helper->getLoggerConfig('graylog2/hostname');
+		$this->options['port'] = $helper->getLoggerConfig('graylog2/port');
+		$this->options['filename'] = $filename;
 	}
 
 	/**

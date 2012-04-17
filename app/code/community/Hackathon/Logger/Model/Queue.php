@@ -1,10 +1,8 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
  * User: spies
  * Date: 31.03.12 (13 KW)
  * Time: 20:58
- * To change this template use File | Settings | File Templates.
  */
 class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 {
@@ -38,9 +36,12 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 		//we write first to the internal array
 		$this->_logger_cache[] = $event;
 	}
+
 	/**
 	 * At the end of the request we write to the actual logger
-	 */
+   *
+   * @return void
+   */
 	public function shutdown()
 	{
 		foreach($this->_logger_cache as $event){
@@ -52,14 +53,4 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
         return parent::shutdown();
 	}
 
-	/**
-	 * Construct a Zend_Log driver
-	 *
-	 * @param  array|Zend_Config $config
-	 * @return Zend_Log_FactoryInterface
-	 */
-	static public function factory($config)
-	{
-		// TODO: Implement factory() method.
-	}
 }
