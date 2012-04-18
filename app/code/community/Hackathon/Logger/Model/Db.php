@@ -1,10 +1,8 @@
 <?php
 /**
- * Created by JetBrains PhpStorm.
  * User: Christoph
  * Date: 31.03.12
  * Time: 20:17
- * To change this template use File | Settings | File Templates.
  */
 class Hackathon_Logger_Model_Db extends Zend_Log_Writer_Db
 {
