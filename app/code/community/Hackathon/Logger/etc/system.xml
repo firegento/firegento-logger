@@ -10,27 +10,26 @@
             <groups>
                 <general>
                     <label>General</label>
-                    <sort_order>1</sort_order>
+                    <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>
                     <fields>
+                        <targets translate="label">
+                            <label>Targets</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>hackathon_logger/system_config_source_targets</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </targets>
                         <priority translate="label">
                             <label>Default Priority Level Filter</label>
                             <frontend_type>select</frontend_type>
                             <source_model>hackathon_logger/system_config_source_priorities</source_model>
-                            <sort_order>0</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <comment>Choose the lowest priority level to be logged.</comment>
-                        </priority>
-                        <writer_model translate="label">
-                            <label>Log Writer Model</label>
-                            <frontend_type>select</frontend_type>
-                            <source_model>hackathon_logger/system_config_source_writers</source_model>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
-                            <config_path>log/core/writer_model</config_path>
-                        </writer_model>
+                            <comment>Choose the lowest priority level to be logged. Can be overridden separately for each writer.</comment>
+                        </priority>
                         <format translate="label">
-                            <label>Format</label>
+                            <label>Advanced Format</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
@@ -43,21 +42,13 @@
                               %time_elapsed%<br/>
                               %REQUEST_METHOD%<br/>
                               %REQUEST_URI%<br/>
-                              %REMOTE_IP%<br/>
+                              %REMOTE_ADDR%<br/>
                               %HTTP_USER_AGENT%<br/>
                               %file%<br/>
                               %line%<br/>
                               %message%
                             ]]></comment>
                         </format>
-                    </fields>
-                </general>
-                <queue translate="label">
-                    <label>Queue Configuration</label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>2</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <fields>
                         <use_queue translate="label">
                             <label>Queue Events</label>
                             <frontend_type>select</frontend_type>
@@ -66,19 +57,44 @@
                             <show_in_default>1</show_in_default>
                             <comment>If "Yes", events will be grouped into one event at shutdown.</comment>
                         </use_queue>
-                        <targets translate="label">
-                            <label>Targets</label>
-                            <frontend_type>multiselect</frontend_type>
-                            <source_model>hackathon_logger/system_config_source_targets</source_model>
-                            <sort_order>100</sort_order>
-                            <show_in_default>1</show_in_default>
-                        </targets>
                     </fields>
-                </queue>
+                </general>
+                <default translate="label">
+                    <label>Files (Magento Default) Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <priority translate="label">
+                            <label>Priority Level Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>hackathon_logger/system_config_source_prioritydefault</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose the lowest priority level to be logged.</comment>
+                        </priority>
+                    </fields>
+                </default>
+                <advanced translate="label">
+                    <label>Files (Advanced Format) Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <priority translate="label">
+                            <label>Priority Level Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>hackathon_logger/system_config_source_prioritydefault</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose the lowest priority level to be logged.</comment>
+                        </priority>
+                    </fields>
+                </advanced>
                 <mailconfig translate="label">
                     <label>Mail Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>3</sort_order>
+                    <sort_order>40</sort_order>
                     <show_in_default>1</show_in_default>
                     <fields>
                         <priority translate="label">
@@ -131,10 +147,26 @@
                         </to>
                     </fields>
                 </mailconfig>
+                <db translate="label">
+                    <label>Database Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>50</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <priority translate="label">
+                            <label>Priority Level Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>hackathon_logger/system_config_source_prioritydefault</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose the lowest priority level to be logged.</comment>
+                        </priority>
+                    </fields>
+                </db>
                 <xmpp translate="label">
                     <label>XMPP Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>4</sort_order>
+                    <sort_order>60</sort_order>
                     <show_in_default>1</show_in_default>
                     <fields>
                         <priority translate="label">
@@ -195,10 +227,26 @@
                         </recipient>
                     </fields>
                 </xmpp>
+                <dropbox translate="label">
+                    <label>Dropbox Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>70</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <priority translate="label">
+                            <label>Priority Level Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>hackathon_logger/system_config_source_prioritydefault</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose the lowest priority level to be logged.</comment>
+                        </priority>
+                    </fields>
+                </dropbox>
                 <graylog2 translate="label">
                     <label>Graylog2 Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>5</sort_order>
+                    <sort_order>80</sort_order>
                     <show_in_default>1</show_in_default>
                     <fields>
                         <priority translate="label">

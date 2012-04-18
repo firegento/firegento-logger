@@ -53,16 +53,20 @@ class Hackathon_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         $event['file'] = $notAvailable;
         $event['line'] = $notAvailable;
         $event['store_code'] = Mage::app()->getStore()->getCode();
-        $event['time_elapsed'] = sprintf('%ds', time() - $_SERVER['REQUEST_TIME']);
+        if ( isset($_SERVER['REQUEST_TIME_FLOAT'])) {
+          $event['time_elapsed'] = sprintf('%f', microtime(TRUE) - $_SERVER['REQUEST_TIME_FLOAT']);
+        } else {
+          $event['time_elapsed'] = sprintf('%d', time() - $_SERVER['REQUEST_TIME']);
+        }
 
         // Find file and line where message originated from
         $nextIsFirst = FALSE;
         foreach(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS) as $frame) {
-            if ($frame['type'] == '::' && $frame['class'] == 'Mage' && substr($frame['function'], 0, 3) == 'log') {
+            if (isset($frame['type']) && $frame['type'] == '::' && $frame['class'] == 'Mage' && substr($frame['function'], 0, 3) == 'log') {
                 $nextIsFirst = TRUE;
                 continue;
             }
-            if ($nextIsFirst) {
+            if ($nextIsFirst && isset($frame['file']) && isset($frame['line'])) {
                 $event['file'] = $frame['file'];
                 $event['line'] = $frame['line'];
                 break;
@@ -76,12 +80,20 @@ class Hackathon_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                 $event[$key] = $notAvailable;
             }
         }
+
+        if ($event['REQUEST_METHOD'] == $notAvailable) {
+            $event['REQUEST_METHOD'] = php_sapi_name();
+        }
+        if ($event['REQUEST_URI'] == $notAvailable && isset($_SERVER['PHP_SELF'])) {
+            $event['REQUEST_URI'] = $_SERVER['PHP_SELF'];
+        }
+
         if ( ! empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $event['REMOTE_IP'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        } else if ( ! empty($_SERVER['REMOTE_IP'])) {
-            $event['REMOTE_IP'] = $_SERVER['REMOTE_IP'];
+            $event['REMOTE_ADDR'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else if ( ! empty($_SERVER['REMOTE_ADDR'])) {
+            $event['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
         } else {
-            $event['REMOTE_IP'] = $notAvailable;
+            $event['REMOTE_ADDR'] = $notAvailable;
         }
     }
 

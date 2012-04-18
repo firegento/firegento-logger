@@ -14,7 +14,6 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
     public function __construct($filename)
     {
         parent::__construct($this->getMail());
-        Mage::helper('hackathon_logger')->addPriorityFilter($this, 'logger/mailconfig/priority');
     }
 
     /**
@@ -64,16 +63,6 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
             $this->transport = new Zend_Mail_Transport_Smtp($helper->getLoggerConfig('mailconfig/hostname'), $config);
         }
         return $this->transport;
-    }
-
-    /**
-     * Overrode this method since Mage::log doesn't let us set a formatter any other way.
-     *
-     * @param  Zend_Log_Formatter_Interface $formatter
-     */
-    public function setFormatter($formatter)
-    {
-        $this->_formatter = new Hackathon_Logger_Formatter_Advanced;
     }
 
 }

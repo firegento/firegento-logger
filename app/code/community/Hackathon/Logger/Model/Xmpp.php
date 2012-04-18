@@ -37,7 +37,6 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 	{
 		$this->setFormatter(new Zend_Log_Formatter_Simple());
         $helper = Mage::helper('hackathon_logger');
-        $helper->addPriorityFilter($this, 'logger/xmpp/priority');
 
         $this->options['host'] = $helper->getLoggerConfig('xmpp/host');
         $this->options['port'] = $helper->getLoggerConfig('xmpp/port');
@@ -106,16 +105,6 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 				$e->getMessage(),
 				$e->getCode());
 		}
-	}
-
-	/**
-	 * Overrode this method since Mage::log doesn't let us set a formatter any other way.
-	 *
-	 * @param  Zend_Log_Formatter_Interface $formatter
-	 */
-	public function setFormatter($formatter)
-	{
-		$this->_formatter = new Hackathon_Logger_Formatter_Advanced;
 	}
 
 }

@@ -12,12 +12,9 @@ class Hackathon_Logger_Model_System_Config_Source_Targets
   {
     if ( ! $this->_options)
     {
-      foreach(Mage::app()->getConfig()->getNode('global/writer_models')->children() as $writer) {
-        if($writer->getName() == 'queue') {
-          continue;
-        }
+      foreach(Mage::app()->getConfig()->getNode('global/log/core/writer_models')->children() as $writer) {
         $module = isset($writer->label['module']) ? $writer->label['module'] : 'hackathon_logger';
-        $label = Mage::helper($module)->__($writer->label);
+        $label = Mage::helper($module)->__((string)$writer->label);
         $this->_options[] = array('label' => $label, 'value' => $writer->getName());
       }
     }

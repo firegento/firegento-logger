@@ -86,29 +86,46 @@
                 <class>Hackathon_Logger_Block</class>
             </hackathon_logger>
         </blocks>
-        <writer_models>
-            <default><label>Files (Magento Default)</label><class>Zend_Log_Writer_Stream</class></default>
-            <advanced><label>Files (Advanced Format)</label><class>Hackathon_Logger_Model_Stream</class></advanced>
-            <queue><label>Queue (supports multiple)</label><class>Hackathon_Logger_Model_Queue</class></queue>
-            <mail><label>Email</label><class>Hackathon_Logger_Model_Mail</class></mail>
-            <db><label>Database</label><class>Hackathon_Logger_Model_Db</class></db>
-            <xmpp><label>XMPP</label><class>Hackathon_Logger_Model_Xmpp</class></xmpp>
-            <dropbox><label>Dropbox</label><class>Hackathon_Logger_Model_Dropbox</class></dropbox>
-            <graylog2><label>Graylog2</label><class>Hackathon_Logger_Model_Graylog2</class></graylog2>
-        </writer_models>
+        <log>
+            <core>
+                <writer_model>Hackathon_Logger_Model_Queue</writer_model>
+                <writer_models>
+                    <default><label>Files (Magento Default)</label><class>Zend_Log_Writer_Stream</class></default>
+                    <advanced><label>Files (Advanced Format)</label><class>Hackathon_Logger_Model_Stream</class></advanced>
+                    <mailconfig><label>Mail</label><class>Hackathon_Logger_Model_Mail</class></mailconfig>
+                    <db><label>Database</label><class>Hackathon_Logger_Model_Db</class></db>
+                    <xmpp><label>XMPP</label><class>Hackathon_Logger_Model_Xmpp</class></xmpp>
+                    <dropbox><label>Dropbox</label><class>Hackathon_Logger_Model_Dropbox</class></dropbox>
+                    <graylog2><label>Graylog2</label><class>Hackathon_Logger_Model_Graylog2</class></graylog2>
+                </writer_models>
+            </core>
+        </log>
     </global>
     <default>
         <logger>
             <general>
+                <targets>advanced</targets>
                 <priority>7</priority>
-                <format>%timestamp% %priorityName% (%store_code%): %time_elapsed% %REQUEST_METHOD% %REQUEST_URI%\n%REMOTE_IP% - %HTTP_USER_AGENT%\n%file%:%line%\n%message%\n</format>
+                <format>%timestamp% %priorityName% (%store_code%): %time_elapsed%s %REQUEST_METHOD% %REQUEST_URI%\n%REMOTE_ADDR% - %HTTP_USER_AGENT%\n%file%:%line%\n%message%\n</format>
             </general>
+            <default>
+                <priority>default</priority>
+            </default>
+            <advanced>
+                <priority>default</priority>
+            </advanced>
             <mailconfig>
                 <priority>default</priority>
             </mailconfig>
+            <db>
+                <priority>default</priority>
+            </db>
             <xmpp>
                 <priority>default</priority>
             </xmpp>
+            <dropbox>
+                <priority>default</priority>
+            </dropbox>
             <graylog2>
                 <priority>default</priority>
                 <hostname>localhost</hostname>

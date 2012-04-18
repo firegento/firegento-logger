@@ -1,14 +1,13 @@
 <?php
 /**
- * User: spies
- * Date: 31.03.12 (13 KW)
- * Time: 20:58
+ * This writer is the one actually used by Magento. It acts as a proxy to support one or more writers
+ * set from the config and optionally as a "queue" to hold all events until shutdown.
  */
 class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 {
 
 	/** @var Zend_Log_Writer_Abstract[] */
-	protected $_writers = null;
+	protected $_writers = array();
 
 	private $_logger_cache = array();
 
@@ -18,20 +17,22 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 	{
 		/** @var $helper Hackathon_Logger_Helper_Data */
 		$helper = Mage::helper('hackathon_logger');
-		$targets = $helper->getLoggerConfig('queue/targets');
+		$targets = $helper->getLoggerConfig('general/targets');
 		foreach(explode(',', $targets) as $target) {
-			$className = (string) Mage::app()->getConfig()->getNode('global/writer_models/'.$target.'/class');
+			$className = (string) Mage::app()->getConfig()->getNode('global/log/core/writer_models/'.$target.'/class');
 			if($className) {
-				$this->_writers = new $className($filename);
+				$writer = new $className($filename);
+				$helper->addPriorityFilter($writer, 'logger/'.$target.'/priority');
+				$this->_writers[] = $writer;
 			}
 		}
-		$this->_useQueue = Mage::getStoreConfigFlag('logger/queue/use_queue');
+		$this->_useQueue = Mage::getStoreConfigFlag('logger/general/use_queue');
 	}
 
 	/**
 	 * Write a message to the log.
 	 *
-	 * @param  array  $event  log data event
+	 * @param array $event log data event
 	 * @return void
 	 */
 	protected function _write($event)
@@ -65,11 +66,18 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 	/**
 	 * Overrode this method since Mage::log doesn't let us set a formatter any other way.
 	 *
-	 * @param  Zend_Log_Formatter_Interface $formatter
+	 * @param Zend_Log_Formatter_Interface $formatter
 	 */
 	public function setFormatter($formatter)
 	{
 		$this->_formatter = new Hackathon_Logger_Formatter_Advanced;
+		foreach ($this->_writers as $writer) {
+			if (get_class($writer) == 'Zend_Log_Writer_Stream') { // don't override formatter for default writer
+				$writer->setFormatter($formatter);
+			} else {
+				$writer->setFormatter($this->_formatter);
+			}
+		}
 	}
 
 }

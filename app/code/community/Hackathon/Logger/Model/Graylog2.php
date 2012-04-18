@@ -57,7 +57,6 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 		$port = $helper->getLoggerConfig('graylog2/port');
 		$chunk_size = $helper->getLoggerConfig('graylog2/chunk_size');
 		$this->_publisher = self::getPublisher($hostname, $port, $chunk_size);
-		$helper->addPriorityFilter($this, 'logger/graylog2/priority');
 	}
 
 	/**
