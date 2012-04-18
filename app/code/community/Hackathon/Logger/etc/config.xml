@@ -101,7 +101,7 @@
         <logger>
             <general>
                 <priority>7</priority>
-                <format>%timestamp% %priorityName% (%store_code%): %time_elapsed% %REQUEST_METHOD% %REQUEST_URI%\n%REMOTE_IP% - %HTTP_USER_AGENT%\n%file%\n%message%\n</format>
+                <format>%timestamp% %priorityName% (%store_code%): %time_elapsed% %REQUEST_METHOD% %REQUEST_URI%\n%REMOTE_IP% - %HTTP_USER_AGENT%\n%file%:%line%\n%message%\n</format>
             </general>
             <mailconfig>
                 <priority>default</priority>

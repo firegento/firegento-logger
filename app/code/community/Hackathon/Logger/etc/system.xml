@@ -46,6 +46,7 @@
                               %REMOTE_IP%<br/>
                               %HTTP_USER_AGENT%<br/>
                               %file%<br/>
+                              %line%<br/>
                               %message%
                             ]]></comment>
                         </format>
