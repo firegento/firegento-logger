@@ -193,26 +193,26 @@
                             <frontend_type>text</frontend_type>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
                         </hostname>
                         <port translate="label">
                             <label>Port</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
                         </port>
                         <chunk_size translate="label">
                             <label>Chunk Size</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
                             <comment>This should be 1420 for WAN, 8154 for LAN.</comment>
                         </chunk_size>
+                        <app_name>
+                          <label>App Name</label>
+                          <frontend_type>text</frontend_type>
+                          <sort_order>40</sort_order>
+                          <show_in_default>1</show_in_default>
+                        </app_name>
                     </fields>
                 </graylog2>
             </groups>

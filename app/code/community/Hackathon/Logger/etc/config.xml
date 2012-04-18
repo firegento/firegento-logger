@@ -105,6 +105,7 @@
                 <hostname>localhost</hostname>
                 <port>12201</port>
                 <chunk_size>1420</chunk_size>
+                <app_name>Magento</app_name>
             </graylog2>
         </logger>
     </default>
