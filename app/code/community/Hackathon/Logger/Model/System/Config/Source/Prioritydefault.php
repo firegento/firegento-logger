@@ -8,7 +8,7 @@ class Hackathon_Logger_Model_System_Config_Source_Prioritydefault extends Hackat
     {
         $options = parent::toOptionArray();
         $helper = Mage::helper('hackathon_logger');
-        array_shift($options, array('label' => $helper->__('Default'), 'value' => ''));
+        array_unshift($options, array('label' => $helper->__('Default'), 'value' => 'default'));
         return $options;
     }
 }

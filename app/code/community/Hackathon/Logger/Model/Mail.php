@@ -65,4 +65,15 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
         }
         return $this->transport;
     }
+
+    /**
+     * Overrode this method since Mage::log doesn't let us set a formatter any other way.
+     *
+     * @param  Zend_Log_Formatter_Interface $formatter
+     */
+    public function setFormatter($formatter)
+    {
+        $this->_formatter = new Hackathon_Logger_Formatter_Advanced;
+    }
+
 }

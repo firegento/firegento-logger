@@ -69,36 +69,22 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 	protected function _write($event)
 	{
 		try {
+			Mage::helper('hackathon_logger')->addEventMetadata($event);
+
 			$msg = new GELFMessage();
 			$msg->setTimestamp(microtime(TRUE));
 			$msg->setShortMessage(substr($event['message'],0,strpos($event['message'],"\n")));
 			$msg->setFullMessage($event['message']);
 			$msg->setHost(gethostname());
 			$msg->setLevel($event['priority']);
-			$msg->setFacility($this->_options['app_name'] . '/' . $this->_options['filename']);
-
-			// Find file and line where message originated from
-			$nextIsFirst = FALSE;
-			foreach(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS) as $frame) {
-				if ($frame['type'] == '::' && $frame['class'] == 'Mage' && substr($frame['function'], 0, 3) == 'log') {
-					$nextIsFirst = TRUE;
-					continue;
-				}
-				if ($nextIsFirst) {
-					$msg->setFile($frame['file']);
-					$msg->setLine($frame['line']);
-					break;
-				}
-			}
-
-			// Set additional data that may be useful for debug
-			$msg->setAdditional('store_code', Mage::app()->getStore()->getCode());
-			if ( ! empty($_SERVER['REQUEST_TIME'])) {
-				$msg->setAdditional('time_elapsed', sprintf('%d', time() - $_SERVER['REQUEST_TIME']));
-			}
-			foreach(array('REQUEST_METHOD', 'REQUEST_URI', 'REMOTE_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_USER_AGENT') as $key) {
-				if ( ! empty($_SERVER[$key])) {
-					$msg->setAdditional($key, $_SERVER[$key]);
+			$msg->setFacility($this->_options['app_name'] . $this->_options['filename']);
+			$msg->setFile($event['file']);
+			$msg->setLine($event['line']);
+			$msg->setAdditional('store_code', $event['store_code']);
+			$msg->setAdditional('time_elapsed', $event['time_elapsed']);
+			foreach(array('REQUEST_METHOD', 'REQUEST_URI', 'REMOTE_IP', 'HTTP_USER_AGENT') as $key) {
+				if ( ! empty($event[$key])) {
+					$msg->setAdditional($key, $event[$key]);
 				}
 			}
 

@@ -87,7 +87,8 @@
             </hackathon_logger>
         </blocks>
         <writer_models>
-            <default><label>Files (Default)</label><class>Zend_Log_Writer_Stream</class></default>
+            <default><label>Files (Magento Default)</label><class>Zend_Log_Writer_Stream</class></default>
+            <advanced><label>Files (Advanced Format)</label><class>Hackathon_Logger_Model_Stream</class></advanced>
             <queue><label>Queue (supports multiple)</label><class>Hackathon_Logger_Model_Queue</class></queue>
             <mail><label>Email</label><class>Hackathon_Logger_Model_Mail</class></mail>
             <db><label>Database</label><class>Hackathon_Logger_Model_Db</class></db>
@@ -100,12 +101,20 @@
         <logger>
             <general>
                 <priority>7</priority>
+                <format>%timestamp% %priorityName% (%store_code%): %time_elapsed% %REQUEST_METHOD% %REQUEST_URI%\n%REMOTE_IP% - %HTTP_USER_AGENT%\n%file%\n%message%\n</format>
             </general>
+            <mailconfig>
+                <priority>default</priority>
+            </mailconfig>
+            <xmpp>
+                <priority>default</priority>
+            </xmpp>
             <graylog2>
+                <priority>default</priority>
                 <hostname>localhost</hostname>
                 <port>12201</port>
                 <chunk_size>1420</chunk_size>
-                <app_name>Magento</app_name>
+                <app_name>Magento/</app_name>
             </graylog2>
         </logger>
     </default>

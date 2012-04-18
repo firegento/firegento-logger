@@ -53,13 +53,23 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 	 */
 	public function shutdown()
 	{
-		$events = implode('', $this->_logger_cache);
+		$events = implode(PHP_EOL, $this->_logger_cache);
 		foreach ($this->_writers as $writer) {
 			if ($events) {
 				$writer->write($events);
 			}
 			$writer->shutdown();
 		}
+	}
+
+	/**
+	 * Overrode this method since Mage::log doesn't let us set a formatter any other way.
+	 *
+	 * @param  Zend_Log_Formatter_Interface $formatter
+	 */
+	public function setFormatter($formatter)
+	{
+		$this->_formatter = new Hackathon_Logger_Formatter_Advanced;
 	}
 
 }
