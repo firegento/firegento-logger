@@ -14,5 +14,6 @@ class Hackathon_Logger_Block_Adminhtml_Logger extends Mage_Adminhtml_Block_Widge
 		$this->_controller = 'adminhtml_logger';
 		$this->_blockGroup = 'hackathon_logger';
 		$this->_headerText = Mage::helper('hackathon_logger')->__('Database entries');
+		$this->removeButton('add');
 	}
 }
