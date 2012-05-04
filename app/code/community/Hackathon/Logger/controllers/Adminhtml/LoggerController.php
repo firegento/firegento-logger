@@ -4,14 +4,13 @@ class Hackathon_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
 
     public function indexAction()
     {
-        Mage::log("Hello", Zend_Log::CRIT);
-        Mage::log("Hello2", Zend_Log::CRIT);
-
         $this->loadLayout();
-		$this->renderLayout();
+        $this->_setActiveMenu('system/logger');
+        $this->renderLayout();
     }
 
-    public function testAction(){
-        exit();
+    protected function _isAllowed()
+    {
+        return Mage::getStoreConfigFlag('logger/db/viewer_enabled') && Mage::getSingleton('admin/session')->isAllowed('system/logger');
     }
 }

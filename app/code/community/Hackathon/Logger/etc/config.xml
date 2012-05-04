@@ -17,35 +17,6 @@
         </routers>
     </admin>
     <adminhtml>
-        <menu>
-            <logger translate="title" module="hackathon_logger">
-                <title>View Error Log</title>
-                <sort_order>60</sort_order>
-                <children>
-                    <viewer module="hackathon_logger">
-                        <title>View database log</title>
-                        <action>adminhtml/logger/index</action>
-                    </viewer>
-                </children>
-            </logger>
-        </menu>
-        <acl>
-            <resources>
-                <admin>
-                    <children>
-                        <menu1 translate="title" module="hackathon_logger">
-                            <title>View Error Log</title>
-                            <sort_order>60</sort_order>
-                            <children>
-                                <menuitem1>
-                                    <title>Logs</title>
-                                </menuitem1>
-                            </children>
-                        </menu1>
-                    </children>
-                </admin>
-            </resources>
-        </acl>
         <layout>
             <updates>
                 <hackathon_logger>
@@ -119,6 +90,7 @@
             </mailconfig>
             <db>
                 <priority>default</priority>
+                <viewer_enabled>0</viewer_enabled>
             </db>
             <xmpp>
                 <priority>default</priority>
