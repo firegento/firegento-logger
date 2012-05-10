@@ -46,9 +46,17 @@
                               %HTTP_USER_AGENT%<br/>
                               %file%<br/>
                               %line%<br/>
-                              %message%
+                              %message%<br/>
+                              %backtrace%
                             ]]></comment>
                         </format>
+                        <max_backtrace_lines translate="label">
+                            <label>Max Backtrace Lines</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[Enter a number above 0 to enable the %backtrace% key in the Advanced Format or in Graylog2]]></comment>
+                        </max_backtrace_lines>
                         <use_queue translate="label">
                             <label>Queue Events</label>
                             <frontend_type>select</frontend_type>

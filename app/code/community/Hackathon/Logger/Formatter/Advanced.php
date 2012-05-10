@@ -7,6 +7,9 @@ class Hackathon_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
 
   const DEFAULT_FORMAT = '%timestamp% %priorityName% (%priority%): %message%';
 
+  /**
+   * @param null|string $format
+   */
   public function __construct($format = NULL)
   {
     $configFormat = Mage::getStoreConfig('logger/general/format');
@@ -14,9 +17,9 @@ class Hackathon_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
       $format = str_replace('\n', PHP_EOL, $configFormat);
     }
     if ( ! $format) {
-      $format = self::DEFAULT_FORMAT . PHP_EOL;
+      $format = self::DEFAULT_FORMAT;
     }
-    parent::__construct($format);
+    parent::__construct($format . PHP_EOL);
   }
 
   /**

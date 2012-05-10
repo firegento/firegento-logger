@@ -73,7 +73,11 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 			$msg = new GELFMessage();
 			$msg->setTimestamp(microtime(TRUE));
 			$msg->setShortMessage(substr($event['message'],0,strpos($event['message'],"\n")));
-			$msg->setFullMessage($event['message']);
+			if ($event['backtrace']) {
+				$msg->setFullMessage($event['message']."\n\nBacktrace:\n".$event['backtrace']);
+			} else {
+				$msg->setFullMessage($event['message']);
+			}
 			$msg->setHost(gethostname());
 			$msg->setLevel($event['priority']);
 			$msg->setFacility($this->_options['app_name'] . $this->_options['filename']);

@@ -52,6 +52,7 @@ class Hackathon_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     {
         $event['file'] = $notAvailable;
         $event['line'] = $notAvailable;
+        $event['backtrace'] = $notAvailable;
         $event['store_code'] = Mage::app()->getStore()->getCode();
         if ( isset($_SERVER['REQUEST_TIME_FLOAT'])) {
           $event['time_elapsed'] = sprintf('%f', microtime(TRUE) - $_SERVER['REQUEST_TIME_FLOAT']);
@@ -59,18 +60,72 @@ class Hackathon_Logger_Helper_Data extends Mage_Core_Helper_Abstract
           $event['time_elapsed'] = sprintf('%d', time() - $_SERVER['REQUEST_TIME']);
         }
 
-        // Find file and line where message originated from
-        $nextIsFirst = FALSE;
-        foreach(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS) as $frame) {
-            if (isset($frame['type']) && $frame['type'] == '::' && $frame['class'] == 'Mage' && substr($frame['function'], 0, 3) == 'log') {
-                $nextIsFirst = TRUE;
+        // Find file and line where message originated from and optionally get backtrace lines
+        $basePath = dirname(Mage::getBaseDir()).'/'; // Up one level in case deployed with symlinks from parent directory
+        $nextIsFirst = FALSE;                        // Skip backtrace frames until we reach Mage::log(Exception)
+        $recordBacktrace = FALSE;
+        $maxBacktraceLines = (int) $this->getLoggerConfig('general/max_backtrace_lines');
+        $backtraceFrames = array();
+        if (version_compare(PHP_VERSION, '5.3.6') < 0 ) {
+            $debugBacktrace = debug_backtrace(FALSE);
+        } else if (version_compare(PHP_VERSION, '5.4.0') < 0) {
+            $debugBacktrace = debug_backtrace($maxBacktraceLines > 0 ? 0 : DEBUG_BACKTRACE_IGNORE_ARGS);
+        } else {
+            $debugBacktrace = debug_backtrace($maxBacktraceLines > 0 ? 0 : DEBUG_BACKTRACE_IGNORE_ARGS, $maxBacktraceLines + 5);
+        }
+        foreach($debugBacktrace as $frame)
+        {
+            if ($nextIsFirst) {
+                if (isset($frame['file']) && isset($frame['line'])) {
+                    $event['file'] = str_replace($basePath, '', $frame['file']);
+                    $event['line'] = $frame['line'];
+                    $nextIsFirst = FALSE;
+                    if ($recordBacktrace && $maxBacktraceLines) {
+                        $backtraceFrames[] = $frame;
+                        continue;
+                    } else {
+                        break;
+                    }
+                }
                 continue;
             }
-            if ($nextIsFirst && isset($frame['file']) && isset($frame['line'])) {
-                $event['file'] = $frame['file'];
-                $event['line'] = $frame['line'];
-                break;
+            if ($recordBacktrace) {
+                if (count($backtraceFrames) >= $maxBacktraceLines) {
+                    break;
+                }
+                $backtraceFrames[] = $frame;
+                continue;
             }
+            if (isset($frame['type']) && $frame['type'] == '::' && $frame['class'] == 'Mage' && substr($frame['function'], 0, 3) == 'log') {
+                $nextIsFirst = TRUE;
+                $recordBacktrace = ($frame['function'] != 'logException');
+                continue;
+            }
+        }
+        if ($backtraceFrames) {
+            $backtrace = array();
+            foreach ($backtraceFrames as $index => $frame) {
+                if (empty($frame['file'])) $frame['file'] = 'unknown_file';
+                else $frame['file'] = str_replace($basePath, '', $frame['file']);
+                if (empty($frame['line'])) $frame['line'] = 0;
+                $function = (isset($frame['class']) ? "{$frame['class']}{$frame['type']}":'').$frame['function'];
+                $args = array();
+                foreach($frame['args'] as $value) {
+                    $args[] = (is_object($value)
+                        ? get_class($value)
+                        : ( is_array($value)
+                            ? 'array('.count($value).')'
+                            : ( is_string($value)
+                                ? (strlen($value) > 30 ? "'".substr($value, 0, 27)."...'" : $value)
+                                : gettype($value)."($value)"
+                            )
+                        )
+                    );
+                }
+                $args = implode(', ', $args);
+                $backtrace[] = "#{$index} {$frame['file']}:{$frame['line']} $function($args)";
+            }
+            $event['backtrace'] = implode("\n", $backtrace);
         }
 
         foreach(array('REQUEST_METHOD', 'REQUEST_URI', 'HTTP_USER_AGENT') as $key) {
