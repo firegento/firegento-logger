@@ -26,11 +26,12 @@ class Hackathon_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
    * Formats data into a single line to be written by the writer.
    *
    * @param array $event
+   * @param bool $enableBacktrace
    * @return string             formatted line to write to the log
    */
-  public function format($event)
+  public function format($event, $enableBacktrace = FALSE)
   {
-    Mage::helper('hackathon_logger')->addEventMetadata($event, '-');
+    Mage::helper('hackathon_logger')->addEventMetadata($event, '-', $enableBacktrace);
     return parent::format($event);
   }
 

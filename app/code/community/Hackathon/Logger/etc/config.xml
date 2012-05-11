@@ -77,7 +77,14 @@
             <general>
                 <targets>advanced</targets>
                 <priority>7</priority>
-                <format>%timestamp% %priorityName% (%store_code%): %time_elapsed%s %REQUEST_METHOD% %REQUEST_URI%\n%REMOTE_ADDR% - %HTTP_USER_AGENT%\n%file%:%line%\n%message%\n</format>
+                <format><![CDATA[
+%timestamp% %priorityName% (%store_code%): %REQUEST_METHOD% %REQUEST_URI%
+REQUEST: %REQUEST_DATA%
+TIME: %time_elapsed%s
+ADDRESS: %REMOTE_ADDR%
+USER AGENT: %HTTP_USER_AGENT%
+FILE: %file%:%line%
+%message%]]></format>
                 <max_backtrace_lines>0</max_backtrace_lines>
             </general>
             <default>
