@@ -14,12 +14,25 @@
                     <show_in_default>1</show_in_default>
                     <fields>
                         <targets translate="label">
-                            <label>Targets</label>
+                            <label>Enabled Targets</label>
                             <frontend_type>multiselect</frontend_type>
                             <source_model>hackathon_logger/system_config_source_targets</source_model>
                             <sort_order>0</sort_order>
                             <show_in_default>1</show_in_default>
+                            <comment>If a target is not enabled here it will not get written to even if it is specified in the Target Map below.</comment>
                         </targets>
+                        <target_map>
+                            <label>Target Map</label>
+                            <frontend_model>hackathon_logger/adminhtml_system_config_targetmap</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                              Use regexes to specify which messages can be logged to which targets by filename (e.g. system.log).
+                              If no rules are specified, all messages will be logged to all enabled targets. The priority level filters
+                              still apply.
+                            ]]></comment>
+                        </target_map>
                         <priority translate="label">
                             <label>Default Priority Level Filter</label>
                             <frontend_type>select</frontend_type>
@@ -30,7 +43,7 @@
                         </priority>
                         <format translate="label">
                             <label>Advanced Format</label>
-                            <frontend_type>text</frontend_type>
+                            <frontend_type>textarea</frontend_type>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
                             <comment><![CDATA[
@@ -42,13 +55,22 @@
                               %time_elapsed%<br/>
                               %REQUEST_METHOD%<br/>
                               %REQUEST_URI%<br/>
+                              %REQUEST_DATA%<br/>
                               %REMOTE_ADDR%<br/>
                               %HTTP_USER_AGENT%<br/>
                               %file%<br/>
                               %line%<br/>
-                              %message%
+                              %message%<br/>
+                              %backtrace%
                             ]]></comment>
                         </format>
+                        <max_backtrace_lines translate="label">
+                            <label>Max Backtrace Lines</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[Enter a number above 0 to enable the %backtrace% key in the Advanced Format or in Graylog2]]></comment>
+                        </max_backtrace_lines>
                         <use_queue translate="label">
                             <label>Queue Events</label>
                             <frontend_type>select</frontend_type>

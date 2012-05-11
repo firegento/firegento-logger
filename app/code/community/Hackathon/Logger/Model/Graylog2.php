@@ -27,6 +27,19 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 	protected static $_publishers = array();
 
 	/**
+	 * @var bool
+	 */
+	protected $_enableBacktrace = FALSE;
+
+	/**
+	 * @param bool $flag
+	 */
+	public function setEnableBacktrace($flag)
+	{
+		$this->_enableBacktrace = $flag;
+	}
+
+	/**
 	 * Use static method so all loggers share same publisher
 	 *
 	 * @static
@@ -51,7 +64,7 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 	public function __construct($filename)
 	{
 		$helper = Mage::helper('hackathon_logger'); /* @var $helper Hackathon_Logger_Helper_Data */
-		$this->_options['filename'] = $filename;
+		$this->_options['filename'] = basename($filename);
 		$this->_options['app_name'] = $helper->getLoggerConfig('graylog2/app_name');
 		$hostname = $helper->getLoggerConfig('graylog2/hostname');
 		$port = $helper->getLoggerConfig('graylog2/port');
@@ -73,7 +86,11 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 			$msg = new GELFMessage();
 			$msg->setTimestamp(microtime(TRUE));
 			$msg->setShortMessage(substr($event['message'],0,strpos($event['message'],"\n")));
-			$msg->setFullMessage($event['message']);
+			if ($event['backtrace']) {
+				$msg->setFullMessage($event['message']."\n\nBacktrace:\n".$event['backtrace']);
+			} else {
+				$msg->setFullMessage($event['message']);
+			}
 			$msg->setHost(gethostname());
 			$msg->setLevel($event['priority']);
 			$msg->setFacility($this->_options['app_name'] . $this->_options['filename']);

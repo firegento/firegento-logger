@@ -13,17 +13,35 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 
 	protected $_useQueue;
 
+	protected static $_advancedFormatter;
+
+	/**
+	 * @param string $filename
+	 */
 	public function __construct($filename)
 	{
 		/** @var $helper Hackathon_Logger_Helper_Data */
 		$helper = Mage::helper('hackathon_logger');
-		$targets = $helper->getLoggerConfig('general/targets');
-		foreach(explode(',', $targets) as $target) {
-			$className = (string) Mage::app()->getConfig()->getNode('global/log/core/writer_models/'.$target.'/class');
-			if($className) {
-				$writer = new $className($filename);
-				$helper->addPriorityFilter($writer, 'logger/'.$target.'/priority');
-				$this->_writers[] = $writer;
+
+		// Only instantiate writers that are needed for this file based on the Filename Filters
+		$targets = explode(',', $helper->getLoggerConfig('general/targets'));
+		if ($targets) {
+			$mappedTargets = $helper->getMappedTargets(basename($filename));
+			if ($mappedTargets === NULL) { // No filters, enable backtrace for all targets
+				$mappedTargets = array_fill_keys($targets, TRUE);
+			} else {
+				$targets = array_intersect($targets, array_keys($mappedTargets));
+			}
+			foreach($targets as $target) {
+				$className = (string) Mage::app()->getConfig()->getNode('global/log/core/writer_models/'.$target.'/class');
+				if($className) {
+					$writer = new $className($filename);
+					$helper->addPriorityFilter($writer, 'logger/'.$target.'/priority');
+					if (method_exists($writer, 'setEnableBacktrace')) {
+							$writer->setEnableBacktrace($mappedTargets[$target]);
+					}
+					$this->_writers[] = $writer;
+				}
 			}
 		}
 		$this->_useQueue = Mage::getStoreConfigFlag('logger/general/use_queue');
@@ -70,14 +88,26 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 	 */
 	public function setFormatter($formatter)
 	{
-		$this->_formatter = new Hackathon_Logger_Formatter_Advanced;
+		$this->_formatter = self::getAdvancedFormatter();
 		foreach ($this->_writers as $writer) {
 			if (get_class($writer) == 'Zend_Log_Writer_Stream') { // don't override formatter for default writer
 				$writer->setFormatter($formatter);
 			} else {
-				$writer->setFormatter($this->_formatter);
+				$writer->setFormatter(self::getAdvancedFormatter());
 			}
 		}
+	}
+
+	/**
+	 * @static
+	 * @return Hackathon_Logger_Formatter_Advanced
+	 */
+	public static function getAdvancedFormatter()
+	{
+		if ( ! self::$_advancedFormatter) { // Use singleton since all instances will be identical anyway
+			self::$_advancedFormatter = new Hackathon_Logger_Formatter_Advanced;
+		}
+		return self::$_advancedFormatter;
 	}
 
 }
