@@ -107,4 +107,12 @@ class Hackathon_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 		}
 	}
 
+  /**
+   * Satisfy newer Zend Framework
+   *
+   * @static
+   * @param $config
+   */
+  static public function factory($config) {}
+
 }

@@ -65,4 +65,12 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
         return $this->transport;
     }
 
+    /**
+     * Satisfy newer Zend Framework
+     *
+     * @static
+     * @param $config
+     */
+    static public function factory($config) {}
+
 }

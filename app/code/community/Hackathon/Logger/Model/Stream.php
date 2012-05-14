@@ -34,4 +34,12 @@ class Hackathon_Logger_Model_Stream extends Zend_Log_Writer_Stream
       }
   }
 
+  /**
+   * Satisfy newer Zend Framework
+   *
+   * @static
+   * @param $config
+   */
+  static public function factory($config) {}
+
 }

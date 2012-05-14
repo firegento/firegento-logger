@@ -110,4 +110,12 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 		return self::$_advancedFormatter;
 	}
 
+  /**
+   * Satisfy newer Zend Framework
+   *
+   * @static
+   * @param $config
+   */
+  static public function factory($config) {}
+
 }

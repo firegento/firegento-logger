@@ -34,4 +34,12 @@ class Hackathon_Logger_Model_Db extends Zend_Log_Writer_Db
         parent::__construct($this->_db, $this->_table, $this->_columnMap);
     }
 
+    /**
+     * Satisfy newer Zend Framework
+     *
+     * @static
+     * @param $config
+     */
+    static public function factory($config) {}
+
 }

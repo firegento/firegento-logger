@@ -30,4 +30,12 @@ class Hackathon_Logger_Model_Dropbox extends Zend_Log_Writer_Abstract
 
     }
 
+    /**
+     * Satisfy newer Zend Framework
+     *
+     * @static
+     * @param $config
+     */
+    static public function factory($config) {}
+
 }
