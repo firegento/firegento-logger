@@ -86,7 +86,7 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 	 *
 	 * @param Zend_Log_Formatter_Interface $formatter
 	 */
-	public function setFormatter($formatter)
+	public function setFormatter(Zend_Log_Formatter_Interface $formatter)
 	{
 		$this->_formatter = self::getAdvancedFormatter();
 		foreach ($this->_writers as $writer) {
