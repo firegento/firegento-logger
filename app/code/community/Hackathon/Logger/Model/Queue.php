@@ -36,7 +36,7 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 				$className = (string) Mage::app()->getConfig()->getNode('global/log/core/writer_models/'.$target.'/class');
 				if($className) {
 					$writer = new $className($filename);
-					$helper->addPriorityFilter($writer, 'logger/'.$target.'/priority');
+					$helper->addPriorityFilter($writer, $target.'/priority');
 					if (method_exists($writer, 'setEnableBacktrace')) {
 							$writer->setEnableBacktrace($mappedTargets[$target]);
 					}
@@ -44,7 +44,7 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 				}
 			}
 		}
-		$this->_useQueue = Mage::getStoreConfigFlag('logger/general/use_queue');
+		$this->_useQueue = !! $helper->getLoggerConfig('general/use_queue');
 	}
 
 	/**

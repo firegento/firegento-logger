@@ -9,18 +9,18 @@
 class Hackathon_Logger_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
-    const XML_PATH_PRIORITY = 'logger/general/priority';
+    const XML_PATH_PRIORITY = 'general/priority';
 
     protected $_targetMap = NULL;
 
     /**
      * @param string $path
-     * @param null $storeId
-     * @return mixed
+     * @return string
      */
-    public function getLoggerConfig($path, $storeId = NULL)
+    public function getLoggerConfig($path)
     {
-        return Mage::getStoreConfig('logger/'.$path, $storeId);
+        // This method doesn't depend on stores being loaded.
+        return (string) Mage::getConfig()->getNode('default/logger/'.$path);
     }
 
     /**
@@ -63,13 +63,13 @@ class Hackathon_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     {
         $priority = NULL;
         if ($configPath) {
-            $priority = Mage::getStoreConfig($configPath);
+            $priority = $this->getLoggerConfig($configPath);
             if ($priority == 'default') {
                 $priority = NULL;
             }
         }
         if ( ! $configPath || ! strlen($priority)) {
-            $priority = Mage::getStoreConfig(self::XML_PATH_PRIORITY);
+            $priority = $this->getLoggerConfig(self::XML_PATH_PRIORITY);
         }
         if ( $priority !== NULL && $priority != Zend_Log::WARN) {
             $writer->addFilter(new Zend_Log_Filter_Priority((int)$priority));

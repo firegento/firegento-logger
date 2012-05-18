@@ -12,7 +12,7 @@ class Hackathon_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
    */
   public function __construct($format = NULL)
   {
-    $configFormat = Mage::getStoreConfig('logger/general/format');
+    $configFormat = Mage::helper('hackathon_logger')->getLoggerConfig('general/format');
     if ($configFormat) {
       $format = str_replace('\n', PHP_EOL, $configFormat);
     }
