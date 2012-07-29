@@ -83,9 +83,13 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 		try {
 			Mage::helper('hackathon_logger')->addEventMetadata($event);
 
+			$eofMessageFirstLine = strpos($event['message'], "\n");
+			$shortMessage = (FALSE === $eofMessageFirstLine) ? $event['message'] :
+			substr($event['message'], 0, $eofMessageFirstLine);
+			
 			$msg = new GELFMessage();
 			$msg->setTimestamp(microtime(TRUE));
-			$msg->setShortMessage(substr($event['message'],0,strpos($event['message'],"\n")));
+			$msg->setShortMessage($shortMessage);
 			if ($event['backtrace']) {
 				$msg->setFullMessage($event['message']."\n\nBacktrace:\n".$event['backtrace']);
 			} else {
@@ -98,6 +102,7 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 			$msg->setLine($event['line']);
 			$msg->setAdditional('store_code', $event['store_code']);
 			$msg->setAdditional('time_elapsed', $event['time_elapsed']);
+			$msg->setHost(php_uname('n'));
 			foreach(array('REQUEST_METHOD', 'REQUEST_URI', 'REMOTE_IP', 'HTTP_USER_AGENT') as $key) {
 				if ( ! empty($event[$key])) {
 					$msg->setAdditional($key, $event[$key]);

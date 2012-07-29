@@ -29,9 +29,17 @@ class Hackathon_Logger_Model_Db extends Zend_Log_Writer_Db
     {
         $resource = Mage::getSingleton('core/resource');
         $this->_db = $resource->getConnection('core_write');
-        $this->_table = $resource->getTableName('hackathon_logger/logger');
+        $this->_table = $resource->getTableName('hackathon_logger/db_entry');
         $this->_columnMap = array('severity' => 'priority', 'message' => 'message');
         parent::__construct($this->_db, $this->_table, $this->_columnMap);
+    }
+    
+    /**
+     * @see parent::setFormatter(Zend_Log_Formatter_Interface $formatter)
+     */
+    public function setFormatter(Zend_Log_Formatter_Interface $formatter)
+    {
+    	// ignore formatter as it is not supported for db log writer
     }
 
     /**
