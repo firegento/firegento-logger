@@ -98,6 +98,7 @@ class Hackathon_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 			$msg->setLine($event['line']);
 			$msg->setAdditional('store_code', $event['store_code']);
 			$msg->setAdditional('time_elapsed', $event['time_elapsed']);
+			$msg->setHost(php_uname('n'));
 			foreach(array('REQUEST_METHOD', 'REQUEST_URI', 'REMOTE_IP', 'HTTP_USER_AGENT') as $key) {
 				if ( ! empty($event[$key])) {
 					$msg->setAdditional($key, $event[$key]);
