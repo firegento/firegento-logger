@@ -5,7 +5,14 @@ class Hackathon_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
     public function indexAction()
     {
         $this->loadLayout();
-        $this->_setActiveMenu('system/logger');
+        $this->_setActiveMenu('system/hackathon_logger/grid_viewer');
+        $this->renderLayout();
+    }
+
+    public function liveViewAction()
+    {
+        $this->loadLayout();
+        $this->_setActiveMenu('system/hackathon_logger/live_viewer');
         $this->renderLayout();
     }
 
