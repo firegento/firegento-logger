@@ -10,4 +10,9 @@
             <block type="hackathon_logger/adminhtml_liveview" name="logger.liveView" template="hackathon_logger/live.view.phtml" />
         </reference>
     </adminhtml_logger_liveview>
+    <adminhtml_logger_reportview>
+        <reference name="content">
+            <block type="adminhtml/template" name="logger.reportView" template="hackathon_logger/report.view.phtml" />
+        </reference>
+    </adminhtml_logger_reportview>
 </layout>
