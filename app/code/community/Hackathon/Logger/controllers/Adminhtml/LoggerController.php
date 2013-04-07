@@ -23,7 +23,7 @@ class Hackathon_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
         $this->renderLayout();
     }
 
-    public function reportAjaxFunction()
+    public function reportAjaxAction()
     {
         $reportId = $this->getRequest()->getParam('report_id');
         $filename = Mage::getBaseDir('var') . DS . 'report' . DS . $reportId;
