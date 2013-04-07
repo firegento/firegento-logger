@@ -109,4 +109,8 @@
     </button>
     <?php endif; ?>
 </div>
-<div id="log_output" name="log_output"></div>
+<div id="log_output" name="log_output">
+    <?php if(count($logFiles)): ?>
+        <?php echo $this->__('Please select a report File.'); ?>
+    <?php endif; ?>
+</div>
