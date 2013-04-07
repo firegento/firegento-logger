@@ -93,17 +93,20 @@
 <div class="logger-controls">
     <label for="logSelector">Log-Files:</label>
     <select name="logSelector" id="logSelector">
-        <?php
-            $logFiles = $this->getLogFiles();
-            foreach ( $logFiles as $logFile ) {
-                echo '<option value="' . $logFile . '">' . $logFile . '</option>';
-            }
-        ?>
+        <?php $logFiles = $this->getLogFiles(); ?>
+        <?php foreach ( $logFiles as $logFile ): ?>
+            <option value="<?php echo $logFile; ?>"><?php echo $logFile; ?></option>
+        <?php endforeach; ?>
+        <?php if(!count($logFiles)): ?>
+            <option value=""><?php echo $this->__('No Logfiles found.'); ?></option>
+        <?php endif; ?>
     </select>
+    <?php if(count($logFiles)): ?>
     <button name="startLiveView" onclick="setLogFile()">
         <span>
             <span>View Log-File</span>
         </span>
     </button>
+    <?php endif; ?>
 </div>
 <div id="log_output" name="log_output"></div>
