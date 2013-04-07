@@ -1,4 +1,4 @@
-Karl,Christoph,Christian,Claas,Damian,Colin
+Karl,Christoph,Christian,Claas,Damian,Colin,Marco,Nicolai
 
 Goals
 
@@ -11,5 +11,9 @@ Logger Interfaces
 - XMPP
 - Graylog
 - Multiple-Targets
+
+Update (2013/04/06)
+- Added Live View for Logfiles (like a terminal tail)
+- Added Report View
 
 For XMPP we use https://github.com/cweiske/xmpphp. Please copy it to lib/XMPPHP.
