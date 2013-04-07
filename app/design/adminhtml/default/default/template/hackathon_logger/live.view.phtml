@@ -15,24 +15,31 @@
         }
     }
 
+    function clearOutputPanel()
+    {
+        var output = $("log_output");
+        output.update('');
+    }
+
     function setLogFile()
     {
+        this.position = 0;
         this.currentLogFile = $('logSelector').getValue();
-        console.log(this.currentLogFile);
+        this.clearOutputPanel();
+        this.startLiveView();
     }
 
     function getUpdates() {
         // skip when the last request ist not answered yet
-
-        if(running) {
+        if(this.running) {
             return;
         }
 
-        running = true;
-        new Ajax.Request('<?php echo $this->getUrl('adminhtml/', array('_secure' => Mage::app()->getRequest()->isSecure())) ?>',
+        this.running = true;
+        new Ajax.Request('<?php echo $this->getUrl('adminhtml/logger/liveViewAjax', array('_secure' => Mage::app()->getRequest()->isSecure())) ?>',
             {
                 method: 'get',
-                parameters: { position: position, logFile: this.currentLogFile },
+                parameters: { position: this.position, logFile: this.currentLogFile },
                 loaderArea: false,
                 onSuccess: function(response) {
                     running = false;
@@ -45,9 +52,20 @@
                         output.innerHTML += logText;
                     }
 
-                    position = result.position;
+                    this.position = result.position;
                 }
             });
+    }
+
+    function startLiveView()
+    {
+        getUpdates();
+
+        var pe = new PeriodicalExecuter(
+            function(pe) {
+                getUpdates();
+            }
+            , 2);
     }
 
     document.observe("dom:loaded", function() {
@@ -62,14 +80,6 @@
         if (typeof auto_scroll=='undefined') {
             var auto_scroll = window.setInterval(console_scroll, 1);
         }
-
-        getUpdates();
-
-        var pe = new PeriodicalExecuter(
-            function(pe) {
-                getUpdates();
-            }
-            , 2);
 
         if (parent && parent.disableInputs) {
             parent.disableInputs(false);

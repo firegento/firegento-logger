@@ -7,7 +7,7 @@
     </adminhtml_logger_index>
     <adminhtml_logger_liveview>
         <reference name="content">
-            <block type="hackathon_logger/adminhtml_liveview" name="logger.liveView" template="hackathon_logger/live.view.phtml" />
+            <block type="hackathon_logger/adminhtml_liveView" name="logger.liveView" template="hackathon_logger/live.view.phtml" />
         </reference>
     </adminhtml_logger_liveview>
     <adminhtml_logger_reportview>
