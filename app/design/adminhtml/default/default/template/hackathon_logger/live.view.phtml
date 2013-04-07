@@ -1,0 +1,96 @@
+
+<script type="text/javascript">
+
+    function console_scroll()
+    {
+        if (typeof top.$!='function') {
+            return;
+        }
+
+        dh=$("log_output").scrollHeight
+        ch=$("log_output").clientHeight
+        if(dh>ch){
+            moveme=dh-ch
+            $("log_output").scrollTop = moveme;
+        }
+    }
+
+    function setLogFile()
+    {
+        this.currentLogFile = $('logSelector').getValue();
+        console.log(this.currentLogFile);
+    }
+
+    function getUpdates() {
+        // skip when the last request ist not answered yet
+
+        if(running) {
+            return;
+        }
+
+        running = true;
+        new Ajax.Request('<?php echo $this->getUrl('adminhtml/', array('_secure' => Mage::app()->getRequest()->isSecure())) ?>',
+            {
+                method: 'get',
+                parameters: { position: position, logFile: this.currentLogFile },
+                loaderArea: false,
+                onSuccess: function(response) {
+                    running = false;
+                    var output = $("log_output");
+                    var result = response.responseText.evalJSON();
+
+                    logText = result.text.replace(/\n/g, "<br />")
+
+                    if(logText != "<br />") {
+                        output.innerHTML += logText;
+                    }
+
+                    position = result.position;
+                }
+            });
+    }
+
+    document.observe("dom:loaded", function() {
+        var position = 0;
+        var running = false;
+        var currentLogFile = '';
+
+        if (parent && parent.disableInputs) {
+            parent.disableInputs(true);
+        }
+
+        if (typeof auto_scroll=='undefined') {
+            var auto_scroll = window.setInterval(console_scroll, 1);
+        }
+
+        getUpdates();
+
+        var pe = new PeriodicalExecuter(
+            function(pe) {
+                getUpdates();
+            }
+            , 2);
+
+        if (parent && parent.disableInputs) {
+            parent.disableInputs(false);
+        }
+    });
+</script>
+
+<div class="controls">
+    <label for="logSelector">Log-Files:</label>
+    <select name="logSelector" id="logSelector">
+        <?php
+            $logFiles = $this->getLogFiles();
+            foreach ( $logFiles as $logFile ) {
+                echo '<option value="' . $logFile . '">' . $logFile . '</option>';
+            }
+        ?>
+    </select>
+    <button name="startLiveView" onclick="setLogFile()">
+        <span>
+            <span>View Log-File</span>
+        </span>
+    </button>
+</div>
+<div id="log_output" name="log_output" style="width:100%; height:500px; overflow: auto; margin: 0px; padding: 3px; background: black; color: #2EC029; font: normal 11px Lucida Console, Courier New, serif;"></div>
