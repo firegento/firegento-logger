@@ -4,3 +4,4 @@ app/code/community/Hackathon app/code/community/Hackathon
 app/etc/modules/* app/etc/modules
 app/design/adminhtml/default/default/layout/* app/design/adminhtml/default/default/layout
 app/design/adminhtml/default/default/template/* app/design/adminhtml/default/default/template
+skin/adminhtml/default/default/* skin/adminhtml/default/default
