@@ -27,32 +27,28 @@ class Hackathon_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
     {
         $startPos = $this->getRequest()->getParam('position');
         $filename = Mage::getBaseDir('var') . DS . 'log' . DS . $this->getRequest()->getParam('logFile');
-        if(!file_exists($filename)){
+        if( !file_exists($filename) ){
             return '';
         }
 
         $handle = fopen($filename, 'r');
         $filesize = filesize($filename);
 
-        $firstTime = 0;
-
         if($startPos == 0) {
-            $firstTime = 1;
             $lengthBefore = 1000;
             fseek($handle, -$lengthBefore, SEEK_END);
             $text = fread($handle, $filesize);
 
             $updates = '[...]' . substr($text, strpos($text, "\n"), strlen($text));
-            $newPos = ftell($handle);
         } else {
             fseek($handle, $startPos, SEEK_SET);
             $updates = fread($handle, $filesize);
-            $newPos = ftell($handle);
         }
+        $newPos = ftell($handle);
 
         $response = '';
         if($updates != NULL) {
-            $response = Zend_Json::encode(array('text' => $updates, 'position' => $newPos, 'firsttime' => $firstTime));
+            $response = Zend_Json::encode(array('text' => $updates, 'position' => $newPos));
         }
 
         $this->getResponse()->setBody(

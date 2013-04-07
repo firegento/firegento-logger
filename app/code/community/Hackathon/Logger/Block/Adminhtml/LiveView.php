@@ -2,6 +2,11 @@
 
 class Hackathon_Logger_Block_Adminhtml_LiveView extends Mage_Adminhtml_Block_Template
 {
+    /**
+     * Method reads all log-Files in the var/log-folder
+     *
+     * @return array
+     */
     public function getLogFiles()
     {
         $logFiles = array();

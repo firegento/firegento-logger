@@ -1,89 +1,92 @@
 
 <script type="text/javascript">
 
-    function console_scroll()
-    {
-        if (typeof top.$!='function') {
-            return;
-        }
+    var LoggerLiveView = Class.create();
+    LoggerLiveView.prototype = {
+        initialize: function(outputContainer) {
+            this.position = 0;
+            this.running = false;
+            this.currentLogFile = '';
+            this.pe = null;
+            this.peScroll = null;
+            this.outputPanel = $(outputContainer);
+        },
 
-        dh=$("log_output").scrollHeight
-        ch=$("log_output").clientHeight
-        if(dh>ch){
-            moveme=dh-ch
-            $("log_output").scrollTop = moveme;
-        }
-    }
-
-    function clearOutputPanel()
-    {
-        var output = $("log_output");
-        output.update('');
-    }
-
-    function setLogFile()
-    {
-        this.position = 0;
-        this.currentLogFile = $('logSelector').getValue();
-        this.clearOutputPanel();
-        this.startLiveView();
-    }
-
-    function getUpdates() {
-        // skip when the last request ist not answered yet
-        if(this.running) {
-            return;
-        }
-
-        this.running = true;
-        new Ajax.Request('<?php echo $this->getUrl('adminhtml/logger/liveViewAjax', array('_secure' => Mage::app()->getRequest()->isSecure())) ?>',
-            {
-                method: 'get',
-                parameters: { position: this.position, logFile: this.currentLogFile },
-                loaderArea: false,
-                onSuccess: function(response) {
-                    running = false;
-                    var output = $("log_output");
-                    var result = response.responseText.evalJSON();
-
-                    logText = result.text.replace(/\n/g, "<br />")
-
-                    if(logText != "<br />") {
-                        output.innerHTML += logText;
-                    }
-
-                    this.position = result.position;
-                }
-            });
-    }
-
-    function startLiveView()
-    {
-        getUpdates();
-
-        var pe = new PeriodicalExecuter(
-            function(pe) {
-                getUpdates();
+        consoleScroll: function() {
+            if (typeof top.$!='function') {
+                return;
             }
-            , 2);
-    }
+
+            dh = this.outputPanel.scrollHeight
+            ch = this.outputPanel.clientHeight
+            if( dh > ch ){
+                moveme = dh - ch;
+                this.outputPanel.scrollTop = moveme;
+            }
+        },
+
+        clearOutputPanel: function() {
+            this.outputPanel.update('');
+        },
+
+        setLogFile: function() {
+            this.position = 0;
+            this.currentLogFile = $('logSelector').getValue();
+            this.clearOutputPanel();
+            this.startLiveView();
+        },
+
+        getUpdates: function() {
+            // skip when the last request ist not answered yet
+            if( this.running ) {
+                return;
+            }
+
+            this.running = true;
+            new Ajax.Request('<?php echo $this->getUrl('adminhtml/logger/liveViewAjax', array('_secure' => Mage::app()->getRequest()->isSecure())) ?>',
+                {
+                    method: 'get',
+                    parameters: { position: this.position, logFile: this.currentLogFile },
+                    loaderArea: false,
+                    onSuccess: function(response) {
+                        this.running = false;
+
+                        var result = response.responseText.evalJSON();
+
+                        logText = result.text.replace(/\n/g, "<br />")
+                        if(logText != "<br />") {
+                            this.outputPanel.innerHTML += logText;
+                        }
+
+                        this.position = result.position;
+                    }.bind(this)
+                });
+        },
+
+        startLiveView: function() {
+            this.getUpdates();
+
+            // stop previous PeriodicalExecuter
+            if ( this.pe != null ) {
+                this.pe.stop();
+            }
+
+            this.pe = new PeriodicalExecuter(function(pe) {
+                this.getUpdates();
+            }.bind(this), 2);
+
+            this.peScroll = new PeriodicalExecuter(function(peScroll) {
+                this.consoleScroll();
+            }.bind(this), 1);
+        }
+
+    };
 
     document.observe("dom:loaded", function() {
-        var position = 0;
-        var running = false;
-        var currentLogFile = '';
-
-        if (parent && parent.disableInputs) {
-            parent.disableInputs(true);
-        }
-
-        if (typeof auto_scroll=='undefined') {
-            var auto_scroll = window.setInterval(console_scroll, 1);
-        }
-
-        if (parent && parent.disableInputs) {
-            parent.disableInputs(false);
-        }
+        var liveView = new LoggerLiveView('log_output');
+        $('startLiveView').observe('click', function(btn) {
+            liveView.setLogFile();
+        });
     });
 </script>
 
@@ -102,7 +105,7 @@
         <?php endif; ?>
     </select>
     <?php if(count($logFiles)): ?>
-    <button name="startLiveView" onclick="setLogFile()">
+    <button name="startLiveView" id="startLiveView">
         <span>
             <span>View Log-File</span>
         </span>
