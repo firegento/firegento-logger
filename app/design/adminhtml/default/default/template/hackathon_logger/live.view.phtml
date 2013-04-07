@@ -87,7 +87,10 @@
     });
 </script>
 
-<div class="controls">
+<div class="content-header">
+    <h3 class="icon-head head-system-account"><?php echo $this->__('Logger Live View'); ?></h3>
+</div>
+<div class="logger-controls">
     <label for="logSelector">Log-Files:</label>
     <select name="logSelector" id="logSelector">
         <?php
@@ -103,4 +106,4 @@
         </span>
     </button>
 </div>
-<div id="log_output" name="log_output" style="width:100%; height:500px; overflow: auto; margin: 0px; padding: 3px; background: black; color: #2EC029; font: normal 11px Lucida Console, Courier New, serif;"></div>
+<div id="log_output" name="log_output"></div>

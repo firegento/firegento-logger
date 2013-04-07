@@ -6,6 +6,9 @@
         </reference>
     </adminhtml_logger_index>
     <adminhtml_logger_liveview>
+        <reference name="head">
+            <action method="addCss"><name>hackathon_logger.css</name></action>
+        </reference>
         <reference name="content">
             <block type="hackathon_logger/adminhtml_liveView" name="logger.liveView" template="hackathon_logger/live.view.phtml" />
         </reference>
