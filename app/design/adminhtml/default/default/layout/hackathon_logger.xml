@@ -2,7 +2,7 @@
 <layout>
     <adminhtml_logger_index>
         <reference name="content">
-            <block type="core/adminhtml_logger" name="logger" />
+            <block type="hackathon_logger/adminhtml_logger" name="logger" />
         </reference>
     </adminhtml_logger_index>
     <adminhtml_logger_liveview>
