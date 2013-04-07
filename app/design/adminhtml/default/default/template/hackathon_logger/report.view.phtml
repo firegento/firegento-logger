@@ -1,7 +1,11 @@
 <div class="form">
     <label for="report_id"><?php echo $this->__('Report Number'); ?>:</label>
     <input type="text" name="report_id" id="report_id"/>
-    <input name="submit" id="report_submit" type="button" value="<?php echo $this->__('Submit'); ?>">
+    <button name="submit" id="report_submit">
+        <span>
+            <span><?php echo $this->__('Submit'); ?></span>
+        </span>
+    </button>
 </div>
 <div id="log_output" name="log_output" style="width:100%; height:500px; overflow: auto; margin: 0px; padding: 3px; background: black; color: #2EC029; font: normal 11px Lucida Console, Courier New, serif;"><?php echo $this->__('Please fill the report id above.'); ?></div>
 <script type="text/javascript">
