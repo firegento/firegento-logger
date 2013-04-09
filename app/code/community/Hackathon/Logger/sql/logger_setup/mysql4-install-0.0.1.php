@@ -14,7 +14,7 @@ CREATE TABLE {$this->getTable('advanced_logger')} (
   `severity` int(2),
   `timestamp` timestamp default CURRENT_TIMESTAMP,
   PRIMARY KEY  (`entity_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ");
 
 $installer->endSetup();
