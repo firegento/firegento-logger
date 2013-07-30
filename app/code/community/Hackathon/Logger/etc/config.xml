@@ -68,6 +68,9 @@
                     <xmpp><label>XMPP</label><class>Hackathon_Logger_Model_Xmpp</class></xmpp>
                     <dropbox><label>Dropbox</label><class>Hackathon_Logger_Model_Dropbox</class></dropbox>
                     <graylog2><label>Graylog2</label><class>Hackathon_Logger_Model_Graylog2</class></graylog2>
+                    <rsyslog><label>Remote Syslog (UDP)</label><class>Hackaton_Logger_Model_Rsyslog</class></rsyslog>
+                    <logglysyslog><label>Loggly, via Remote Syslog (UDP)</label><class>Hackaton_Logger_Model_Logglysyslog</class></logglysyslog>
+                    <logglyhttps><label>Loggly, via HTTPS</label><class>Hackaton_Logger_Model_Logglyhttps</class></logglyhttps>
                 </writer_models>
             </core>
         </log>
@@ -113,6 +116,24 @@ FILE: %file%:%line%
                 <chunk_size>1420</chunk_size>
                 <app_name>Magento/</app_name>
             </graylog2>
+            <rsyslog>
+                <priority>default</priority>
+                <timeout>5</timeout>
+                <app_name>Magento/</app_name>
+            </rsyslog>
+            <logglyhttps>
+                <priority>default</priority>
+                <timeout>5</timeout>
+                <inputkey></inputkey>
+                <app_name>Magento/</app_name>
+            </logglyhttps>
+            <logglysyslog>
+                <priority>default</priority>
+                <hostname>logs.loggly.com</hostname>
+                <port>42146</port>
+                <timeout>5</timeout>
+                <app_name>Magento/</app_name>
+            </logglysyslog>
         </logger>
     </default>
 </config>
