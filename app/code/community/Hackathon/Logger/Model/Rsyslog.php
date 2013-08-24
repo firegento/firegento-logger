@@ -5,9 +5,9 @@ require_once 'lib/rsyslog/rsyslog.php';
  * Remote Syslog writer. Sends the Log Messages to a Remote Syslog server.
  * Messages are sent as plain text.
  *
- * @package Hackaton Advanced Logger.
+ * @package Hackathon Advanced Logger.
  */
-class Hackaton_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract {
+class Hackathon_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract {
 	// @var int The default Timeout to be used when communicating with the Remote Syslog Server.
 	const DEFAULT_TIMEOUT = 1;
 
@@ -80,7 +80,7 @@ class Hackaton_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract {
 
 		// In case of error, RSysLog publisher returns an array containing an Error Number
 		// and an Error Message
-		throw new Zend_Log_Exception(sprintf(Mage::helper('hackaton_logger')->__('Error occurred sending log to Remote Syslog Server. Error number: %d. Error Message: %s'),
+		throw new Zend_Log_Exception(sprintf(Mage::helper('hackathon_logger')->__('Error occurred sending log to Remote Syslog Server. Error number: %d. Error Message: %s'),
 																				 $Result[0],
 																				 $Result[1]));
 		return false;
@@ -88,10 +88,10 @@ class Hackaton_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract {
 
 	/**
 	 * @param string $FileName
-	 * @return Hackaton_Logger_Model_Logglysyslog
+	 * @return Hackathon_Logger_Model_Logglysyslog
 	 */
 	public function __construct($FileName) {
-		$helper = Mage::helper('hackaton_logger'); /* @var $helper Hackaton_Logger_Helper_Data */
+		$helper = Mage::helper('hackathon_logger'); /* @var $helper Hackathon_Logger_Helper_Data */
 		$this->_options['FileName'] = basename($FileName);
 		$this->_options['AppName'] = $helper->getLoggerConfig('rsyslog/app_name');
 

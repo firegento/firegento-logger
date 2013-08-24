@@ -6,9 +6,9 @@ require_once 'lib/rsyslog/rsyslog.php';
  * UDP. Messages are sent in JSON format, which gives higher flexibility and
  * allows to search for specific message parts more easily.
  *
- * @package Hackaton Advanced Logger.
+ * @package Hackathon Advanced Logger.
  */
-class Hackaton_Logger_Model_Logglysyslog extends Hackaton_Logger_Model_Rsyslog {
+class Hackathon_Logger_Model_Logglysyslog extends Hackathon_Logger_Model_Rsyslog {
 	// @var int Default UDP Port for JSON Remote Syslog on Loggly
 	const DEFAULT_PORT = 42146;
 
@@ -21,7 +21,7 @@ class Hackaton_Logger_Model_Logglysyslog extends Hackaton_Logger_Model_Rsyslog {
 	 * @return array An associative array representation of the event.
 	 */
 	protected function BuildJSONMessage($event, $enableBacktrace = FALSE) {
-    Mage::helper('hackaton_logger')->addEventMetadata($event, '-', $enableBacktrace);
+    Mage::helper('hackathon_logger')->addEventMetadata($event, '-', $enableBacktrace);
 
 		$Fields = array();
 
@@ -65,10 +65,10 @@ class Hackaton_Logger_Model_Logglysyslog extends Hackaton_Logger_Model_Rsyslog {
 
 	/**
 	 * @param string $FileName
-	 * @return Hackaton_Logger_Model_Logglysyslog
+	 * @return Hackathon_Logger_Model_Logglysyslog
 	 */
 	public function __construct($FileName) {
-		$helper = Mage::helper('hackaton_logger'); /* @var $helper Hackaton_Logger_Helper_Data */
+		$helper = Mage::helper('hackathon_logger'); /* @var $helper Hackathon_Logger_Helper_Data */
 		$this->_options['FileName'] = basename($FileName);
 		$this->_options['AppName'] = $helper->getLoggerConfig('logglysyslog/app_name');
 
