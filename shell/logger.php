@@ -1,28 +1,47 @@
 <?php
-require_once 'log.php';
+require_once 'abstract.php';
 
-/**
- * Magento Log Shell Script
- *
- * @category    Mage
- * @package     Mage_Shell
- * @author      Magento Core Team <core@magentocommerce.com>
- */
-class Firegento_Logger_Shell extends Mage_Shell_Log
+class Firegento_Logger_Shell extends Mage_Shell_Abstract
 {
 
     public function run()
     {
+        /** @var $model Firegento_Logger_Model_Observer */
+        $model = Mage::getModel('firegento_logger/observer');
         if ($this->getArg('clean'))
         {
             $days = $this->getArg('days');
-            /** @var $model Firegento_Logger_Model_Observer */
-            $model = Mage::getModel('firegento_logger/observer');
             $model->cleanLogs(new Varien_Event_Observer(), $days);
 
-            echo "Database log cleaned\n";
+            echo "Database log cleaned." . PHP_EOL;
         }
-        parent::run();
+        elseif ($this->getArg('rotate'))
+        {
+            $model->rotateLogs(new Varien_Event_Observer());
+            echo "Rotation of log files finished.".PHP_EOL;
+        }
+        else
+        {
+            echo $this->usageHelp();
+        }
+    }
+
+    /**
+     * Retrieve Usage Help Message
+
+     */
+    public function usageHelp()
+    {
+        return <<<USAGE
+Usage:  php -f log.php -- [options]
+        php -f log.php -- clean --days 1
+
+  clean             Clean Logs
+  --days <days>     Save log, days. (Minimum 1 day, if defined - ignoring system value)
+  rotate            Rotate every file in var/log with ends with .log
+  help              This help
+
+USAGE;
     }
 }
 

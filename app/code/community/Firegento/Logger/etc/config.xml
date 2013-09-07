@@ -15,6 +15,14 @@
                     <model>firegento_logger/observer::cleanLogs</model>
                 </run>
             </clean_logs>
+            <rotate_logs>
+                <schedule>
+                    <cron_expr>5 0 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>firegento_logger/observer::rotateLogs</model>
+                </run>
+            </rotate_logs>
         </jobs>
     </crontab>
     <admin>
