@@ -2,7 +2,7 @@
 class Firegento_Logger_Model_Observer extends Varien_Object
 {
     const MAX_FILE_DAYS = 30;
-    
+
     /** @var Firegento_Logger_Helper_Data */
     private $_helper;
 
