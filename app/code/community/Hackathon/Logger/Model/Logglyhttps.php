@@ -2,11 +2,11 @@
 /**
  * Loggly HTTPS Log writer. Sends Log Messages to Loggly via HTTPS.
  *
- * @package Hackaton Advanced Logger.
+ * @package Hackathon Advanced Logger.
  */
-define('LOGGER_CERTIFICATESFILE', Mage::getModuleDir('', 'Hackaton_Logger') . '/extras/certificates/cacert.pem');
+define('LOGGER_CERTIFICATESFILE', Mage::getModuleDir('', 'Hackathon_Logger') . '/extras/certificates/cacert.pem');
 
-class Hackaton_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract {
+class Hackathon_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract {
 	// @var string The URL of Loggly Log Server
 	protected $LogglyServer = 'logs.loggly.com';
 	// @var int The port to use to communicate with Loggly Server.
@@ -34,10 +34,10 @@ class Hackaton_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract {
 
 	/**
 	 * @param string $FileName
-	 * @return Hackaton_Logger_Model_Logglyhttps
+	 * @return Hackathon_Logger_Model_Logglyhttps
 	 */
 	public function __construct($FileName) {
-		$helper = Mage::helper('hackaton_logger'); /* @var $helper Hackaton_Logger_Helper_Data */
+		$helper = Mage::helper('hackathon_logger'); /* @var $helper Hackathon_Logger_Helper_Data */
 		$this->_options['FileName'] = basename($FileName);
 		$this->_options['AppName'] = $helper->getLoggerConfig('logglyhttps/app_name');
 
@@ -63,7 +63,7 @@ class Hackaton_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract {
 	 * @return string A JSON structure representing the message.
 	 */
 	protected function BuildJSONMessage($event, $enableBacktrace = FALSE) {
-    Mage::helper('hackaton_logger')->addEventMetadata($event, '-', $enableBacktrace);
+    Mage::helper('hackathon_logger')->addEventMetadata($event, '-', $enableBacktrace);
 
 		$Fields = array();
 
@@ -122,7 +122,7 @@ class Hackaton_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract {
 			fclose($fp);
 
 			if($Result == false) {
-				throw new Zend_Log_Exception(sprintf(Mage::helper('hackaton_logger')->__('Error occurred posting log message to Loggly via HTTPS. Posted Message: %s'),
+				throw new Zend_Log_Exception(sprintf(Mage::helper('hackathon_logger')->__('Error occurred posting log message to Loggly via HTTPS. Posted Message: %s'),
 																						 $Message));
 			}
 		}
