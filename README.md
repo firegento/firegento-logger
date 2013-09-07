@@ -32,7 +32,9 @@ Complete, working logger interfaces:
 - Database
 - XMPP (Jabber, Google Talk)
 - Graylog2
-- Dropbox
+- RSyslog (UDP)
+- Loggly (UDP/HTTPS)
+- Chromelogger
 
 It is possible to use **Multiple-Targets**!
 
@@ -41,8 +43,6 @@ It is possible to use **Multiple-Targets**!
 - Report View (Shows content of a report in backend)
 
 ### Further work
-
-Review Dropbox implementation and improve it
 
 ### External libraries
 
