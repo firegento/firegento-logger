@@ -12,7 +12,7 @@
                     <cron_expr>15 0 * * *</cron_expr>
                 </schedule>
                 <run>
-                    <model>firegento_logger/observer::clean_logs</model>
+                    <model>firegento_logger/observer::cleanLogs</model>
                 </run>
             </clean_logs>
         </jobs>

@@ -13,7 +13,7 @@ class Firegento_Logger_Model_Observer extends Varien_Object
      * Called by cron expression in config.xml to cleanup the
      * logs written to the DB.
      */
-    public function clean_logs(Varien_Event_Observer $observer, $days = 0)
+    public function cleanLogs(Varien_Event_Observer $observer, $days = 0)
     {
         $counter  = 0;
         if($days == 0) {

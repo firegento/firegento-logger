@@ -18,7 +18,7 @@ class Firegento_Logger_Shell extends Mage_Shell_Log
             $days = $this->getArg('days');
             /** @var $model Firegento_Logger_Model_Observer */
             $model = Mage::getModel('firegento_logger/observer');
-            $model->clean_logs(new Varien_Event_Observer(), $days);
+            $model->cleanLogs(new Varien_Event_Observer(), $days);
 
             echo "Database log cleaned\n";
         }
