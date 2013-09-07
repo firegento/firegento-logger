@@ -6,3 +6,4 @@ app/etc/modules/Firegento_Logger.xml    app/etc/modules/Firegento_Logger.xml
 app/design/adminhtml/default/default/layout/firegento_logger.xml    app/design/adminhtml/default/default/layout/firegento_logger.xml
 app/design/adminhtml/default/default/template/firegento_logger/ app/design/adminhtml/default/default/template/firegento_logger/
 skin/adminhtml/default/default/firegento_logger.css skin/adminhtml/default/default/firegento_logger.css
+shell/logger.php    shell/logger.php

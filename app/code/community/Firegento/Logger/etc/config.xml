@@ -144,6 +144,7 @@ FILE: %file%:%line%
             <db>
                 <priority>default</priority>
                 <viewer_enabled>0</viewer_enabled>
+                <max_days_to_keep>45</max_days_to_keep>
             </db>
             <xmpp>
                 <priority>default</priority>

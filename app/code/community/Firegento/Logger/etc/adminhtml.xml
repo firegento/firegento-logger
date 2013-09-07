@@ -44,7 +44,7 @@
                             <config>
                                 <children>
                                     <logger translate="title" module="firegento_logger">
-                                        <title>Advanced Logger Section</title>
+                                        <title>Firegento Logger Section</title>
                                         <sort_order>60</sort_order>
                                     </logger>
                                 </children>

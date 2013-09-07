@@ -3,6 +3,7 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
     const XML_PATH_PRIORITY = 'general/priority';
+    const XML_PATH_MAX_DAYS = 'db/max_days_to_keep';
 
     protected $_targetMap = NULL;
 
@@ -46,6 +47,15 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             }
         }
         return $targets;
+    }
+
+    /**
+     * The maximun of days to keep log messages in the database table.
+     *
+     * @return string
+     */
+    public function getMaxLogMessagesInDays() {
+        return $this->getLoggerConfig(self::XML_PATH_MAX_DAYS);
     }
 
     /**

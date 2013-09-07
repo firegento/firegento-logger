@@ -185,6 +185,12 @@
                             <show_in_default>1</show_in_default>
                             <comment>If "No", the "View Error Log" menu item will not be present.</comment>
                         </viewer_enabled>
+                        <max_days_to_keep translate="label">
+                            <label>Maximum days to keep log entries</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </max_days_to_keep>
                     </fields>
                 </db>
                 <xmpp translate="label">
