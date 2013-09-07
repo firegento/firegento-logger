@@ -195,6 +195,15 @@ class Hackathon_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         } else {
             $event['REMOTE_ADDR'] = $notAvailable;
         }
+
+        // add hostname to log message ...
+        if (gethostname() !== false)
+        {
+            $event['HOSTNAME'] = gethostname();
+        }
+        else {
+            $event['HOSTNAME'] = 'Could not determine hostname !';
+        }
     }
 
 }

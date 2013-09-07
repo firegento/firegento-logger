@@ -27,8 +27,8 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 		$targets = explode(',', $helper->getLoggerConfig('general/targets'));
 		if ($targets) {
 			$mappedTargets = $helper->getMappedTargets(basename($filename));
-			if ($mappedTargets === NULL) { // No filters, enable backtrace for all targets
-				$mappedTargets = array_fill_keys($targets, TRUE);
+			if ($mappedTargets === null) { // No filters, enable backtrace for all targets
+				$mappedTargets = array_fill_keys($targets, true);
 			} else {
 				$targets = array_intersect($targets, array_keys($mappedTargets));
 			}
@@ -47,6 +47,14 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 		$this->_useQueue = !! $helper->getLoggerConfig('general/use_queue');
 	}
 
+    /**
+     * Call shutdown method flush outstanding messages from writer.
+     */
+    public function __destruct()
+    {
+        $this->shutdown();
+    }
+
 	/**
 	 * Write a message to the log.
 	 *
@@ -60,6 +68,12 @@ class Hackathon_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 			$this->_logger_cache[] = $this->_formatter->format($event);
 		} else {
 			foreach ($this->_writers as $writer) {
+                // add hostname info to event if DB Logger ...
+                if ($writer instanceof Hackathon_Logger_Model_Db)
+                {
+                    $hostname = gethostname() !== false ? gethostname() : '';
+                    $event['message'] = '[' . $hostname . '] ' . $event['message'];
+                }
 				$writer->write($event);
 			}
 		}

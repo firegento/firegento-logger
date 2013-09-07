@@ -2,9 +2,21 @@
 <config>
     <modules>
         <Hackathon_Logger>
-            <version>1.0.0</version>
+            <version>1.1.0</version>
         </Hackathon_Logger>
     </modules>
+    <crontab>
+        <jobs>
+            <clean_logs>
+                <schedule>
+                    <cron_expr>15 0 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>hackathon_logger/observer::clean_logs</model>
+                </run>
+            </clean_logs>
+        </jobs>
+    </crontab>
     <admin>
         <routers>
             <adminhtml>
@@ -61,15 +73,46 @@
             <core>
                 <writer_model>Hackathon_Logger_Model_Queue</writer_model>
                 <writer_models>
-                    <default><label>Files (Magento Default)</label><class>Zend_Log_Writer_Stream</class></default>
-                    <advanced><label>Files (Advanced Format)</label><class>Hackathon_Logger_Model_Stream</class></advanced>
-                    <mailconfig><label>Mail</label><class>Hackathon_Logger_Model_Mail</class></mailconfig>
-                    <db><label>Database</label><class>Hackathon_Logger_Model_Db</class></db>
-                    <xmpp><label>XMPP</label><class>Hackathon_Logger_Model_Xmpp</class></xmpp>
-                    <graylog2><label>Graylog2 (experimental)</label><class>Hackathon_Logger_Model_Graylog2</class></graylog2>
-                    <rsyslog><label>Remote Syslog (UDP)</label><class>Hackathon_Logger_Model_Rsyslog</class></rsyslog>
-                    <logglysyslog><label>Loggly, via Remote Syslog (UDP)</label><class>Hackathon_Logger_Model_Logglysyslog</class></logglysyslog>
-                    <logglyhttps><label>Loggly, via HTTPS</label><class>Hackathon_Logger_Model_Logglyhttps</class></logglyhttps>
+                    <default>
+                        <label>Files (Magento Default)</label>
+                        <class>Zend_Log_Writer_Stream</class>
+                    </default>
+                    <advanced>
+                        <label>Files (Advanced Format)</label>
+                        <class>Hackathon_Logger_Model_Stream</class>
+                    </advanced>
+                    <mailconfig>
+                        <label>Mail</label>
+                        <class>Hackathon_Logger_Model_Mail</class>
+                    </mailconfig>
+                    <db>
+                        <label>Database</label>
+                        <class>Hackathon_Logger_Model_Db</class>
+                    </db>
+                    <xmpp>
+                        <label>XMPP</label>
+                        <class>Hackathon_Logger_Model_Xmpp</class>
+                    </xmpp>
+                    <graylog2>
+                        <label>Graylog2 (experimental)</label>
+                        <class>Hackathon_Logger_Model_Graylog2</class>
+                    </graylog2>
+                    <rsyslog>
+                        <label>Remote Syslog (UDP)</label>
+                        <class>Hackathon_Logger_Model_Rsyslog</class>
+                    </rsyslog>
+                    <logglysyslog>
+                        <label>Loggly, via Remote Syslog (UDP)</label>
+                        <class>Hackathon_Logger_Model_Logglysyslog</class>
+                    </logglysyslog>
+                    <logglyhttps>
+                        <label>Loggly, via HTTPS</label>
+                        <class>Hackathon_Logger_Model_Logglyhttps</class>
+                    </logglyhttps>
+                    <chromelogger>
+                        <label>Chrome Logger</label>
+                        <class>Hackathon_Logger_Model_Chromelogger</class>
+                    </chromelogger>
                 </writer_models>
             </core>
         </log>
@@ -105,9 +148,6 @@ FILE: %file%:%line%
             <xmpp>
                 <priority>default</priority>
             </xmpp>
-            <dropbox>
-                <priority>default</priority>
-            </dropbox>
             <graylog2>
                 <priority>default</priority>
                 <hostname>localhost</hostname>
@@ -133,6 +173,9 @@ FILE: %file%:%line%
                 <timeout>5</timeout>
                 <app_name>Magento/</app_name>
             </logglysyslog>
+            <chrome>
+                <priority>default</priority>
+            </chrome>
         </logger>
     </default>
 </config>

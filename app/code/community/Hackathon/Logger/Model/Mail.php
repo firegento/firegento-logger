@@ -41,6 +41,7 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
             $helper = Mage::helper('hackathon_logger');
 
             $this->_mail->setFrom($helper->getLoggerConfig('mailconfig/from'), Mage::app()->getStore()->getName());
+            $this->_mail->setSubject('PCS Shop Exception - Debug Information');
             $this->_mail->addTo($helper->getLoggerConfig('mailconfig/to'));
             $this->_mail->setDefaultTransport($this->getTransport());
         }
@@ -60,7 +61,15 @@ class Hackathon_Logger_Model_Mail extends Zend_Log_Writer_Mail
                 'username' => $helper->getLoggerConfig('mailconfig/username'),
                 'password' => $helper->getLoggerConfig('mailconfig/password'));
 
-            $this->transport = new Zend_Mail_Transport_Smtp($helper->getLoggerConfig('mailconfig/hostname'), $config);
+            if ($config['username'] != '')
+            {
+                $this->transport = new Zend_Mail_Transport_Smtp($helper->getLoggerConfig('mailconfig/hostname'), $config);
+            }
+            else
+            {
+                $this->transport = new Zend_Mail_Transport_Smtp($helper->getLoggerConfig('mailconfig/hostname'));
+            }
+
         }
         return $this->transport;
     }
