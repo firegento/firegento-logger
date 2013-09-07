@@ -2,7 +2,7 @@
 <config>
     <sections>
         <logger translate="label" module="firegento_logger">
-            <label>Advanced Logger</label>
+            <label>Firegento Logger</label>
             <tab>advanced</tab>
             <frontend_type>text</frontend_type>
             <sort_order>399</sort_order>

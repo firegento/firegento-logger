@@ -11,7 +11,7 @@ Install the module via modman `modman clone git@github.com:firegento/firegento-l
 
 Refresh the caches afterwards.
 
-Then configure the different loggers in `System > Configuration > Advanced > Advanced Logger`
+Then configure the different loggers in `System > Configuration > Advanced > Firegento Logger`
 
 ## Further Information
 
