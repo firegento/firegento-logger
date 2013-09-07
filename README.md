@@ -22,6 +22,7 @@ Then configure the different loggers in `System > Configuration > Advanced > Adv
 * Colin
 * Marco Becker
 * Nicolai Essig
+* Daniel Kröger
 
 ### Current Status of Project
 
