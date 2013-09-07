@@ -1,6 +1,8 @@
 <?php
 class Firegento_Logger_Model_Observer extends Varien_Object
 {
+    const MAX_FILE_DAYS = 30;
+    
     /** @var Firegento_Logger_Helper_Data */
     private $_helper;
 
@@ -70,7 +72,7 @@ class Firegento_Logger_Model_Observer extends Varien_Object
                 {
                     $logDir->cp($filename, $this->getArchiveName($filename));
                 }
-                foreach ($this->getFilesOlderThan(, $var, $filename) as $oldFile)
+                foreach ($this->getFilesOlderThan(self::MAX_FILE_DAYS, $var, $filename) as $oldFile)
                 {
                     $logDir->rm($oldFile['text']);
                 }
