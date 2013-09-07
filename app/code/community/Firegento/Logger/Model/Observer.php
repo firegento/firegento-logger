@@ -105,7 +105,7 @@ class Firegento_Logger_Model_Observer extends Varien_Object
         {
             $extension = '.gz';
         }
-        $filename = str_replace('.log', '', $filename) . "_" . $date . $extension;
+        $filename = $filename . "_" . $date . $extension;
 
         return $filename;
     }
