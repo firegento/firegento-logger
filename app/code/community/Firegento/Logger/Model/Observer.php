@@ -61,14 +61,14 @@ class Firegento_Logger_Model_Observer extends Varien_Object
                 $filename = $logFile['text'];
                 if (extension_loaded('zlib'))
                 {
-                    $zipname = $var . DS . $this->getZipName($filename);
-                    $zip = gzopen($zipname, 'wb9');
+                    $zipname = $var . DS . $this->getArchiveName($filename);
+                    $zip     = gzopen($zipname, 'wb9');
                     gzwrite($zip, $logDir->read($filename));
                     gzclose($zip);
                 }
                 else
                 {
-                    $logDir->cp($filename, $this->getZipName($filename));
+                    $logDir->cp($filename, $this->getArchiveName($filename));
                 }
                 $logDir->rm($filename);
             }
@@ -89,13 +89,22 @@ class Firegento_Logger_Model_Observer extends Varien_Object
     }
 
     /**
+     * @param $days
+     * @param $dir
+     */
+    protected function getFilesOlderThan($days, $dir)
+    {
+
+    }
+
+    /**
      * Create a zip filename out of a filename with timestamp
      *
      * @param $filename
      *
      * @return string
      */
-    protected function getZipName($filename)
+    protected function getArchiveName($filename)
     {
         $date      = $this->formatDate(Mage::getModel('core/date')
             ->gmtTimestamp());
