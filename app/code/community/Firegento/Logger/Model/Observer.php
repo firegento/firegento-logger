@@ -70,10 +70,61 @@ class Firegento_Logger_Model_Observer extends Varien_Object
                 {
                     $logDir->cp($filename, $this->getArchiveName($filename));
                 }
+                foreach ($this->getFilesOlderThan(, $var, $filename) as $oldFile)
+                {
+                    $logDir->rm($oldFile['text']);
+                }
                 $logDir->rm($filename);
             }
         }
         $logDir->close();
+    }
+
+    /**
+     * Get all files which are older than c days and containing a pattern.
+     *
+     * @param $days
+     * @param $dir
+     * @param $filename
+     *
+     * @return array
+     */
+    public function getFilesOlderThan($days, $dir, $filename) {
+        $date = Mage::getModel('core/date')
+                       ->gmtTimestamp() - (60 * 60 * 24 * $days);
+        $oldFiles = array();
+        $scanDir = new Varien_Io_File();
+        $scanDir->cd($dir);
+        foreach($scanDir->ls(Varien_Io_File::GREP_FILES) as $oldFile)
+        {
+            if(stripos($oldFile['text'], $filename) != false && strtotime($oldFile['mod_date']) < $date )
+            {
+                $oldFiles[] = $oldFile;
+            }
+        }
+        return $oldFiles;
+    }
+
+    /**
+     * Create a zip filename out of a filename with timestamp
+     *
+     * @param $filename
+     *
+     * @return string
+     */
+    protected function getArchiveName($filename)
+    {
+        $date = $this->formatDate(Mage::getModel('core/date')
+            ->gmtTimestamp());
+        $extension = '';
+
+        if (extension_loaded('zlib'))
+        {
+            $extension = '.gz';
+        }
+        $filename = $filename . "_" . $date . $extension;
+
+        return $filename;
     }
 
     /**
@@ -86,37 +137,6 @@ class Firegento_Logger_Model_Observer extends Varien_Object
     public function formatDate($date)
     {
         return Varien_Date::formatDate($date, false);
-    }
-
-    /**
-     * @param $days
-     * @param $dir
-     */
-    protected function getFilesOlderThan($days, $dir)
-    {
-
-    }
-
-    /**
-     * Create a zip filename out of a filename with timestamp
-     *
-     * @param $filename
-     *
-     * @return string
-     */
-    protected function getArchiveName($filename)
-    {
-        $date      = $this->formatDate(Mage::getModel('core/date')
-            ->gmtTimestamp());
-        $extension = '';
-
-        if (extension_loaded('zlib'))
-        {
-            $extension = '.gz';
-        }
-        $filename = $filename . "_" . $date . $extension;
-
-        return $filename;
     }
 
     /**
