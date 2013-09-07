@@ -5,6 +5,18 @@
             <version>1.0.0</version>
         </Hackathon_Logger>
     </modules>
+    <crontab>
+        <jobs>
+            <clean_logs>
+                <schedule>
+                    <cron_expr>15 0 * * *</cron_expr>
+                </schedule>
+                <run>
+                    <model>hackathon_logger/observer::clean_logs</model>
+                </run>
+            </clean_logs>
+        </jobs>
+    </crontab>
     <admin>
         <routers>
             <adminhtml>
@@ -70,6 +82,10 @@
                     <rsyslog><label>Remote Syslog (UDP)</label><class>Hackathon_Logger_Model_Rsyslog</class></rsyslog>
                     <logglysyslog><label>Loggly, via Remote Syslog (UDP)</label><class>Hackathon_Logger_Model_Logglysyslog</class></logglysyslog>
                     <logglyhttps><label>Loggly, via HTTPS</label><class>Hackathon_Logger_Model_Logglyhttps</class></logglyhttps>
+                    <chromelogger>
+                        <label>Chrome Logger</label>
+                        <class>Hackathon_Logger_Model_Chromelogger</class>
+                    </chromelogger>
                 </writer_models>
             </core>
         </log>
@@ -133,6 +149,9 @@ FILE: %file%:%line%
                 <timeout>5</timeout>
                 <app_name>Magento/</app_name>
             </logglysyslog>
+            <chrome>
+                <priority>default</priority>
+            </chrome>
         </logger>
     </default>
 </config>
