@@ -66,7 +66,6 @@
                     <mailconfig><label>Mail</label><class>Hackathon_Logger_Model_Mail</class></mailconfig>
                     <db><label>Database</label><class>Hackathon_Logger_Model_Db</class></db>
                     <xmpp><label>XMPP</label><class>Hackathon_Logger_Model_Xmpp</class></xmpp>
-                    <dropbox><label>Dropbox</label><class>Hackathon_Logger_Model_Dropbox</class></dropbox>
                     <graylog2><label>Graylog2</label><class>Hackathon_Logger_Model_Graylog2</class></graylog2>
                     <rsyslog><label>Remote Syslog (UDP)</label><class>Hackathon_Logger_Model_Rsyslog</class></rsyslog>
                     <logglysyslog><label>Loggly, via Remote Syslog (UDP)</label><class>Hackathon_Logger_Model_Logglysyslog</class></logglysyslog>
