@@ -2,9 +2,12 @@
 
 The purpose of this project is to have a simple framework for different logging adapters.
 
+Originally developed as Hackathon_Logger but moved forewards and will now actively supported by
+firegento community. 
+
 ## Usage
 
-Install the module via modman `modman clone git@github.com:magento-hackathon/Logger.git`
+Install the module via modman `modman clone git@github.com:firegento/firegento-logger.git`
 
 Refresh the caches afterwards.
 
