@@ -52,3 +52,7 @@ For XMPP we use https://github.com/cweiske/xmpphp.
 ### How to contribute
 
 Make a fork, commit to develop branch and make a pull request
+
+Licence
+-------
+[GNU General Public License, version 3 (GPLv3)](http://opensource.org/licenses/gpl-3.0)
