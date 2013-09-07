@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Hackathon_Logger>
-            <version>0.0.2</version>
+            <version>1.0.0</version>
         </Hackathon_Logger>
     </modules>
     <admin>
