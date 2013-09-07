@@ -47,3 +47,7 @@ It is possible to use **Multiple-Targets**!
 ### External libraries
 
 For XMPP we use https://github.com/cweiske/xmpphp.
+
+### How to contribute
+
+Make a fork, commit to develop branch and make a pull request
