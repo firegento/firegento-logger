@@ -1,7 +1,7 @@
-lib/XMPPHP                                       lib/XMPPHP
-lib/Graylog2-gelf-php                            lib/Graylog2-gelf-php
+lib/XMPPHP/                                       lib/XMPPHP/
+lib/Graylog2-gelf-php/                            lib/Graylog2-gelf-php/
 app/code/community/Hackathon/Logger/             app/code/community/Hackathon/Logger/
-app/etc/modules/*                                app/etc/modules
-app/design/adminhtml/default/default/layout/*    app/design/adminhtml/default/default/layout
-app/design/adminhtml/default/default/template/*  app/design/adminhtml/default/default/template
-skin/adminhtml/default/default/*                 skin/adminhtml/default/default
+app/etc/modules/Hackathon_Logger.xml                                app/etc/modules/Hackathon_Logger.xml
+app/design/adminhtml/default/default/layout/hackathon_logger.xml    app/design/adminhtml/default/default/layout/hackathon_logger.xml
+app/design/adminhtml/default/default/template/hackathon_logger/  app/design/adminhtml/default/default/template/hackathon_logger/
+skin/adminhtml/default/default/hackathon_logger.css                 skin/adminhtml/default/default/hackathon_logger.css
