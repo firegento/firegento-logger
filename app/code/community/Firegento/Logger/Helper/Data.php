@@ -188,6 +188,7 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         if ( ! empty($_GET)) $requestData[] = '  GET|'.substr(@json_encode($_GET), 0, 1000);
         if ( ! empty($_POST)) $requestData[] = '  POST|'.substr(@json_encode($_POST), 0, 1000);
         if ( ! empty($_FILES)) $requestData[] = '  FILES|'.substr(@json_encode($_FILES), 0, 1000);
+        if (Mage::registry('raw_post_data')) $requestData[] = '  RAWPOST|'.substr(Mage::registry('raw_post_data'), 0, 1000);
         $event['REQUEST_DATA'] = $requestData ? implode("\n", $requestData) : $notAvailable;
 
 
