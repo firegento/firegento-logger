@@ -10,7 +10,7 @@ class Firegento_Logger_Shell extends Mage_Shell_Abstract
         {
             $days = $this->getArg('days');
             if ( ! $days) {
-                $days = Mage::helper('firegento_logger')->getMaximumLogMessagesInDays();
+                $days = Mage::helper('firegento_logger')->getMaxDaysToKeep();
             }
             $deleted = Mage::getResourceSingleton('firegento_logger/db_entry')->cleanLogs($days);
 

@@ -54,7 +54,7 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
      *
      * @return string
      */
-    public function getMaxLogMessagesInDays() {
+    public function getMaxDaysToKeep() {
         return $this->getLoggerConfig(self::XML_PATH_MAX_DAYS);
     }
 
