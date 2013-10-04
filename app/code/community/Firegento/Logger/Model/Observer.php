@@ -10,7 +10,7 @@ class Firegento_Logger_Model_Observer extends Varien_Object
     public function cleanLogsCron()
     {
         Mage::getResourceSingleton('firegento_logger/db_entry')->cleanLogs(
-            Mage::helper('firegento_logger')->getMaximumLogMessagesInDays()
+            Mage::helper('firegento_logger')->getMaxDaysToKeep()
         );
     }
 
@@ -112,13 +112,4 @@ class Firegento_Logger_Model_Observer extends Varien_Object
         return Varien_Date::formatDate($date, false);
     }
 
-    /**
-     * The maximun of days to keep log messages in the database table.
-     *
-     * @return string
-     */
-    protected function getMaximumLogMessagesInDays()
-    {
-        return $this->_helper->getMaxLogMessagesInDays();
-    }
 }
