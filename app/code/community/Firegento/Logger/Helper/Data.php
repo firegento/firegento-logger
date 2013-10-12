@@ -8,7 +8,7 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     protected $_targetMap = NULL;
 
     /**
-     * @param string $path
+     * @param  string $path
      * @return string
      */
     public function getLoggerConfig($path)
@@ -21,7 +21,7 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
      * Returns an array of targets mapped or NULL if there was an error or there is no map.
      * Keys are target codes, values are bool indicating if backtrace is enabled
      *
-     * @param string $filename
+     * @param  string     $filename
      * @return null|array
      */
     public function getMappedTargets($filename)
@@ -34,14 +34,14 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                 $this->_targetMap = FALSE;
             }
         }
-        if ( ! $this->_targetMap) {
+        if (! $this->_targetMap) {
             return NULL;
         }
         $targets = array();
-        foreach($this->_targetMap as $map) {
+        foreach ($this->_targetMap as $map) {
             if (@preg_match('/^'.$map['pattern'].'$/', $filename)) {
                 $targets[$map['target']] = (int) $map['backtrace'];
-                if ((int)$map['stop_on_match']) {
+                if ((int) $map['stop_on_match']) {
                     break;
                 }
             }
@@ -54,13 +54,14 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
      *
      * @return string
      */
-    public function getMaxDaysToKeep() {
+    public function getMaxDaysToKeep()
+    {
         return $this->getLoggerConfig(self::XML_PATH_MAX_DAYS);
     }
 
     /**
      * @param Zend_Log_Writer_Abstract $writer
-     * @param null $configPath
+     * @param null                     $configPath
      */
     public function addPriorityFilter(Zend_Log_Writer_Abstract $writer, $configPath = NULL)
     {
@@ -74,17 +75,17 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         if ( ! $configPath || ! strlen($priority)) {
             $priority = $this->getLoggerConfig(self::XML_PATH_PRIORITY);
         }
-        if ( $priority !== NULL && $priority != Zend_Log::WARN) {
-            $writer->addFilter(new Zend_Log_Filter_Priority((int)$priority));
+        if ($priority !== NULL && $priority != Zend_Log::WARN) {
+            $writer->addFilter(new Zend_Log_Filter_Priority((int) $priority));
         }
     }
 
     /**
      * Add useful metadata to the event
      *
-     * @param array $event
+     * @param array       $event
      * @param null|string $notAvailable
-     * @param bool $enableBacktrace
+     * @param bool        $enableBacktrace
      */
     public function addEventMetadata(&$event, $notAvailable = null, $enableBacktrace = FALSE)
     {
@@ -106,13 +107,12 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         $backtraceFrames = array();
         if (version_compare(PHP_VERSION, '5.3.6') < 0 ) {
             $debugBacktrace = debug_backtrace(FALSE);
-        } else if (version_compare(PHP_VERSION, '5.4.0') < 0) {
+        } elseif (version_compare(PHP_VERSION, '5.4.0') < 0) {
             $debugBacktrace = debug_backtrace($maxBacktraceLines > 0 ? 0 : DEBUG_BACKTRACE_IGNORE_ARGS);
         } else {
             $debugBacktrace = debug_backtrace($maxBacktraceLines > 0 ? 0 : DEBUG_BACKTRACE_IGNORE_ARGS, $maxBacktraceLines + 10);
         }
-        foreach($debugBacktrace as $frame)
-        {
+        foreach ($debugBacktrace as $frame) {
             if (($nextIsFirst && $frame['function'] == 'logException') ||
                 (isset($frame['type']) && $frame['type'] == '::' && $frame['class'] == 'Mage' && substr($frame['function'], 0, 3) == 'log')
             ) {
@@ -121,7 +121,7 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                     $event['line'] = $frame['line'];
                     if ($maxBacktraceLines) {
                         $backtraceFrames = array();
-                    } else if ($nextIsFirst) {
+                    } elseif ($nextIsFirst) {
                         break;
                     } else {
                         continue;
@@ -151,7 +151,7 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                 $function = (isset($frame['class']) ? "{$frame['class']}{$frame['type']}":'').$frame['function'];
                 $args = array();
                 if (isset($frame['args'])) {
-                    foreach($frame['args'] as $value) {
+                    foreach ($frame['args'] as $value) {
                         $args[] = (is_object($value)
                             ? get_class($value)
                             : ( is_array($value)
@@ -170,7 +170,7 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             $event['backtrace'] = implode("\n", $backtrace);
         }
 
-        foreach(array('REQUEST_METHOD', 'REQUEST_URI', 'HTTP_USER_AGENT') as $key) {
+        foreach (array('REQUEST_METHOD', 'REQUEST_URI', 'HTTP_USER_AGENT') as $key) {
             if ( ! empty($_SERVER[$key])) {
                 $event[$key] = $_SERVER[$key];
             } else {
@@ -194,18 +194,16 @@ class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
 
         if ( ! empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $event['REMOTE_ADDR'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
-        } else if ( ! empty($_SERVER['REMOTE_ADDR'])) {
+        } elseif ( ! empty($_SERVER['REMOTE_ADDR'])) {
             $event['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
         } else {
             $event['REMOTE_ADDR'] = $notAvailable;
         }
 
         // add hostname to log message ...
-        if (gethostname() !== false)
-        {
+        if (gethostname() !== false) {
             $event['HOSTNAME'] = gethostname();
-        }
-        else {
+        } else {
             $event['HOSTNAME'] = 'Could not determine hostname !';
         }
     }

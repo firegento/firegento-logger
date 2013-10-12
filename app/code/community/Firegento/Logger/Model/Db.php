@@ -34,7 +34,7 @@ class Firegento_Logger_Model_Db extends Zend_Log_Writer_Db
      */
     public function setFormatter(Zend_Log_Formatter_Interface $formatter)
     {
-    	// ignore formatter as it is not supported for db log writer
+        // ignore formatter as it is not supported for db log writer
     }
 
     /**
@@ -43,6 +43,6 @@ class Firegento_Logger_Model_Db extends Zend_Log_Writer_Db
      * @static
      * @param $config
      */
-    static public function factory($config) {}
+    public static function factory($config) {}
 
 }

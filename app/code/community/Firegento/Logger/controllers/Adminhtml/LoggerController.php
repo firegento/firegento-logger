@@ -27,14 +27,14 @@ class Firegento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
     {
         $startPos = $this->getRequest()->getParam('position');
         $filename = Mage::getBaseDir('var') . DS . 'log' . DS . $this->getRequest()->getParam('logFile');
-        if( !file_exists($filename) ){
+        if ( !file_exists($filename) ) {
             return '';
         }
 
         $handle = fopen($filename, 'r');
         $filesize = filesize($filename);
 
-        if($startPos == 0) {
+        if ($startPos == 0) {
             $lengthBefore = 1000;
             fseek($handle, -$lengthBefore, SEEK_END);
             $text = fread($handle, $filesize);
@@ -47,7 +47,7 @@ class Firegento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
         $newPos = ftell($handle);
 
         $response = '';
-        if($updates != NULL) {
+        if ($updates != NULL) {
             $response = Zend_Json::encode(array('text' => $updates, 'position' => $newPos));
         }
 
@@ -61,7 +61,7 @@ class Firegento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
         $reportId = $this->getRequest()->getParam('report_id');
         $filename = Mage::getBaseDir('var') . DS . 'report' . DS . $reportId;
 
-        if(!file_exists($filename)){
+        if (!file_exists($filename)) {
             return '';
         }
 

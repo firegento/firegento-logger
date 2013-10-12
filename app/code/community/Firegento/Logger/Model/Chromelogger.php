@@ -9,10 +9,8 @@ class Firegento_Logger_Model_Chromelogger extends Zend_Log_Writer_Abstract
         $priority = array_key_exists('priority', $event) ? $event['priority'] : false;
         $message  = $this->_formatter->format($event);
 
-        if ($priority !== false)
-        {
-            switch($priority)
-            {
+        if ($priority !== false) {
+            switch ($priority) {
                 case Zend_Log::EMERG:
                 case Zend_Log::ALERT:
                 case Zend_Log::CRIT:
@@ -31,9 +29,7 @@ class Firegento_Logger_Model_Chromelogger extends Zend_Log_Writer_Abstract
                     Mage::log('Unknown loglevel at ' . __CLASS__);
                     break;
             }
-        }
-        else
-        {
+        } else {
             Mage::log('Attached message event has no priority - skipping !');
         }
     }
@@ -44,6 +40,6 @@ class Firegento_Logger_Model_Chromelogger extends Zend_Log_Writer_Abstract
      * @static
      * @param $config
      */
-    static public function factory($config) {}
+    public static function factory($config) {}
 
 }

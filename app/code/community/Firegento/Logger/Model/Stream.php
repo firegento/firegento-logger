@@ -37,6 +37,6 @@ class Firegento_Logger_Model_Stream extends Zend_Log_Writer_Stream
    * @static
    * @param $config
    */
-  static public function factory($config) {}
+  public static function factory($config) {}
 
 }

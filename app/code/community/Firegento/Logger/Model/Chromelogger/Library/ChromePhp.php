@@ -152,7 +152,7 @@ class Firegento_Logger_Model_Chromelogger_Library_ChromePhp
     /**
      * logs a variable to the console
      *
-     * @param mixed $data,... unlimited OPTIONAL number of additional logs [...]
+     * @param  mixed $data,... unlimited OPTIONAL number of additional logs [...]
      * @return void
      */
     public static function log()
@@ -164,7 +164,7 @@ class Firegento_Logger_Model_Chromelogger_Library_ChromePhp
     /**
      * logs a warning to the console
      *
-     * @param mixed $data,... unlimited OPTIONAL number of additional logs [...]
+     * @param  mixed $data,... unlimited OPTIONAL number of additional logs [...]
      * @return void
      */
     public static function warn()
@@ -176,7 +176,7 @@ class Firegento_Logger_Model_Chromelogger_Library_ChromePhp
     /**
      * logs an error to the console
      *
-     * @param mixed $data,... unlimited OPTIONAL number of additional logs [...]
+     * @param  mixed $data,... unlimited OPTIONAL number of additional logs [...]
      * @return void
      */
     public static function error()
@@ -199,7 +199,7 @@ class Firegento_Logger_Model_Chromelogger_Library_ChromePhp
     /**
      * sends an info log
      *
-     * @param mixed $data,... unlimited OPTIONAL number of additional logs [...]
+     * @param  mixed $data,... unlimited OPTIONAL number of additional logs [...]
      * @return void
      */
     public static function info()
@@ -244,7 +244,7 @@ class Firegento_Logger_Model_Chromelogger_Library_ChromePhp
     /**
      * internal logging call
      *
-     * @param string $type
+     * @param  string $type
      * @return void
      */
     protected static function _log($type, array $args)
@@ -397,7 +397,7 @@ class Firegento_Logger_Model_Chromelogger_Library_ChromePhp
     /**
      * encodes the data to be sent along with the request
      *
-     * @param array $data
+     * @param  array  $data
      * @return string
      */
     protected function _encode($data)
@@ -420,7 +420,7 @@ class Firegento_Logger_Model_Chromelogger_Library_ChromePhp
     /**
      * add ability to set multiple settings in one call
      *
-     * @param array $settings
+     * @param  array $settings
      * @return void
      */
     public function addSettings(array $settings)

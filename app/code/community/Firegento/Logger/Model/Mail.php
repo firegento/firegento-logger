@@ -56,12 +56,9 @@ class Firegento_Logger_Model_Mail extends Zend_Log_Writer_Mail
                 'username' => $helper->getLoggerConfig('mailconfig/username'),
                 'password' => $helper->getLoggerConfig('mailconfig/password'));
 
-            if ($config['username'] != '')
-            {
+            if ($config['username'] != '') {
                 $this->transport = new Zend_Mail_Transport_Smtp($helper->getLoggerConfig('mailconfig/hostname'), $config);
-            }
-            else
-            {
+            } else {
                 $this->transport = new Zend_Mail_Transport_Smtp($helper->getLoggerConfig('mailconfig/hostname'));
             }
 
@@ -75,6 +72,6 @@ class Firegento_Logger_Model_Mail extends Zend_Log_Writer_Mail
      * @static
      * @param $config
      */
-    static public function factory($config) {}
+    public static function factory($config) {}
 
 }

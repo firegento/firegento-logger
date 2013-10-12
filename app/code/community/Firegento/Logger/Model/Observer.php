@@ -27,24 +27,18 @@ class Firegento_Logger_Model_Observer extends Varien_Object
         $logDir->cd($var);
         $logFiles = $logDir->ls(Varien_Io_File::GREP_FILES);
 
-        foreach ($logFiles as $logFile)
-        {
-            if ($logFile['filetype'] == 'log')
-            {
+        foreach ($logFiles as $logFile) {
+            if ($logFile['filetype'] == 'log') {
                 $filename = $logFile['text'];
-                if (extension_loaded('zlib'))
-                {
+                if (extension_loaded('zlib')) {
                     $zipname = $var . DS . $this->getArchiveName($filename);
                     $zip     = gzopen($zipname, 'wb9');
                     gzwrite($zip, $logDir->read($filename));
                     gzclose($zip);
-                }
-                else
-                {
+                } else {
                     $logDir->cp($filename, $this->getArchiveName($filename));
                 }
-                foreach ($this->getFilesOlderThan(self::MAX_FILE_DAYS, $var, $filename) as $oldFile)
-                {
+                foreach ($this->getFilesOlderThan(self::MAX_FILE_DAYS, $var, $filename) as $oldFile) {
                     $logDir->rm($oldFile['text']);
                 }
                 $logDir->rm($filename);
@@ -62,16 +56,15 @@ class Firegento_Logger_Model_Observer extends Varien_Object
      *
      * @return array
      */
-    public function getFilesOlderThan($days, $dir, $filename) {
+    public function getFilesOlderThan($days, $dir, $filename)
+    {
         $date = Mage::getModel('core/date')
                        ->gmtTimestamp() - (60 * 60 * 24 * $days);
         $oldFiles = array();
         $scanDir = new Varien_Io_File();
         $scanDir->cd($dir);
-        foreach($scanDir->ls(Varien_Io_File::GREP_FILES) as $oldFile)
-        {
-            if(stripos($oldFile['text'], $filename) != false && strtotime($oldFile['mod_date']) < $date )
-            {
+        foreach ($scanDir->ls(Varien_Io_File::GREP_FILES) as $oldFile) {
+            if (stripos($oldFile['text'], $filename) != false && strtotime($oldFile['mod_date']) < $date ) {
                 $oldFiles[] = $oldFile;
             }
         }
@@ -91,8 +84,7 @@ class Firegento_Logger_Model_Observer extends Varien_Object
             ->gmtTimestamp());
         $extension = '';
 
-        if (extension_loaded('zlib'))
-        {
+        if (extension_loaded('zlib')) {
             $extension = '.gz';
         }
         $filename = $filename . "_" . $date . $extension;

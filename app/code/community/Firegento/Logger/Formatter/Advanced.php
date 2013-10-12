@@ -13,7 +13,7 @@ class Firegento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
     if ($configFormat) {
       $format = str_replace('\n', PHP_EOL, $configFormat);
     }
-    if ( ! $format) {
+    if (! $format) {
       $format = self::DEFAULT_FORMAT;
     }
     parent::__construct($format . PHP_EOL);

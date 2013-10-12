@@ -5,7 +5,7 @@ class Firegento_Logger_Model_System_Config_Source_Priorities
     {
         $helper = Mage::helper('firegento_logger');
         return array(
-            array('label' => $helper->__('Emergency'), 'value' => (string)Zend_Log::EMERG),
+            array('label' => $helper->__('Emergency'), 'value' => (string) Zend_Log::EMERG),
             array('label' => $helper->__('Alert'), 'value' => Zend_Log::ALERT),
             array('label' => $helper->__('Critical'), 'value' => Zend_Log::CRIT),
             array('label' => $helper->__('Error'), 'value' => Zend_Log::ERR),
