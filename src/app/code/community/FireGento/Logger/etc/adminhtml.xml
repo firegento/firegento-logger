@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <system>
+            <children>
+                <firegento_logger translate="title" module="firegento_logger">
+                    <title>FireGento Logger</title>
+                    <sort_order>60</sort_order>
+                    <action>adminhtml/logger/index</action>
+                    <depends>
+                        <config>logger/db/viewer_enabled</config>
+                    </depends>
+                    <children>
+                        <grid_viewer translate="title" module="firegento_logger">
+                            <title>View Error Log</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/logger/index</action>
+                        </grid_viewer>
+                        <live_viewer translate="title" module="firegento_logger">
+                            <title>Log Live Viewer</title>
+                            <sort_order>20</sort_order>
+                            <action>adminhtml/logger/liveView</action>
+                        </live_viewer>
+                        <report_viewer translate="title" module="firegento_logger">
+                            <title>Report Viewer</title>
+                            <sort_order>30</sort_order>
+                            <action>adminhtml/logger/reportView</action>
+                        </report_viewer>
+                    </children>
+                </firegento_logger>
+            </children>
+        </system>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <logger translate="title" module="firegento_logger">
+                                <title>View Error Log</title>
+                                <sort_order>60</sort_order>
+                            </logger>
+                            <config>
+                                <children>
+                                    <logger translate="title" module="firegento_logger">
+                                        <title>FireGento Logger Section</title>
+                                        <sort_order>60</sort_order>
+                                    </logger>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

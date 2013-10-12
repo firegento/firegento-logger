@@ -1,5 +1,5 @@
-src/app/code/community/Firegento/Logger/                                app/code/community/Firegento/Logger/
-src/app/etc/modules/Firegento_Logger.xml                                app/etc/modules/Firegento_Logger.xml
+src/app/code/community/FireGento/Logger/                                app/code/community/FireGento/Logger/
+src/app/etc/modules/FireGento_Logger.xml                                app/etc/modules/FireGento_Logger.xml
 src/app/design/adminhtml/default/default/layout/firegento_logger.xml    app/design/adminhtml/default/default/layout/firegento_logger.xml
 src/app/design/adminhtml/default/default/template/firegento_logger/     app/design/adminhtml/default/default/template/firegento_logger/
 src/lib/XMPPHP/                                                         lib/XMPPHP/
