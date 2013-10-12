@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Db_Entry" namespace="" name="FireGento_Logger_Model_Db_Entry" abstract="false" final="false" start="28" end="37">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Db" file="Entry.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Db/Entry.php" size="1151" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="de19b1df3e579d7f0baed96c9d4e9819907784f1"/>
+  <docblock>
+    <description compact="Db Entry Model"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Core_Model_Abstract" namespace="" name="Mage_Core_Model_Abstract"/>
+  <method name="_construct" start="33" end="36" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Init the resource model"/>
+    </docblock>
+  </method>
+</class>

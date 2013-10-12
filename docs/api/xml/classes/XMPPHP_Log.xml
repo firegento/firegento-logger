@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="XMPPHP_Log" namespace="" name="XMPPHP_Log" abstract="false" final="false" start="39" end="119">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP" file="Log.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/Log.php" size="3076" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="e9d03e1627aaff069fd910c2b216145eee9c1dcd"/>
+  <docblock>
+    <description compact="XMPPHP Log"/>
+    <package value="XMPPHP"/>
+    <author value="Nathanael C. Fritz &lt;JID: fritzy@netflint.net&gt;"/>
+    <author value="Stephan Wentz &lt;JID: stephan@jabber.wentz.it&gt;"/>
+    <author value="Michael Garvin &lt;JID: gar@netflint.net&gt;"/>
+    <copyright value="2008 Nathanael C. Fritz"/>
+    <version value="$Id$"/>
+  </docblock>
+  <constant name="LEVEL_ERROR" value="0"/>
+  <constant name="LEVEL_WARNING" value="1"/>
+  <constant name="LEVEL_INFO" value="2"/>
+  <constant name="LEVEL_DEBUG" value="3"/>
+  <constant name="LEVEL_VERBOSE" value="4"/>
+  <member name="data" type="array" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="names" type="array" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <member name="runlevel" type="{unknown}" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var type="integer"/>
+    </docblock>
+  </member>
+  <member name="printout" type="{unknown}" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var type="boolean"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="73" end="76" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructor"/>
+      <param type="boolean" variable="$printout"/>
+      <param type="string" variable="$runlevel"/>
+    </docblock>
+    <parameter name="printout" byreference="false" type="{unknown}" default="false"/>
+    <parameter name="runlevel" byreference="false" type="{unknown}" default="self::LEVEL_INFO"/>
+  </constructor>
+  <method name="log" start="85" end="91" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a message to the log data array If printout in this instance is set to true, directly output the message"/>
+      <param type="string" variable="$msg"/>
+      <param type="integer" variable="$runlevel"/>
+    </docblock>
+    <parameter name="msg" byreference="false" type="{unknown}"/>
+    <parameter name="runlevel" byreference="false" type="{unknown}" default="self::LEVEL_INFO"/>
+  </method>
+  <method name="printout" start="100" end="112" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Output the complete log.">Log will be cleared if $clear = true</description>
+      <param type="boolean" variable="$clear"/>
+      <param type="integer" variable="$runlevel"/>
+    </docblock>
+    <parameter name="clear" byreference="false" type="{unknown}" default="true"/>
+    <parameter name="runlevel" byreference="false" type="{unknown}" default="null"/>
+  </method>
+  <method name="writeLine" start="114" end="118" abstract="false" final="false" static="false" visibility="protected">
+    <parameter name="msg" byreference="false" type="{unknown}"/>
+    <parameter name="runlevel" byreference="false" type="{unknown}"/>
+    <parameter name="time" byreference="false" type="{unknown}"/>
+  </method>
+</class>

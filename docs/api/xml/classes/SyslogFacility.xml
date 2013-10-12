@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="SyslogFacility" namespace="" name="SyslogFacility" abstract="false" final="true" start="14" end="51">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/rsyslog" file="syslogfacility.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/rsyslog/syslogfacility.php" size="1410" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="fd88100f9b10bb727bcbe39879e780d267708b6a"/>
+  <docblock>
+    <description compact="Holds the possible values for Syslog Facility"/>
+  </docblock>
+  <constant name="KERNEL" value="0"/>
+  <constant name="USER" value="1"/>
+  <constant name="MAIL" value="2"/>
+  <constant name="SYSDAEMON" value="3"/>
+  <constant name="SECURITY1" value="4"/>
+  <constant name="SYSLOG" value="5"/>
+  <constant name="LINEPRINTER" value="6"/>
+  <constant name="NETWORK" value="7"/>
+  <constant name="UUCP" value="8"/>
+  <constant name="CLOCK" value="9"/>
+  <constant name="SECURITY2" value="10"/>
+  <constant name="FTPDAEMON" value="11"/>
+  <constant name="NTP" value="12"/>
+  <constant name="LOGAUDIT" value="13"/>
+  <constant name="LOGALERT" value="14"/>
+  <constant name="CLOCKDAEMON" value="15"/>
+  <constant name="LOCAL0" value="16"/>
+  <constant name="LOCAL1" value="17"/>
+  <constant name="LOCAL2" value="18"/>
+  <constant name="LOCAL3" value="19"/>
+  <constant name="LOCAL4" value="20"/>
+  <constant name="LOCAL5" value="21"/>
+  <constant name="LOCAL6" value="22"/>
+  <constant name="LOCAL7" value="23"/>
+  <method name="IsValidFacility" start="46" end="50" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Checks if a value is a valid Syslog Facility."/>
+      <param description="value to validate." type="object" variable="The">
+        <type full="Facility" namespace="" name="Facility"/>
+      </param>
+      <return description="if the value is a valid Facility, False otherwise." type="object">
+        <type full="True" namespace="" name="True"/>
+      </return>
+    </docblock>
+    <parameter name="Facility" byreference="false" type="{unknown}"/>
+  </method>
+</class>

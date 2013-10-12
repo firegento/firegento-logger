@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<source xmlns="http://xml.phpdox.de/src#">
+  <dir name="src">
+    <dir name="app">
+      <dir name="code">
+        <dir name="community">
+          <dir name="FireGento">
+            <dir name="Logger">
+              <dir name="Block">
+                <dir name="Adminhtml">
+                  <file name="LiveView.php" size="1586" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="a847e464d2405b33a123ec227438ac8fccc1258c"/>
+                  <dir name="Logger">
+                    <file name="Grid.php" size="4650" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="bed390c89fb92df0ff2b9400abd7d6a22dc72d6b"/>
+                  </dir>
+                  <file name="Logger.php" size="1381" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="603b6774e2535a7006621ad151f6cdd9f534048d"/>
+                  <dir name="System">
+                    <dir name="Config">
+                      <dir name="Renderer">
+                        <file name="Select.php" size="1956" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="e8d06d422866b02a44f699eb1e73f67e5f903f59"/>
+                      </dir>
+                      <file name="Targetmap.php" size="3566" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="22148a50110332410f2eb3ba5552a90b6fca713d"/>
+                    </dir>
+                  </dir>
+                </dir>
+              </dir>
+              <dir name="controllers">
+                <dir name="Adminhtml">
+                  <file name="LoggerController.php" size="3775" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="54d1bf9a2d722ae503b4f331bd286ca67dfa621e"/>
+                </dir>
+              </dir>
+              <dir name="Formatter">
+                <file name="Advanced.php" size="2077" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="864cc26cdcbabfe2a0a954ecead1469489d242eb"/>
+              </dir>
+              <dir name="Helper">
+                <file name="Data.php" size="10105" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="725762e2723a35f2eae4d377c2a8672c704aaf81"/>
+              </dir>
+              <dir name="Model">
+                <dir name="Chromelogger">
+                  <dir name="Library">
+                    <file name="ChromePhp.php" size="10593" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="21dea4119949680f8bfdbc0324186adf5dcb934f"/>
+                  </dir>
+                </dir>
+                <file name="Chromelogger.php" size="2473" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="a0f3db9cdcafe1d0bf747fdf3fb4f931f3376906"/>
+                <dir name="Db">
+                  <file name="Entry.php" size="1151" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="de19b1df3e579d7f0baed96c9d4e9819907784f1"/>
+                </dir>
+                <file name="Db.php" size="2313" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="a6ce164f9f22c88097a66a582e4b139a59f18651"/>
+                <file name="Graylog2.php" size="4961" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="b5eb41f3a08fe58423d4ba8fa689bcd8bb8091d6"/>
+                <dir name="Loggly">
+                  <file name="LogglySyslogMessage.php" size="2496" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="e1a5c19184f7fe1378e0c139cc4ce5b61c19a56c"/>
+                </dir>
+                <file name="Logglyhttps.php" size="6471" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="4dbf426a6c1d7d06200488c57efa2bdc149ef0bc"/>
+                <file name="Logglysyslog.php" size="3826" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="d9a3874280b40f716ab26d9c6e073470dd8bdb0c"/>
+                <file name="Mail.php" size="3538" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="f770370bc405f14d5defc32771ba8b444a28354c"/>
+                <file name="Observer.php" size="3989" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="e8a0f55d507127e7162ad1581028fb88c81df469"/>
+                <file name="Queue.php" size="5522" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="adbef99f90b142679662158cb1082676c3f62023"/>
+                <dir name="Resource">
+                  <dir name="Db">
+                    <dir name="Entry">
+                      <file name="Collection.php" size="1225" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="5676008695b6399e12e2308f496afb565f2d3a20"/>
+                    </dir>
+                    <file name="Entry.php" size="1771" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="2e6017fd1f076a71eb1634b31e3629fbec09907e"/>
+                  </dir>
+                </dir>
+                <file name="Rsyslog.php" size="5622" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="5f8bfeca1e34f4d1c92d01177d618266e5964d9c"/>
+                <file name="Stream.php" size="2011" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="884e8c71ffe852a03a595c92702b55a6ae63e63f"/>
+                <dir name="System">
+                  <dir name="Config">
+                    <dir name="Source">
+                      <file name="Priorities.php" size="1874" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="102b98fc1a1065ddcf8b40226572bb628ff91dce"/>
+                      <file name="Prioritydefault.php" size="1441" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="78b971afbc713f88bde355a74887a98f9ff4b16a"/>
+                      <file name="Targets.php" size="1694" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="9c9edb2f84e07de05c428206b1fdca149fd2c3cf"/>
+                    </dir>
+                  </dir>
+                </dir>
+                <file name="Xmpp.php" size="4265" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="7f894c2892b11ec133254b19adf71113c038e73a"/>
+              </dir>
+              <dir name="sql">
+                <dir name="logger_setup">
+                  <file name="mysql4-install-0.0.1.php" size="1432" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="b4c834cdec511b35d8673dd22ad4cb111a14224e"/>
+                </dir>
+              </dir>
+            </dir>
+          </dir>
+        </dir>
+      </dir>
+    </dir>
+    <dir name="lib">
+      <dir name="Graylog2-gelf-php">
+        <file name="GELFMessage.php" size="4375" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="dbc7c8548b59bee64ab0e992ad775455147966cb"/>
+        <file name="GELFMessagePublisher.php" size="6556" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="5bbe04c4e5f00cceb621f4160a910ee33a67723e"/>
+        <file name="index.php" size="504" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="db444e1a98d154f5258fbf93382cc6803173e9c7"/>
+      </dir>
+      <dir name="rsyslog">
+        <file name="rsyslog.php" size="2838" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="e3ef138b2b956ecacf53f4b4ac07451f92574ca0"/>
+        <file name="syslogfacility.php" size="1410" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="fd88100f9b10bb727bcbe39879e780d267708b6a"/>
+        <file name="syslogmessage.php" size="8320" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="8e50b256ea89b248eb85b1c1e30c8f732bcfa27c"/>
+        <file name="syslogseverity.php" size="904" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="1f6a171b594c22344647fbd6685ecaffb718100d"/>
+      </dir>
+      <dir name="XMPPHP">
+        <file name="BOSH.php" size="6469" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="fed9c1c731e0e2f333e6717c7ad1d936a03c35b7"/>
+        <file name="Exception.php" size="1437" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="80505e461668275895cc0ba40ad54d6dfdcb53f2"/>
+        <file name="Log.php" size="3076" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="e9d03e1627aaff069fd910c2b216145eee9c1dcd"/>
+        <file name="Roster.php" size="4546" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="51f40d9aa72463a3d96ded6b3c6ba32357695cd9"/>
+        <file name="XMLObj.php" size="3528" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="0a18efda53a9c99f934fa494ef285aab867ecb62"/>
+        <file name="XMLStream.php" size="18382" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="c674143d4c127e7485b9d03dbfb81df8dd4e5ebf"/>
+        <file name="XMPP.php" size="12214" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="dae21b331520cdd9a517484075758f3cb957af83"/>
+        <file name="XMPP_Old.php" size="3757" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="654da15216753bccb5958dca886609231d6f79bb"/>
+      </dir>
+    </dir>
+    <dir name="shell">
+      <file name="logger.php" size="2269" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="cbe638f3f38aef3b93445b88ac7a90ca64d00f9d"/>
+    </dir>
+  </dir>
+</source>

@@ -1,0 +1,839 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "html" "">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>FireGento_Logger - XMPPHP_XMLStream - API Documentation</title>
+    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+  </head>
+  <body>
+    <div class="wrapper clearfix">
+      <div class="topbar clearfix">
+        <h1>
+          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
+        </h1>
+        <ul class="nav">
+          <li class="active">
+            <a href="../index.xhtml">Overview</a>
+          </li>
+        </ul>
+      </div>
+      <div class="navigation">
+        <h3>Members</h3>
+        <ul>
+          <li>
+            <a href="#socket">$socket</a>
+          </li>
+          <li>
+            <a href="#parser">$parser</a>
+          </li>
+          <li>
+            <a href="#buffer">$buffer</a>
+          </li>
+          <li>
+            <a href="#xml_depth">$xml_depth</a>
+          </li>
+          <li>
+            <a href="#host">$host</a>
+          </li>
+          <li>
+            <a href="#port">$port</a>
+          </li>
+          <li>
+            <a href="#stream_start">$stream_start</a>
+          </li>
+          <li>
+            <a href="#stream_end">$stream_end</a>
+          </li>
+          <li>
+            <a href="#disconnected">$disconnected</a>
+          </li>
+          <li>
+            <a href="#sent_disconnect">$sent_disconnect</a>
+          </li>
+          <li>
+            <a href="#ns_map">$ns_map</a>
+          </li>
+          <li>
+            <a href="#current_ns">$current_ns</a>
+          </li>
+          <li>
+            <a href="#xmlobj">$xmlobj</a>
+          </li>
+          <li>
+            <a href="#nshandlers">$nshandlers</a>
+          </li>
+          <li>
+            <a href="#xpathhandlers">$xpathhandlers</a>
+          </li>
+          <li>
+            <a href="#idhandlers">$idhandlers</a>
+          </li>
+          <li>
+            <a href="#eventhandlers">$eventhandlers</a>
+          </li>
+          <li>
+            <a href="#lastid">$lastid</a>
+          </li>
+          <li>
+            <a href="#default_ns">$default_ns</a>
+          </li>
+          <li>
+            <a href="#until">$until</a>
+          </li>
+          <li>
+            <a href="#until_count">$until_count</a>
+          </li>
+          <li>
+            <a href="#until_happened">$until_happened</a>
+          </li>
+          <li>
+            <a href="#until_payload">$until_payload</a>
+          </li>
+          <li>
+            <a href="#log">$log</a>
+          </li>
+          <li>
+            <a href="#reconnect">$reconnect</a>
+          </li>
+          <li>
+            <a href="#been_reset">$been_reset</a>
+          </li>
+          <li>
+            <a href="#is_server">$is_server</a>
+          </li>
+          <li>
+            <a href="#last_send">$last_send</a>
+          </li>
+          <li>
+            <a href="#use_ssl">$use_ssl</a>
+          </li>
+          <li>
+            <a href="#reconnectTimeout">$reconnectTimeout</a>
+          </li>
+        </ul>
+        <h3>Methods</h3>
+        <ul>
+          <li>
+            <a href="#Xapply_socket">Xapply_socket</a>
+          </li>
+          <li>
+            <a href="#__construct">__construct</a>
+          </li>
+          <li>
+            <a href="#__destruct">__destruct</a>
+          </li>
+          <li>
+            <a href="#__process">__process</a>
+          </li>
+          <li>
+            <a href="#addEventHandler">addEventHandler</a>
+          </li>
+          <li>
+            <a href="#addHandler">addHandler</a>
+          </li>
+          <li>
+            <a href="#addIdHandler">addIdHandler</a>
+          </li>
+          <li>
+            <a href="#addXPathHandler">addXPathHandler</a>
+          </li>
+          <li>
+            <a href="#charXML">charXML</a>
+          </li>
+          <li>
+            <a href="#connect">connect</a>
+          </li>
+          <li>
+            <a href="#disconnect">disconnect</a>
+          </li>
+          <li>
+            <a href="#doReconnect">doReconnect</a>
+          </li>
+          <li>
+            <a href="#endXML">endXML</a>
+          </li>
+          <li>
+            <a href="#event">event</a>
+          </li>
+          <li>
+            <a href="#getId">getId</a>
+          </li>
+          <li>
+            <a href="#getLog">getLog</a>
+          </li>
+          <li>
+            <a href="#isDisconnected">isDisconnected</a>
+          </li>
+          <li>
+            <a href="#process">process</a>
+          </li>
+          <li>
+            <a href="#processTime">processTime</a>
+          </li>
+          <li>
+            <a href="#processUntil">processUntil</a>
+          </li>
+          <li>
+            <a href="#read">read</a>
+          </li>
+          <li>
+            <a href="#readyToProcess">readyToProcess</a>
+          </li>
+          <li>
+            <a href="#reset">reset</a>
+          </li>
+          <li>
+            <a href="#send">send</a>
+          </li>
+          <li>
+            <a href="#setReconnectTimeout">setReconnectTimeout</a>
+          </li>
+          <li>
+            <a href="#setupParser">setupParser</a>
+          </li>
+          <li>
+            <a href="#startXML">startXML</a>
+          </li>
+          <li>
+            <a href="#time">time</a>
+          </li>
+          <li>
+            <a href="#useSSL">useSSL</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <h2><span style="font-size:60%">\</span>XMPPHP_XMLStream</h2>
+        <div class="file-notice">
+          <p>XMPPHP XML Stream</p>
+        </div>
+        <ul class="fileinfos">
+          <li><b>Author: </b>Nathanael C. Fritz &lt;JID: fritzy@netflint.net&gt;</li>
+          <li><b>Author: </b>Stephan Wentz &lt;JID: stephan@jabber.wentz.it&gt;</li>
+          <li><b>Author: </b>Michael Garvin &lt;JID: gar@netflint.net&gt;</li>
+          <li><b>Copyright: </b>2008 Nathanael C. Fritz</li>
+        </ul>
+        <h3>Members</h3>
+        <ul class="varlist">
+          <li>
+            <a name="socket"/>
+            <h4><span class="label protected">protected</span>resource 
+                
+                $socket</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="parser"/>
+            <h4><span class="label protected">protected</span>resource 
+                
+                $parser</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="buffer"/>
+            <h4><span class="label protected">protected</span>string 
+                
+                $buffer</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="xml_depth"/>
+            <h4><span class="label protected">protected</span>integer 
+                
+                $xml_depth</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="host"/>
+            <h4><span class="label protected">protected</span>string 
+                
+                $host</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="port"/>
+            <h4><span class="label protected">protected</span>integer 
+                
+                $port</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="stream_start"/>
+            <h4><span class="label protected">protected</span>string 
+                
+                $stream_start</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="stream_end"/>
+            <h4><span class="label protected">protected</span>string 
+                
+                $stream_end</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="disconnected"/>
+            <h4><span class="label protected">protected</span>boolean 
+                
+                $disconnected</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="sent_disconnect"/>
+            <h4><span class="label protected">protected</span>boolean 
+                
+                $sent_disconnect</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="ns_map"/>
+            <h4><span class="label protected">protected</span>array 
+                
+                $ns_map</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="current_ns"/>
+            <h4><span class="label protected">protected</span>array 
+                
+                $current_ns</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="xmlobj"/>
+            <h4><span class="label protected">protected</span>array 
+                
+                $xmlobj</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="nshandlers"/>
+            <h4><span class="label protected">protected</span>array 
+                
+                $nshandlers</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="xpathhandlers"/>
+            <h4><span class="label protected">protected</span>array 
+                
+                $xpathhandlers</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="idhandlers"/>
+            <h4><span class="label protected">protected</span>array 
+                
+                $idhandlers</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="eventhandlers"/>
+            <h4><span class="label protected">protected</span>array 
+                
+                $eventhandlers</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="lastid"/>
+            <h4><span class="label protected">protected</span>integer 
+                
+                $lastid</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="default_ns"/>
+            <h4><span class="label protected">protected</span>string 
+                
+                $default_ns</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="until"/>
+            <h4><span class="label protected">protected</span>string 
+                
+                $until</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="until_count"/>
+            <h4><span class="label protected">protected</span>string 
+                
+                $until_count</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="until_happened"/>
+            <h4><span class="label protected">protected</span>array 
+                
+                $until_happened</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="until_payload"/>
+            <h4><span class="label protected">protected</span>array 
+                
+                $until_payload</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="log"/>
+            <h4><span class="label protected">protected</span>object 
+                
+                $log</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="reconnect"/>
+            <h4><span class="label protected">protected</span>boolean 
+                
+                $reconnect</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="been_reset"/>
+            <h4><span class="label protected">protected</span>boolean 
+                
+                $been_reset</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="is_server"/>
+            <h4><span class="label protected">protected</span>boolean 
+                
+                $is_server</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="last_send"/>
+            <h4><span class="label protected">protected</span>float 
+                
+                $last_send</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="use_ssl"/>
+            <h4><span class="label protected">protected</span>boolean 
+                
+                $use_ssl</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+          <li>
+            <a name="reconnectTimeout"/>
+            <h4><span class="label protected">protected</span>integer 
+                
+                $reconnectTimeout</h4>
+            <ul class="varlist">
+              <li/>
+            </ul>
+          </li>
+        </ul>
+        <h3>Constructor</h3>
+        <ul class="varlist">
+          <li>
+            <a name="__construct"/>
+            <h4><span class="label public">public</span>__construct<span style="font-size:90%;">( <span class="param-type">string</span><strong> $host</strong>, <span class="param-type">string</span><strong> $port</strong>, <span class="param-type">boolean</span><strong> $printlog</strong>, <span class="param-type">string</span><strong> $loglevel</strong>, <span class="param-type">boolean</span><strong> $is_server</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Constructor</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$host</code> - </li>
+                <li><code>$port</code> - </li>
+                <li><code>$printlog</code> - </li>
+                <li><code>$loglevel</code> - </li>
+                <li><code>$is_server</code> - </li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+        <h3>Destructor</h3>
+        <ul class="varlist">
+          <li>
+            <a name="__destruct"/>
+            <h4><span class="label public">public</span>__destruct<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Destructor Cleanup connection</li>
+            </p>
+          </li>
+        </ul>
+        <h3>Methods</h3>
+        <ul class="varlist">
+          <li>
+            <a name="Xapply_socket"/>
+            <h4><span class="label public">public</span>Xapply_socket<span style="font-size:90%;">( <span class="param-type"/><strong> $socket</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Obsolete?</li>
+            </p>
+          </li>
+          <li>
+            <a name="addEventHandler"/>
+            <h4><span class="label public">public</span>addEventHandler<span style="font-size:90%;">( <span class="param-type"/><strong> $name</strong>, <span class="param-type">string</span><strong> $pointer</strong>, <span class="param-type">string</span><strong> $obj</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Add Event Handler</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$id</code> - </li>
+                <li><code>$pointer</code> - </li>
+                <li><code>$obj</code> - </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="addHandler"/>
+            <h4><span class="label public">public</span>addHandler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $name</strong>, <span class="param-type">string</span><strong> $ns</strong>, <span class="param-type">string</span><strong> $pointer</strong>, <span class="param-type">string</span><strong> $obj</strong>, <span class="param-type">integer</span><strong> $depth</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Add Handler</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$name</code> - </li>
+                <li><code>$ns</code> - </li>
+                <li><code>$pointer</code> - </li>
+                <li><code>$obj</code> - </li>
+                <li><code>$depth</code> - </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="addIdHandler"/>
+            <h4><span class="label public">public</span>addIdHandler<span style="font-size:90%;">( <span class="param-type">integer</span><strong> $id</strong>, <span class="param-type">string</span><strong> $pointer</strong>, <span class="param-type">string</span><strong> $obj</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Add ID Handler</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$id</code> - </li>
+                <li><code>$pointer</code> - </li>
+                <li><code>$obj</code> - </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="addXPathHandler"/>
+            <h4><span class="label public">public</span>addXPathHandler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $xpath</strong>, <span class="param-type">string</span><strong> $pointer</strong>, <span class="param-type"/><strong> $obj</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Add XPath Handler</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$xpath</code> - </li>
+                <li><code>$pointer</code> - </li>
+                <li><code/> - </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="charXML"/>
+            <h4><span class="label public">public</span>charXML<span style="font-size:90%;">( <span class="param-type">resource</span><strong> $parser</strong>, <span class="param-type">string</span><strong> $data</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>XML character callback</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$parser</code> - </li>
+                <li><code>$data</code> - </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="connect"/>
+            <h4><span class="label public">public</span>connect<span style="font-size:90%;">( <span class="param-type">integer</span><strong> $timeout</strong>, <span class="param-type">boolean</span><strong> $persistent</strong>, <span class="param-type">boolean</span><strong> $sendinit</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Connect to XMPP Host</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$timeout</code> - </li>
+                <li><code>$persistent</code> - </li>
+                <li><code>$sendinit</code> - </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="disconnect"/>
+            <h4><span class="label public">public</span>disconnect<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Disconnect from XMPP Host</li>
+            </p>
+          </li>
+          <li>
+            <a name="doReconnect"/>
+            <h4><span class="label public">public</span>doReconnect<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Reconnect XMPP Host</li>
+            </p>
+          </li>
+          <li>
+            <a name="endXML"/>
+            <h4><span class="label public">public</span>endXML<span style="font-size:90%;">( <span class="param-type">resource</span><strong> $parser</strong>, <span class="param-type">string</span><strong> $name</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>XML end callback</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$parser</code> - </li>
+                <li><code>$name</code> - </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="event"/>
+            <h4><span class="label public">public</span>event<span style="font-size:90%;">( <span class="param-type">string</span><strong> $name</strong>, <span class="param-type">string</span><strong> $payload</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Event?</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$name</code> - </li>
+                <li><code>$payload</code> - </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="getId"/>
+            <h4><span class="label public">public</span>getId<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Get next ID</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li/>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="getLog"/>
+            <h4><span class="label public">public</span>getLog<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Return the log instance</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li/>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="isDisconnected"/>
+            <h4><span class="label public">public</span>isDisconnected<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Are we are disconnected?</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li/>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="process"/>
+            <h4><span class="label public">public</span>process<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Process</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li/>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="processTime"/>
+            <h4><span class="label public">public</span>processTime<span style="font-size:90%;">( <span class="param-type">integer</span><strong> $timeout</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Process until a timeout occurs</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$timeout</code> - </li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li/>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="processUntil"/>
+            <h4><span class="label public">public</span>processUntil<span style="font-size:90%;">( <span class="param-type"><span title="string|array">string|array</span></span><strong> $event</strong>, <span class="param-type">integer</span><strong> $timeout</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Process until a specified event or a timeout occurs</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$event</code> - </li>
+                <li><code>$timeout</code> - </li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li/>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="read"/>
+            <h4><span class="label public">public</span>read<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Read from socket</li>
+            </p>
+          </li>
+          <li>
+            <a name="readyToProcess"/>
+            <h4><span class="label public">public</span>readyToProcess<span style="font-size:90%;">(  )</span></h4>
+          </li>
+          <li>
+            <a name="reset"/>
+            <h4><span class="label public">public</span>reset<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Reset connection</li>
+            </p>
+          </li>
+          <li>
+            <a name="send"/>
+            <h4><span class="label public">public</span>send<span style="font-size:90%;">( <span class="param-type">string</span><strong> $msg</strong>, <span class="param-type"/><strong> $timeout</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Send to socket</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$msg</code> - </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="setReconnectTimeout"/>
+            <h4><span class="label public">public</span>setReconnectTimeout<span style="font-size:90%;">( <span class="param-type"/><strong> $timeout</strong> )</span></h4>
+          </li>
+          <li>
+            <a name="setupParser"/>
+            <h4><span class="label public">public</span>setupParser<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Setup the XML parser</li>
+            </p>
+          </li>
+          <li>
+            <a name="startXML"/>
+            <h4><span class="label public">public</span>startXML<span style="font-size:90%;">( <span class="param-type">resource</span><strong> $parser</strong>, <span class="param-type">string</span><strong> $name</strong>, <span class="param-type"/><strong> $attr</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>XML start callback</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$parser</code> - </li>
+                <li><code>$name</code> - </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="time"/>
+            <h4><span class="label public">public</span>time<span style="font-size:90%;">(  )</span></h4>
+          </li>
+          <li>
+            <a name="useSSL"/>
+            <h4><span class="label public">public</span>useSSL<span style="font-size:90%;">( <span class="param-type"/><strong> $use</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Set SSL</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li/>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="__process"/>
+            <h4><span class="label private">private</span>__process<span style="font-size:90%;">( <span class="param-type">integer</span><strong> $maximum</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Core reading tool 0 -&gt; only read if data is immediately ready NULL -&gt; wait forever and ever integer -&gt; process for this amount of time</li>
+            </p>
+          </li>
+        </ul>
+        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
+      </div>
+    </div>
+  </body>
+</html>

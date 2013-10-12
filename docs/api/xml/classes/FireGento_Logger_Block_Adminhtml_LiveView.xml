@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Block_Adminhtml_LiveView" namespace="" name="FireGento_Logger_Block_Adminhtml_LiveView" abstract="false" final="false" start="28" end="50">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml" file="LiveView.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/LiveView.php" size="1586" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="a847e464d2405b33a123ec227438ac8fccc1258c"/>
+  <docblock>
+    <description compact="Block for live viewing the log files in the backend"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Adminhtml_Block_Template" namespace="" name="Mage_Adminhtml_Block_Template"/>
+  <method name="getLogFiles" start="35" end="49" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Method reads all log-Files in the var/log-folder"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+</class>

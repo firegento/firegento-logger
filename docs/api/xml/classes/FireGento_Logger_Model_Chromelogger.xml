@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Chromelogger" namespace="" name="FireGento_Logger_Model_Chromelogger" abstract="false" final="false" start="28" end="75">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Chromelogger.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Chromelogger.php" size="2473" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="a0f3db9cdcafe1d0bf747fdf3fb4f931f3376906"/>
+  <docblock>
+    <description compact="Model for Database logging"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Zend_Log_Writer_Abstract" namespace="" name="Zend_Log_Writer_Abstract"/>
+  <method name="_write" start="35" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Write the data"/>
+      <param description="Event Data" type="array" variable="$event"/>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="factory" start="71" end="74" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Satisfy newer Zend Framework"/>
+      <param description="Configuration" type="object" variable="$config">
+        <type full="array|Zend_Config" namespace="" name="array|Zend_Config"/>
+      </param>
+      <return type="object">
+        <type full="void|Zend_Log_FactoryInterface" namespace="" name="void|Zend_Log_FactoryInterface"/>
+      </return>
+    </docblock>
+    <parameter name="config" byreference="false" type="{unknown}"/>
+  </method>
+</class>

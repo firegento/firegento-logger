@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phpdox xmlns="http://phpdox.de/config">
+    <project name="FireGento_Logger" source="${basedir}/src" workdir="${basedir}/docs/api/xml">
+        <collector backend="parser" />
+        <generator output="${basedir}/docs/api">
+            <build engine="html" output="html"/>
+        </generator>
+    </project>
+</phpdox>

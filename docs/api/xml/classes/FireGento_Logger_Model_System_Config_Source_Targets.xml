@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_System_Config_Source_Targets" namespace="" name="FireGento_Logger_Model_System_Config_Source_Targets" abstract="false" final="false" start="28" end="53">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/System/Config/Source" file="Targets.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/System/Config/Source/Targets.php" size="1694" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="9c9edb2f84e07de05c428206b1fdca149fd2c3cf"/>
+  <docblock>
+    <description compact="Logging Targets"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <member name="_options" type="array" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var description="Options" type="array"/>
+    </docblock>
+  </member>
+  <method name="toOptionArray" start="40" end="51" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve all targets as option arry"/>
+      <return description="Targets" type="array"/>
+    </docblock>
+  </method>
+</class>
