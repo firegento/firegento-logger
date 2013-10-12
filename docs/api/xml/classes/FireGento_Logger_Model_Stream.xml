@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Stream" namespace="" name="FireGento_Logger_Model_Stream" abstract="false" final="false" start="28" end="71">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Stream.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Stream.php" size="2011" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="884e8c71ffe852a03a595c92702b55a6ae63e63f"/>
+  <docblock>
+    <description compact="Like ZLWStream but overrides the formatter to use the advanced formatter"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Zend_Log_Writer_Stream" namespace="" name="Zend_Log_Writer_Stream"/>
+  <member name="_enableBacktrace" type="{unknown}" default="false" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="setEnableBacktrace" start="40" end="43" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Setter for class variable _enableBacktrace"/>
+      <param description="Flag for Backtrace" type="object" variable="$flag">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="flag" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_write" start="51" end="59" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Write a message to the log."/>
+      <param description="Event Data" type="array" variable="$event"/>
+      <throws value="Zend_Log_Exception"/>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="factory" start="67" end="70" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Satisfy newer Zend Framework"/>
+      <param description="Configuration" type="object" variable="$config">
+        <type full="array|Zend_Config" namespace="" name="array|Zend_Config"/>
+      </param>
+      <return type="object">
+        <type full="void|Zend_Log_Writer_Mock" namespace="" name="void|Zend_Log_Writer_Mock"/>
+      </return>
+    </docblock>
+    <parameter name="config" byreference="false" type="{unknown}"/>
+  </method>
+</class>

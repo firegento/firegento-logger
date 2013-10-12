@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "html" "">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>FireGento_Logger - FireGento_Logger_Model_Logglysyslog - API Documentation</title>
+    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+  </head>
+  <body>
+    <div class="wrapper clearfix">
+      <div class="topbar clearfix">
+        <h1>
+          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
+        </h1>
+        <ul class="nav">
+          <li class="active">
+            <a href="../index.xhtml">Overview</a>
+          </li>
+        </ul>
+      </div>
+      <div class="navigation">
+        <h3>Constants</h3>
+        <ul>
+          <li>
+            <a href="#DEFAULT_PORT">DEFAULT_PORT</a>
+          </li>
+          <li>
+            <a href="#DEFAULT_TIMEOUT">DEFAULT_TIMEOUT</a>
+          </li>
+          <li>
+            <a href="#DEFAULT_FACILITY">DEFAULT_FACILITY</a>
+          </li>
+        </ul>
+        <h3>Methods</h3>
+        <ul>
+          <li>
+            <a href="#BuildJSONMessage">BuildJSONMessage</a>
+          </li>
+          <li>
+            <a href="#BuildSysLogMessage">BuildSysLogMessage</a>
+          </li>
+          <li>
+            <a href="#BuildSysLogMessage">BuildSysLogMessage</a>
+          </li>
+          <li>
+            <a href="#GetSyslogPublisher">GetSyslogPublisher</a>
+          </li>
+          <li>
+            <a href="#PublishMessage">PublishMessage</a>
+          </li>
+          <li>
+            <a href="#__construct">__construct</a>
+          </li>
+          <li>
+            <a href="#_write">_write</a>
+          </li>
+          <li>
+            <a href="#factory">factory</a>
+          </li>
+          <li>
+            <a href="#setEnableBacktrace">setEnableBacktrace</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <h2><span style="font-size:60%">\</span>FireGento_Logger_Model_Logglysyslog</h2>
+        <div class="file-notice">
+          <p>Model for Loggly Syslog logging</p>
+        </div>
+        <ul class="fileinfos">
+          <li><b>Author: </b>FireGento Team &lt;team@firegento.com&gt;</li>
+        </ul>
+        <h3>Constants</h3>
+        <ul class="varlist">
+          <li><a name="DEFAULT_PORT"/>DEFAULT_PORT = 42146<em> int</em><p><li/></p><hr/></li>
+        </ul>
+        <h3>Members</h3>
+        <ul class="varlist"/>
+        <h3>Constructor</h3>
+        <ul class="varlist">
+          <li>
+            <a name="__construct"/>
+            <h4><span class="label public">public</span>__construct<span style="font-size:90%;">( <span class="param-type">string</span><strong> $filename</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Class constructor</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$filename</code> - Filename</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li/>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+        <h3>Methods</h3>
+        <ul class="varlist">
+          <li>
+            <a name="factory"/>
+            <h4><span class="label true">true</span><span class="label public">public</span>factory<span style="font-size:90%;">( <span class="param-type"><span title="array|Zend_Config">array|Zend_Config</span></span><strong> $config</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Satisfy newer Zend Framework</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$config</code> - Configuration</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li/>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="setEnableBacktrace"/>
+            <h4><span class="label public">public</span>setEnableBacktrace<span style="font-size:90%;">( <span class="param-type"><span title="bool">bool</span></span><strong> $flag</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Setter for _enableBacktrace field.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$flag</code> - The value to assign to the field.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="BuildJSONMessage"/>
+            <h4><span class="label protected">protected</span>BuildJSONMessage<span style="font-size:90%;">( <span class="param-type">array</span><strong> $event</strong>, <span class="param-type"><span title="bool">bool</span></span><strong> $enableBacktrace</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Transforms a Magento Log event into an associative array.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$event</code> - A Magento Log Event.</li>
+                <li><code>$enableBacktrace</code> - Indicates if a backtrace should be added to the log event.</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>An associative array representation of the event.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="BuildSysLogMessage"/>
+            <h4><span class="label protected">protected</span>BuildSysLogMessage<span style="font-size:90%;">( <span class="param-type">array</span><strong> $event</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Builds a Message that will be sent to a RSyslog Server.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$event</code> - A Magento Log Event.</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>A string representing the message.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="BuildSysLogMessage"/>
+            <h4><span class="label protected">protected</span>BuildSysLogMessage<span style="font-size:90%;">( <span class="param-type">array</span><strong> $event</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Builds a Message that will be sent to a RSyslog Server.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$event</code> - A Log4php Event.</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>A string representing the message.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="GetSyslogPublisher"/>
+            <h4><span class="label protected">protected</span>GetSyslogPublisher<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Builds and returns the full URL where the Log messages will be sent.</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>The full URL where the Log messages will be sent.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="PublishMessage"/>
+            <h4><span class="label protected">protected</span>PublishMessage<span style="font-size:90%;">( <span class="param-type">string</span><strong> $message</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Sends a Message to a RSyslog server.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$message</code> - The Message to be sent.</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>True if message was sent correctly, False otherwise.</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="throws">Throws:</h4>
+              <ul class="throws">
+                <li>
+                  <code>Zend_Log_Exception</code>
+                </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="_write"/>
+            <h4><span class="label protected">protected</span>_write<span style="font-size:90%;">( <span class="param-type">array</span><strong> $event</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Places event line into array of lines to be used as message body.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$event</code> - Event data</li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Result of write</li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="GELFMessagePublisher" namespace="" name="GELFMessagePublisher" abstract="false" final="false" start="2" end="218">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/Graylog2-gelf-php" file="GELFMessagePublisher.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/Graylog2-gelf-php/GELFMessagePublisher.php" size="6556" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="5bbe04c4e5f00cceb621f4160a910ee33a67723e"/>
+  <constant name="CHUNK_SIZE_WAN" value="1420">
+    <docblock>
+      <description compact=""/>
+      <var type="integer"/>
+    </docblock>
+  </constant>
+  <constant name="CHUNK_SIZE_LAN" value="8154">
+    <docblock>
+      <description compact=""/>
+      <var type="integer"/>
+    </docblock>
+  </constant>
+  <constant name="GRAYLOG2_DEFAULT_PORT" value="12201">
+    <docblock>
+      <description compact=""/>
+      <var type="integer"/>
+    </docblock>
+  </constant>
+  <constant name="GRAYLOG2_PROTOCOL_VERSION" value="'1.0'">
+    <docblock>
+      <description compact=""/>
+      <var type="string"/>
+    </docblock>
+  </constant>
+  <member name="hostname" type="{unknown}" default="null" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var type="string"/>
+    </docblock>
+  </member>
+  <member name="port" type="{unknown}" default="null" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var type="integer"/>
+    </docblock>
+  </member>
+  <member name="chunkSize" type="{unknown}" default="null" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var type="integer"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="46" end="63" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Creates a new publisher that sends errors to a Graylog2 server via UDP"/>
+      <throws value="InvalidArgumentException"/>
+      <param type="string" variable="$hostname"/>
+      <param type="integer" variable="$port"/>
+      <param type="integer" variable="$chunkSize"/>
+    </docblock>
+    <parameter name="hostname" byreference="false" type="{unknown}"/>
+    <parameter name="port" byreference="false" type="{unknown}" default="self::GRAYLOG2_DEFAULT_PORT"/>
+    <parameter name="chunkSize" byreference="false" type="{unknown}" default="self::CHUNK_SIZE_WAN"/>
+  </constructor>
+  <method name="publish" start="72" end="127" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Publishes a GELFMessage, returns false if an error occured during write"/>
+      <throws value="UnexpectedValueException"/>
+      <param type="object" variable="$message">
+        <type full="unknown_type" namespace="" name="unknown_type"/>
+      </param>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="message" byreference="false" type="object">
+      <type full="\\GELFMessage" namespace="\" name="GELFMessage"/>
+    </parameter>
+  </method>
+  <method name="getPreparedMessage" start="133" end="135" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <param type="object" variable="$message">
+        <type full="GELFMessage" namespace="" name="GELFMessage"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <parameter name="message" byreference="false" type="object">
+      <type full="\\GELFMessage" namespace="\" name="GELFMessage"/>
+    </parameter>
+  </method>
+  <method name="getSocketConnection" start="140" end="142" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <return type="resource"/>
+    </docblock>
+  </method>
+  <method name="isMessageSizeGreaterChunkSize" start="148" end="150" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <param type="string" variable="$preparedMessage"/>
+      <return type="boolean"/>
+    </docblock>
+    <parameter name="preparedMessage" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getMessageId" start="155" end="157" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <return type="float"/>
+    </docblock>
+  </method>
+  <method name="getMessageChunks" start="163" end="165" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <param type="string" variable="$preparedMessage"/>
+      <return type="array"/>
+    </docblock>
+    <parameter name="preparedMessage" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="prependChunkInformation" start="175" end="193" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <param type="float" variable="$messageId"/>
+      <param type="string" variable="$data"/>
+      <param type="integer" variable="$sequence"/>
+      <param type="integer" variable="$sequenceSize"/>
+      <throws value="InvalidArgumentException"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="messageId" byreference="false" type="{unknown}"/>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+    <parameter name="sequence" byreference="false" type="{unknown}"/>
+    <parameter name="sequenceSize" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="writeMessageChunkToSocket" start="203" end="208" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <param type="resource" variable="$socket"/>
+      <param type="float" variable="$messageId"/>
+      <param type="string" variable="$messageChunk"/>
+      <param type="integer" variable="$messageChunkIndex"/>
+      <param type="integer" variable="$messageChunksCount"/>
+      <return type="object">
+        <type full="integer|boolean" namespace="" name="integer|boolean"/>
+      </return>
+    </docblock>
+    <parameter name="socket" byreference="false" type="{unknown}"/>
+    <parameter name="messageId" byreference="false" type="{unknown}"/>
+    <parameter name="messageChunk" byreference="false" type="{unknown}"/>
+    <parameter name="messageChunkIndex" byreference="false" type="{unknown}"/>
+    <parameter name="messageChunksCount" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="writeMessageToSocket" start="215" end="217" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <param type="resource" variable="$socket"/>
+      <param type="string" variable="$preparedMessage"/>
+      <return type="object">
+        <type full="integer|boolean" namespace="" name="integer|boolean"/>
+      </return>
+    </docblock>
+    <parameter name="socket" byreference="false" type="{unknown}"/>
+    <parameter name="preparedMessage" byreference="false" type="{unknown}"/>
+  </method>
+</class>

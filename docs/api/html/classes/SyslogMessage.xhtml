@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "html" "">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>FireGento_Logger - SyslogMessage - API Documentation</title>
+    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+  </head>
+  <body>
+    <div class="wrapper clearfix">
+      <div class="topbar clearfix">
+        <h1>
+          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
+        </h1>
+        <ul class="nav">
+          <li class="active">
+            <a href="../index.xhtml">Overview</a>
+          </li>
+        </ul>
+      </div>
+      <div class="navigation">
+        <h3>Constants</h3>
+        <ul>
+          <li>
+            <a href="#MAX_MESSAGE_LENGTH">MAX_MESSAGE_LENGTH</a>
+          </li>
+          <li>
+            <a href="#MAX_TAG_LENGTH">MAX_TAG_LENGTH</a>
+          </li>
+          <li>
+            <a href="#DEFAULT_PROCESSNAME">DEFAULT_PROCESSNAME</a>
+          </li>
+          <li>
+            <a href="#DEFAULT_HOSTNAME">DEFAULT_HOSTNAME</a>
+          </li>
+        </ul>
+        <h3>Members</h3>
+        <ul>
+          <li>
+            <a href="#Facility">$Facility</a>
+          </li>
+          <li>
+            <a href="#Severity">$Severity</a>
+          </li>
+          <li>
+            <a href="#HostName">$HostName</a>
+          </li>
+          <li>
+            <a href="#FQDN">$FQDN</a>
+          </li>
+          <li>
+            <a href="#IPAddress">$IPAddress</a>
+          </li>
+          <li>
+            <a href="#ProcessName">$ProcessName</a>
+          </li>
+          <li>
+            <a href="#Message">$Message</a>
+          </li>
+          <li>
+            <a href="#Timestamp">$Timestamp</a>
+          </li>
+        </ul>
+        <h3>Methods</h3>
+        <ul>
+          <li>
+            <a href="#Coalesce">Coalesce</a>
+          </li>
+          <li>
+            <a href="#FormatMessage">FormatMessage</a>
+          </li>
+          <li>
+            <a href="#GetFQDN">GetFQDN</a>
+          </li>
+          <li>
+            <a href="#GetHostName">GetHostName</a>
+          </li>
+          <li>
+            <a href="#GetIPAddress">GetIPAddress</a>
+          </li>
+          <li>
+            <a href="#GetMessageChunks">GetMessageChunks</a>
+          </li>
+          <li>
+            <a href="#GetMessageID">GetMessageID</a>
+          </li>
+          <li>
+            <a href="#GetPriority">GetPriority</a>
+          </li>
+          <li>
+            <a href="#GetProcessName">GetProcessName</a>
+          </li>
+          <li>
+            <a href="#GetSyslogTimestamp">GetSyslogTimestamp</a>
+          </li>
+          <li>
+            <a href="#GetTag">GetTag</a>
+          </li>
+          <li>
+            <a href="#SetFacility">SetFacility</a>
+          </li>
+          <li>
+            <a href="#SetMessage">SetMessage</a>
+          </li>
+          <li>
+            <a href="#SetOptions">SetOptions</a>
+          </li>
+          <li>
+            <a href="#SetProcessName">SetProcessName</a>
+          </li>
+          <li>
+            <a href="#SetSeverity">SetSeverity</a>
+          </li>
+          <li>
+            <a href="#SetTimestamp">SetTimestamp</a>
+          </li>
+          <li>
+            <a href="#__construct">__construct</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <h2><span style="font-size:60%">\</span>SyslogMessage</h2>
+        <div class="file-notice">
+          <p>Encapsulates a Syslog Message.</p>
+        </div>
+        <ul class="fileinfos"/>
+        <h3>Constants</h3>
+        <ul class="varlist">
+          <li><a name="MAX_MESSAGE_LENGTH"/>MAX_MESSAGE_LENGTH = 1024<hr/></li>
+          <li><a name="MAX_TAG_LENGTH"/>MAX_TAG_LENGTH = 1024<hr/></li>
+          <li><a name="DEFAULT_PROCESSNAME"/>DEFAULT_PROCESSNAME = 'PHP'<hr/></li>
+          <li><a name="DEFAULT_HOSTNAME"/>DEFAULT_HOSTNAME = 'NONAME'<hr/></li>
+        </ul>
+        <h3>Members</h3>
+        <ul class="varlist">
+          <li>
+            <a name="Facility"/>
+            <h4><span class="label protected">protected</span>
+                $Facility</h4>
+          </li>
+          <li>
+            <a name="Severity"/>
+            <h4><span class="label protected">protected</span>
+                $Severity</h4>
+          </li>
+          <li>
+            <a name="HostName"/>
+            <h4><span class="label protected">protected</span>
+                $HostName</h4>
+          </li>
+          <li>
+            <a name="FQDN"/>
+            <h4><span class="label protected">protected</span>
+                $FQDN</h4>
+          </li>
+          <li>
+            <a name="IPAddress"/>
+            <h4><span class="label protected">protected</span>
+                $IPAddress</h4>
+          </li>
+          <li>
+            <a name="ProcessName"/>
+            <h4><span class="label protected">protected</span>
+                $ProcessName</h4>
+          </li>
+          <li>
+            <a name="Message"/>
+            <h4><span class="label protected">protected</span>
+                $Message</h4>
+          </li>
+          <li>
+            <a name="Timestamp"/>
+            <h4><span class="label protected">protected</span>
+                $Timestamp</h4>
+          </li>
+        </ul>
+        <h3>Constructor</h3>
+        <ul class="varlist">
+          <li>
+            <a name="__construct"/>
+            <h4><span class="label public">public</span>__construct<span style="font-size:90%;">( <span class="param-type"/><strong> $Message</strong>, <span class="param-type">integer</span><strong> $Facility</strong>, <span class="param-type">integer</span><strong> $Severity</strong>, <span class="param-type"/><strong> $Timestamp</strong>, <span class="param-type"/><strong> $Options</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Class constructor.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>The</code> - log message.</li>
+                <li><code>The</code> - Facility that generated the message (@link SyslogFacility).</li>
+                <li><code>The</code> - Severity of the message (@link SyslogSeverity).</li>
+                <li><code>The</code> - timestamp of the log message.</li>
+                <li><code>Additional</code> - configuration options (@link Options).</li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+        <h3>Methods</h3>
+        <ul class="varlist">
+          <li>
+            <a name="GetMessageChunks"/>
+            <h4><span class="label public">public</span>GetMessageChunks<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Returns the chunks that form the full log message. If the message is short enough, it's not split and just returned.</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>array containing the chunk of the Log Message. If the message is</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="SetFacility"/>
+            <h4><span class="label public">public</span>SetFacility<span style="font-size:90%;">( <span class="param-type"/><strong> $Facility</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Setter for Facility property.</li>
+            </p>
+          </li>
+          <li>
+            <a name="SetMessage"/>
+            <h4><span class="label public">public</span>SetMessage<span style="font-size:90%;">( <span class="param-type"/><strong> $Message</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Setter for Message property.</li>
+            </p>
+          </li>
+          <li>
+            <a name="SetProcessName"/>
+            <h4><span class="label public">public</span>SetProcessName<span style="font-size:90%;">( <span class="param-type"/><strong> $ProcessName</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Setter for ProcessName property.</li>
+            </p>
+          </li>
+          <li>
+            <a name="SetSeverity"/>
+            <h4><span class="label public">public</span>SetSeverity<span style="font-size:90%;">( <span class="param-type"/><strong> $Severity</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Setter for Severity property.</li>
+            </p>
+          </li>
+          <li>
+            <a name="SetTimestamp"/>
+            <h4><span class="label public">public</span>SetTimestamp<span style="font-size:90%;">( <span class="param-type"/><strong> $Timestamp</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Setter for Timestamp property.</li>
+            </p>
+          </li>
+          <li>
+            <a name="Coalesce"/>
+            <h4><span class="label protected">protected</span>Coalesce<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Returns the first non null value amongst the arguments.</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>first non null value amongst the arguments.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="FormatMessage"/>
+            <h4><span class="label protected">protected</span>FormatMessage<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Puts all Log Message elements together to form a string that will be passed to the RSysLog Server.</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>The Message as a string.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="GetFQDN"/>
+            <h4><span class="label protected">protected</span>GetFQDN<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Returns the Fully Qualified Domain Name of the Server.</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Qualified Domain Name of the Server, or an empty string if the</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="GetHostName"/>
+            <h4><span class="label protected">protected</span>GetHostName<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Returns the Host Name.</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Host Name of the machine where the script is running, or a</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="GetIPAddress"/>
+            <h4><span class="label protected">protected</span>GetIPAddress<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Returns the IP Address of the Server.</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>IP Address of the Server, or an empty string if the address</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="GetProcessName"/>
+            <h4><span class="label protected">protected</span>GetProcessName<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Returns the Process Name.</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Name of the Process that is running the script, or a default</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="SetOptions"/>
+            <h4><span class="label protected">protected</span>SetOptions<span style="font-size:90%;">( <span class="param-type">Array</span><strong> $Options</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Sets several options for the instance.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>An</code> - array of options that will be used to configure the</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="GetMessageID"/>
+            <h4><span class="label private">private</span>GetMessageID<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Generates a unique ID for the message. This function is used only if the message is too long and has to be split into chunks; the ID generated by this method can be used to trace the pieces and put them back together.</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>unique ID for the Message, in the form of a prefix and an MD5</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="GetPriority"/>
+            <h4><span class="label private">private</span>GetPriority<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Calculates and returns the Priority of a Log Message.</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>value indicating the Priority of the Log Message.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="GetSyslogTimestamp"/>
+            <h4><span class="label private">private</span>GetSyslogTimestamp<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Returns a Timestamp string, formatted as required by RFC3164.</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>Timestamp string, formatted as required by RFC3164.</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="GetTag"/>
+            <h4><span class="label private">private</span>GetTag<span style="font-size:90%;">(  )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Builds the TAG part of the Syslog Message.</li>
+            </p>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li>TAG part of the Syslog Message, as specified by RFC3164.</li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
+      </div>
+    </div>
+  </body>
+</html>

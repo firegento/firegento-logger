@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Observer" namespace="" name="FireGento_Logger_Model_Observer" abstract="false" final="false" start="28" end="129">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Observer.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Observer.php" size="3989" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="e8a0f55d507127e7162ad1581028fb88c81df469"/>
+  <docblock>
+    <description compact="Observer Class"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Varien_Object" namespace="" name="Varien_Object"/>
+  <constant name="MAX_FILE_DAYS" value="30">
+    <docblock>
+      <description compact="Constant how long the files should be kept on the filesystem before they are rotated"/>
+    </docblock>
+  </constant>
+  <method name="cleanLogsCron" start="38" end="43" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Cron job for cleaning firegento log table"/>
+    </docblock>
+  </method>
+  <method name="rotateLogs" start="48" end="74" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Rotate all files in var/log which ends with .log"/>
+    </docblock>
+  </method>
+  <method name="getFilesOlderThan" start="84" end="98" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get all files which are older than X days and containing a pattern."/>
+      <param description="Days" type="int" variable="$days"/>
+      <param description="Directory" type="string" variable="$dir"/>
+      <param description="Filename" type="string" variable="$filename"/>
+      <return type="array"/>
+    </docblock>
+    <parameter name="days" byreference="false" type="{unknown}"/>
+    <parameter name="dir" byreference="false" type="{unknown}"/>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getArchiveName" start="106" end="117" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Create a zip filename out of a filename with timestamp"/>
+      <param description="Filename" type="string" variable="$filename"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="formatDate" start="125" end="128" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Format date to internal format"/>
+      <param description="Date to format" type="object" variable="$date">
+        <type full="string|Zend_Date" namespace="" name="string|Zend_Date"/>
+      </param>
+      <return description="Formatted date" type="string"/>
+    </docblock>
+    <parameter name="date" byreference="false" type="{unknown}"/>
+  </method>
+</class>

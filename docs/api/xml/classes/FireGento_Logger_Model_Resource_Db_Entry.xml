@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Resource_Db_Entry" namespace="" name="FireGento_Logger_Model_Resource_Db_Entry" abstract="false" final="false" start="28" end="58">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Resource/Db" file="Entry.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Resource/Db/Entry.php" size="1771" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="2e6017fd1f076a71eb1634b31e3629fbec09907e"/>
+  <docblock>
+    <description compact="Db Entry Resource Model"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Core_Model_Resource_Db_Abstract" namespace="" name="Mage_Core_Model_Resource_Db_Abstract"/>
+  <method name="_construct" start="33" end="36" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Init main table and id field name"/>
+    </docblock>
+  </method>
+  <method name="cleanLogs" start="44" end="57" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Clean the log table"/>
+      <param description="Days to keep" type="int" variable="$keepDays"/>
+      <return description="The number of deleted rows" type="int"/>
+    </docblock>
+    <parameter name="keepDays" byreference="false" type="{unknown}"/>
+  </method>
+</class>

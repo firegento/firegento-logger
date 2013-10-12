@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="Roster" namespace="" name="Roster" abstract="false" final="false" start="41" end="162">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP" file="Roster.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/Roster.php" size="4546" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="51f40d9aa72463a3d96ded6b3c6ba32357695cd9"/>
+  <docblock>
+    <description compact="XMPPHP Roster Object"/>
+    <category value="xmpphp"/>
+    <package value="XMPPHP"/>
+    <author value="Nathanael C. Fritz &lt;JID: fritzy@netflint.net&gt;"/>
+    <author value="Stephan Wentz &lt;JID: stephan@jabber.wentz.it&gt;"/>
+    <author value="Michael Garvin &lt;JID: gar@netflint.net&gt;"/>
+    <copyright value="2008 Nathanael C. Fritz"/>
+    <version value="$Id$"/>
+  </docblock>
+  <member name="roster_array" type="array" visibility="protected">
+    <docblock>
+      <description compact="Roster array, handles contacts and presence.  Indexed by jid.">Contains array with potentially two indexes 'contact' and 'presence'</description>
+      <var type="array"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="52" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Constructor"/>
+    </docblock>
+    <parameter name="roster_array" byreference="false" type="array"/>
+  </constructor>
+  <method name="verifyRoster" start="66" end="69" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Check that a given roster array is of a valid structure (empty is still valid)"/>
+      <param type="array" variable="$roster_array"/>
+    </docblock>
+    <parameter name="roster_array" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addContact" start="80" end="87" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add given contact to roster"/>
+      <param type="string" variable="$jid"/>
+      <param type="string" variable="$subscription"/>
+      <param type="string" variable="$name"/>
+      <param type="array" variable="$groups"/>
+    </docblock>
+    <parameter name="jid" byreference="false" type="{unknown}"/>
+    <parameter name="subscription" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="string" default=""/>
+    <parameter name="groups" byreference="false" type="array"/>
+  </method>
+  <method name="getContact" start="95" end="99" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve contact via jid"/>
+      <param type="string" variable="$jid"/>
+    </docblock>
+    <parameter name="jid" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="isContact" start="107" end="109" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Discover if a contact exists in the roster via jid"/>
+      <param type="string" variable="$jid"/>
+    </docblock>
+    <parameter name="jid" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setPresence" start="120" end="131" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set presence"/>
+      <param type="string" variable="$presence"/>
+      <param type="integer" variable="$priority"/>
+      <param type="string" variable="$show"/>
+      <param type="string" variable="$status"/>
+    </docblock>
+    <parameter name="presence" byreference="false" type="{unknown}"/>
+    <parameter name="priority" byreference="false" type="{unknown}"/>
+    <parameter name="show" byreference="false" type="{unknown}"/>
+    <parameter name="status" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getPresence" start="139" end="153" abstract="false" final="false" static="false" visibility="public">
+    <parameter name="jid" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getRoster" start="159" end="161" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get roster"/>
+    </docblock>
+  </method>
+</class>

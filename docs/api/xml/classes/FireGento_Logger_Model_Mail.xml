@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Mail" namespace="" name="FireGento_Logger_Model_Mail" abstract="false" final="false" start="28" end="124">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Mail.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Mail.php" size="3538" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="f770370bc405f14d5defc32771ba8b444a28354c"/>
+  <docblock>
+    <description compact="Mail Logger"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Zend_Log_Writer_Mail" namespace="" name="Zend_Log_Writer_Mail"/>
+  <member name="_transport" type="{unknown}" default="null" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var type="object">
+        <type full="Zend_Mail_Transport_Smtp|null" namespace="" name="Zend_Mail_Transport_Smtp|null"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="40" end="43" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Instantiate the mail object"/>
+      <param description="Filename" type="string" variable="$filename"/>
+    </docblock>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="_write" start="50" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Send the log mails"/>
+      <param description="Event data" type="array" variable="$event"/>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getMail" start="65" end="83" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the mail object"/>
+      <return type="object">
+        <type full="Zend_Mail" namespace="" name="Zend_Mail"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getTransport" start="90" end="112" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retreive the transport object"/>
+      <return description="Transport Object" type="object">
+        <type full="Zend_Mail_Transport_Abstract" namespace="" name="Zend_Mail_Transport_Abstract"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="factory" start="120" end="123" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Satisfy newer Zend Framework"/>
+      <param description="Configuration" type="object" variable="$config">
+        <type full="array|Zend_Config" namespace="" name="array|Zend_Config"/>
+      </param>
+      <return type="object">
+        <type full="void|Zend_Log_FactoryInterface" namespace="" name="void|Zend_Log_FactoryInterface"/>
+      </return>
+    </docblock>
+    <parameter name="config" byreference="false" type="{unknown}"/>
+  </method>
+</class>

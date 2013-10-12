@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "html" "">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>FireGento_Logger - XMPPHP_XMLObj - API Documentation</title>
+    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+  </head>
+  <body>
+    <div class="wrapper clearfix">
+      <div class="topbar clearfix">
+        <h1>
+          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
+        </h1>
+        <ul class="nav">
+          <li class="active">
+            <a href="../index.xhtml">Overview</a>
+          </li>
+        </ul>
+      </div>
+      <div class="navigation">
+        <h3>Members</h3>
+        <ul>
+          <li>
+            <a href="#name">$name</a>
+          </li>
+          <li>
+            <a href="#ns">$ns</a>
+          </li>
+          <li>
+            <a href="#attrs">$attrs</a>
+          </li>
+          <li>
+            <a href="#subs">$subs</a>
+          </li>
+          <li>
+            <a href="#data">$data</a>
+          </li>
+        </ul>
+        <h3>Methods</h3>
+        <ul>
+          <li>
+            <a href="#__construct">__construct</a>
+          </li>
+          <li>
+            <a href="#hasSub">hasSub</a>
+          </li>
+          <li>
+            <a href="#printObj">printObj</a>
+          </li>
+          <li>
+            <a href="#sub">sub</a>
+          </li>
+          <li>
+            <a href="#toString">toString</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <h2><span style="font-size:60%">\</span>XMPPHP_XMLObj</h2>
+        <div class="file-notice">
+          <p>XMPPHP XML Object</p>
+        </div>
+        <ul class="fileinfos">
+          <li><b>Author: </b>Nathanael C. Fritz &lt;JID: fritzy@netflint.net&gt;</li>
+          <li><b>Author: </b>Stephan Wentz &lt;JID: stephan@jabber.wentz.it&gt;</li>
+          <li><b>Author: </b>Michael Garvin &lt;JID: gar@netflint.net&gt;</li>
+          <li><b>Copyright: </b>2008 Nathanael C. Fritz</li>
+        </ul>
+        <h3>Members</h3>
+        <ul class="varlist">
+          <li>
+            <a name="name"/>
+            <h4><span class="label public">public</span>string 
+                
+                $name</h4>
+            <ul class="varlist">
+              <li>Tag name</li>
+            </ul>
+          </li>
+          <li>
+            <a name="ns"/>
+            <h4><span class="label public">public</span>string 
+                
+                $ns</h4>
+            <ul class="varlist">
+              <li>Namespace</li>
+            </ul>
+          </li>
+          <li>
+            <a name="attrs"/>
+            <h4><span class="label public">public</span>array 
+                
+                $attrs</h4>
+            <ul class="varlist">
+              <li>Attributes</li>
+            </ul>
+          </li>
+          <li>
+            <a name="subs"/>
+            <h4><span class="label public">public</span>array 
+                
+                $subs</h4>
+            <ul class="varlist">
+              <li>Subs?</li>
+            </ul>
+          </li>
+          <li>
+            <a name="data"/>
+            <h4><span class="label public">public</span>string 
+                
+                $data</h4>
+            <ul class="varlist">
+              <li>Node data</li>
+            </ul>
+          </li>
+        </ul>
+        <h3>Constructor</h3>
+        <ul class="varlist">
+          <li>
+            <a name="__construct"/>
+            <h4><span class="label public">public</span>__construct<span style="font-size:90%;">( <span class="param-type">string</span><strong> $name</strong>, <span class="param-type">string</span><strong> $ns</strong>, <span class="param-type">Array</span><strong> $attrs</strong>, <span class="param-type">string</span><strong> $data</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Constructor</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$name</code> - </li>
+                <li><code>$ns</code> - </li>
+                <li><code>$attrs</code> - </li>
+                <li><code>$data</code> - </li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+        <h3>Methods</h3>
+        <ul class="varlist">
+          <li>
+            <a name="hasSub"/>
+            <h4><span class="label public">public</span>hasSub<span style="font-size:90%;">( <span class="param-type">string</span><strong> $name</strong>, <span class="param-type"/><strong> $ns</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Has this XML Object the given sub?</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$name</code> - </li>
+              </ul>
+            </ul>
+            <ul>
+              <h4 class="return">Returns:</h4>
+              <ul class="return">
+                <li/>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="printObj"/>
+            <h4><span class="label public">public</span>printObj<span style="font-size:90%;">( <span class="param-type">integer</span><strong> $depth</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Dump this XML Object to output.</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$depth</code> - </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="sub"/>
+            <h4><span class="label public">public</span>sub<span style="font-size:90%;">( <span class="param-type">string</span><strong> $name</strong>, <span class="param-type">string</span><strong> $attrs</strong>, <span class="param-type">string</span><strong> $ns</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Return a sub</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$name</code> - </li>
+                <li><code>$attrs</code> - </li>
+                <li><code>$ns</code> - </li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            <a name="toString"/>
+            <h4><span class="label public">public</span>toString<span style="font-size:90%;">( <span class="param-type">string</span><strong> $str</strong> )</span></h4>
+            <p style="font-size:110%; padding-top:5px;">
+              <li>Return this XML Object in xml notation</li>
+            </p>
+            <ul>
+              <h4 class="param">Parameters:</h4>
+              <ul class="param">
+                <li><code>$str</code> - </li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
+      </div>
+    </div>
+  </body>
+</html>
