@@ -1,0 +1,142 @@
+<?php
+/**
+ * This file is part of a FireGento e.V. module.
+ *
+ * This FireGento e.V. module is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This script is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * @category  FireGento
+ * @package   FireGento_Logger
+ * @author    FireGento Team <team@firegento.com>
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
+ * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
+ */
+?>
+<?php
+/**
+ * @var $this Firegento_Logger_Block_Adminhtml_LiveView
+ */
+?>
+<script type="text/javascript">
+    var LoggerLiveView = Class.create();
+    LoggerLiveView.prototype = {
+        initialize: function(outputContainer) {
+            this.position = 0;
+            this.running = false;
+            this.currentLogFile = '';
+            this.pe = null;
+            this.peScroll = null;
+            this.outputPanel = $(outputContainer);
+        },
+
+        consoleScroll: function() {
+            if (typeof top.$!='function') {
+                return;
+            }
+
+            dh = this.outputPanel.scrollHeight
+            ch = this.outputPanel.clientHeight
+            if( dh > ch ){
+                moveme = dh - ch;
+                this.outputPanel.scrollTop = moveme;
+            }
+        },
+
+        clearOutputPanel: function() {
+            this.outputPanel.update('');
+        },
+
+        setLogFile: function() {
+            this.position = 0;
+            this.currentLogFile = $('logSelector').getValue();
+            this.clearOutputPanel();
+            this.startLiveView();
+        },
+
+        getUpdates: function() {
+            // skip when the last request ist not answered yet
+            if( this.running ) {
+                return;
+            }
+
+            this.running = true;
+            new Ajax.Request('<?php echo $this->getUrl('adminhtml/logger/liveViewAjax', array('_secure' => Mage::app()->getRequest()->isSecure())) ?>',
+                {
+                    method: 'get',
+                    parameters: { position: this.position, logFile: this.currentLogFile },
+                    loaderArea: false,
+                    onSuccess: function(response) {
+                        this.running = false;
+
+                        var result = response.responseText.evalJSON();
+
+                        logText = result.text.replace(/\n/g, "<br />")
+                        if(logText != "<br />") {
+                            this.outputPanel.innerHTML += logText;
+                        }
+
+                        this.position = result.position;
+                    }.bind(this)
+                });
+        },
+
+        startLiveView: function() {
+            this.getUpdates();
+
+            // stop previous PeriodicalExecuter
+            if ( this.pe != null ) {
+                this.pe.stop();
+            }
+
+            this.pe = new PeriodicalExecuter(function(pe) {
+                this.getUpdates();
+            }.bind(this), 2);
+
+            this.peScroll = new PeriodicalExecuter(function(peScroll) {
+                this.consoleScroll();
+            }.bind(this), 1);
+        }
+
+    };
+
+    document.observe("dom:loaded", function() {
+        var liveView = new LoggerLiveView('log_output');
+        $('startLiveView').observe('click', function(btn) {
+            liveView.setLogFile();
+        });
+    });
+</script>
+
+<div class="content-header">
+    <h3 class="icon-head head-system-account"><?php echo $this->__('Logger Live View'); ?></h3>
+</div>
+<div class="logger-controls">
+    <label for="logSelector">Log-Files:</label>
+    <select name="logSelector" id="logSelector">
+        <?php $logFiles = $this->getLogFiles(); ?>
+        <?php foreach ($logFiles as $logFile): ?>
+            <option value="<?php echo $logFile; ?>"><?php echo $logFile; ?></option>
+        <?php endforeach; ?>
+        <?php if (!count($logFiles)): ?>
+            <option value=""><?php echo $this->__('No Logfiles found.'); ?></option>
+        <?php endif; ?>
+    </select>
+
+    <?php if (count($logFiles)): ?>
+    <button name="startLiveView" id="startLiveView">
+        <span>
+            <span>View Log-File</span>
+        </span>
+    </button>
+    <?php endif; ?>
+</div>
+<div id="log_output" name="log_output">
+    <?php if (count($logFiles)): ?>
+        <?php echo $this->__('Please select a Log-File.'); ?>
+    <?php endif; ?>
+</div>
