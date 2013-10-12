@@ -27,7 +27,7 @@ require_once 'lib/rsyslog/rsyslog.php';
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
+class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
 {
     /**
      * @var int The default Timeout to be used when communicating with the Remote Syslog Server.
@@ -126,7 +126,7 @@ class Firegento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
             return true;
         }
 
-        /* @var $helper Firegento_Logger_Helper_Data */
+        /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
 
         // In case of error, RSysLog publisher returns an array containing an Error Number
@@ -146,11 +146,11 @@ class Firegento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
      * Class constructor
      *
      * @param  string $filename Filename
-     * @return Firegento_Logger_Model_Rsyslog Rsyslog instance
+     * @return FireGento_Logger_Model_Rsyslog Rsyslog instance
      */
     public function __construct($filename)
     {
-        /* @var $helper Firegento_Logger_Helper_Data */
+        /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
 
         $this->_options['FileName'] = basename($filename);

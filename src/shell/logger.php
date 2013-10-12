@@ -26,7 +26,7 @@ require_once 'abstract.php';
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Shell extends Mage_Shell_Abstract
+class FireGento_Logger_Shell extends Mage_Shell_Abstract
 {
     /**
      * Run shell script
@@ -70,5 +70,5 @@ USAGE;
     }
 }
 
-$shell = new Firegento_Logger_Shell();
+$shell = new FireGento_Logger_Shell();
 $shell->run();

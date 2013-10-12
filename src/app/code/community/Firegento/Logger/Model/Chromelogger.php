@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Chromelogger extends Zend_Log_Writer_Abstract
+class FireGento_Logger_Model_Chromelogger extends Zend_Log_Writer_Abstract
 {
     /**
      * Write the data
@@ -43,15 +43,15 @@ class Firegento_Logger_Model_Chromelogger extends Zend_Log_Writer_Abstract
                 case Zend_Log::ALERT:
                 case Zend_Log::CRIT:
                 case Zend_Log::ERR:
-                    Firegento_Logger_Model_Chromelogger_Library_ChromePhp::error($message);
+                    FireGento_Logger_Model_Chromelogger_Library_ChromePhp::error($message);
                     break;
                 case Zend_Log::WARN:
-                    Firegento_Logger_Model_Chromelogger_Library_ChromePhp::warn($message);
+                    FireGento_Logger_Model_Chromelogger_Library_ChromePhp::warn($message);
                     break;
                 case Zend_Log::NOTICE:
                 case Zend_Log::INFO:
                 case Zend_Log::DEBUG:
-                    Firegento_Logger_Model_Chromelogger_Library_ChromePhp::info($message);
+                    FireGento_Logger_Model_Chromelogger_Library_ChromePhp::info($message);
                     break;
                 default:
                     Mage::log('Unknown loglevel at ' . __CLASS__);

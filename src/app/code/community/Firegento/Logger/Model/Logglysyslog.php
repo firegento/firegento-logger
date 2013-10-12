@@ -26,7 +26,7 @@ require_once 'lib/rsyslog/rsyslog.php';
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Logglysyslog extends Firegento_Logger_Model_Rsyslog
+class FireGento_Logger_Model_Logglysyslog extends FireGento_Logger_Model_Rsyslog
 {
     /**
      * @var int Default UDP Port for JSON Remote Syslog on Loggly
@@ -77,7 +77,7 @@ class Firegento_Logger_Model_Logglysyslog extends Firegento_Logger_Model_Rsyslog
      */
     protected function BuildSysLogMessage($event)
     {
-        return new Firegento_Logger_Model_Loggly_LogglySyslogMessage(
+        return new FireGento_Logger_Model_Loggly_LogglySyslogMessage(
             $this->BuildJSONMessage($event, $this->_enableBacktrace),
             self::DEFAULT_FACILITY,
             $event['priority'],
@@ -88,11 +88,11 @@ class Firegento_Logger_Model_Logglysyslog extends Firegento_Logger_Model_Rsyslog
      * Class constructor
      *
      * @param  string $filename Filename
-     * @return Firegento_Logger_Model_Logglysyslog
+     * @return FireGento_Logger_Model_Logglysyslog
      */
     public function __construct($filename)
     {
-        /* @var $helper Firegento_Logger_Helper_Data */
+        /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
 
         $this->_options['FileName'] = basename($filename);

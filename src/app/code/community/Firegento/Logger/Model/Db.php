@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Db extends Zend_Log_Writer_Db
+class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
 {
     /**
      * @var Zend_Db_Adapter Database adapter instance

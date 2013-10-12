@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
+class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
 {
     /**
      * Default format

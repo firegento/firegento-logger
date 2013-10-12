@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Db_Entry extends Mage_Core_Model_Abstract
+class FireGento_Logger_Model_Db_Entry extends Mage_Core_Model_Abstract
 {
     /**
      * Init the resource model

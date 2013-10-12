@@ -26,7 +26,7 @@ require_once 'lib/XMPPHP/XMPP.php';
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
+class FireGento_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
 {
     /**
      * Array of formatted events to include in message body.
@@ -54,7 +54,7 @@ class Firegento_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
      * Class constructor
      *
      * @param  string $filename Filename
-     * @return Firegento_Logger_Model_Xmpp XMPP instance
+     * @return FireGento_Logger_Model_Xmpp XMPP instance
      */
     public function __construct($filename)
     {

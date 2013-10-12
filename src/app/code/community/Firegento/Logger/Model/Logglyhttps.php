@@ -18,7 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
-define('LOGGER_CERTIFICATESFILE', Mage::getModuleDir('', 'Firegento_Logger') . '/extras/certificates/cacert.pem');
+define('LOGGER_CERTIFICATESFILE', Mage::getModuleDir('', 'FireGento_Logger') . '/extras/certificates/cacert.pem');
 /**
  * Model for Loggly HTTPS logging
  *
@@ -26,7 +26,7 @@ define('LOGGER_CERTIFICATESFILE', Mage::getModuleDir('', 'Firegento_Logger') . '
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
+class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
 {
     /**
      * @var string The URL of Loggly Log Server
@@ -77,11 +77,11 @@ class Firegento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
      * Class constructor
      *
      * @param  string $filename Filename
-     * @return Firegento_Logger_Model_Logglyhttps
+     * @return FireGento_Logger_Model_Logglyhttps
      */
     public function __construct($filename)
     {
-        /* @var $helper Firegento_Logger_Helper_Data */
+        /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
 
         $this->_options['FileName'] = basename($filename);
@@ -136,7 +136,7 @@ class Firegento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
      */
     protected function PublishMessage($message)
     {
-        /* @var $helper Firegento_Logger_Helper_Data */
+        /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
 
         $fp = fsockopen(

@@ -25,11 +25,11 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Block_Adminhtml_Logger_Grid
+class FireGento_Logger_Block_Adminhtml_Logger_Grid
     extends Mage_Adminhtml_Block_Widget_Grid
 {
     /**
-     * @var Firegento_Logger_Helper_Data
+     * @var FireGento_Logger_Helper_Data
      */
     protected $_helper;
 
@@ -56,7 +56,7 @@ class Firegento_Logger_Block_Adminhtml_Logger_Grid
     /**
      * Prepare the grid collection with the database log entries
      *
-     * @return Firegento_Logger_Block_Adminhtml_Logger_Grid
+     * @return FireGento_Logger_Block_Adminhtml_Logger_Grid
      */
     protected function _prepareCollection()
     {
@@ -68,7 +68,7 @@ class Firegento_Logger_Block_Adminhtml_Logger_Grid
     /**
      * Prepare the grid columns
      *
-     * @return Firegento_Logger_Block_Adminhtml_Logger_Grid
+     * @return FireGento_Logger_Block_Adminhtml_Logger_Grid
      */
     protected function _prepareColumns()
     {

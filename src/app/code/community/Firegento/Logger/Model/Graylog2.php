@@ -27,7 +27,7 @@ require_once 'lib/Graylog2-gelf-php/GELFMessagePublisher.php';
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
+class FireGento_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 {
     /**
      * @var array
@@ -82,11 +82,11 @@ class Firegento_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
      * Class constructor
      *
      * @param  string $filename Filename
-     * @return Firegento_Logger_Model_Graylog2
+     * @return FireGento_Logger_Model_Graylog2
      */
     public function __construct($filename)
     {
-        /* @var $helper Firegento_Logger_Helper_Data */
+        /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
 
         $this->_options['filename'] = basename($filename);

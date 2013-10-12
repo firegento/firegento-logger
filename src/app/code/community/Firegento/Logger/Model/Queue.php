@@ -26,7 +26,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
+class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 {
     /**
      * @var Zend_Log_Writer_Abstract[]
@@ -44,7 +44,7 @@ class Firegento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     protected $_useQueue;
 
     /**
-     * @var Firegento_Logger_Formatter_Advanced
+     * @var FireGento_Logger_Formatter_Advanced
      */
     protected static $_advancedFormatter;
 
@@ -55,7 +55,7 @@ class Firegento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
      */
     public function __construct($filename)
     {
-        /** @var $helper Firegento_Logger_Helper_Data */
+        /** @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
 
         // Only instantiate writers that are needed for this file based on the Filename Filters
@@ -107,7 +107,7 @@ class Firegento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
         } else {
             foreach ($this->_writers as $writer) {
                 // add hostname info to event if DB Logger ...
-                if ($writer instanceof Firegento_Logger_Model_Db) {
+                if ($writer instanceof FireGento_Logger_Model_Db) {
                     $hostname = gethostname() !== false ? gethostname() : '';
                     $event['message'] = '[' . $hostname . '] ' . $event['message'];
                 }
@@ -150,13 +150,13 @@ class Firegento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     /**
      * Returns the advanced formatter
      *
-     * @return Firegento_Logger_Formatter_Advanced
+     * @return FireGento_Logger_Formatter_Advanced
      */
     public static function getAdvancedFormatter()
     {
         // Use singleton since all instances will be identical anyway
         if (!self::$_advancedFormatter) {
-            self::$_advancedFormatter = new Firegento_Logger_Formatter_Advanced;
+            self::$_advancedFormatter = new FireGento_Logger_Formatter_Advanced;
         }
 
         return self::$_advancedFormatter;

@@ -25,8 +25,8 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_System_Config_Source_Prioritydefault
-    extends Firegento_Logger_Model_System_Config_Source_Priorities
+class FireGento_Logger_Model_System_Config_Source_Prioritydefault
+    extends FireGento_Logger_Model_System_Config_Source_Priorities
 {
     /**
      * Retrieve all priorities with a default value

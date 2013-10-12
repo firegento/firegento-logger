@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
+class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
 {
     const XML_PATH_PRIORITY = 'general/priority';
     const XML_PATH_MAX_DAYS = 'db/max_days_to_keep';

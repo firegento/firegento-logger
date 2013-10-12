@@ -4,7 +4,7 @@
         <system>
             <children>
                 <firegento_logger translate="title" module="firegento_logger">
-                    <title>Firegento Logger</title>
+                    <title>FireGento Logger</title>
                     <sort_order>60</sort_order>
                     <action>adminhtml/logger/index</action>
                     <depends>
@@ -44,7 +44,7 @@
                             <config>
                                 <children>
                                     <logger translate="title" module="firegento_logger">
-                                        <title>Firegento Logger Section</title>
+                                        <title>FireGento Logger Section</title>
                                         <sort_order>60</sort_order>
                                     </logger>
                                 </children>
