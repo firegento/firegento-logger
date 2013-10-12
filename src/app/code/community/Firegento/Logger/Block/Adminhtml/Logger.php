@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Block_Adminhtml_Logger
+class FireGento_Logger_Block_Adminhtml_Logger
     extends Mage_Adminhtml_Block_Widget_Grid_Container
 {
     /**

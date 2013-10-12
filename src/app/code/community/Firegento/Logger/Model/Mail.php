@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Mail extends Zend_Log_Writer_Mail
+class FireGento_Logger_Model_Mail extends Zend_Log_Writer_Mail
 {
     /**
      * @var Zend_Mail_Transport_Smtp|null
@@ -67,7 +67,7 @@ class Firegento_Logger_Model_Mail extends Zend_Log_Writer_Mail
         if ($this->_mail === null) {
             $this->_mail = new Zend_Mail();
 
-            /** @var $helper Firegento_Logger_Helper_Data */
+            /** @var $helper FireGento_Logger_Helper_Data */
             $helper = Mage::helper('firegento_logger');
 
             $storeName = Mage::app()->getStore()->getName();
@@ -90,7 +90,7 @@ class Firegento_Logger_Model_Mail extends Zend_Log_Writer_Mail
     public function getTransport()
     {
         if ($this->_transport === null) {
-            /** @var $helper Firegento_Logger_Helper_Data */
+            /** @var $helper FireGento_Logger_Helper_Data */
             $helper = Mage::helper('firegento_logger');
 
             $config = array(

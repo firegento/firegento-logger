@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Controller_Action
+class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Controller_Action
 {
     /**
      * Show grid viewer

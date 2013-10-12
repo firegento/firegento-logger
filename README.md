@@ -39,7 +39,7 @@ Installation
 ------------
 1. Install the module via modman `modman clone git@github.com:firegento/firegento-logger.git`
 2. Clear the cache, logout from the admin panel and then login again.
-3. Configure the differnet loggers in *System > Configuration > Advanced > Firegento Logger*.
+3. Configure the differnet loggers in *System > Configuration > Advanced > FireGento Logger*.
 
 External libraries
 ------------------

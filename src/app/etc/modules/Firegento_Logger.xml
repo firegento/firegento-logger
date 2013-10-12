@@ -20,12 +20,12 @@
  -->
 <config>
     <modules>
-        <Firegento_Logger>
+        <FireGento_Logger>
             <active>true</active>
             <codePool>community</codePool>
 			<depends>
 				<Mage_Core />
 			</depends>
-        </Firegento_Logger>
+        </FireGento_Logger>
     </modules>
 </config>

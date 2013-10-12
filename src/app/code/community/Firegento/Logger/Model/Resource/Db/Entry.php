@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Resource_Db_Entry extends Mage_Core_Model_Resource_Db_Abstract
+class FireGento_Logger_Model_Resource_Db_Entry extends Mage_Core_Model_Resource_Db_Abstract
 {
     /**
      * Init main table and id field name

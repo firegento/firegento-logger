@@ -26,7 +26,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Loggly_LogglySyslogMessage extends SyslogMessage
+class FireGento_Logger_Model_Loggly_LogglySyslogMessage extends SyslogMessage
 {
     /**
      * Class constructor

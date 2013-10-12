@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Block_Adminhtml_System_Config_Renderer_Select
+class FireGento_Logger_Block_Adminhtml_System_Config_Renderer_Select
     extends Mage_Core_Block_Abstract
 {
     /**

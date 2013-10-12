@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_System_Config_Source_Targets
+class FireGento_Logger_Model_System_Config_Source_Targets
 {
     /**
      * @var array Options

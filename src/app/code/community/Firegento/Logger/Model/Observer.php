@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Model_Observer extends Varien_Object
+class FireGento_Logger_Model_Observer extends Varien_Object
 {
     /**
      * Constant how long the files should be kept on the filesystem before they are rotated

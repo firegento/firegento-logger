@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class Firegento_Logger_Block_Adminhtml_LiveView extends Mage_Adminhtml_Block_Template
+class FireGento_Logger_Block_Adminhtml_LiveView extends Mage_Adminhtml_Block_Template
 {
     /**
      * Method reads all log-Files in the var/log-folder

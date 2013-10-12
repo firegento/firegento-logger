@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Firegento_Logger>
+        <FireGento_Logger>
             <version>1.3.0</version>
-        </Firegento_Logger>
+        </FireGento_Logger>
     </modules>
     <crontab>
         <jobs>
@@ -32,7 +32,7 @@
             <adminhtml>
                 <args>
                     <modules>
-                        <logger before="Mage_Adminhtml">Firegento_Logger_Adminhtml</logger>
+                        <logger before="Mage_Adminhtml">FireGento_Logger_Adminhtml</logger>
                     </modules>
                 </args>
             </adminhtml>
@@ -50,11 +50,11 @@
     <global>
         <models>
             <firegento_logger>
-                <class>Firegento_Logger_Model</class>
+                <class>FireGento_Logger_Model</class>
                 <resourceModel>logger_resource</resourceModel>
             </firegento_logger>
             <logger_resource>
-                <class>Firegento_Logger_Model_Resource</class>
+                <class>FireGento_Logger_Model_Resource</class>
                 <entities>
                     <db_entry>
                         <table>advanced_logger</table>
@@ -65,23 +65,23 @@
         <resources>
             <logger_setup>
                 <setup>
-                    <module>Firegento_Logger</module>
+                    <module>FireGento_Logger</module>
                 </setup>
             </logger_setup>
         </resources>
         <helpers>
             <firegento_logger>
-                <class>Firegento_Logger_Helper</class>
+                <class>FireGento_Logger_Helper</class>
             </firegento_logger>
         </helpers>
         <blocks>
             <firegento_logger>
-                <class>Firegento_Logger_Block</class>
+                <class>FireGento_Logger_Block</class>
             </firegento_logger>
         </blocks>
         <log>
             <core>
-                <writer_model>Firegento_Logger_Model_Queue</writer_model>
+                <writer_model>FireGento_Logger_Model_Queue</writer_model>
                 <writer_models>
                     <default>
                         <label>Files (Magento Default)</label>
@@ -89,39 +89,39 @@
                     </default>
                     <advanced>
                         <label>Files (Advanced Format)</label>
-                        <class>Firegento_Logger_Model_Stream</class>
+                        <class>FireGento_Logger_Model_Stream</class>
                     </advanced>
                     <mailconfig>
                         <label>Mail</label>
-                        <class>Firegento_Logger_Model_Mail</class>
+                        <class>FireGento_Logger_Model_Mail</class>
                     </mailconfig>
                     <db>
                         <label>Database</label>
-                        <class>Firegento_Logger_Model_Db</class>
+                        <class>FireGento_Logger_Model_Db</class>
                     </db>
                     <xmpp>
                         <label>XMPP</label>
-                        <class>Firegento_Logger_Model_Xmpp</class>
+                        <class>FireGento_Logger_Model_Xmpp</class>
                     </xmpp>
                     <graylog2>
                         <label>Graylog2 (experimental)</label>
-                        <class>Firegento_Logger_Model_Graylog2</class>
+                        <class>FireGento_Logger_Model_Graylog2</class>
                     </graylog2>
                     <rsyslog>
                         <label>Remote Syslog (UDP)</label>
-                        <class>Firegento_Logger_Model_Rsyslog</class>
+                        <class>FireGento_Logger_Model_Rsyslog</class>
                     </rsyslog>
                     <logglysyslog>
                         <label>Loggly, via Remote Syslog (UDP)</label>
-                        <class>Firegento_Logger_Model_Logglysyslog</class>
+                        <class>FireGento_Logger_Model_Logglysyslog</class>
                     </logglysyslog>
                     <logglyhttps>
                         <label>Loggly, via HTTPS</label>
-                        <class>Firegento_Logger_Model_Logglyhttps</class>
+                        <class>FireGento_Logger_Model_Logglyhttps</class>
                     </logglyhttps>
                     <chromelogger>
                         <label>Chrome Logger</label>
-                        <class>Firegento_Logger_Model_Chromelogger</class>
+                        <class>FireGento_Logger_Model_Chromelogger</class>
                     </chromelogger>
                 </writer_models>
             </core>
