@@ -1,10 +1,16 @@
 {
-   "name": "firegento/logger",
-   "license": ["GPL-3.0"],
-   "type": "magento-module",
-   "description": "Firegento Logger is an advanced alternative to log messages and errors to multiple targets.",
-   "homepage": "https://github.com/firegento/firegento-logger",
-   "require": {
-      "magento-hackathon/magento-composer-installer": "*"
-   }
+  "name": "firegento/logger",
+  "license": ["GPL-3.0"],
+  "type": "magento-module",
+  "description": "Firegento Logger is an advanced alternative to log messages and errors to multiple targets.",
+  "homepage": "https://github.com/firegento/firegento-logger",
+  "require": {
+    "magento-hackathon/magento-composer-installer": "*"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packages.firegento.com"
+    }
+  ]
 }
