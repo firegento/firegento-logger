@@ -6,18 +6,19 @@ class Firegento_Logger_Shell extends Mage_Shell_Abstract
 
     public function run()
     {
-        /** @var $model Firegento_Logger_Model_Observer */
-        $model = Mage::getModel('firegento_logger/observer');
         if ($this->getArg('clean'))
         {
             $days = $this->getArg('days');
-            $model->cleanLogs(new Varien_Event_Observer(), $days);
+            if ( ! $days) {
+                $days = Mage::helper('firegento_logger')->getMaxDaysToKeep();
+            }
+            $deleted = Mage::getResourceSingleton('firegento_logger/db_entry')->cleanLogs($days);
 
-            echo "Database log cleaned." . PHP_EOL;
+            echo "Database log cleaned: kept $days days, deleted $deleted records." . PHP_EOL;
         }
         elseif ($this->getArg('rotate'))
         {
-            $model->rotateLogs(new Varien_Event_Observer());
+            Mage::getSingleton('firegento_logger/observer')->rotateLogs();
             echo "Rotation of log files finished.".PHP_EOL;
         }
         else
