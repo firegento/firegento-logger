@@ -1,38 +1,82 @@
 <?php
+/**
+ * This file is part of a FireGento e.V. module.
+ *
+ * This FireGento e.V. module is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This script is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * PHP version 5
+ *
+ * @category  FireGento
+ * @package   FireGento_Logger
+ * @author    FireGento Team <team@firegento.com>
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
+ * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
+ */
 require_once 'lib/rsyslog/rsyslog.php';
-
 /**
  * Remote Syslog writer. Sends the Log Messages to a Remote Syslog server.
  * Messages are sent as plain text.
+ *
+ * @category FireGento
+ * @package  FireGento_Logger
+ * @author   FireGento Team <team@firegento.com>
  */
 class Firegento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
 {
-    // @var int The default Timeout to be used when communicating with the Remote Syslog Server.
+    /**
+     * @var int The default Timeout to be used when communicating with the Remote Syslog Server.
+     */
     const DEFAULT_TIMEOUT = 1;
 
-    // TODO Allow User to choose the Facility from one of the values provided by SyslogFacility Class.
-    // @var int The default Facility used to build Syslog Messages.
+    /**
+     * @todo Allow User to choose the Facility from one of the values provided by SyslogFacility Class.
+     *
+     * @var int The default Facility used to build Syslog Messages.
+     */
     const DEFAULT_FACILITY = SyslogFacility::USER;
 
-    // The properties below will be set automatically by Log4php with the data it
-    // will get from the configuration.
-    // @var string The address of the RSyslog log to which the log messages will be sent.
-    protected $HostName;
-    // @var int The port to use to connect to RSyslog server.
-    protected $Port;
-    // @var int Timeout tro be used when communicating with Remote SysLog Server
-    protected $Timeout;
+    /**
+     * @var RSyslog Writer Instance
+     */
+    protected $_syslogPublisher;
 
-    // @var array Contains configuration options.
+    /**
+     * The properties below will be set automatically by Log4php with the data it will get from the configuration.
+     *
+     * @var string The address of the RSyslog log to which the log messages will be sent.
+     */
+    protected $_hostName;
+
+    /**
+     * @var int The port to use to connect to RSyslog server.
+     */
+    protected $_port;
+
+    /**
+     * @var int Timeout tro be used when communicating with Remote SysLog Server
+     */
+    protected $_timeout;
+
+    /**
+     * @var array Contains configuration options.
+     */
     protected $_options = array();
 
-    // @var bool Indicates if backtrace should be added to the Log Message.
-    protected $_enableBacktrace = FALSE;
+    /**
+     * @var bool Indicates if backtrace should be added to the Log Message.
+     */
+    protected $_enableBacktrace = false;
 
     /**
      * Setter for _enableBacktrace field.
      *
-     * @param bool flag The value to assign to the field.
+     * @param bool $flag The value to assign to the field.
      */
     public function setEnableBacktrace($flag)
     {
@@ -46,83 +90,99 @@ class Firegento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
      */
     protected function GetSyslogPublisher()
     {
-        if (empty($this->SyslogPublisher)) {
-            $this->SyslogPublisher = new RSyslog(($this->HostName . ':' . $this->Port),
-                                                                                     $this->Timeout);
+        if (empty($this->_syslogPublisher)) {
+            $this->_syslogPublisher = new RSyslog(($this->_hostName . ':' . $this->_port), $this->_timeout);
         }
 
-        return $this->SyslogPublisher;
+        return $this->_syslogPublisher;
     }
 
     /**
      * Builds a Message that will be sent to a RSyslog Server.
      *
-     * @param array event A Log4php Event.
+     * @param  array $event A Log4php Event.
      * @return string A string representing the message.
      */
     protected function BuildSysLogMessage($event)
     {
         return new SyslogMessage($this->_formatter->format($event, $this->_enableBacktrace),
-                                                         self::DEFAULT_FACILITY,
-                                                         $event['priority'],
-                                                         strtotime($event['timestamp']));
+            self::DEFAULT_FACILITY,
+            $event['priority'],
+            strtotime($event['timestamp'])
+        );
     }
 
     /**
      * Sends a Message to a RSyslog server.
      *
-     * @param string Message The Message to be sent.
+     * @param  string $message The Message to be sent.
+     * @throws Zend_Log_Exception
      * @return bool True if message was sent correctly, False otherwise.
      */
-    protected function PublishMessage($Message)
+    protected function PublishMessage($message)
     {
-        $Result = $this->GetSyslogPublisher()->Send($Message);
-        if ($Result === true) {
+        $result = $this->GetSyslogPublisher()->Send($message);
+        if ($result === true) {
             return true;
         }
 
+        /* @var $helper Firegento_Logger_Helper_Data */
+        $helper = Mage::helper('firegento_logger');
+
         // In case of error, RSysLog publisher returns an array containing an Error Number
         // and an Error Message
-        throw new Zend_Log_Exception(sprintf(Mage::helper('firegento_logger')->__('Error occurred sending log to Remote Syslog Server. Error number: %d. Error Message: %s'),
-                                                                                 $Result[0],
-                                                                                 $Result[1]));
+        throw new Zend_Log_Exception(
+            sprintf(
+                $helper->__('Error occurred sending log to Remote Syslog Server. Error number: %d. Error Message: %s'),
+                $result[0],
+                $result[1]
+            )
+        );
+
         return false;
     }
 
     /**
-     * @param  string                              $FileName
-     * @return Firegento_Logger_Model_Logglysyslog
+     * Class constructor
+     *
+     * @param  string $filename Filename
+     * @return Firegento_Logger_Model_Rsyslog Rsyslog instance
      */
-    public function __construct($FileName)
+    public function __construct($filename)
     {
-        $helper = Mage::helper('firegento_logger'); /* @var $helper Firegento_Logger_Helper_Data */
-        $this->_options['FileName'] = basename($FileName);
+        /* @var $helper Firegento_Logger_Helper_Data */
+        $helper = Mage::helper('firegento_logger');
+
+        $this->_options['FileName'] = basename($filename);
         $this->_options['AppName'] = $helper->getLoggerConfig('rsyslog/app_name');
 
-        $this->HostName = $helper->getLoggerConfig('rsyslog/hostname');
-        $this->Port = $helper->getLoggerConfig('rsyslog/port');
-        $this->Timeout = $helper->getLoggerConfig('rsyslog/timeout');
+        $this->_hostName = $helper->getLoggerConfig('rsyslog/hostname');
+        $this->_port = $helper->getLoggerConfig('rsyslog/port');
+        $this->_timeout = $helper->getLoggerConfig('rsyslog/timeout');
+
+        return $this;
     }
 
     /**
      * Places event line into array of lines to be used as message body.
      *
      * @param  array $event Event data
-     * @return void
+     * @return bool Result of write
      */
     protected function _write($event)
     {
-        $Message = $this->BuildSysLogMessage($event);
-
-        return $this->PublishMessage($Message);
+        $message = $this->BuildSysLogMessage($event);
+        return $this->PublishMessage($message);
     }
 
-  /**
-   * Satisfy newer Zend Framework
-   *
-   * @static
-   * @param $config
-   */
-  public static function factory($config) {}
+    /**
+     * Satisfy newer Zend Framework
+     *
+     * @param  array|Zend_Config $config Configuration
+     * @return void|Zend_Log_FactoryInterface
+     */
+    public static function factory($config)
+    {
+    }
 
 }

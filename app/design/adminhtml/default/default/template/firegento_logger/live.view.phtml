@@ -1,6 +1,28 @@
-
+<?php
+/**
+ * This file is part of a FireGento e.V. module.
+ *
+ * This FireGento e.V. module is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This script is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * @category  FireGento
+ * @package   FireGento_Logger
+ * @author    FireGento Team <team@firegento.com>
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
+ * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
+ */
+?>
+<?php
+/**
+ * @var $this Firegento_Logger_Block_Adminhtml_LiveView
+ */
+?>
 <script type="text/javascript">
-
     var LoggerLiveView = Class.create();
     LoggerLiveView.prototype = {
         initialize: function(outputContainer) {
@@ -97,14 +119,15 @@
     <label for="logSelector">Log-Files:</label>
     <select name="logSelector" id="logSelector">
         <?php $logFiles = $this->getLogFiles(); ?>
-        <?php foreach ( $logFiles as $logFile ): ?>
+        <?php foreach ($logFiles as $logFile): ?>
             <option value="<?php echo $logFile; ?>"><?php echo $logFile; ?></option>
         <?php endforeach; ?>
-        <?php if(!count($logFiles)): ?>
+        <?php if (!count($logFiles)): ?>
             <option value=""><?php echo $this->__('No Logfiles found.'); ?></option>
         <?php endif; ?>
     </select>
-    <?php if(count($logFiles)): ?>
+
+    <?php if (count($logFiles)): ?>
     <button name="startLiveView" id="startLiveView">
         <span>
             <span>View Log-File</span>
@@ -113,7 +136,7 @@
     <?php endif; ?>
 </div>
 <div id="log_output" name="log_output">
-    <?php if(count($logFiles)): ?>
+    <?php if (count($logFiles)): ?>
         <?php echo $this->__('Please select a Log-File.'); ?>
     <?php endif; ?>
 </div>

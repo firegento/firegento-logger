@@ -1,22 +1,57 @@
 <?php
 /**
+ * This file is part of a FireGento e.V. module.
+ *
+ * This FireGento e.V. module is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This script is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * PHP version 5
+ *
+ * @category  FireGento
+ * @package   FireGento_Logger
+ * @author    FireGento Team <team@firegento.com>
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
+ * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
+ */
+/**
  * This writer is the one actually used by Magento. It acts as a proxy to support one or more writers
  * set from the config and optionally as a "queue" to hold all events until shutdown.
+ *
+ * @category FireGento
+ * @package  FireGento_Logger
+ * @author   FireGento Team <team@firegento.com>
  */
 class Firegento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 {
-
-    /** @var Zend_Log_Writer_Abstract[] */
+    /**
+     * @var Zend_Log_Writer_Abstract[]
+     */
     protected $_writers = array();
 
-    private $_logger_cache = array();
+    /**
+     * @var array
+     */
+    private $_loggerCache = array();
 
+    /**
+     * @var bool
+     */
     protected $_useQueue;
 
+    /**
+     * @var Firegento_Logger_Formatter_Advanced
+     */
     protected static $_advancedFormatter;
 
     /**
-     * @param string $filename
+     * Class constructor
+     *
+     * @param string $filename Filename
      */
     public function __construct($filename)
     {
@@ -32,18 +67,22 @@ class Firegento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
             } else {
                 $targets = array_intersect($targets, array_keys($mappedTargets));
             }
+
             foreach ($targets as $target) {
-                $className = (string) Mage::app()->getConfig()->getNode('global/log/core/writer_models/'.$target.'/class');
-                if ($className) {
-                    $writer = new $className($filename);
+                $class = (string) Mage::app()->getConfig()->getNode('global/log/core/writer_models/'.$target.'/class');
+                if ($class) {
+                    $writer = new $class($filename);
                     $helper->addPriorityFilter($writer, $target.'/priority');
+
                     if (method_exists($writer, 'setEnableBacktrace')) {
-                            $writer->setEnableBacktrace($mappedTargets[$target]);
+                        $writer->setEnableBacktrace($mappedTargets[$target]);
                     }
+
                     $this->_writers[] = $writer;
                 }
             }
         }
+
         $this->_useQueue = !! $helper->getLoggerConfig('general/use_queue');
     }
 
@@ -58,14 +97,13 @@ class Firegento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     /**
      * Write a message to the log.
      *
-     * @param  array $event log data event
-     * @return void
+     * @param array $event log data event
      */
     protected function _write($event)
     {
         if ($this->_useQueue) {
             // Format now so that timestamps are correct
-            $this->_logger_cache[] = $this->_formatter->format($event);
+            $this->_loggerCache[] = $this->_formatter->format($event);
         } else {
             foreach ($this->_writers as $writer) {
                 // add hostname info to event if DB Logger ...
@@ -80,12 +118,10 @@ class Firegento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 
     /**
      * At the end of the request we write to the actual logger
-     *
-     * @return void
      */
     public function shutdown()
     {
-        $events = implode(PHP_EOL, $this->_logger_cache);
+        $events = implode(PHP_EOL, $this->_loggerCache);
         foreach ($this->_writers as $writer) {
             if ($events) {
                 $writer->write($events);
@@ -95,9 +131,9 @@ class Firegento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     }
 
     /**
-     * Overrode this method since Mage::log doesn't let us set a formatter any other way.
+     * Override this method since Mage::log doesn't let us set a formatter any other way.
      *
-     * @param Zend_Log_Formatter_Interface $formatter
+     * @param Zend_Log_Formatter_Interface $formatter Formatter
      */
     public function setFormatter(Zend_Log_Formatter_Interface $formatter)
     {
@@ -112,23 +148,28 @@ class Firegento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     }
 
     /**
-     * @static
+     * Returns the advanced formatter
+     *
      * @return Firegento_Logger_Formatter_Advanced
      */
     public static function getAdvancedFormatter()
     {
-        if (! self::$_advancedFormatter) { // Use singleton since all instances will be identical anyway
+        // Use singleton since all instances will be identical anyway
+        if (!self::$_advancedFormatter) {
             self::$_advancedFormatter = new Firegento_Logger_Formatter_Advanced;
         }
+
         return self::$_advancedFormatter;
     }
 
-  /**
-   * Satisfy newer Zend Framework
-   *
-   * @static
-   * @param $config
-   */
-  public static function factory($config) {}
+    /**
+     * Satisfy newer Zend Framework
+     *
+     * @param  array|Zend_Config $config Configuration
+     * @return void|Zend_Log_FactoryInterface
+     */
+    public static function factory($config)
+    {
 
+    }
 }

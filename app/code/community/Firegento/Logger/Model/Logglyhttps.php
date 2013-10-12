@@ -1,28 +1,72 @@
 <?php
+/**
+ * This file is part of a FireGento e.V. module.
+ *
+ * This FireGento e.V. module is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This script is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * PHP version 5
+ *
+ * @category  FireGento
+ * @package   FireGento_Logger
+ * @author    FireGento Team <team@firegento.com>
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
+ * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
+ */
 define('LOGGER_CERTIFICATESFILE', Mage::getModuleDir('', 'Firegento_Logger') . '/extras/certificates/cacert.pem');
-
+/**
+ * Model for Loggly HTTPS logging
+ *
+ * @category FireGento
+ * @package  FireGento_Logger
+ * @author   FireGento Team <team@firegento.com>
+ */
 class Firegento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
 {
-    // @var string The URL of Loggly Log Server
-    protected $LogglyServer = 'logs.loggly.com';
-    // @var int The port to use to communicate with Loggly Server.
-    protected $LogglyPort = 443;
-    // @var string The Loggly path where to send Log Messages.
-    protected $LogglyPath = '/inputs';
-    // @var string The SHA Input Key to be used to send Logs to Loggly via HTTPS
-    protected $InputKey;
-
-    // @var int The timeout to apply when sending data to Loggly servers, in seconds.
-    protected $Timeout = 5;
-
-    // @var array Contains configuration options.
-    protected $_options = array();
-
-    // @var bool Indicates if backtrace should be added to the Log Message.
-    protected $_enableBacktrace = FALSE;
+    /**
+     * @var string The URL of Loggly Log Server
+     */
+    protected $_logglyServer = 'logs.loggly.com';
 
     /**
-     * @param bool $flag
+     * @var int The port to use to communicate with Loggly Server.
+     */
+    protected $_logglyPort = 443;
+
+    /**
+     * @var string The Loggly path where to send Log Messages.
+     */
+    protected $_logglyPath = '/inputs';
+
+    /**
+     * @var string The SHA Input Key to be used to send Logs to Loggly via HTTPS
+     */
+    protected $_inputKey;
+
+    /**
+     * @var int The timeout to apply when sending data to Loggly servers, in seconds.
+     */
+    protected $_timeout = 5;
+
+    /**
+     * @var array Contains configuration options.
+     */
+    protected $_options = array();
+
+    /**
+     * @var bool Indicates if backtrace should be added to the Log Message.
+     */
+    protected $_enableBacktrace = false;
+
+    /**
+     * Setter for class variable _enableBacktrace
+     *
+     * @param bool $flag Flag for Backtrace
      */
     public function setEnableBacktrace($flag)
     {
@@ -30,100 +74,100 @@ class Firegento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
     }
 
     /**
-     * @param  string                             $FileName
+     * Class constructor
+     *
+     * @param  string $filename Filename
      * @return Firegento_Logger_Model_Logglyhttps
      */
-    public function __construct($FileName)
+    public function __construct($filename)
     {
-        $helper = Mage::helper('firegento_logger'); /* @var $helper Firegento_Logger_Helper_Data */
-        $this->_options['FileName'] = basename($FileName);
+        /* @var $helper Firegento_Logger_Helper_Data */
+        $helper = Mage::helper('firegento_logger');
+
+        $this->_options['FileName'] = basename($filename);
         $this->_options['AppName'] = $helper->getLoggerConfig('logglyhttps/app_name');
 
-        $this->InputKey = $helper->getLoggerConfig('logglyhttps/inputkey');
-        $this->Timeout = $helper->getLoggerConfig('logglyhttps/timeout');
-    }
-
-    /**
-     * Builds and returns the full URL where the Log messages will be sent.
-     *
-     * @return string The full URL where the Log messages will be sent.
-     */
-    protected function GetLoggerURL()
-    {
-        return $this->LogglyURL . '/' . $this->InputKey;
+        $this->_inputKey = $helper->getLoggerConfig('logglyhttps/inputkey');
+        $this->_timeout = $helper->getLoggerConfig('logglyhttps/timeout');
     }
 
     /**
      * Builds a JSON Message that will be sent to a Loggly Server.
      *
-     * @param array event A Magento Log Event.
-     * @param bool enableBacktrace Indicates if a backtrace should be added to the
-     * log event.
+     * @param  array $event           A Magento Log Event.
+     * @param  bool  $enableBacktrace Indicates if a backtrace should be added to the log event.
      * @return string A JSON structure representing the message.
      */
-    protected function BuildJSONMessage($event, $enableBacktrace = FALSE)
+    protected function BuildJSONMessage($event, $enableBacktrace = false)
     {
-    Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
+        Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
 
-        $Fields = array();
-
-        $Fields['Level'] = $event['priority'];
-        $Fields['FileName'] = $event['file'];
-        $Fields['LineNumber'] = $event['line'];
-        $Fields['StoreCode'] = $event['store_code'];
-        $Fields['TimeElapsed'] = $event['time_elapsed'];
-        $Fields['Host'] = php_uname('n');
-        $Fields['TimeStamp'] = date('Y-m-d H:i:s', strtotime($event['timestamp']));
-        $Fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
+        $fields = array();
+        $fields['Level'] = $event['priority'];
+        $fields['FileName'] = $event['file'];
+        $fields['LineNumber'] = $event['line'];
+        $fields['StoreCode'] = $event['store_code'];
+        $fields['TimeElapsed'] = $event['time_elapsed'];
+        $fields['Host'] = php_uname('n');
+        $fields['TimeStamp'] = date('Y-m-d H:i:s', strtotime($event['timestamp']));
+        $fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
 
         if ($event['backtrace']) {
-            $Fields['Message'] = $event['message']."\n\nBacktrace:\n".$event['backtrace'];
+            $fields['Message'] = $event['message'] . "\n\nBacktrace:\n" . $event['backtrace'];
         } else {
-            $Fields['Message'] = $event['message'];
+            $fields['Message'] = $event['message'];
         }
 
-        foreach (array('REQUEST_METHOD', 'REQUEST_URI', 'REMOTE_IP', 'HTTP_USER_AGENT') as $Key) {
-            if (!empty($event[$Key])) {
-                $Fields[$Key] = $event[$Key];
+        foreach (array('REQUEST_METHOD', 'REQUEST_URI', 'REMOTE_IP', 'HTTP_USER_AGENT') as $key) {
+            if (!empty($event[$key])) {
+                $fields[$key] = $event[$key];
             }
         }
 
-        return json_encode($Fields);
+        return json_encode($fields);
     }
-
 
     /**
      * Sends a JSON Message to Loggly.
      *
-     * @param string Message The JSON-Encoded Message to be sent.
+     * @param  string $message The JSON-Encoded Message to be sent.
+     * @throws Zend_Log_Exception
      * @return bool True if message was sent correctly, False otherwise.
      */
-    protected function PublishMessage($Message)
+    protected function PublishMessage($message)
     {
-        $fp = fsockopen(sprintf('ssl://%s', $this->LogglyServer),
-                                                $this->LogglyPort,
-                                                $ErrorNumber,
-                                                $ErrorMessage,
-                                                $this->Timeout);
+        /* @var $helper Firegento_Logger_Helper_Data */
+        $helper = Mage::helper('firegento_logger');
+
+        $fp = fsockopen(
+            sprintf('ssl://%s', $this->_logglyServer),
+            $this->_logglyPort,
+            $errorNumber,
+            $errorMessage,
+            $this->_timeout
+        );
 
         // TODO Replace HTTPS with UDP
         try {
-            $Out = sprintf("POST %s/%s HTTP/1.1\r\n",
-                                         $this->LogglyPath,
-                                         $this->InputKey);
-            $Out .= sprintf("Host: %s\r\n", $this->LogglyServer);
-            $Out .= "Content-Type: application/json\r\n";
-            $Out .= "User-Agent: Vanilla Logger Plugin\r\n";
-            $Out .= sprintf("Content-Length: %d\r\n", strlen($Message));
-            $Out .= "Connection: Close\r\n\r\n";
-            $Out .= $Message . "\r\n\r\n";
+            $out = sprintf("POST %s/%s HTTP/1.1\r\n",
+                $this->_logglyPath,
+                $this->_inputKey
+            );
+            $out .= sprintf("Host: %s\r\n", $this->_logglyServer);
+            $out .= "Content-Type: application/json\r\n";
+            $out .= "User-Agent: Vanilla Logger Plugin\r\n";
+            $out .= sprintf("Content-Length: %d\r\n", strlen($message));
+            $out .= "Connection: Close\r\n\r\n";
+            $out .= $message . "\r\n\r\n";
 
-            $Result = fwrite($fp, $Out);
+            $result = fwrite($fp, $out);
             fclose($fp);
 
-            if ($Result == false) {
-                throw new Zend_Log_Exception(sprintf(Mage::helper('firegento_logger')->__('Error occurred posting log message to Loggly via HTTPS. Posted Message: %s'),
-                                                                                         $Message));
+            if ($result == false) {
+                throw new Zend_Log_Exception(
+                    sprintf($helper->__('Error occurred posting log message to Loggly via HTTPS. Posted Message: %s'),
+                    $message)
+                );
             }
         } catch (Exception $e) {
             throw new Zend_Log_Exception($e->getMessage(), $e->getCode());
@@ -136,21 +180,22 @@ class Firegento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
      * Places event line into array of lines to be used as message body.
      *
      * @param  array $event Event data
-     * @return void
+     * @return bool True if message was sent correctly, False otherwise.
      */
     protected function _write($event)
     {
-        $Message = $this->BuildJSONMessage($event, $this->_enableBacktrace);
-
-        return $this->PublishMessage($Message);
+        $message = $this->BuildJSONMessage($event, $this->_enableBacktrace);
+        return $this->PublishMessage($message);
     }
 
-  /**
-   * Satisfy newer Zend Framework
-   *
-   * @static
-   * @param $config
-   */
-  public static function factory($config) {}
+    /**
+     * Satisfy newer Zend Framework
+     *
+     * @param  array|Zend_Config $config Configuration
+     * @return void|Zend_Log_FactoryInterface
+     */
+    public static function factory($config)
+    {
 
+    }
 }

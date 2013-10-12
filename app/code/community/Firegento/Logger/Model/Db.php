@@ -1,15 +1,39 @@
 <?php
+/**
+ * This file is part of a FireGento e.V. module.
+ *
+ * This FireGento e.V. module is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This script is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * PHP version 5
+ *
+ * @category  FireGento
+ * @package   FireGento_Logger
+ * @author    FireGento Team <team@firegento.com>
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
+ * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
+ */
+/**
+ * Model for Database logging
+ *
+ * @category FireGento
+ * @package  FireGento_Logger
+ * @author   FireGento Team <team@firegento.com>
+ */
 class Firegento_Logger_Model_Db extends Zend_Log_Writer_Db
 {
     /**
-     * Database adapter instance
-     * @var Zend_Db_Adapter
+     * @var Zend_Db_Adapter Database adapter instance
      */
     private $_db;
 
     /**
-     * Name of the log table in the database
-     * @var string
+     * @var string Name of the log table in the database
      */
     private $_table;
 
@@ -20,6 +44,11 @@ class Firegento_Logger_Model_Db extends Zend_Log_Writer_Db
      */
     private $_columnMap;
 
+    /**
+     * Class constructor
+     *
+     * @param string $filename Filename
+     */
     public function __construct($filename)
     {
         $resource = Mage::getSingleton('core/resource');
@@ -30,7 +59,9 @@ class Firegento_Logger_Model_Db extends Zend_Log_Writer_Db
     }
 
     /**
-     * @see parent::setFormatter(Zend_Log_Formatter_Interface $formatter)
+     * Set a custom formatter
+     *
+     * @param Zend_Log_Formatter_Interface $formatter Formatter
      */
     public function setFormatter(Zend_Log_Formatter_Interface $formatter)
     {
@@ -40,9 +71,11 @@ class Firegento_Logger_Model_Db extends Zend_Log_Writer_Db
     /**
      * Satisfy newer Zend Framework
      *
-     * @static
-     * @param $config
+     * @param  array|Zend_Config $config Configuration
+     * @return void|Zend_Log_FactoryInterface
      */
-    public static function factory($config) {}
+    public static function factory($config)
+    {
 
+    }
 }

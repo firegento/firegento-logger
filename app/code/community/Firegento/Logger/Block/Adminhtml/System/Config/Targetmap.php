@@ -1,7 +1,36 @@
 <?php
-class Firegento_Logger_Block_Adminhtml_System_Config_Targetmap extends Mage_Adminhtml_Block_System_Config_Form_Field_Array_Abstract
+/**
+ * This file is part of a FireGento e.V. module.
+ *
+ * This FireGento e.V. module is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License version 3 as
+ * published by the Free Software Foundation.
+ *
+ * This script is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
+ * PHP version 5
+ *
+ * @category  FireGento
+ * @package   FireGento_Logger
+ * @author    FireGento Team <team@firegento.com>
+ * @copyright 2013 FireGento Team (http://www.firegento.com)
+ * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
+ */
+/**
+ * Target Map Block for system config
+ *
+ * @category FireGento
+ * @package  FireGento_Logger
+ * @author   FireGento Team <team@firegento.com>
+ */
+class Firegento_Logger_Block_Adminhtml_System_Config_Targetmap
+    extends Mage_Adminhtml_Block_System_Config_Form_Field_Array_Abstract
 {
-
+    /**
+     * Prepare fields to render
+     */
     protected function _prepareToRender()
     {
         $this->addColumn('pattern', array(
@@ -10,7 +39,9 @@ class Firegento_Logger_Block_Adminhtml_System_Config_Targetmap extends Mage_Admi
         ));
 
         $targetRenderer = new Firegento_Logger_Block_Adminhtml_System_Config_Renderer_Select;
-        $targetRenderer->setValues(Mage::getSingleton('firegento_logger/system_config_source_targets')->toOptionArray());
+        $targetRenderer->setValues(
+            Mage::getSingleton('firegento_logger/system_config_source_targets')->toOptionArray()
+        );
         $this->addColumn('target', array(
             'label' => Mage::helper('firegento_logger')->__('Target'),
             'style' => 'width:180px',
@@ -36,23 +67,28 @@ class Firegento_Logger_Block_Adminhtml_System_Config_Targetmap extends Mage_Admi
         $this->_addButtonLabel = Mage::helper('firegento_logger')->__('Add Target Rule');
     }
 
+    /**
+     * Return the targetmap html
+     *
+     * @return string
+     */
     protected function _toHtml()
     {
         // Make sure id is set before template is rendered or else we can't know the id.
-        if ( ! $this->getHtmlId()) {
+        if (!$this->getHtmlId()) {
             $this->setHtmlId('_' . uniqid());
         }
         $html = parent::_toHtml();
 
         // Scripts in the template must be evaluated so that select values can be set.
         $html .= "
-        <script type='text/javascript'>
-        arrayRow{$this->getHtmlId()}._add = arrayRow{$this->getHtmlId()}.add;
-        arrayRow{$this->getHtmlId()}.add = function(templateData, insertAfterId) {
-          this._add(templateData, insertAfterId);
-          this.template.evaluate(templateData).evalScripts();
-        }
-        </script>
+            <script type='text/javascript'>
+            arrayRow{$this->getHtmlId()}._add = arrayRow{$this->getHtmlId()}.add;
+            arrayRow{$this->getHtmlId()}.add = function(templateData, insertAfterId) {
+              this._add(templateData, insertAfterId);
+              this.template.evaluate(templateData).evalScripts();
+            }
+            </script>
         ";
         return $html;
     }
