@@ -1,20 +1,78 @@
-FireGento_Logger
-================
-This extension provides advanced logging functionalities for Magento.
+# Magento Module Advanced Logger
 
-Facts
------
-- Version: 1.3.0
-- Extension key: FireGento_Logger
-- [Extension on GitHub](https://github.com/firegento/firegento-logger/)
-- Composer name: `firegento/logger` on [packages.firegento.com](http://packages.firegento.com/)
-
-Description
------------
 The purpose of this project is to have a simple framework for different logging adapters.
-Originally developed as Hackathon_Logger but moved forewards and will now actively supported by the FireGento community.
 
-### Features
+Originally developed as Hackathon_Logger but moved forewards and will now actively supported by
+firegento community.
+
+See the [**Usage**](#usage) Chapter below to see how to use it.
+
+Installation Instructions
+-------------------------
+
+### Via modman
+
+- Install [modman](https://github.com/colinmollenhour/modman)
+- Use the command from your Magento installation folder: `modman clone https://github.com/firegento/firegento-logger`
+
+### Via composer
+- Install [composer](http://getcomposer.org/download/)
+- Install [Magento Composer](https://github.com/magento-hackathon/magento-composer-installer)
+- Create a composer.json into your project like the following sample:
+
+```json
+{
+    ...
+    "require": {
+        "firegento/logger":"*"
+    },
+    "repositories": [
+	    {
+            "type": "composer",
+            "url": "http://packages.firegento.com"
+        }
+    ],
+    "extra":{
+        "magento-root-dir": "./"
+    }
+}
+```
+
+- Then from your `composer.json` folder: `php composer.phar install` or `composer install`
+
+### Manually
+- You can copy the files from the folders of this repository to the same folders of your installation
+
+
+### Installation in ALL CASES
+* Clear the cache, logout from the admin panel and then login again.
+
+Uninstallation
+--------------
+* Remove all extension files from your Magento installation
+
+<a name="usage">
+## Usage
+
+Configure the different loggers in `System > Configuration > Advanced > Firegento Logger`
+
+
+## Further Information
+
+### Core Contributors
+
+* Karl Spies
+* Christoph
+* Christian
+* Claas
+* Damian Luszczymak
+* Colin
+* Marco Becker
+* Nicolai Essig
+* Daniel Kröger
+
+### Current Status of Project
+
 Complete, working logger interfaces:
 - File (Magento default)
 - File (Advanced Format)
@@ -32,49 +90,16 @@ It is possible to use **Multiple-Targets**!
 - Log Live View (Like a tail in terminal)
 - Report View (Shows content of a report in backend)
 
-### Roadmap
-- Nothing planned, yet!
+### Further work
 
-Installation
-------------
-1. Install the module via modman `modman clone git@github.com:firegento/firegento-logger.git`
-2. Clear the cache, logout from the admin panel and then login again.
-3. Configure the differnet loggers in *System > Configuration > Advanced > FireGento Logger*.
+### External libraries
 
-External libraries
-------------------
 For XMPP we use https://github.com/cweiske/xmpphp.
 
-Support
--------
-If you encounter any problems or bugs, please create an issue on [GitHub](https://github.com/firegento/firegento-logger/issues).
+### How to contribute
 
-Contribution
-------------
-Any contribution to the development of MageSetup is highly welcome. The best possibility to provide any code is to open a [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
-
-Developer
----------
-FireGento Team
-* Website: [http://firegento.com](http://firegento.com)
-* Twitter: [@firegento](https://twitter.com/firegento)
-
-### Core Contributors
-
-* Karl Spies
-* Christoph
-* Christian
-* Claas
-* Damian Luszczymak
-* Colin
-* Marco Becker
-* Nicolai Essig
-* Daniel Kröger
+Make a fork, commit to develop branch and make a pull request
 
 Licence
 -------
 [GNU General Public License, version 3 (GPLv3)](http://opensource.org/licenses/gpl-3.0)
-
-Copyright
----------
-(c) 2011-2013 FireGento Team
