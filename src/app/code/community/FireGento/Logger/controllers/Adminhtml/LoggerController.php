@@ -124,7 +124,7 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
      */
     protected function _isAllowed()
     {
-        $flagEnabled = Mage::getStoreConfigFlag('logger/db/viewer_enabled');
+        $flagEnabled = Mage::getStoreConfigFlag('logger/general/viewer_enabled');
         $flagAcl = Mage::getSingleton('admin/session')->isAllowed('system/logger');
 
         return $flagEnabled && $flagAcl;

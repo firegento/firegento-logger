@@ -27,7 +27,7 @@
                     <sort_order>60</sort_order>
                     <action>adminhtml/logger/index</action>
                     <depends>
-                        <config>logger/db/viewer_enabled</config>
+                        <config>logger/general/viewer_enabled</config>
                     </depends>
                     <children>
                         <grid_viewer translate="title" module="firegento_logger">
