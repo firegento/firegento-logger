@@ -160,6 +160,7 @@ USER AGENT: %HTTP_USER_AGENT%
 FILE: %file%:%line%
 %message%]]></format>
                 <max_backtrace_lines>0</max_backtrace_lines>
+                <viewer_enabled>0</viewer_enabled>
             </general>
             <default>
                 <priority>default</priority>
@@ -172,7 +173,6 @@ FILE: %file%:%line%
             </mailconfig>
             <db>
                 <priority>default</priority>
-                <viewer_enabled>0</viewer_enabled>
                 <max_days_to_keep>45</max_days_to_keep>
             </db>
             <xmpp>
