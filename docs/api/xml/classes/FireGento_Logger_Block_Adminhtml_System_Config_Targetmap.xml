@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Block_Adminhtml_System_Config_Targetmap" namespace="" name="FireGento_Logger_Block_Adminhtml_System_Config_Targetmap" abstract="false" final="false" start="28" end="95">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config" file="Targetmap.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Targetmap.php" size="3566" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="22148a50110332410f2eb3ba5552a90b6fca713d"/>
+  <docblock>
+    <description compact="Target Map Block for system config"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Adminhtml_Block_System_Config_Form_Field_Array_Abstract" namespace="" name="Mage_Adminhtml_Block_System_Config_Form_Field_Array_Abstract"/>
+  <method name="_prepareToRender" start="34" end="68" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Prepare fields to render"/>
+    </docblock>
+  </method>
+  <method name="_toHtml" start="75" end="94" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Return the targetmap html"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+</class>

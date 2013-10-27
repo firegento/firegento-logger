@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Adminhtml_LoggerController" namespace="" name="FireGento_Logger_Adminhtml_LoggerController" abstract="false" final="false" start="28" end="132">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/controllers/Adminhtml" file="LoggerController.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/controllers/Adminhtml/LoggerController.php" size="3775" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="54d1bf9a2d722ae503b4f331bd286ca67dfa621e"/>
+  <docblock>
+    <description compact="Log/Report Viewer for the backend"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Adminhtml_Controller_Action" namespace="" name="Mage_Adminhtml_Controller_Action"/>
+  <method name="indexAction" start="33" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Show grid viewer"/>
+    </docblock>
+  </method>
+  <method name="liveViewAction" start="43" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Show the log viewer"/>
+    </docblock>
+  </method>
+  <method name="reportViewAction" start="53" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Show the report viewer"/>
+    </docblock>
+  </method>
+  <method name="liveViewAjaxAction" start="65" end="94" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Ajax function for reading a log file"/>
+      <return type="object">
+        <type full="string|void" namespace="" name="string|void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="reportAjaxAction" start="101" end="118" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Ajax function for reading a report file"/>
+      <return type="object">
+        <type full="string|void" namespace="" name="string|void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_isAllowed" start="125" end="131" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Check if admin user is allowed to view this controller actions"/>
+      <return description="Flag" type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+</class>

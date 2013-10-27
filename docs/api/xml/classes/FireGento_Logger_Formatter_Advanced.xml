@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Formatter_Advanced" namespace="" name="FireGento_Logger_Formatter_Advanced" abstract="false" final="false" start="28" end="66">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Formatter" file="Advanced.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Formatter/Advanced.php" size="2077" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="864cc26cdcbabfe2a0a954ecead1469489d242eb"/>
+  <docblock>
+    <description compact="Advanced Formatted Logger"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Zend_Log_Formatter_Simple" namespace="" name="Zend_Log_Formatter_Simple"/>
+  <constant name="DEFAULT_FORMAT" value="'%timestamp% %priorityName% (%priority%): %message%'">
+    <docblock>
+      <description compact="Default format"/>
+    </docblock>
+  </constant>
+  <constructor name="__construct" start="40" end="51" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Class constructor"/>
+      <param description="Logging Format" type="object" variable="$format">
+        <type full="null|string" namespace="" name="null|string"/>
+      </param>
+    </docblock>
+    <parameter name="format" byreference="false" type="{unknown}" default="null"/>
+  </constructor>
+  <method name="format" start="60" end="65" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Formats data into a single line to be written by the writer."/>
+      <param description="Event Data" type="array" variable="$event"/>
+      <param description="Backtrace Flag" type="object" variable="$enableBacktrace">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return description="formatted line to write to the log" type="string"/>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+    <parameter name="enableBacktrace" byreference="false" type="{unknown}" default="false"/>
+  </method>
+</class>

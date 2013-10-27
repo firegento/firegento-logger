@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Block_Adminhtml_Logger" namespace="" name="FireGento_Logger_Block_Adminhtml_Logger" abstract="false" final="false" start="28" end="42">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml" file="Logger.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/Logger.php" size="1381" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="603b6774e2535a7006621ad151f6cdd9f534048d"/>
+  <docblock>
+    <description compact="Logger Grid Container"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Adminhtml_Block_Widget_Grid_Container" namespace="" name="Mage_Adminhtml_Block_Widget_Grid_Container"/>
+  <constructor name="__construct" start="34" end="41" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Class constructor"/>
+    </docblock>
+  </constructor>
+</class>

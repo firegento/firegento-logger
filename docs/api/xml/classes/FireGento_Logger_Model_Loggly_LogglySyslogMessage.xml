@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Loggly_LogglySyslogMessage" namespace="" name="FireGento_Logger_Model_Loggly_LogglySyslogMessage" abstract="false" final="false" start="29" end="72">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Loggly" file="LogglySyslogMessage.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Loggly/LogglySyslogMessage.php" size="2496" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="e1a5c19184f7fe1378e0c139cc4ce5b61c19a56c"/>
+  <docblock>
+    <description compact="Implementation of Remote Syslog Message for Loggly. This class logs the events using JSON, which allows providing more details than basic Syslog."/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="SyslogMessage" namespace="" name="SyslogMessage"/>
+  <constructor name="__construct" start="40" end="43" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Class constructor"/>
+      <param description="Message to log" type="string" variable="$message"/>
+      <param description="Facility" type="int" variable="$facility"/>
+      <param description="Severity" type="int" variable="$severity"/>
+      <param description="Timestamp" type="int" variable="$timestamp"/>
+      <param description="Options" type="object" variable="$options">
+        <type full="null" namespace="" name="null"/>
+      </param>
+    </docblock>
+    <parameter name="message" byreference="false" type="{unknown}"/>
+    <parameter name="facility" byreference="false" type="integer" default=""/>
+    <parameter name="severity" byreference="false" type="integer" default=""/>
+    <parameter name="timestamp" byreference="false" type="{unknown}"/>
+    <parameter name="options" byreference="false" type="{unknown}" default="null"/>
+  </constructor>
+  <method name="FormatMessage" start="51" end="59" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Puts all Log Message elements together to form a JSON String that will be passed to the RSysLog Server."/>
+      <return description="The Message as a JSON object." type="string"/>
+    </docblock>
+  </method>
+  <method name="GetMessageChunks" start="68" end="71" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Returns the chunks of the message to send to the RSysLog server.">Note: this specific implementation sends messages as whole JSON Objects,
+there are no "chunks".</description>
+      <return description="A JSON representation of the Log message." type="string"/>
+    </docblock>
+  </method>
+  <parent full="SyslogMessage" namepsace="" name="SyslogMessage">
+    <constant name="MAX_MESSAGE_LENGTH" value="1024"/>
+    <constant name="MAX_TAG_LENGTH" value="1024"/>
+    <constant name="DEFAULT_PROCESSNAME" value="'PHP'"/>
+    <constant name="DEFAULT_HOSTNAME" value="'NONAME'"/>
+    <member name="Facility" type="{unknown}" visibility="protected"/>
+    <member name="Severity" type="{unknown}" visibility="protected"/>
+    <member name="HostName" type="{unknown}" visibility="protected"/>
+    <member name="FQDN" type="{unknown}" visibility="protected"/>
+    <member name="IPAddress" type="{unknown}" visibility="protected"/>
+    <member name="ProcessName" type="{unknown}" visibility="protected"/>
+    <member name="Message" type="{unknown}" visibility="protected"/>
+    <member name="Timestamp" type="{unknown}" visibility="protected"/>
+    <method name="Coalesce" start="36" end="44" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Returns the first non null value amongst the arguments."/>
+        <return description="first non null value amongst the arguments." type="object">
+          <type full="The" namespace="" name="The"/>
+        </return>
+      </docblock>
+    </method>
+    <method name="GetHostName" start="52" end="63" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Returns the Host Name."/>
+        <return description="Host Name of the machine where the script is running, or a" type="object">default value if the name cannot be retrieved.<type full="The" namespace="" name="The"/></return>
+      </docblock>
+    </method>
+    <method name="GetFQDN" start="71" end="77" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Returns the Fully Qualified Domain Name of the Server."/>
+        <return description="Qualified Domain Name of the Server, or an empty string if the" type="object">name could not be resolved.<type full="Fully" namespace="" name="Fully"/></return>
+      </docblock>
+    </method>
+    <method name="GetIPAddress" start="85" end="91" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Returns the IP Address of the Server."/>
+        <return description="IP Address of the Server, or an empty string if the address" type="object">could not be retrieved.<type full="The" namespace="" name="The"/></return>
+      </docblock>
+    </method>
+    <method name="GetProcessName" start="99" end="101" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Returns the Process Name."/>
+        <return description="Name of the Process that is running the script, or a default" type="object">value if the name cannot be retrieved.<type full="The" namespace="" name="The"/></return>
+      </docblock>
+    </method>
+    <method name="SetOptions" start="109" end="113" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Sets several options for the instance."/>
+        <param description="array of options that will be used to configure the" type="object" variable="An">instance.<type full="Options" namespace="" name="Options"/></param>
+      </docblock>
+      <parameter name="Options" byreference="false" type="array"/>
+    </method>
+    <method name="SetFacility" start="118" end="123" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Setter for Facility property."/>
+      </docblock>
+      <parameter name="Facility" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="SetSeverity" start="128" end="134" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Setter for Severity property."/>
+      </docblock>
+      <parameter name="Severity" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="SetProcessName" start="139" end="142" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Setter for ProcessName property."/>
+      </docblock>
+      <parameter name="ProcessName" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="SetMessage" start="147" end="149" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Setter for Message property."/>
+      </docblock>
+      <parameter name="Message" byreference="false" type="{unknown}"/>
+    </method>
+    <method name="SetTimestamp" start="156" end="161" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Setter for Timestamp property."/>
+        <link value="http://tools.ietf.org/html/rfc5424"/>
+      </docblock>
+      <parameter name="Timestamp" byreference="false" type="{unknown}"/>
+    </method>
+    <constructor name="__construct" start="172" end="181" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Class constructor."/>
+        <param description="log message." type="object" variable="The">
+          <type full="Message" namespace="" name="Message"/>
+        </param>
+        <param description="Facility that generated the message (@link SyslogFacility)." type="object" variable="The">
+          <type full="Facility" namespace="" name="Facility"/>
+        </param>
+        <param description="Severity of the message (@link SyslogSeverity)." type="object" variable="The">
+          <type full="Severity" namespace="" name="Severity"/>
+        </param>
+        <param description="timestamp of the log message." type="object" variable="The">
+          <type full="Timestamp" namespace="" name="Timestamp"/>
+        </param>
+        <param description="configuration options (@link Options)." type="object" variable="Additional">
+          <type full="Options" namespace="" name="Options"/>
+        </param>
+      </docblock>
+      <parameter name="Message" byreference="false" type="{unknown}"/>
+      <parameter name="Facility" byreference="false" type="integer" default=""/>
+      <parameter name="Severity" byreference="false" type="integer" default=""/>
+      <parameter name="Timestamp" byreference="false" type="{unknown}"/>
+      <parameter name="Options" byreference="false" type="{unknown}" default="null"/>
+    </constructor>
+    <method name="FormatMessage" start="236" end="242" abstract="false" final="false" static="false" visibility="protected">
+      <docblock>
+        <description compact="Puts all Log Message elements together to form a string that will be passed to the RSysLog Server."/>
+        <return description="The Message as a string." type="string"/>
+      </docblock>
+    </method>
+    <method name="GetMessageChunks" start="251" end="278" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Returns the chunks that form the full log message. If the message is short enough, it's not split and just returned."/>
+        <return description="array containing the chunk of the Log Message. If the message is" type="object">short enough, the array will contain only one value.<type full="An" namespace="" name="An"/></return>
+      </docblock>
+    </method>
+  </parent>
+</class>

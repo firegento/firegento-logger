@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Block_Adminhtml_System_Config_Renderer_Select" namespace="" name="FireGento_Logger_Block_Adminhtml_System_Config_Renderer_Select" abstract="false" final="false" start="28" end="58">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Renderer" file="Select.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Renderer/Select.php" size="1956" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="e8d06d422866b02a44f699eb1e73f67e5f903f59"/>
+  <docblock>
+    <description compact="Target Map Select Field Block for system config"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Core_Block_Abstract" namespace="" name="Mage_Core_Block_Abstract"/>
+  <method name="_toHtml" start="36" end="56" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Return the select html"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+</class>

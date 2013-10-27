@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_System_Config_Source_Prioritydefault" namespace="" name="FireGento_Logger_Model_System_Config_Source_Prioritydefault" abstract="false" final="false" start="28" end="44">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/System/Config/Source" file="Prioritydefault.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/System/Config/Source/Prioritydefault.php" size="1441" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="78b971afbc713f88bde355a74887a98f9ff4b16a"/>
+  <docblock>
+    <description compact="Log priorities"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="FireGento_Logger_Model_System_Config_Source_Priorities" namespace="" name="FireGento_Logger_Model_System_Config_Source_Priorities"/>
+  <method name="toOptionArray" start="36" end="43" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve all priorities with a default value"/>
+      <return description="Priorities" type="array"/>
+    </docblock>
+  </method>
+  <parent full="FireGento_Logger_Model_System_Config_Source_Priorities" namepsace="" name="FireGento_Logger_Model_System_Config_Source_Priorities">
+    <method name="toOptionArray" start="35" end="49" abstract="false" final="false" static="false" visibility="public">
+      <docblock>
+        <description compact="Retrieve all priority options"/>
+        <return description="Priorities" type="array"/>
+      </docblock>
+    </method>
+  </parent>
+</class>

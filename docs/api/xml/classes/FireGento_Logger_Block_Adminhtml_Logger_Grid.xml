@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Block_Adminhtml_Logger_Grid" namespace="" name="FireGento_Logger_Block_Adminhtml_Logger_Grid" abstract="false" final="false" start="28" end="154">
+  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/Logger" file="Grid.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/Logger/Grid.php" size="4650" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="bed390c89fb92df0ff2b9400abd7d6a22dc72d6b"/>
+  <docblock>
+    <description compact="Logger Grid"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Adminhtml_Block_Widget_Grid" namespace="" name="Mage_Adminhtml_Block_Widget_Grid"/>
+  <member name="_helper" type="{unknown}" visibility="protected">
+    <docblock>
+      <description compact=""/>
+      <var type="object">
+        <type full="FireGento_Logger_Helper_Data" namespace="" name="FireGento_Logger_Helper_Data"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="_construct" start="39" end="42" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Instantiate the helper"/>
+    </docblock>
+  </method>
+  <constructor name="__construct" start="47" end="54" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Grid Constructor"/>
+    </docblock>
+  </constructor>
+  <method name="_prepareCollection" start="61" end="66" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Prepare the grid collection with the database log entries"/>
+      <return type="object">
+        <type full="FireGento_Logger_Block_Adminhtml_Logger_Grid" namespace="" name="FireGento_Logger_Block_Adminhtml_Logger_Grid"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="_prepareColumns" start="73" end="104" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Prepare the grid columns"/>
+      <return type="object">
+        <type full="FireGento_Logger_Block_Adminhtml_Logger_Grid" namespace="" name="FireGento_Logger_Block_Adminhtml_Logger_Grid"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="decorateSeverity" start="113" end="134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add a severity css class to the value"/>
+      <param description="Logging Value" type="mixed" variable="$value"/>
+      <param description="DB Log Entry" type="object" variable="$row">
+        <type full="Varien_Object" namespace="" name="Varien_Object"/>
+      </param>
+      <return description="Decorated HTML" type="string"/>
+    </docblock>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+    <parameter name="row" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getSeverityOptions" start="141" end="153" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve the severity options"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+</class>
