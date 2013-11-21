@@ -145,6 +145,15 @@
                 </writer_models>
             </core>
         </log>
+        <template>
+            <email>
+                <firegento_logger_notification_email_template>
+                    <label>Notification Email Template</label>
+                    <file>firegento_logger/notification.html</file>
+                    <type>html</type>
+                </firegento_logger_notification_email_template>
+            </email>
+        </template>
     </global>
     <default>
         <logger>

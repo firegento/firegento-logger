@@ -210,6 +210,17 @@
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
                         </max_days_to_keep>
+                        <email_notification_rule>
+                            <label>Email Notification Rules</label>
+                            <frontend_model>firegento_logger/adminhtml_system_config_emailNotificationRule</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Use Regular Expressions to specify which messages should be emailed out
+                                to individuals.
+                            ]]></comment>
+                        </email_notification_rule>
                     </fields>
                 </db>
                 <xmpp translate="label">

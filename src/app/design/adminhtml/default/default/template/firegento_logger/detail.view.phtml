@@ -1,0 +1,17 @@
+<?php
+/**
+ * @var $this FireGento_Logger_Block_Adminhtml_Logger_View
+ */
+?>
+
+<div class="content-header">
+    <h3 class="icon-head head-system-account"><?php echo $this->__('Logger Entry: #' . $this->getLoggerEntry()->getId()); ?></h3>
+</div>
+
+<div class='exception'>
+    <pre><?php echo $this->getLoggerEntry()->getMessage();?></pre>
+</div>
+
+<button onclick="document.location='<?php echo $this->getUrl('adminhtml/logger/index'); ?>';">
+    <span><span>Back</span></span>
+</button>
