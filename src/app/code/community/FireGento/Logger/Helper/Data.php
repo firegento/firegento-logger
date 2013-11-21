@@ -36,6 +36,11 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     protected $_targetMap = null;
 
     /**
+     * @var null
+     */
+    protected $_notificationRules = null;
+
+    /**
      * Get logger config value
      *
      * @param  string $path Config Path
@@ -276,5 +281,21 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         } else {
             $event['HOSTNAME'] = 'Could not determine hostname !';
         }
+    }
+
+    public function getEmailNotificationRules()
+    {
+        if ($this->_notificationRules != null) {
+            return $this->_notificationRules;
+        }
+
+        $notificationRulesSerialized = $this->getLoggerConfig('db/email_notification_rule');
+        if (! $notificationRulesSerialized) {
+            return array();
+        }
+        $notificationRules = unserialize($notificationRulesSerialized);
+
+        $this->_notificationRules = $notificationRules;
+        return $notificationRules;
     }
 }

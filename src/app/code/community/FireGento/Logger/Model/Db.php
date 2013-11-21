@@ -78,4 +78,78 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
     {
 
     }
+
+    /**
+     * After writing the log entry to the database, conditionally
+     * send out a notification based on the notification rules.
+     *
+     * @param array $event
+     */
+    protected function _write($event)
+    {
+        parent::_write($event);
+
+        /** @var Varien_Db_Adapter_Pdo_Mysql $db */
+        $db = $this->_db;
+        $connection = $db->getConnection();
+        $lastInsertId = $connection->lastInsertId();
+        $loggerEntry = Mage::getModel('firegento_logger/db_entry')->load($lastInsertId);
+
+        $notificationMap = Mage::helper('firegento_logger')->getEmailNotificationRules();
+        foreach ($notificationMap as $rule) {
+            if ($this->_matchRule($rule, $loggerEntry)) {
+                $this->_sendNotification($rule, $loggerEntry);
+            }
+        }
+    }
+
+    /**
+     * @param $rule
+     * @param $loggerEntry FireGento_Logger_Model_Db_Entry
+     * @return bool
+     */
+    protected function _matchRule($rule, $loggerEntry)
+    {
+        $pattern = $rule['pattern'];
+        if ($rule['severity'] != 'default' && $loggerEntry->getSeverity() > $rule['severity']) {
+            return false;
+        }
+
+        if (!$rule['pattern']) {
+            return true;
+        }
+
+        $result = preg_match("/$pattern/i", $loggerEntry->getMessage());
+        if ($result) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @param $rule
+     * @param $loggerEntry FireGento_Logger_Model_Db_Entry
+     */
+    protected function _sendNotification($rule, $loggerEntry)
+    {
+        /** @var Mage_Core_Model_Email_Template $template */
+        $template  = Mage::getModel('core/email_template')
+            ->loadDefault('firegento_logger_notification_email_template');
+
+        $email = Mage::getStoreConfig('trans_email/ident_general/email');
+        $name = Mage::getStoreConfig('trans_email/ident_general/name');
+
+        $template->setData('sender_name', $name )
+            ->setData('sender_email', $email);
+
+        $variables = array(
+            'loggerentry_url' => Mage::getUrl('adminhtml/logger/view', array('loggerentry_id' => $loggerEntry->getId())),
+            'loggerentry' => $loggerEntry
+        );
+
+        $recipientsCsv = $rule['email_list_csv'];
+        $recipients = array_map('trim',explode(",", $recipientsCsv));
+        $template->send($recipients, null, $variables);
+    }
 }
