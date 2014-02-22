@@ -98,7 +98,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     {
         if ($this->_useQueue) {
             // Format now so that timestamps are correct
-            $this->_loggerCache[] = $this->_formatter->format($event);
+            $this->_loggerCache[] = $event;
         } else {
             foreach ($this->_writers as $writer) {
                 // add hostname info to event if DB Logger ...
@@ -116,13 +116,31 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
      */
     public function shutdown()
     {
-        $events = implode(PHP_EOL, $this->_loggerCache);
         foreach ($this->_writers as $writer) {
-            if ($events) {
-                $writer->write($events);
+            if ($this->_useQueue && count($this->_loggerCache) > 0) {
+                $writer->write($this->implodeEvents($this->_loggerCache));
             }
             $writer->shutdown();
         }
+    }
+
+    /**
+     * @param $events
+     *
+     * @return array
+     */
+    public function implodeEvents($events) {
+        $bigEvent = array();
+
+        $bigEvent['priority'] = 0;
+        $bigEvent['message'] = "";
+
+        foreach ($events as $event) {
+            $bigEvent['priority'] = max($event['priority'], $bigEvent['priority']);
+            $bigEvent['message'] .= $event['message'].PHP_EOL;
+        }
+
+        return $bigEvent;
     }
 
     /**
