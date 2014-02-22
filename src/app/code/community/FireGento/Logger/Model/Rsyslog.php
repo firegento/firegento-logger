@@ -88,7 +88,7 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
      *
      * @return string The full URL where the Log messages will be sent.
      */
-    protected function GetSyslogPublisher()
+    protected function getSyslogPublisher()
     {
         if (empty($this->_syslogPublisher)) {
             $this->_syslogPublisher = new RSyslog(($this->_hostName . ':' . $this->_port), $this->_timeout);
@@ -103,7 +103,7 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
      * @param  FireGento_Logger_Model_Event $event A Log4php Event.
      * @return SyslogMessage
      */
-    protected function BuildSysLogMessage($event)
+    protected function buildSysLogMessage($event)
     {
         $aUrlParts = parse_url(Mage::getBaseUrl());
         return new SyslogMessage(
@@ -126,7 +126,7 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
      * @throws Zend_Log_Exception
      * @return bool True if message was sent correctly, False otherwise.
      */
-    protected function PublishMessage($message)
+    protected function publishMessage($message)
     {
         $result = $this->GetSyslogPublisher()->Send($message);
         if ($result === true) {
@@ -145,8 +145,6 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
                 $result[1]
             )
         );
-
-        return false;
     }
 
     /**
@@ -180,8 +178,8 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
     {
         $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
 
-        $message = $this->BuildSysLogMessage($event);
-        return $this->PublishMessage($message);
+        $message = $this->buildSysLogMessage($event);
+        return $this->publishMessage($message);
     }
 
     /**

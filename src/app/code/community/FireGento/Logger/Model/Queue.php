@@ -94,6 +94,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
      */
     protected function _write($event)
     {
+        /** @var $event FireGento_Logger_Model_Event */
         $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
 
         if ($this->_useQueue) {
@@ -128,9 +129,9 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
      */
     public function implodeEvents($events)
     {
-        $bigEvent = Mage::getModel('firegento_logger/event')
-            ->setPriority(0)
-            ->setMessage('');
+        /** @var $bigEvent FireGento_Logger_Model_Event */
+        $bigEvent = Mage::getModel('firegento_logger/event');
+        $bigEvent->setPriority(0)->setMessage('');
 
         foreach ($events as $event) {
             /** @var FireGento_Logger_Model_Event $event */
