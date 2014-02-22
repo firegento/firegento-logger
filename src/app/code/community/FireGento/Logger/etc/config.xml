@@ -98,6 +98,17 @@
                 <class>FireGento_Logger_Block</class>
             </firegento_logger>
         </blocks>
+        <events>
+            <controller_front_send_response_before>
+                <observers>
+                    <firegento_logger>
+                        <class>firegento_logger/observer</class>
+                        <type>singleton</type>
+                        <method>writeQueue</method>
+                    </firegento_logger>
+                </observers>
+            </controller_front_send_response_before>
+        </events>
         <log>
             <core>
                 <writer_model>FireGento_Logger_Model_Queue</writer_model>

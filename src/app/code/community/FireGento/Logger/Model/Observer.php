@@ -126,4 +126,13 @@ class FireGento_Logger_Model_Observer extends Varien_Object
     {
         return Varien_Date::formatDate($date, false);
     }
+
+    public function writeQueue($observer)
+    {
+        $temp = Mage::registry(FireGento_Logger_Model_Queue::FIRGENTO_LOGGER_QUEUE);
+        if(Mage::registry(FireGento_Logger_Model_Queue::FIRGENTO_LOGGER_QUEUE))
+        {
+            Mage::registry(FireGento_Logger_Model_Queue::FIRGENTO_LOGGER_QUEUE);
+        }
+    }
 }
