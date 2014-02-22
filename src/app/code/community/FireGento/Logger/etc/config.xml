@@ -143,7 +143,7 @@
                         <class>FireGento_Logger_Model_Chromelogger</class>
                     </chromelogger>
                     <sentry>
-                        <label>Magento Sentry Logger</label>
+                        <label>Sentry Logger</label>
                         <class>FireGento_Logger_Model_Sentry</class>
                     </sentry>
                 </writer_models>

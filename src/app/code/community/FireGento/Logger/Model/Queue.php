@@ -189,12 +189,4 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     {
 
     }
-
-    /**
-     * Call shutdown method flush outstanding messages from writer.
-     */
-    public function __destruct()
-    {
-        $this->shutdown();
-    }
 }

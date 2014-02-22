@@ -6,5 +6,6 @@ src/lib/XMPPHP/                                                         lib/XMPP
 src/lib/Graylog2-gelf-php/                                              lib/Graylog2-gelf-php/
 src/lib/rsyslog/                                                        lib/rsyslog
 src/lib/chromelogger/                                                   lib/chromelogger
+src/lib/raven-php/                                                      lib/raven-php
 src/shell/logger.php                                                    shell/logger.php
 src/skin/adminhtml/default/default/firegento_logger.css                 skin/adminhtml/default/default/firegento_logger.css
