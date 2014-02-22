@@ -192,13 +192,14 @@ FILE: %file%:%line%
             </rsyslog>
             <logglyhttps>
                 <priority>default</priority>
+                <hostname>logs-01.loggly.com</hostname>
                 <timeout>5</timeout>
                 <inputkey></inputkey>
                 <app_name>Magento/</app_name>
             </logglyhttps>
             <logglysyslog>
                 <priority>default</priority>
-                <hostname>logs.loggly.com</hostname>
+                <hostname>logs-01.loggly.com</hostname>
                 <port>42146</port>
                 <timeout>5</timeout>
                 <app_name>Magento/</app_name>

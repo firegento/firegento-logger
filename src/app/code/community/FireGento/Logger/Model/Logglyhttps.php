@@ -89,6 +89,8 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
 
         $this->_inputKey = $helper->getLoggerConfig('logglyhttps/inputkey');
         $this->_timeout = $helper->getLoggerConfig('logglyhttps/timeout');
+        $this->_logglyServer = $helper->getLoggerConfig('logglysyslog/hostname');
+
     }
 
     /**

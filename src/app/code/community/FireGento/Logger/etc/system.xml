@@ -309,7 +309,7 @@
                 <logglyhttps translate="label">
                     <label>Loggly (HTTPS) Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>200</sort_order>
+                    <sort_order>90</sort_order>
                     <show_in_default>1</show_in_default>
                     <comment><![CDATA[
                         Sends log messages in JSON format to <a href="http://www.loggly.com">Loggly</a>,
@@ -329,6 +329,15 @@
                             <show_in_default>1</show_in_default>
                             <comment>Choose the lowest priority level to be logged.</comment>
                         </priority>
+                        <hostname translate="label">
+                            <label>Host Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Host Name or IP Address of the Loggly server. <strong>If not sure, don't change it.</strong>
+                            ]]></comment>
+                        </hostname>
                         <inputkey translate="label">
                             <label>Input Key</label>
                             <frontend_type>text</frontend_type>
@@ -368,7 +377,7 @@
                 <rsyslog translate="label">
                     <label>Remote Syslog (UDP) Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>100</sort_order>
+                    <sort_order>110</sort_order>
                     <show_in_default>1</show_in_default>
                     <comment><![CDATA[
                         Sends log messages to a Remote Syslog Server, using UDP Protocol.
@@ -471,7 +480,7 @@
                 <chromelogger>
                     <label>Chromelogger Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>90</sort_order>
+                    <sort_order>120</sort_order>
                     <show_in_default>1</show_in_default>
                     <fields>
                         <priority translate="label">
