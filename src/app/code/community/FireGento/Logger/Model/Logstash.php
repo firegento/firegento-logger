@@ -33,8 +33,8 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
     protected $_enableBacktrace = false;
     protected $_logstashServer = false;
     protected $_logstashPort = false;
+    protected $_logstashProtocol = false;
     protected $_options = null;
-    protected $_logstashPath = '/';
     /**
      * @var int The timeout to apply when sending data to Loggly servers, in seconds.
      */
@@ -50,11 +50,9 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
     {
         /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
-
-        $this->_options['FileName'] = basename($filename);
-        $this->_options['AppName'] = $helper->getLoggerConfig('logstash/app_name');
-        $this->_logstashServer = $helper->getLoggerConfig('logstash/hostname');
+        $this->_logstashServer = $helper->getLoggerConfig('logstash/host');
         $this->_logstashPort = $helper->getLoggerConfig('logstash/port');
+        $this->_logstashProtocol = $helper->getLoggerConfig('logstash/protocol');
 
     }
 
@@ -83,7 +81,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
      * Builds a JSON Message that will be sent to a Logstath Server.
      *
      * @param  FireGento_Logger_Model_Event $event           A Magento Log Event.
-     * @param  bool  $enableBacktrace Indicates if a backtrace should be added to the log event.
+     * @param  bool                         $enableBacktrace Indicates if a backtrace should be added to the log event.
      * @return string A JSON structure representing the message.
      */
     protected function buildJSONMessage($event, $enableBacktrace = false)
@@ -117,7 +115,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         $helper = Mage::helper('firegento_logger');
 
         $fp = fsockopen(
-            sprintf('tcp://%s', $this->_logstashServer),
+            sprintf('%s://%s', $this->_logstashProtocol, $this->_logstashServer),
             $this->_logstashPort,
             $errorNumber,
             $errorMessage,

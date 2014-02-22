@@ -218,11 +218,13 @@ FILE: %file%:%line%
             <sentry>
                 <apikey>https://XXXXXXXXXXXXXXX:XXXXXXXXXXXXX@app.getsentry.com/7202</apikey>
                 <logger_name>Magento Sentry Logger</logger_name>
+                <priority>default</priority>
             </sentry>
             <logstash>
-                <hostname>127.0.0.1</hostname>
-                <port>9301</port>
-                <logger_name>Magento</logger_name>
+                <priority>default</priority>
+                <host>127.0.0.1</host>
+                <port>6666</port>
+                <protocol>udp</protocol>
             </logstash>
         </logger>
     </default>
