@@ -34,6 +34,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
     protected $_logstashServer = false;
     protected $_logstashPort = false;
     protected $_options = null;
+    protected $_logstashPath = '/';
 
     /**
      * @var int The timeout to apply when sending data to Loggly servers, in seconds.
@@ -81,26 +82,24 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
 
         $fields = array();
-        $fields['Level'] = $event['priority'];
-        $fields['FileName'] = $event['file'];
-        $fields['LineNumber'] = $event['line'];
-        $fields['StoreCode'] = $event['store_code'];
-        $fields['TimeElapsed'] = $event['time_elapsed'];
-        $fields['Host'] = php_uname('n');
-        $fields['TimeStamp'] = date('Y-m-d H:i:s', strtotime($event['timestamp']));
-        $fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
+        $fields['@timestamp'] = date('Y-m-d H:i:s', strtotime($event['timestamp']));
+        $fields['@version'] = 1; //TODO fester Wert
+        $fields['level'] = $event['priority'];
+        $fields['file'] = $event['file'];
+        #$fields['LineNumber'] = $event['line'];
+        #$fields['StoreCode'] = $event['store_code'];
+        #$fields['TimeElapsed'] = $event['time_elapsed'];
+        $fields['source_host'] = php_uname('n');
 
-        if ($event['backtrace']) {
-            $fields['message'] = $event['message'] . "\n\nBacktrace:\n" . $event['backtrace'];
-        } else {
-            $fields['message'] = $event['message'];
-        }
+        #$fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
 
-        foreach (array('REQUEST_METHOD', 'REQUEST_URI', 'REMOTE_IP', 'HTTP_USER_AGENT') as $key) {
-            if (!empty($event[$key])) {
-                $fields[$key] = $event[$key];
-            }
-        }
+        $fields['message'] = $event['message'];
+//        if ($event['backtrace']) {
+//            $fields['message'] = $event['message'] . "\n\nBacktrace:\n" . $event['backtrace'];
+//        } else {
+//
+//        }
+
 
         return json_encode($fields);
     }
@@ -118,7 +117,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         $helper = Mage::helper('firegento_logger');
 
         $fp = fsockopen(
-            sprintf('http://%s', $this->_logstashServer),
+            sprintf('tcp://%s', $this->_logstashServer),
             $this->_logstashPort,
             $errorNumber,
             $errorMessage,
@@ -127,18 +126,8 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
 
         // TODO Replace HTTPS with UDP
         try {
-            $out = sprintf("POST %s/%s HTTP/1.1\r\n",
-                $this->_logglyPath,
-                $this->_inputKey
-            );
-            $out .= sprintf("Host: %s\r\n", $this->_logstashServer);
-            $out .= "Content-Type: application/json\r\n";
-            $out .= "User-Agent: Vanilla Logger Plugin\r\n";
-            $out .= sprintf("Content-Length: %d\r\n", strlen($message));
-            $out .= "Connection: Close\r\n\r\n";
-            $out .= $message . "\r\n\r\n";
 
-            $result = fwrite($fp, $out);
+            $result = fwrite($fp, $message);
             fclose($fp);
 
             if ($result == false) {
