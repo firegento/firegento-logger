@@ -93,6 +93,14 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         $fields = array();
         $fields['@timestamp'] = date('Y-m-d\TH:i:s\Z', strtotime($event['timestamp']));
         $fields['@version'] = "1";
+        $fields['level'] = $event['priority'];
+        $fields['file'] = $event['file'];
+        $fields['LineNumber'] = $event['line'];
+        $fields['StoreCode'] = $event['store_code'];
+        $fields['TimeElapsed'] = $event['time_elapsed'];
+        $fields['source_host'] = php_uname('n');
+        $fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
+
         $fields['message'] = $event['message'];
 
         return json_encode($fields);
