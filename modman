@@ -9,3 +9,4 @@ src/lib/chromelogger/                                                   lib/chro
 src/lib/raven-php/                                                      lib/raven-php
 src/shell/logger.php                                                    shell/logger.php
 src/skin/adminhtml/default/default/firegento_logger.css                 skin/adminhtml/default/default/firegento_logger.css
+src/app/locale/en_US/template/email/firegento_logger                    src/app/locale/en_US/template/email/firegento_logger

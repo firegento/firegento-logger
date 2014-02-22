@@ -151,4 +151,12 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
             Zend_Log::DEBUG => $this->_helper->__('Debug'),
         );
     }
+
+    /**
+     * @param $item FireGento_Logger_Model_Db_Entry
+     */
+    public function getRowUrl($item)
+    {
+        return $this->getUrl('*/*/view', array('loggerentry_id' => $item->getId()));
+    }
 }
