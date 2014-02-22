@@ -93,7 +93,21 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
             '[' . $hostname . '] ' . $event->getMessage()
         );
 
-        parent::_write($event);
+        if ($this->_db === null) {
+            #require_once 'Zend/Log/Exception.php';
+            throw new Zend_Log_Exception('Database adapter is null');
+        }
+
+        if ($this->_columnMap === null) {
+            $dataToInsert = $event;
+        } else {
+            $dataToInsert = array();
+            foreach ($this->_columnMap as $columnName => $fieldKey) {
+                $dataToInsert[$columnName] = $event->getDataUsingMethod($fieldKey);
+            }
+        }
+
+        $this->_db->insert($this->_table, $dataToInsert);
 
         /** @var Varien_Db_Adapter_Pdo_Mysql $db */
         $db = $this->_db;
@@ -150,12 +164,13 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
             ->setData('sender_email', $email);
 
         $variables = array(
-            'loggerentry_url' => Mage::getUrl('adminhtml/logger/view', array('loggerentry_id' => $loggerEntry->getId())),
+            'loggerentry_url' =>
+                Mage::getUrl('adminhtml/logger/view', array('loggerentry_id' => $loggerEntry->getId())),
             'loggerentry' => $loggerEntry
         );
 
         $recipientsCsv = $rule['email_list_csv'];
-        $recipients = array_map('trim',explode(",", $recipientsCsv));
+        $recipients = array_map('trim', explode(",", $recipientsCsv));
         $template->send($recipients, null, $variables);
     }
 }
