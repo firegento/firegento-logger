@@ -142,6 +142,10 @@
                         <label>Chrome Logger</label>
                         <class>FireGento_Logger_Model_Chromelogger</class>
                     </chromelogger>
+                    <sentry>
+                        <label>Magento Sentry Logger</label>
+                        <class>FireGento_Logger_Model_Sentry</class>
+                    </sentry>
                 </writer_models>
             </core>
         </log>
@@ -207,6 +211,10 @@ FILE: %file%:%line%
             <chrome>
                 <priority>default</priority>
             </chrome>
+            <sentry>
+                <apikey>https://XXXXXXXXXXXXXXX:XXXXXXXXXXXXX@app.getsentry.com/7202</apikey>
+                <logger_name>Magento Sentry Logger</logger_name>
+            </sentry>
         </logger>
     </default>
 </config>

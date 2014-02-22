@@ -493,6 +493,27 @@
                         </priority>
                     </fields>
                 </chromelogger>
+                <sentry translate="label">
+                    <label>Sentry Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>130</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <apikey translate="label">
+                            <label>API key</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Add here your API key</comment>
+                        </apikey>
+                        <logger_name>
+                            <label>Logger name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </logger_name>
+                    </fields>
+                </sentry>
             </groups>
         </logger>
     </sections>
