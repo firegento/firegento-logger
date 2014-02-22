@@ -79,6 +79,7 @@ class FireGento_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
      */
     protected function _write($event)
     {
+        $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
         $formattedEvent = $this->_formatter->format($event);
         $this->_eventsToSend[] = $formattedEvent;
     }

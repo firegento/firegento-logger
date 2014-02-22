@@ -61,6 +61,6 @@ class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
     {
         Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
 
-        return parent::format($event);
+        return parent::format($event->getEventDataArray());
     }
 }

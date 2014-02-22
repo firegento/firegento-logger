@@ -94,6 +94,8 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
      */
     protected function _write($event)
     {
+        $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
+
         if ($this->_useQueue) {
             // Format now so that timestamps are correct
             $this->_loggerCache[] = $event;
@@ -102,7 +104,9 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
                 // add hostname info to event if DB Logger ...
                 if ($writer instanceof FireGento_Logger_Model_Db) {
                     $hostname = gethostname() !== false ? gethostname() : '';
-                    $event['message'] = '[' . $hostname . '] ' . $event['message'];
+                    $event->setMessage(
+                        '[' . $hostname . '] ' . $event->getMessage()
+                    );
                 }
                 $writer->write($event);
             }
@@ -131,18 +135,19 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
      */
     public function implodeEvents($events)
     {
-        $bigEvent = array();
-
-        $bigEvent['priority'] = 0;
-        $bigEvent['message'] = "";
+        $bigEvent = Mage::getModel('firegento_logger/event')
+            ->setPriority(0)
+            ->setMessage('');
 
         foreach ($events as $event) {
-            if ($bigEvent['priority'] < $event['priority']) {
-                $bigEvent['priority'] = $event['priority'];
-                $bigEvent['priorityName'] = $event['priorityName'];
-                $bigEvent['timestamp'] = $event['timestamp'];
+            /** @var FireGento_Logger_Model_Event $event */
+            if ($bigEvent->getPriority() > $event->getPriority()) {
+                $bigEvent
+                    ->setPriority($event->getPriority())
+                    ->setPriorityName($event->getPriorityName())
+                    ->setTimestamp($event->getTimestamp());
             }
-            $bigEvent['message'] .= $event['message'].PHP_EOL;
+            $bigEvent->addMessage($event->getMessage());
         }
         return $bigEvent;
     }
