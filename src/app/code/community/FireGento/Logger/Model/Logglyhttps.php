@@ -31,7 +31,7 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
     /**
      * @var string The URL of Loggly Log Server
      */
-    protected $_logglyServer = 'logs.loggly.com';
+    protected $_logglyServer = 'logs-01.loggly.com';
 
     /**
      * @var int The port to use to communicate with Loggly Server.
