@@ -143,9 +143,13 @@
                         <class>FireGento_Logger_Model_Chromelogger</class>
                     </chromelogger>
                     <sentry>
-                        <label>Magento Sentry Logger</label>
+                        <label>Sentry Logger</label>
                         <class>FireGento_Logger_Model_Sentry</class>
                     </sentry>
+                    <logstash>
+                        <label>Logstash Logger</label>
+                        <class>FireGento_Logger_Model_Logstash</class>
+                    </logstash>
                 </writer_models>
             </core>
         </log>
@@ -215,6 +219,11 @@ FILE: %file%:%line%
                 <apikey>https://XXXXXXXXXXXXXXX:XXXXXXXXXXXXX@app.getsentry.com/7202</apikey>
                 <logger_name>Magento Sentry Logger</logger_name>
             </sentry>
+            <logstash>
+                <hostname>127.0.0.1</hostname>
+                <port>9301</port>
+                <logger_name>Magento</logger_name>
+            </logstash>
         </logger>
     </default>
 </config>
