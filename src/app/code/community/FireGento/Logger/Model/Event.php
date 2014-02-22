@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Logger_Model_Event
+class FireGento_Logger_Model_Event extends Varien_Object
 {
 
     private $_iTimestamp;

@@ -107,7 +107,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             $priority = $this->getLoggerConfig(self::XML_PATH_PRIORITY);
         }
         if ($priority !== null && $priority != Zend_Log::WARN) {
-            $writer->addFilter(Mage::getModel('firegento_logger/filter_priority', array($priority)));
+            $writer->addFilter(new Zend_Log_Filter_Priority((int) $priority));
         }
     }
 
@@ -232,19 +232,19 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             $event->setBacktrace(implode("\n", $backtrace));
         }
 
-        if (!empty($_SERVER['REQUEST_METHOD'])){
+        if (!empty($_SERVER['REQUEST_METHOD'])) {
             $event->setRequestMethod($_SERVER['REQUEST_METHOD']);
         } else {
             $event->setRequestMethod(php_sapi_name());
         }
 
-        if (!empty($_SERVER['REQUEST_URI'])){
+        if (!empty($_SERVER['REQUEST_URI'])) {
             $event->setRequestMethod($_SERVER['REQUEST_URI']);
         } else {
             $event->setRequestMethod($_SERVER['PHP_SELF']);
         }
 
-        if (!empty($_SERVER['HTTP_USER_AGENT'])){
+        if (!empty($_SERVER['HTTP_USER_AGENT'])) {
             $event->setHttpUserAgent($_SERVER['HTTP_USER_AGENT']);
         }
 
@@ -290,8 +290,9 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     public function getEventObjectFromArray($event)
     {
         // if more than one logger is active the first logger convert the array
-        if(is_object($event) && get_class($event) == get_class(Mage::getModel('firegento_logger/event')))
+        if(is_object($event) && get_class($event) == get_class(Mage::getModel('firegento_logger/event'))) {
             return $event;
+        }
         return Mage::getModel('firegento_logger/event')
             ->setTimestamp($event['timestamp'])
             ->setMessage($event['message'])
