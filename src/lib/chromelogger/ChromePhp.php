@@ -22,7 +22,7 @@
  * @package ChromePhp
  * @author Craig Campbell <iamcraigcampbell@gmail.com>
  */
-class FireGento_Logger_Model_Chromelogger_Library_ChromePhp
+class ChromePhp
 {
     /**
      * @var string
