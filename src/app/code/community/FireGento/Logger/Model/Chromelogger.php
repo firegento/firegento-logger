@@ -44,7 +44,9 @@ class FireGento_Logger_Model_Chromelogger extends Zend_Log_Writer_Abstract
      */
     public function _write($event)
     {
-        $priority = array_key_exists('priority', $event) ? $event['priority'] : false;
+        $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
+
+        $priority = $event->getPriority();
         $message  = $this->_formatter->format($event);
 
         if ($priority !== false) {

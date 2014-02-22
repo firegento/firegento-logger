@@ -89,8 +89,6 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
 
         $this->_inputKey = $helper->getLoggerConfig('logglyhttps/inputkey');
         $this->_timeout = $helper->getLoggerConfig('logglyhttps/timeout');
-        $this->_logglyServer = $helper->getLoggerConfig('logglysyslog/hostname');
-
     }
 
     /**
@@ -105,24 +103,24 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
         Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
 
         $fields = array();
-        $fields['Level'] = $event['priority'];
-        $fields['FileName'] = $event['file'];
-        $fields['LineNumber'] = $event['line'];
-        $fields['StoreCode'] = $event['store_code'];
-        $fields['TimeElapsed'] = $event['time_elapsed'];
+        $fields['Level'] = $event->getPriority();
+        $fields['FileName'] = $event->getFile();
+        $fields['LineNumber'] = $event->getLine();
+        $fields['StoreCode'] = $event->getStoreCode();
+        $fields['TimeElapsed'] = $event->getTimeElapsed();
         $fields['Host'] = php_uname('n');
-        $fields['TimeStamp'] = date('Y-m-d H:i:s', strtotime($event['timestamp']));
+        $fields['TimeStamp'] = date('Y-m-d H:i:s', strtotime($event->getTimestamp()));
         $fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
 
-        if ($event['backtrace']) {
-            $fields['Message'] = $event['message'] . "\n\nBacktrace:\n" . $event['backtrace'];
+        if ($event->getBacktrace()) {
+            $fields['Message'] = $event->getMessage() . "\n\nBacktrace:\n" . $event->getBacktrace();
         } else {
-            $fields['Message'] = $event['message'];
+            $fields['Message'] = $event->getMessage();
         }
 
-        foreach (array('REQUEST_METHOD', 'REQUEST_URI', 'REMOTE_IP', 'HTTP_USER_AGENT') as $key) {
-            if (!empty($event[$key])) {
-                $fields[$key] = $event[$key];
+        foreach (array('getRequestMethod', 'getRequestUri', 'getRemoteIp', 'getHttpUserAgent') as $method) {
+            if (is_callable(array($event, $method)) && $event->$method()) {
+                $fields[lcfirst(substr($method, 3))] = $event->$method();
             }
         }
 
@@ -186,6 +184,7 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
      */
     protected function _write($event)
     {
+        $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
         $message = $this->BuildJSONMessage($event, $this->_enableBacktrace);
         return $this->PublishMessage($message);
     }
