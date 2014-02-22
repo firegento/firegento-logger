@@ -59,20 +59,6 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
     }
 
     /**
-     * Preformat the message
-     *
-     * @param array $event the actual log event
-     */
-    protected function _write($event)
-    {
-        $hostname = gethostname() !== false ? gethostname() : '';
-        $event->setMessage(
-            '[' . $hostname . '] ' . $event->getMessage()
-        );
-        parent::_write($event);
-    }
-
-    /**
      * Set a custom formatter
      *
      * @param Zend_Log_Formatter_Interface $formatter Formatter
@@ -101,6 +87,12 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
      */
     protected function _write($event)
     {
+        //preformat the message
+        $hostname = gethostname() !== false ? gethostname() : '';
+        $event->setMessage(
+            '[' . $hostname . '] ' . $event->getMessage()
+        );
+
         parent::_write($event);
 
         /** @var Varien_Db_Adapter_Pdo_Mysql $db */
