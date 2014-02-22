@@ -281,10 +281,17 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     /**
-     * @param array $event
+     * Convert Array to Event Object
+     *
+     * @param array $event Event
+     *
      * @return FireGento_Logger_Model_Event
      */
-    public function getEventObjectFromArray($event){
+    public function getEventObjectFromArray($event)
+    {
+        // if more than one logger is active the first logger convert the array
+        if(is_object($event) && get_class($event) == get_class(Mage::getModel('firegento_logger/event')))
+            return $event;
         return Mage::getModel('firegento_logger/event')
             ->setTimestamp($event['timestamp'])
             ->setMessage($event['message'])

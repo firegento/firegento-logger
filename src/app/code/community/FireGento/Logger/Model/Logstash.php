@@ -99,8 +99,6 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         $fields['StoreCode'] = $event->getStoreCode();
         $fields['TimeElapsed'] = $event->getTimeElapsed();
         $fields['source_host'] = $event->getHostname();
-        $fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
-
         $fields['message'] = $event->getMessage();
 
         return json_encode($fields);
