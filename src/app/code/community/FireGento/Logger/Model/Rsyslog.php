@@ -101,14 +101,21 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
      * Builds a Message that will be sent to a RSyslog Server.
      *
      * @param  array $event A Log4php Event.
-     * @return string A string representing the message.
+     * @return SyslogMessage
      */
     protected function BuildSysLogMessage($event)
     {
-        return new SyslogMessage($this->_formatter->format($event, $this->_enableBacktrace),
+        $aUrlParts = parse_url(Mage::getBaseUrl());
+        return new SyslogMessage(
+            $this->_formatter->format($event, $this->_enableBacktrace),
             self::DEFAULT_FACILITY,
             $event['priority'],
-            strtotime($event['timestamp'])
+            strtotime($event['timestamp']),
+            array(
+                'HostName'    => gethostname(),
+                'FQDN'        => $aUrlParts['host'],
+                'ProcessName' => $this->_options['AppName'],
+            )
         );
     }
 
