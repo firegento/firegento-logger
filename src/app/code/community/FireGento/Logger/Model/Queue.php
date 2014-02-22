@@ -112,7 +112,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     /**
      * At the end of the request we write to the actual logger
      */
-    public function processQueue()
+    public function shutdown()
     {
         foreach ($this->_writers as $writer) {
             if ($this->_useQueue && count($this->_loggerCache) > 0) {
@@ -195,6 +195,6 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
      */
     public function __destruct()
     {
-        $this->processQueue();
+        $this->shutdown();
     }
 }
