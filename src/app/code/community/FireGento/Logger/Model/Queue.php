@@ -28,7 +28,6 @@
  */
 class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 {
-    const FIRGENTO_LOGGER_QUEUE = 'firgento_logger_queue';
     /**
      * @var Zend_Log_Writer_Abstract[]
      */
@@ -37,7 +36,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     /**
      * @var array
      */
-    private $_loggerCache = null;
+    private $_loggerCache = array();
 
     /**
      * @var bool
@@ -57,8 +56,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     public function __construct($filename)
     {
         /** @var $helper FireGento_Logger_Helper_Data */
-        $helper = Mage::helper('firegento_logger');
-
+        $helper = Mage::helper('firegento_logger');;
 
         // Only instantiate writers that are needed for this file based on the Filename Filters
         $targets = explode(',', $helper->getLoggerConfig('general/targets'));
@@ -86,14 +84,9 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
         }
 
         $this->_useQueue = !! $helper->getLoggerConfig('general/use_queue');
-    }
-
-    /**
-     * Call shutdown method flush outstanding messages from writer.
-     */
-    public function __destruct()
-    {
-        $this->shutdown();
+        if ($this->_useQueue) {
+            register_shutdown_function(array($this, 'shutDown'));
+        }
     }
 
     /**
@@ -105,8 +98,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     {
         if ($this->_useQueue) {
             // Format now so that timestamps are correct
-            $this->addToQueue($this->_formatter->format($event));
-
+            $this->_loggerCache[] = $this->_formatter->format($event);
         } else {
             foreach ($this->_writers as $writer) {
                 // add hostname info to event if DB Logger ...
@@ -174,13 +166,5 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     public static function factory($config)
     {
 
-    }
-
-    private function addToQueue($event)
-    {
-        $temp_arr = Mage::registry(self::FIRGENTO_LOGGER_QUEUE);
-        $temp_arr[] = $event;
-        Mage::unregister(self::FIRGENTO_LOGGER_QUEUE);
-        Mage::register(self::FIRGENTO_LOGGER_QUEUE,$temp_arr);
     }
 }
