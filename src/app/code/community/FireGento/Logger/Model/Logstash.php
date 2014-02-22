@@ -83,13 +83,13 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
 
         $fields = array();
         $fields['@timestamp'] = date('Y-m-d H:i:s', strtotime($event['timestamp']));
-        $fields['@version'] = 1; //TODO fester Wert
-        $fields['level'] = $event['priority'];
-        $fields['file'] = $event['file'];
+        $fields['@version'] = "1"; //TODO fester Wert
+#        $fields['level'] = $event['priority'];
+#        $fields['file'] = $event['file'];
         #$fields['LineNumber'] = $event['line'];
         #$fields['StoreCode'] = $event['store_code'];
         #$fields['TimeElapsed'] = $event['time_elapsed'];
-        $fields['source_host'] = php_uname('n');
+#        $fields['source_host'] = php_uname('n');
 
         #$fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
 
@@ -116,26 +116,15 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
 
-        $fp = fsockopen(
-            sprintf('tcp://%s', $this->_logstashServer),
-            $this->_logstashPort,
-            $errorNumber,
-            $errorMessage,
-            $this->_timeout
-        );
-
-        // TODO Replace HTTPS with UDP
         try {
+            $client = new Zend_Http_Client('http://' . $this->_logstashServer . ':' . $this->_logstashPort . '/',
+                array(
+                    'maxredirects' => 0,
+                    'timeout' => 5)
+            );
+            $command = $message;
+            $client->setRawData($command, 'application/json')->request('POST');
 
-            $result = fwrite($fp, $message);
-            fclose($fp);
-
-            if ($result == false) {
-                throw new Zend_Log_Exception(
-                    sprintf($helper->__('Error occurred posting log message to Loggly via HTTPS. Posted Message: %s'),
-                    $message)
-                );
-            }
         } catch (Exception $e) {
             throw new Zend_Log_Exception($e->getMessage(), $e->getCode());
         }
