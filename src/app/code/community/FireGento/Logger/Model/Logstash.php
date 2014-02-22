@@ -82,7 +82,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
     /**
      * Builds a JSON Message that will be sent to a Logstath Server.
      *
-     * @param  array $event           A Magento Log Event.
+     * @param  FireGento_Logger_Model_Event $event           A Magento Log Event.
      * @param  bool  $enableBacktrace Indicates if a backtrace should be added to the log event.
      * @return string A JSON structure representing the message.
      */
@@ -91,17 +91,17 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
 
         $fields = array();
-        $fields['@timestamp'] = date('c', strtotime($event['timestamp']));
+        $fields['@timestamp'] = date('c', strtotime($event->getTimestamp()));
         $fields['@version'] = "1";
-        $fields['level'] = $event['priority'];
-        $fields['file'] = $event['file'];
-        $fields['LineNumber'] = $event['line'];
-        $fields['StoreCode'] = $event['store_code'];
-        $fields['TimeElapsed'] = $event['time_elapsed'];
-        $fields['source_host'] = php_uname('n');
+        $fields['level'] = $event->getPriority();
+        $fields['file'] = $event->getFile();
+        $fields['LineNumber'] = $event->getLine();
+        $fields['StoreCode'] = $event->getStoreCode();
+        $fields['TimeElapsed'] = $event->getTimeElapsed();
+        $fields['source_host'] = $event->getHostname();
         $fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
 
-        $fields['message'] = $event['message'];
+        $fields['message'] = $event->getMessage();
 
         return json_encode($fields);
     }
@@ -151,6 +151,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
      */
     protected function _write($event)
     {
+        $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
         $message = $this->buildJSONMessage($event, $this->_enableBacktrace);
         return $this->publishMessage($message);
     }
