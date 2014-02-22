@@ -107,7 +107,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             $priority = $this->getLoggerConfig(self::XML_PATH_PRIORITY);
         }
         if ($priority !== null && $priority != Zend_Log::WARN) {
-            $writer->addFilter(new Zend_Log_Filter_Priority((int) $priority));
+            $writer->addFilter(Mage::getModel('firegento_logger/filter_priority', array($priority)));
         }
     }
 
