@@ -83,10 +83,8 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
             }
         }
 
-        $this->_useQueue = !! $helper->getLoggerConfig('general/use_queue');
-        if ($this->_useQueue) {
-            register_shutdown_function(array($this, 'shutdown'));
-        }
+        $this->_useQueue = (boolean) $helper->getLoggerConfig('general/use_queue');
+
     }
 
     /**
@@ -114,7 +112,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     /**
      * At the end of the request we write to the actual logger
      */
-    public function shutdown()
+    public function processQueue()
     {
         foreach ($this->_writers as $writer) {
             if ($this->_useQueue && count($this->_loggerCache) > 0) {
@@ -190,5 +188,13 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     public static function factory($config)
     {
 
+    }
+
+    /**
+     * Call shutdown method flush outstanding messages from writer.
+     */
+    public function __destruct()
+    {
+        $this->processQueue();
     }
 }
