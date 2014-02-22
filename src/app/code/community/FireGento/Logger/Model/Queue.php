@@ -101,13 +101,6 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
             $this->_loggerCache[] = $event;
         } else {
             foreach ($this->_writers as $writer) {
-                // add hostname info to event if DB Logger ...
-                if ($writer instanceof FireGento_Logger_Model_Db) {
-                    $hostname = gethostname() !== false ? gethostname() : '';
-                    $event->setMessage(
-                        '[' . $hostname . '] ' . $event->getMessage()
-                    );
-                }
                 $writer->write($event);
             }
         }
