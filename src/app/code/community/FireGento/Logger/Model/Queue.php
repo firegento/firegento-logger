@@ -125,21 +125,27 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     }
 
     /**
-     * @param $events
+     * Generate one big event out of queued events.
+     *
+     * @param  array $events all queued events
      *
      * @return array
      */
-    public function implodeEvents($events) {
+    public function implodeEvents($events)
+    {
         $bigEvent = array();
 
         $bigEvent['priority'] = 0;
         $bigEvent['message'] = "";
 
         foreach ($events as $event) {
-            $bigEvent['priority'] = max($event['priority'], $bigEvent['priority']);
+            if ($bigEvent['priority'] < $event['priority']) {
+                $bigEvent['priority'] = $event['priority'];
+                $bigEvent['priorityName'] = $event['priorityName'];
+                $bigEvent['timestamp'] = $event['timestamp'];
+            }
             $bigEvent['message'] .= $event['message'].PHP_EOL;
         }
-
         return $bigEvent;
     }
 
