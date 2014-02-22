@@ -85,7 +85,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
 
         $this->_useQueue = !! $helper->getLoggerConfig('general/use_queue');
         if ($this->_useQueue) {
-            register_shutdown_function(array($this, 'shutDown'));
+            register_shutdown_function(array($this, 'shutdown'));
         }
     }
 
