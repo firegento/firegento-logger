@@ -70,6 +70,7 @@ Configure the different loggers in `System > Configuration > Advanced > Firegent
 * Marco Becker
 * Nicolai Essig
 * Daniel Kröger
+* Michael Ryvlin
 
 ### Current Status of Project
 
@@ -83,6 +84,7 @@ Complete, working logger interfaces:
 - RSyslog (UDP)
 - Loggly (UDP/HTTPS)
 - Chromelogger
+- Logstash
 
 It is possible to use **Multiple-Targets**!
 
@@ -95,10 +97,16 @@ It is possible to use **Multiple-Targets**!
 ### External libraries
 
 For XMPP we use https://github.com/cweiske/xmpphp.
+For ChromeLogger we use https://github.com/ccampbell/chromephp
 
 ### How to contribute
 
 Make a fork, commit to develop branch and make a pull request
+
+### Some Hints
+* There are combinations there doesn't work together
+** You can't use Chromelogger with the embeded queueing model, because the queueing takes place after the response
+is send to the client
 
 Licence
 -------
