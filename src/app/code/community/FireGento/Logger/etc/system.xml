@@ -70,14 +70,14 @@
                               %timestamp%<br/>
                               %priorityName%<br/>
                               %priority%<br/>
-                              %store_code%<br/>
-                              %time_elapsed%<br/>
-                              %HOSTNAME%<br/>
-                              %REQUEST_METHOD%<br/>
-                              %REQUEST_URI%<br/>
-                              %REQUEST_DATA%<br/>
-                              %REMOTE_ADDR%<br/>
-                              %HTTP_USER_AGENT%<br/>
+                              %storeCode%<br/>
+                              %timeElapsed%<br/>
+                              %hostname%<br/>
+                              %requestMethod%<br/>
+                              %requestUri%<br/>
+                              %requestData%<br/>
+                              %remoteAddress%<br/>
+                              %httpUserAgent%<br/>
                               %file%<br/>
                               %line%<br/>
                               %message%<br/>
