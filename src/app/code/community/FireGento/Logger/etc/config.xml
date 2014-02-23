@@ -142,10 +142,6 @@
                         <label>Chrome Logger</label>
                         <class>FireGento_Logger_Model_Chromelogger</class>
                     </chromelogger>
-                    <sentry>
-                        <label>Sentry Logger</label>
-                        <class>FireGento_Logger_Model_Sentry</class>
-                    </sentry>
                     <logstash>
                         <label>Logstash Logger</label>
                         <class>FireGento_Logger_Model_Logstash</class>
@@ -224,11 +220,6 @@ FILE: %file%:%line%
             <chrome>
                 <priority>default</priority>
             </chrome>
-            <sentry>
-                <apikey>https://XXXXXXXXXXXXXXX:XXXXXXXXXXXXX@app.getsentry.com/7202</apikey>
-                <logger_name>Magento Sentry Logger</logger_name>
-                <priority>default</priority>
-            </sentry>
             <logstash>
                 <priority>default</priority>
                 <host>127.0.0.1</host>
