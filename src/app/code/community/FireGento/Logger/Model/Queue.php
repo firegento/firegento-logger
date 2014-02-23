@@ -161,7 +161,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     {
         $this->_formatter = self::getFormatter(true);
         foreach ($this->_writers as $writer) {
-            if (get_class($writer) == 'Zend_Log_Writer_Stream') { // don't override formatter for default writer
+            if (get_class($writer) == 'Zend_Log_Writer_Stream') {
                 $writer->setFormatter(self::getFormatter(false));
             } else {
                 $writer->setFormatter(self::getFormatter(true));

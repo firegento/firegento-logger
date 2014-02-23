@@ -19,7 +19,7 @@
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
 /**
- * Advanced Formatted Logger
+ * Simple Formatted Logger
  *
  * @category FireGento
  * @package  FireGento_Logger
