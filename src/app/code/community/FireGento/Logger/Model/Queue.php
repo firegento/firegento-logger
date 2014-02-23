@@ -49,6 +49,11 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     protected static $_advancedFormatter;
 
     /**
+     * @var Zend_Log_Formatter_Simple
+     */
+    protected static $_simpleFormatter;
+
+    /**
      * Class constructor
      *
      * @param string $filename Filename
@@ -154,29 +159,37 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
      */
     public function setFormatter(Zend_Log_Formatter_Interface $formatter)
     {
-        $this->_formatter = self::getAdvancedFormatter();
+        $this->_formatter = self::getFormatter(true);
         foreach ($this->_writers as $writer) {
             if (get_class($writer) == 'Zend_Log_Writer_Stream') { // don't override formatter for default writer
-                $writer->setFormatter($formatter);
+                $writer->setFormatter(self::getFormatter(false));
             } else {
-                $writer->setFormatter(self::getAdvancedFormatter());
+                $writer->setFormatter(self::getFormatter(true));
             }
         }
     }
 
     /**
-     * Returns the advanced formatter
+     * Returns the advanced or simple formatter based on the flag given
      *
-     * @return FireGento_Logger_Formatter_Advanced
+     * @param bool $bAdvanced
+     * @return FireGento_Logger_Formatter_Advanced|FireGento_Logger_Formatter_Simple
      */
-    public static function getAdvancedFormatter()
+    public static function getFormatter($bAdvanced = true)
     {
-        // Use singleton since all instances will be identical anyway
+        // Use singletons since all instances will be identical anyway
         if (!self::$_advancedFormatter) {
             self::$_advancedFormatter = new FireGento_Logger_Formatter_Advanced;
         }
+        if (!self::$_simpleFormatter) {
+            self::$_simpleFormatter = new FireGento_Logger_Formatter_Simple;
+        }
 
-        return self::$_advancedFormatter;
+        if ($bAdvanced){
+            return self::$_advancedFormatter;
+        } else {
+            return self::$_simpleFormatter;
+        }
     }
 
     /**

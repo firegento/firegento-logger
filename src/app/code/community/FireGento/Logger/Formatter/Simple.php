@@ -25,42 +25,16 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
+class FireGento_Logger_Formatter_Simple extends Zend_Log_Formatter_Simple
 {
-    /**
-     * Default format
-     */
-    const DEFAULT_FORMAT = '%timestamp% %priorityName% (%priority%): %message%';
-
-    /**
-     * Class constructor
-     *
-     * @param null|string $format Logging Format
-     */
-    public function __construct($format = null)
-    {
-        $configFormat = Mage::helper('firegento_logger')->getLoggerConfig('general/format');
-        if ($configFormat) {
-            $format = str_replace('\n', PHP_EOL, $configFormat);
-        }
-        if (!$format) {
-            $format = self::DEFAULT_FORMAT;
-        }
-
-        parent::__construct($format . PHP_EOL);
-    }
-
     /**
      * Formats data into a single line to be written by the writer.
      *
      * @param  FireGento_Logger_Model_Event $event           Event Data
-     * @param  bool  $enableBacktrace Backtrace Flag
      * @return string formatted line to write to the log
      */
-    public function format($event, $enableBacktrace = false)
+    public function format($event)
     {
-        Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
-
         return parent::format($event->getEventDataArray());
     }
 }
