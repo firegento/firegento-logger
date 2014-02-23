@@ -80,6 +80,19 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
     }
 
     /**
+     * Returns log data in advanced format
+     *
+     * @param FireGento_Logger_Model_Event $event
+     *
+     * @return string
+     */
+    protected function getAdvancedInfo($event)
+    {
+        $oAdvancedFormatter = new FireGento_Logger_Formatter_Advanced();
+        return $oAdvancedFormatter->format($event);
+    }
+
+    /**
      * After writing the log entry to the database, conditionally
      * send out a notification based on the notification rules.
      *
@@ -106,6 +119,7 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
             foreach ($this->_columnMap as $columnName => $fieldKey) {
                 $dataToInsert[$columnName] = $event->getDataUsingMethod($fieldKey);
             }
+            $dataToInsert['advanced_info'] = $this->getAdvancedInfo($event);
         }
 
         $this->_db->insert($this->_table, $dataToInsert);
