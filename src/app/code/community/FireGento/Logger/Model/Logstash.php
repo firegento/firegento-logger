@@ -43,8 +43,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
     /**
      * Class constructor
      *
-     * @param  string $filename Filename
-     * @return FireGento_Logger_Model_Logglyhttps
+     * @param string $filename Filename
      */
     public function __construct($filename)
     {
