@@ -83,10 +83,12 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
      * After writing the log entry to the database, conditionally
      * send out a notification based on the notification rules.
      *
-     * @param array $event
+     * @param array $event the log event
+     * @throws Zend_Log_Exception
      */
     protected function _write($event)
     {
+        /** @var $event FireGento_Logger_Model_Event */
         //preformat the message
         $hostname = gethostname() !== false ? gethostname() : '';
         $event->setMessage(
@@ -94,7 +96,6 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
         );
 
         if ($this->_db === null) {
-            #require_once 'Zend/Log/Exception.php';
             throw new Zend_Log_Exception('Database adapter is null');
         }
 

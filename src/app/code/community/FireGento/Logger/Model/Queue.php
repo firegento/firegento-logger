@@ -67,17 +67,17 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
             } else {
                 $targets = array_intersect($targets, array_keys($mappedTargets));
             }
-
+            //writer intstantiation
             foreach ($targets as $target) {
                 $class = (string) Mage::app()->getConfig()->getNode('global/log/core/writer_models/'.$target.'/class');
                 if ($class) {
                     $writer = new $class($filename);
+                    //add filter to target
                     $helper->addPriorityFilter($writer, $target.'/priority');
-
+                    //add backtrace if you need if support is enabled
                     if (method_exists($writer, 'setEnableBacktrace')) {
                         $writer->setEnableBacktrace($mappedTargets[$target]);
                     }
-
                     $this->_writers[] = $writer;
                 }
             }
@@ -98,7 +98,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
         $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
 
         if ($this->_useQueue) {
-            // Format now so that timestamps are correct
+            // if queue is enabled then add to internal cache
             $this->_loggerCache[] = $event;
         } else {
             foreach ($this->_writers as $writer) {
@@ -113,6 +113,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     public function shutdown()
     {
         foreach ($this->_writers as $writer) {
+            //only implode if queue is enabled and cache has entries
             if ($this->_useQueue && count($this->_loggerCache) > 0) {
                 $writer->write($this->implodeEvents($this->_loggerCache));
             }
