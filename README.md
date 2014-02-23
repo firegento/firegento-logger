@@ -1,4 +1,4 @@
-# Magento Module Advanced Logger
+# Magento Module for advanced logging
 
 The purpose of this project is to have a simple framework for different logging adapters.
 
@@ -59,7 +59,7 @@ Configure the different loggers in `System > Configuration > Advanced > Firegent
 
 ## Further Information
 
-### Core Contributors
+### Contributors
 
 * Karl Spies
 * Christoph
