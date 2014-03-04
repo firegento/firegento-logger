@@ -37,7 +37,7 @@ TIME: %timeElapsed%s
 ADDRESS: %remoteAddress%
 USER AGENT: %httpUserAgent%
 FILE: %file%:%line%
-%message%"; 
+%message%";
 
 $installer->setConfigData($advancedFormatPath, $advancedFormat);
 

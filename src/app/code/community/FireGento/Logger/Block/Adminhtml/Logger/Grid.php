@@ -128,9 +128,11 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
             case Zend_Log::ERR:
                 $class = 'grid-severity-critical';
                 break;
-            case Zend_Log::WARN:
             case Zend_Log::NOTICE:
             case Zend_Log::INFO:
+                $class = 'grid-severity-notice';
+                break;
+            case Zend_Log::WARN:
             case Zend_Log::DEBUG:
                 $class = 'grid-severity-minor';
                 break;
