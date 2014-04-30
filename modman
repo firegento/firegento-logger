@@ -8,4 +8,4 @@ src/lib/rsyslog/                                                        lib/rsys
 src/lib/chromelogger/                                                   lib/chromelogger
 src/shell/logger.php                                                    shell/logger.php
 src/skin/adminhtml/default/default/firegento_logger.css                 skin/adminhtml/default/default/firegento_logger.css
-src/app/locale/en_US/template/email/firegento_logger                    src/app/locale/en_US/template/email/firegento_logger
+src/app/locale/en_US/template/email/firegento_logger                    app/locale/en_US/template/email/firegento_logger
