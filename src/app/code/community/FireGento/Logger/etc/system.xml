@@ -70,14 +70,14 @@
                               %timestamp%<br/>
                               %priorityName%<br/>
                               %priority%<br/>
-                              %store_code%<br/>
-                              %time_elapsed%<br/>
-                              %HOSTNAME%<br/>
-                              %REQUEST_METHOD%<br/>
-                              %REQUEST_URI%<br/>
-                              %REQUEST_DATA%<br/>
-                              %REMOTE_ADDR%<br/>
-                              %HTTP_USER_AGENT%<br/>
+                              %storeCode%<br/>
+                              %timeElapsed%<br/>
+                              %hostname%<br/>
+                              %requestMethod%<br/>
+                              %requestUri%<br/>
+                              %requestData%<br/>
+                              %remoteAddress%<br/>
+                              %httpUserAgent%<br/>
                               %file%<br/>
                               %line%<br/>
                               %message%<br/>
@@ -210,6 +210,17 @@
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
                         </max_days_to_keep>
+                        <email_notification_rule>
+                            <label>Email Notification Rules</label>
+                            <frontend_model>firegento_logger/adminhtml_system_config_emailNotificationRule</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Use Regular Expressions to specify which messages should be emailed out
+                                to individuals.
+                            ]]></comment>
+                        </email_notification_rule>
                     </fields>
                 </db>
                 <xmpp translate="label">
@@ -309,7 +320,7 @@
                 <logglyhttps translate="label">
                     <label>Loggly (HTTPS) Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>200</sort_order>
+                    <sort_order>90</sort_order>
                     <show_in_default>1</show_in_default>
                     <comment><![CDATA[
                         Sends log messages in JSON format to <a href="http://www.loggly.com">Loggly</a>,
@@ -329,6 +340,15 @@
                             <show_in_default>1</show_in_default>
                             <comment>Choose the lowest priority level to be logged.</comment>
                         </priority>
+                        <hostname translate="label">
+                            <label>Host Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Host Name or IP Address of the Loggly server. <strong>If not sure, don't change it.</strong>
+                            ]]></comment>
+                        </hostname>
                         <inputkey translate="label">
                             <label>Input Key</label>
                             <frontend_type>text</frontend_type>
@@ -368,7 +388,7 @@
                 <rsyslog translate="label">
                     <label>Remote Syslog (UDP) Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>100</sort_order>
+                    <sort_order>110</sort_order>
                     <show_in_default>1</show_in_default>
                     <comment><![CDATA[
                         Sends log messages to a Remote Syslog Server, using UDP Protocol.
@@ -471,7 +491,7 @@
                 <chromelogger>
                     <label>Chromelogger Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>90</sort_order>
+                    <sort_order>120</sort_order>
                     <show_in_default>1</show_in_default>
                     <fields>
                         <priority translate="label">
@@ -484,6 +504,44 @@
                         </priority>
                     </fields>
                 </chromelogger>
+                <logstash translate="label">
+                    <label>Logstash Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>140</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <priority translate="label">
+                            <label>Priority Level Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>firegento_logger/system_config_source_prioritydefault</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose the lowest priority level to be logged.</comment>
+                        </priority>
+                        <host>
+                            <label>Host</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </host>
+                        <port>
+                            <label>Port</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-digits required-entry</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </port>
+                        <protocol>
+                            <label>Protocol</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>firegento_logger/system_config_source_protocol</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose which type of protocol do like to use.</comment>
+                        </protocol>
+                    </fields>
+                </logstash>
             </groups>
         </logger>
     </sections>

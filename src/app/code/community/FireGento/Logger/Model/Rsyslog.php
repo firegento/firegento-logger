@@ -88,7 +88,7 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
      *
      * @return string The full URL where the Log messages will be sent.
      */
-    protected function GetSyslogPublisher()
+    protected function getSyslogPublisher()
     {
         if (empty($this->_syslogPublisher)) {
             $this->_syslogPublisher = new RSyslog(($this->_hostName . ':' . $this->_port), $this->_timeout);
@@ -100,15 +100,22 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
     /**
      * Builds a Message that will be sent to a RSyslog Server.
      *
-     * @param  array $event A Log4php Event.
-     * @return string A string representing the message.
+     * @param  FireGento_Logger_Model_Event $event A Log4php Event.
+     * @return SyslogMessage
      */
-    protected function BuildSysLogMessage($event)
+    protected function buildSysLogMessage($event)
     {
-        return new SyslogMessage($this->_formatter->format($event, $this->_enableBacktrace),
+        $aUrlParts = parse_url(Mage::getBaseUrl());
+        return new SyslogMessage(
+            $this->_formatter->format($event, $this->_enableBacktrace),
             self::DEFAULT_FACILITY,
-            $event['priority'],
-            strtotime($event['timestamp'])
+            $event->getPriority(),
+            strtotime($event->getTimestamp()),
+            array(
+                'HostName'    => gethostname(),
+                'FQDN'        => $aUrlParts['host'],
+                'ProcessName' => $this->_options['AppName'],
+            )
         );
     }
 
@@ -119,7 +126,7 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
      * @throws Zend_Log_Exception
      * @return bool True if message was sent correctly, False otherwise.
      */
-    protected function PublishMessage($message)
+    protected function publishMessage($message)
     {
         $result = $this->GetSyslogPublisher()->Send($message);
         if ($result === true) {
@@ -138,8 +145,6 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
                 $result[1]
             )
         );
-
-        return false;
     }
 
     /**
@@ -171,8 +176,10 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
      */
     protected function _write($event)
     {
-        $message = $this->BuildSysLogMessage($event);
-        return $this->PublishMessage($message);
+        $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
+
+        $message = $this->buildSysLogMessage($event);
+        return $this->publishMessage($message);
     }
 
     /**
