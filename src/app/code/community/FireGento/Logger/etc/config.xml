@@ -126,6 +126,10 @@
                         <label>Graylog2 (experimental)</label>
                         <class>FireGento_Logger_Model_Graylog2</class>
                     </graylog2>
+                    <syslog translate="label">
+                        <label>Local Syslog</label>
+                        <class>FireGento_Logger_Model_Syslog</class>
+                    </syslog>
                     <rsyslog>
                         <label>Remote Syslog (UDP)</label>
                         <class>FireGento_Logger_Model_Rsyslog</class>
@@ -198,6 +202,11 @@ FILE: %file%:%line%
                 <chunk_size>1420</chunk_size>
                 <app_name>Magento/</app_name>
             </graylog2>
+            <syslog>
+                <priority>default</priority>
+                <application>Magento/</application>
+                <facility>8</facility>
+            </syslog>
             <rsyslog>
                 <priority>default</priority>
                 <timeout>5</timeout>
