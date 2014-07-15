@@ -37,7 +37,14 @@ class FireGento_Logger_Model_Observer extends Varien_Object
      */
     public function cleanLogsCron()
     {
-        Mage::getResourceSingleton('firegento_logger/db_entry')->cleanLogs(
+        /** @var $entry FireGento_Logger_Model_Resource_Db_Entry|FALSE */
+        $entry = Mage::getResourceSingleton('firegento_logger/db_entry');
+
+        if (!$entry) {
+            return;
+        }
+
+        $entry->cleanLogs(
             Mage::helper('firegento_logger')->getMaxDaysToKeep()
         );
     }
