@@ -100,6 +100,7 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
      */
     protected function BuildJSONMessage($event, $enableBacktrace = false)
     {
+        /** @var $event FireGento_Logger_Model_Event */
         Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
 
         $fields = array();
@@ -109,15 +110,12 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
         $fields['StoreCode'] = $event->getStoreCode();
         $fields['TimeElapsed'] = $event->getTimeElapsed();
         $fields['Host'] = php_uname('n');
-//        var_dump($event->getTimestamp());exit;
-//        $fields['TimeStamp'] = gmdate("Y-m-d\TH:i:s\Z", strtotime($event->getTimestamp()));
+        $fields['TimeStamp'] = date(DATE_ISO8601, strtotime($event->getTimestamp()));
         $fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
-
+        $fields['Message'] = $event->getMessage();
 
         if ($event->getBacktrace()) {
-            $fields['Message'] = $event->getMessage() . "\n\nBacktrace:\n" . $event->getBacktrace();
-        } else {
-            $fields['Message'] = $event->getMessage();
+            $fields['Backtrace'] = $event->getBacktrace();
         }
 
         foreach (array('getRequestMethod', 'getRequestUri', 'getRemoteIp', 'getHttpUserAgent') as $method) {
@@ -148,8 +146,7 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
         curl_setopt($curlHandler, CURLOPT_HTTPHEADER, array(
             'User Agents: Vanilla Logger Plugin',
             'Content-Type: application/json',
-            'Content-Length: '.strlen($message),
-            'Timestamp: '. gmdate("Y-m-d\TH:i:s\Z")
+            'Content-Length: '.strlen($message)
         ));
         curl_setopt($curlHandler, CURLOPT_POSTFIELDS, $message);
         curl_setopt($curlHandler, CURLOPT_RETURNTRANSFER, 1);
