@@ -109,8 +109,10 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
         $fields['StoreCode'] = $event->getStoreCode();
         $fields['TimeElapsed'] = $event->getTimeElapsed();
         $fields['Host'] = php_uname('n');
-        $fields['TimeStamp'] = date('Y-m-d H:i:s', strtotime($event->getTimestamp()));
+//        var_dump($event->getTimestamp());exit;
+//        $fields['TimeStamp'] = gmdate("Y-m-d\TH:i:s\Z", strtotime($event->getTimestamp()));
         $fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
+
 
         if ($event->getBacktrace()) {
             $fields['Message'] = $event->getMessage() . "\n\nBacktrace:\n" . $event->getBacktrace();
@@ -139,38 +141,33 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
         /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
 
-        $fp = fsockopen(
-            sprintf('ssl://%s', $this->_logglyServer),
-            $this->_logglyPort,
-            $errorNumber,
-            $errorMessage,
-            $this->_timeout
-        );
+        $curlHandler = curl_init(sprintf('https://%s/%s/%s/', $this->_logglyServer, $this->_logglyPath, $this->_inputKey));
 
-        // TODO Replace HTTPS with UDP
-        try {
-            $out = sprintf("POST %s/%s HTTP/1.1\r\n",
-                $this->_logglyPath,
-                $this->_inputKey
+//        var_dump(gmdate('c'));exit;
+        curl_setopt($curlHandler, CURLOPT_POST, 1);
+        curl_setopt($curlHandler, CURLOPT_HTTPHEADER, array(
+            'User Agents: Vanilla Logger Plugin',
+            'Content-Type: application/json',
+            'Content-Length: '.strlen($message),
+            'Timestamp: '. gmdate("Y-m-d\TH:i:s\Z")
+        ));
+        curl_setopt($curlHandler, CURLOPT_POSTFIELDS, $message);
+        curl_setopt($curlHandler, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curlHandler, CURLOPT_TIMEOUT, (int) $this->_timeout);
+
+        // Execute the request.
+        $result = curl_exec($curlHandler);
+        $succeeded  = curl_errno($curlHandler) == 0;
+        $responseCode = curl_getinfo($curlHandler, CURLINFO_HTTP_CODE);
+        $errorMsg = curl_error($curlHandler);
+
+        // close cURL resource, and free up system resources
+        curl_close($curlHandler);
+
+        if (! ($succeeded && $responseCode == 200)) {
+            throw new Zend_Log_Exception(
+                sprintf('Error occurred posting log message to Loggly via HTTPS. CurlError: %s, ResponseCode: %s, Response: %s', $errorMsg, $responseCode, $result)
             );
-            $out .= sprintf("Host: %s\r\n", $this->_logglyServer);
-            $out .= "Content-Type: application/json\r\n";
-            $out .= "User-Agent: Vanilla Logger Plugin\r\n";
-            $out .= sprintf("Content-Length: %d\r\n", strlen($message));
-            $out .= "Connection: Close\r\n\r\n";
-            $out .= $message . "\r\n\r\n";
-
-            $result = fwrite($fp, $out);
-            fclose($fp);
-
-            if ($result == false) {
-                throw new Zend_Log_Exception(
-                    sprintf($helper->__('Error occurred posting log message to Loggly via HTTPS. Posted Message: %s'),
-                    $message)
-                );
-            }
-        } catch (Exception $e) {
-            throw new Zend_Log_Exception($e->getMessage(), $e->getCode());
         }
 
         return true;
