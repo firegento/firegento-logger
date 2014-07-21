@@ -4,13 +4,7 @@
   "type": "magento-module",
   "description": "FireGento Logger is an advanced alternative to log messages and errors to multiple targets.",
   "homepage": "https://github.com/firegento/firegento-logger",
-  "require": {
-    "magento-hackathon/magento-composer-installer": "*"
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "http://packages.firegento.com"
-    }
-  ]
+  "suggest": {
+    "magento-hackathon/magento-composer-installer": "Allows to manage this package as a dependency"
+  }
 }
