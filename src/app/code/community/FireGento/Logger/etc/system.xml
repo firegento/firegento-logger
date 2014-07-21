@@ -188,6 +188,13 @@
                             <sort_order>50</sort_order>
                             <show_in_default>1</show_in_default>
                         </to>
+                        <charset translate="label">
+                            <label>Charset</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Defaults to "iso-8859-1", suggested: "utf-8".</comment>
+                        </charset>
                     </fields>
                 </mailconfig>
                 <db translate="label">

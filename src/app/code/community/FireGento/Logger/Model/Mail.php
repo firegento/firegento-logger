@@ -65,10 +65,17 @@ class FireGento_Logger_Model_Mail extends Zend_Log_Writer_Mail
     public function getMail()
     {
         if ($this->_mail === null) {
-            $this->_mail = new Zend_Mail();
-
             /** @var $helper FireGento_Logger_Helper_Data */
             $helper = Mage::helper('firegento_logger');
+
+            $charset = $helper->getLoggerConfig('mailconfig/charset');
+            $charset = filter_var($charset, FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES | FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
+            if ($charset !== false) {
+                $charset = strtolower(trim($charset));
+            }
+            $charset = strlen($charset) ? $charset : null;
+
+            $this->_mail = new Zend_Mail($charset);
 
             $storeName = Mage::app()->getStore()->getName();
             $subject = $storeName .' - Debug Information';
