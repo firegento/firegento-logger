@@ -27,6 +27,8 @@
  */
 class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Controller_Action
 {
+    protected $_loggerEntry;
+
     /**
      * Show grid viewer
      */
@@ -35,6 +37,32 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
         $this->loadLayout();
         $this->_setActiveMenu('system/firegento_logger/grid_viewer');
         $this->renderLayout();
+    }
+
+    public function viewAction()
+    {
+        $this->loadLayout();
+        Mage::register('current_loggerentry', $this->_getLoggerEntry());
+        $this->_title("Logger Entry #" . $this->_getLoggerEntry()->getId());
+        $this->renderLayout();
+    }
+
+    /**
+     * @return FireGento_Logger_Model_Db_Entry
+     */
+    protected function _getLoggerEntry()
+    {
+        if (isset($this->_loggerEntry)) {
+            return $this->_loggerEntry;
+        }
+
+        $loggerEntry = Mage::getModel('firegento_logger/db_entry');
+        if ($this->getRequest()->getParam('loggerentry_id')) {
+            $loggerEntry->load($this->getRequest()->getParam('loggerentry_id'));
+        }
+
+        $this->_loggerEntry = $loggerEntry;
+        return $this->_loggerEntry;
     }
 
     /**

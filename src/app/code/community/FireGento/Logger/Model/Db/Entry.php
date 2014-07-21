@@ -24,6 +24,9 @@
  * @category FireGento
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
+ *
+ * @method getMessage()
+ * @method getSeverity()
  */
 class FireGento_Logger_Model_Db_Entry extends Mage_Core_Model_Abstract
 {
