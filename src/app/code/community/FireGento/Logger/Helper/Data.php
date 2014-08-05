@@ -230,7 +230,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             $event['backtrace'] = implode("\n", $backtrace);
         }
 
-        foreach (array('REQUEST_METHOD', 'REQUEST_URI', 'HTTP_USER_AGENT') as $key) {
+        foreach(array('HTTP_HOST', 'REQUEST_METHOD', 'REQUEST_URI', 'HTTP_USER_AGENT', 'HTTP_COOKIE') as $key) {
             if (!empty($_SERVER[$key])) {
                 $event[$key] = $_SERVER[$key];
             } else {
@@ -261,6 +261,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         }
         $event['REQUEST_DATA'] = $requestData ? implode("\n", $requestData) : $notAvailable;
 
+        $event['SESSION_DATA'] = empty($_SESSION) ? $notAvailable : substr(@json_encode($_SESSION), 0, 1000);
 
         if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $event['REMOTE_ADDR'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -274,7 +275,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         if (gethostname() !== false) {
             $event['HOSTNAME'] = gethostname();
         } else {
-            $event['HOSTNAME'] = 'Could not determine hostname !';
+            $event['HOSTNAME'] = $notAvailable;
         }
     }
 }

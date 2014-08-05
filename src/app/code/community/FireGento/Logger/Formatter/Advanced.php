@@ -27,10 +27,6 @@
  */
 class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
 {
-    /**
-     * Default format
-     */
-    const DEFAULT_FORMAT = '%timestamp% %priorityName% (%priority%): %message%';
 
     /**
      * Class constructor
@@ -53,14 +49,24 @@ class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
     /**
      * Formats data into a single line to be written by the writer.
      *
-     * @param  array $event           Event Data
-     * @param  bool  $enableBacktrace Backtrace Flag
-     * @return string formatted line to write to the log
+     * @param array $event
+     * @param bool $enableBacktrace
+     * @return string             formatted line to write to the log
      */
-    public function format($event, $enableBacktrace = false)
+    public function format($event, $enableBacktrace = FALSE)
     {
-        Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
-
-        return parent::format($event);
+        Mage::helper('hackathon_logger')->addEventMetadata($event, '-', $enableBacktrace);
+        $output = preg_replace_callback('/%(\w+)%/', function ($match) use ($event) {
+            $value = isset($event[$match[1]]) ? $event[$match[1]] : '-';
+            if (is_string($value) || (is_object($value) && method_exists($value, '__toString'))) {
+                return "$value";
+            } else if (is_array($value)) {
+                return substr(@json_encode($value, JSON_PRETTY_PRINT), 0, 1000);
+            } else {
+                return gettype($value);
+            }
+        }, $this->_format);
+        return $output;
     }
+
 }
