@@ -248,20 +248,20 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         // Fetch request data
         $requestData = array();
         if (!empty($_GET)) {
-            $requestData[] = '  GET|'.substr(@json_encode($_GET), 0, 1000);
+            $requestData['GET'] = $_GET;
         }
         if (!empty($_POST)) {
-            $requestData[] = '  POST|'.substr(@json_encode($_POST), 0, 1000);
+            $requestData['POST'] = $_POST;
         }
         if (!empty($_FILES)) {
-            $requestData[] = '  FILES|'.substr(@json_encode($_FILES), 0, 1000);
+            $requestData['FILES'] = $_FILES;
         }
         if (Mage::registry('raw_post_data')) {
-            $requestData[] = '  RAWPOST|'.substr(Mage::registry('raw_post_data'), 0, 1000);
+            $requestData['RAWPOST'] = Mage::registry('raw_post_data');
         }
-        $event['REQUEST_DATA'] = $requestData ? implode("\n", $requestData) : $notAvailable;
+        $event['REQUEST_DATA'] = $requestData ?: $notAvailable;
 
-        $event['SESSION_DATA'] = empty($_SESSION) ? $notAvailable : substr(@json_encode($_SESSION), 0, 1000);
+        $event['SESSION_DATA'] = empty($_SESSION) ? $notAvailable : $_SESSION;
 
         if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $event['REMOTE_ADDR'] = $_SERVER['HTTP_X_FORWARDED_FOR'];

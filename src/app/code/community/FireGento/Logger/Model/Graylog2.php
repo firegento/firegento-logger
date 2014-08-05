@@ -130,10 +130,12 @@ class FireGento_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
             $msg->setAdditional('store_code', $event['store_code']);
             $msg->setAdditional('time_elapsed', $event['time_elapsed']);
             $msg->setHost(php_uname('n'));
-            foreach (array('REQUEST_METHOD', 'REQUEST_URI', 'REMOTE_IP', 'HTTP_USER_AGENT') as $key) {
-                if (!empty($event[$key])) {
-                    $msg->setAdditional($key, $event[$key]);
+            unset($event['message'], $event['backtrace'], $event['priority'], $event['file'], $event['line'], $event['store_code'], $event['time_elapsed']);
+            foreach ($event as $key => $value) {
+                if ( ! is_string($value) && ! (is_object($value) && method_exists($value, '__toString'))) {
+                    $value = @json_encode($value);
                 }
+                $msg->setAdditional($key, substr("$value", 0, 1000));
             }
 
             $this->_publisher->publish($msg);

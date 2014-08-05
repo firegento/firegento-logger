@@ -118,10 +118,12 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
             $fields['Message'] = $event['message'];
         }
 
-        foreach (array('REQUEST_METHOD', 'REQUEST_URI', 'REMOTE_IP', 'HTTP_USER_AGENT') as $key) {
-            if (!empty($event[$key])) {
-                $fields[$key] = $event[$key];
+        unset($event['message'], $event['backtrace'], $event['priority'], $event['file'], $event['line'], $event['store_code'], $event['time_elapsed']);
+        foreach ($event as $key => $value) {
+            if ( ! is_string($value) && ! (is_object($value) && method_exists($value, '__toString'))) {
+                $value = @json_encode($value);
             }
+            $fields[$key] = substr("$value", 0, 1000);
         }
 
         return json_encode($fields);

@@ -153,12 +153,13 @@
                 <priority>7</priority>
                 <format><![CDATA[
 %timestamp% %priorityName% (%store_code%): %REQUEST_METHOD% %REQUEST_URI%
+MESSAGE: %message%
 REQUEST: %REQUEST_DATA%
 TIME: %time_elapsed%s
-ADDRESS: %REMOTE_ADDR%
-USER AGENT: %HTTP_USER_AGENT%
 FILE: %file%:%line%
-%message%]]></format>
+\n
+]]></format>
+                <max_data_length>1000</max_data_length>
                 <max_backtrace_lines>0</max_backtrace_lines>
                 <viewer_enabled>0</viewer_enabled>
             </general>
