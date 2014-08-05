@@ -5,8 +5,6 @@
 class Hackathon_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
 {
 
-    const DEFAULT_FORMAT = '%timestamp% %priorityName% (%priority%): %message%';
-
     /**
      * @param null|string $format
      */
@@ -32,7 +30,17 @@ class Hackathon_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
     public function format($event, $enableBacktrace = FALSE)
     {
         Mage::helper('hackathon_logger')->addEventMetadata($event, '-', $enableBacktrace);
-        return parent::format($event);
+        $output = preg_replace_callback('/%(\w+)%/', function ($match) use ($event) {
+            $value = isset($event[$match[1]]) ? $event[$match[1]] : '-';
+            if (is_string($value) || (is_object($value) && method_exists($value, '__toString'))) {
+                return "$value";
+            } else if (is_array($value)) {
+                return substr(@json_encode($value, JSON_PRETTY_PRINT), 0, 1000);
+            } else {
+                return gettype($value);
+            }
+        }, $this->_format);
+        return $output;
     }
 
 }
