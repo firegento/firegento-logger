@@ -58,7 +58,10 @@
                               %REQUEST_URI%<br/>
                               %REQUEST_DATA%<br/>
                               %REMOTE_ADDR%<br/>
+                              %HTTP_HOST%<br/>
                               %HTTP_USER_AGENT%<br/>
+                              %HTTP_COOKIE%<br/>
+                              %SESSION_DATA%<br/>
                               %file%<br/>
                               %line%<br/>
                               %message%<br/>
