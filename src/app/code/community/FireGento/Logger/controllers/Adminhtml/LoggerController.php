@@ -75,6 +75,29 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
         $this->renderLayout();
     }
 
+    public function massDeleteAction()
+    {
+        $ids = $this->getRequest()->getParam('log');
+        if(!is_array($ids)) {
+            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('firegento_logger')->__('Please select entries.'));
+        } else {
+            try {
+                $logModel = Mage::getModel('firegento_logger/db_entry');
+                foreach ($ids as $id) {
+                    $logModel->load($id)->delete();
+                }
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('firegento_logger')->__(
+                        'Total of %d record(s) were deleted.', count($ids)
+                    )
+                );
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            }
+        }
+        $this->_redirect('*/*/index');
+    }
+
     /**
      * Show the report viewer
      */
