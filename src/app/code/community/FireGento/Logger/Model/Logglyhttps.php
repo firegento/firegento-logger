@@ -108,6 +108,7 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
         $fields['FileName'] = $event->getFile();
         $fields['LineNumber'] = $event->getLine();
         $fields['StoreCode'] = $event->getStoreCode();
+        $fields['Pid'] = getmypid();
         $fields['TimeElapsed'] = $event->getTimeElapsed();
         $fields['Host'] = php_uname('n');
         $fields['TimeStamp'] = date(DATE_ISO8601, strtotime($event->getTimestamp()));
