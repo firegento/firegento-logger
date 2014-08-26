@@ -111,6 +111,18 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
         return parent::_prepareColumns();
     }
 
+    protected function _prepareMassaction()
+    {
+        $this->setMassactionIdField('log_id');
+        $this->getMassactionBlock()->setFormFieldName('log');
+        $this->getMassactionBlock()->addItem('delete', array(
+            'label' => Mage::helper('firegento_logger')->__('Delete'),
+            'url' => $this->getUrl('*/*/massDelete'),
+            'confirm' => Mage::helper('firegento_logger')->__('Are you sure?')
+        ));
+        return $this;
+    }
+
     /**
      * Add a severity css class to the value
      *
