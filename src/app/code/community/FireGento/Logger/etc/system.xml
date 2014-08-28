@@ -500,6 +500,18 @@
                                 UDP Port to use to connect to Loggly. <strong>If not sure, don't change it.</strong>
                             ]]></comment>
                         </port>
+                        <inputkey translate="label">
+                            <label>Customer Token</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Enter the customer token used to send the Log Messages to Loggly.
+                                To find this information, open your <a href="http://www.loggly.com">
+                                Loggly</a> Dashboard, navigate to <strong>Source Setup > Customer Tokens</strong>.
+                                Create a new token or use an existing token.
+                            ]]></comment>
+                        </inputkey>
                         <timeout translate="label">
                             <label>Timeout</label>
                             <frontend_type>text</frontend_type>

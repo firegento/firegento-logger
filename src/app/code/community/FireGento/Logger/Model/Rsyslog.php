@@ -86,7 +86,7 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
     /**
      * Builds and returns the full URL where the Log messages will be sent.
      *
-     * @return string The full URL where the Log messages will be sent.
+     * @return \RSyslog
      */
     protected function getSyslogPublisher()
     {
@@ -122,11 +122,11 @@ class FireGento_Logger_Model_Rsyslog extends Zend_Log_Writer_Abstract
     /**
      * Sends a Message to a RSyslog server.
      *
-     * @param  string $message The Message to be sent.
+     * @param  SyslogMessage $message The Message to be sent.
      * @throws Zend_Log_Exception
      * @return bool True if message was sent correctly, False otherwise.
      */
-    protected function publishMessage($message)
+    protected function publishMessage(SyslogMessage $message)
     {
         $result = $this->GetSyslogPublisher()->Send($message);
         if ($result === true) {

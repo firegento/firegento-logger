@@ -142,7 +142,6 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
 
         $curlHandler = curl_init(sprintf('https://%s/%s/%s/', $this->_logglyServer, $this->_logglyPath, $this->_inputKey));
 
-//        var_dump(gmdate('c'));exit;
         curl_setopt($curlHandler, CURLOPT_POST, 1);
         curl_setopt($curlHandler, CURLOPT_HTTPHEADER, array(
             'User Agents: Vanilla Logger Plugin',
