@@ -30,19 +30,19 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
     /**
      * @var Zend_Db_Adapter Database adapter instance
      */
-    private $_db;
+    protected $_db;
 
     /**
      * @var string Name of the log table in the database
      */
-    private $_table;
+    protected $_table;
 
     /**
      * Relates database columns names to log data field keys.
      *
      * @var null|array
      */
-    private $_columnMap;
+    protected $_columnMap;
 
     /**
      * Class constructor
