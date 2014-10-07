@@ -65,7 +65,7 @@ class FireGento_Logger_Model_Logglysyslog extends FireGento_Logger_Model_Rsyslog
      */
     protected function BuildJSONMessage( $event, $enableBacktrace = false)
     {
-        Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
+        Mage::helper('firegento_logger')->addEventMetadata($event, null, $enableBacktrace);
 
         $fields = array();
         $fields['Token'] = sprintf('[%s@41058]', $this->_inputKey);

@@ -101,7 +101,7 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
     protected function BuildJSONMessage($event, $enableBacktrace = false)
     {
         /** @var $event FireGento_Logger_Model_Event */
-        Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
+        Mage::helper('firegento_logger')->addEventMetadata($event, null, $enableBacktrace);
 
         $fields = array();
         $fields['Level'] = $event->getPriority();
