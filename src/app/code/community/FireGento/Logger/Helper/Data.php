@@ -133,9 +133,9 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
 
         // Add request time
         if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
-            $event->setTimeElapsed(sprintf('%f', microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']));
+            $event->setTimeElapsed((float) sprintf('%f', microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']));
         } else {
-            $event->setTimeElapsed(sprintf('%d', time() - $_SERVER['REQUEST_TIME']));
+            $event->setTimeElapsed((float) sprintf('%d', time() - $_SERVER['REQUEST_TIME']));
         }
 
         // Find file and line where message originated from and optionally get backtrace lines

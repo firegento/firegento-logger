@@ -33,56 +33,6 @@ class FireGento_Logger_Model_Logglysyslog extends FireGento_Logger_Model_Rsyslog
      */
     const DEFAULT_PORT = 42146;
 
-    /**
-     * Transforms a Magento Log event into an associative array.
-     *
-     * @param  array $event           A Magento Log Event.
-     * @param  bool  $enableBacktrace Indicates if a backtrace should be added to the log event.
-     * @return array An associative array representation of the event.
-     */
-    protected function BuildJSONMessage($event, $enableBacktrace = false)
-    {
-        Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
-
-        $fields = array();
-        $fields['Level'] = $event->getPriority();
-        $fields['FileName'] = $event->getFile();
-        $fields['LineNumber'] = $event->getLine();
-        $fields['StoreCode'] = $event->getStoreCode();
-        $fields['TimeElapsed'] = $event->getTimeElapsed();
-        $fields['Host'] = php_uname('n');
-        $fields['TimeStamp'] = date('Y-m-d H:i:s', strtotime($event->getTimestamp()));
-        $fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
-
-        if ($event->getBacktrace()) {
-            $fields['Message'] = $event->getMessage() . "\n\nBacktrace:\n" . $event->getBacktrace();
-        } else {
-            $fields['Message'] = $event->getMessage();
-        }
-
-        foreach (array('getRequestMethod', 'getRequestUri', 'getRemoteIp', 'getHttpUserAgent') as $method) {
-            if (is_callable(array($event, $method)) && $event->$method()) {
-                $fields[lcfirst(substr($method, 3))] = $event->$method();
-            }
-        }
-
-        return $fields;
-    }
-
-    /**
-     * Builds a Message that will be sent to a RSyslog Server.
-     *
-     * @param  array $event A Magento Log Event.
-     * @return string A string representing the message.
-     */
-    protected function BuildSysLogMessage($event)
-    {
-        return new FireGento_Logger_Model_Loggly_LogglySyslogMessage(
-            $this->BuildJSONMessage($event, $this->_enableBacktrace),
-            self::DEFAULT_FACILITY,
-            $event['priority'],
-            strtotime($event['timestamp']));
-    }
 
     /**
      * Class constructor
@@ -100,9 +50,69 @@ class FireGento_Logger_Model_Logglysyslog extends FireGento_Logger_Model_Rsyslog
 
         $this->_hostName = $helper->getLoggerConfig('logglysyslog/hostname');
         $this->_port = $helper->getLoggerConfig('logglysyslog/port');
-        $this->_timeout = $helper->getLoggerConfig('logglysyslog/timeout');
+        $this->_inputKey = $helper->getLoggerConfig('logglysyslog/inputkey');
 
         return $this;
     }
-}
 
+
+    /**
+     * Transforms a Magento Log event into an associative array.
+     *
+     * @param  FireGento_Logger_Model_Event $event           A Magento Log Event.
+     * @param  bool  $enableBacktrace Indicates if a backtrace should be added to the log event.
+     * @return array An associative array representation of the event.
+     */
+    protected function BuildJSONMessage( $event, $enableBacktrace = false)
+    {
+        Mage::helper('firegento_logger')->addEventMetadata($event, null, $enableBacktrace);
+
+        $fields = array();
+        $fields['Token'] = sprintf('[%s@41058]', $this->_inputKey);
+        $fields['Level'] = $event->getPriority();
+        $fields['FileName'] = $event->getFile();
+        $fields['LineNumber'] = $event->getLine();
+        $fields['StoreCode'] = $event->getStoreCode();
+        $fields['Pid'] = getmypid();
+        $fields['TimeElapsed'] = $event->getTimeElapsed();
+        $fields['Host'] = php_uname('n');
+        $fields['TimeStamp'] = date(DATE_RFC3339, strtotime($event->getTimestamp()));
+        $fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
+        $fields['Message'] = $event->getMessage();
+
+        if ($event->getBacktrace()) {
+            $fields['Backtrace'] = $event->getBacktrace();
+        }
+
+        foreach (array('getRequestMethod', 'getRequestUri', 'getRemoteIp', 'getHttpUserAgent') as $method) {
+            if (is_callable(array($event, $method)) && $event->$method()) {
+                $fields[lcfirst(substr($method, 3))] = $event->$method();
+            }
+        }
+
+        return $fields;
+    }
+
+    /**
+     * Builds a Message that will be sent to a RSyslog Server.
+     *
+     * @param  FireGento_Logger_Model_Event $event A Magento Log Event.
+     * @return string A string representing the message.
+     */
+    protected function buildSysLogMessage($event)
+    {
+        $message = $this->BuildJSONMessage($event, $this->_enableBacktrace);
+        if (! is_string($message)) {
+            $message = json_encode($message);
+        }
+
+//        $message = sprintf('[%s@41058] %s', $this->_inputKey, $message);
+
+        return new FireGento_Logger_Model_Loggly_LogglySyslogMessage (
+            $message,
+            self::DEFAULT_FACILITY,
+            $event->getPriority(),
+            strtotime($event->getTimestamp())
+        );
+    }
+}
