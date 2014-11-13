@@ -18,7 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
-require_once 'lib/XMPPHP/XMPP.php';
+require_once 'XMPPHP/XMPP.php';
 /**
  * Model for XMPP logging
  *
