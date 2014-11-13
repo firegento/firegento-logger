@@ -22,7 +22,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-require_once 'lib' . DS . 'chromelogger' . DS . 'ChromePHP.php';
+require_once 'chromelogger' . DS . 'ChromePHP.php';
 class FireGento_Logger_Model_Chromelogger extends Zend_Log_Writer_Abstract
 {
     /**

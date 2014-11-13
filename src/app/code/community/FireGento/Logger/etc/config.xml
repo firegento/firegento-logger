@@ -222,7 +222,7 @@ FILE: %file%:%line%
             <logglysyslog>
                 <priority>default</priority>
                 <hostname>logs-01.loggly.com</hostname>
-                <port>42146</port>
+                <port>514</port>
                 <timeout>5</timeout>
                 <app_name>Magento/</app_name>
             </logglysyslog>
