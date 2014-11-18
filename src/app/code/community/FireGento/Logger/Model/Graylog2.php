@@ -18,8 +18,8 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
-require_once 'lib/Graylog2-gelf-php/GELFMessage.php';
-require_once 'lib/Graylog2-gelf-php/GELFMessagePublisher.php';
+require_once Mage::getBaseDir('lib') . DIRECTORY_SEPARATOR . 'Graylog2-gelf-php' . DIRECTORY_SEPARATOR . 'GELFMessage.php';
+require_once Mage::getBaseDir('lib') . DIRECTORY_SEPARATOR . 'Graylog2-gelf-php' . DIRECTORY_SEPARATOR . 'GELFMessagePublisher.php';
 /**
  * Model for Graylog logging
  *
