@@ -98,7 +98,9 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         $fields['source_host'] = $event->getHostname();
         $fields['message'] = $event->getMessage();
 
-        return json_encode($fields);
+        // udp/tcp inputs require a trailing EOL character.
+        $encodedMessage = trim(json_encode($fields)) . "\n";
+        return $encodedMessage;
     }
 
     /**
