@@ -21,7 +21,7 @@
 <config>
     <modules>
         <FireGento_Logger>
-            <version>1.3.0</version>
+            <version>1.4.1</version>
         </FireGento_Logger>
     </modules>
     <crontab>
@@ -126,6 +126,10 @@
                         <label>Graylog2 (experimental)</label>
                         <class>FireGento_Logger_Model_Graylog2</class>
                     </graylog2>
+                    <syslog translate="label">
+                        <label>Local Syslog</label>
+                        <class>FireGento_Logger_Model_Syslog</class>
+                    </syslog>
                     <rsyslog>
                         <label>Remote Syslog (UDP)</label>
                         <class>FireGento_Logger_Model_Rsyslog</class>
@@ -142,9 +146,22 @@
                         <label>Chrome Logger</label>
                         <class>FireGento_Logger_Model_Chromelogger</class>
                     </chromelogger>
+                    <logstash>
+                        <label>Logstash Logger</label>
+                        <class>FireGento_Logger_Model_Logstash</class>
+                    </logstash>
                 </writer_models>
             </core>
         </log>
+        <template>
+            <email>
+                <firegento_logger_notification_email_template>
+                    <label>Notification Email Template</label>
+                    <file>firegento_logger/notification.html</file>
+                    <type>html</type>
+                </firegento_logger_notification_email_template>
+            </email>
+        </template>
     </global>
     <default>
         <logger>
@@ -152,11 +169,11 @@
                 <targets>advanced</targets>
                 <priority>7</priority>
                 <format><![CDATA[
-%timestamp% %priorityName% (%store_code%): %REQUEST_METHOD% %REQUEST_URI%
-REQUEST: %REQUEST_DATA%
-TIME: %time_elapsed%s
-ADDRESS: %REMOTE_ADDR%
-USER AGENT: %HTTP_USER_AGENT%
+%timestamp% %priorityName% (%storeCode%): %requestMethod% %requestUri%
+REQUEST: %requestData%
+TIME: %timeElapsed%s
+ADDRESS: %remoteAddress%
+USER AGENT: %httpUserAgent%
 FILE: %file%:%line%
 %message%]]></format>
                 <max_backtrace_lines>0</max_backtrace_lines>
@@ -185,6 +202,11 @@ FILE: %file%:%line%
                 <chunk_size>1420</chunk_size>
                 <app_name>Magento/</app_name>
             </graylog2>
+            <syslog>
+                <priority>default</priority>
+                <application>Magento/</application>
+                <facility>8</facility>
+            </syslog>
             <rsyslog>
                 <priority>default</priority>
                 <timeout>5</timeout>
@@ -192,20 +214,27 @@ FILE: %file%:%line%
             </rsyslog>
             <logglyhttps>
                 <priority>default</priority>
+                <hostname>logs-01.loggly.com</hostname>
                 <timeout>5</timeout>
                 <inputkey></inputkey>
                 <app_name>Magento/</app_name>
             </logglyhttps>
             <logglysyslog>
                 <priority>default</priority>
-                <hostname>logs.loggly.com</hostname>
-                <port>42146</port>
+                <hostname>logs-01.loggly.com</hostname>
+                <port>514</port>
                 <timeout>5</timeout>
                 <app_name>Magento/</app_name>
             </logglysyslog>
             <chrome>
                 <priority>default</priority>
             </chrome>
+            <logstash>
+                <priority>default</priority>
+                <host>127.0.0.1</host>
+                <port>6666</port>
+                <protocol>udp</protocol>
+            </logstash>
         </logger>
     </default>
 </config>

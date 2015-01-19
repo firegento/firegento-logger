@@ -31,7 +31,7 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
     /**
      * @var string The URL of Loggly Log Server
      */
-    protected $_logglyServer = 'logs.loggly.com';
+    protected $_logglyServer = 'logs-01.loggly.com';
 
     /**
      * @var int The port to use to communicate with Loggly Server.
@@ -100,27 +100,28 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
      */
     protected function BuildJSONMessage($event, $enableBacktrace = false)
     {
-        Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
+        /** @var $event FireGento_Logger_Model_Event */
+        Mage::helper('firegento_logger')->addEventMetadata($event, null, $enableBacktrace);
 
         $fields = array();
-        $fields['Level'] = $event['priority'];
-        $fields['FileName'] = $event['file'];
-        $fields['LineNumber'] = $event['line'];
-        $fields['StoreCode'] = $event['store_code'];
-        $fields['TimeElapsed'] = $event['time_elapsed'];
+        $fields['Level'] = $event->getPriority();
+        $fields['FileName'] = $event->getFile();
+        $fields['LineNumber'] = $event->getLine();
+        $fields['StoreCode'] = $event->getStoreCode();
+        $fields['Pid'] = getmypid();
+        $fields['TimeElapsed'] = $event->getTimeElapsed();
         $fields['Host'] = php_uname('n');
-        $fields['TimeStamp'] = date('Y-m-d H:i:s', strtotime($event['timestamp']));
+        $fields['TimeStamp'] = date(DATE_ISO8601, strtotime($event->getTimestamp()));
         $fields['Facility'] = $this->_options['AppName'] . $this->_options['FileName'];
+        $fields['Message'] = $event->getMessage();
 
-        if ($event['backtrace']) {
-            $fields['Message'] = $event['message'] . "\n\nBacktrace:\n" . $event['backtrace'];
-        } else {
-            $fields['Message'] = $event['message'];
+        if ($event->getBacktrace()) {
+            $fields['Backtrace'] = $event->getBacktrace();
         }
 
-        foreach (array('REQUEST_METHOD', 'REQUEST_URI', 'REMOTE_IP', 'HTTP_USER_AGENT') as $key) {
-            if (!empty($event[$key])) {
-                $fields[$key] = $event[$key];
+        foreach (array('getRequestMethod', 'getRequestUri', 'getRemoteIp', 'getHttpUserAgent') as $method) {
+            if (is_callable(array($event, $method)) && $event->$method()) {
+                $fields[lcfirst(substr($method, 3))] = $event->$method();
             }
         }
 
@@ -139,38 +140,31 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
         /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
 
-        $fp = fsockopen(
-            sprintf('ssl://%s', $this->_logglyServer),
-            $this->_logglyPort,
-            $errorNumber,
-            $errorMessage,
-            $this->_timeout
-        );
+        $curlHandler = curl_init(sprintf('https://%s/%s/%s/', $this->_logglyServer, $this->_logglyPath, $this->_inputKey));
 
-        // TODO Replace HTTPS with UDP
-        try {
-            $out = sprintf("POST %s/%s HTTP/1.1\r\n",
-                $this->_logglyPath,
-                $this->_inputKey
+        curl_setopt($curlHandler, CURLOPT_POST, 1);
+        curl_setopt($curlHandler, CURLOPT_HTTPHEADER, array(
+            'User Agents: Vanilla Logger Plugin',
+            'Content-Type: application/json',
+            'Content-Length: '.strlen($message)
+        ));
+        curl_setopt($curlHandler, CURLOPT_POSTFIELDS, $message);
+        curl_setopt($curlHandler, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curlHandler, CURLOPT_TIMEOUT, (int) $this->_timeout);
+
+        // Execute the request.
+        $result = curl_exec($curlHandler);
+        $succeeded  = curl_errno($curlHandler) == 0;
+        $responseCode = curl_getinfo($curlHandler, CURLINFO_HTTP_CODE);
+        $errorMsg = curl_error($curlHandler);
+
+        // close cURL resource, and free up system resources
+        curl_close($curlHandler);
+
+        if (! ($succeeded && $responseCode == 200)) {
+            throw new Zend_Log_Exception(
+                sprintf('Error occurred posting log message to Loggly via HTTPS. CurlError: %s, ResponseCode: %s, Response: %s', $errorMsg, $responseCode, $result)
             );
-            $out .= sprintf("Host: %s\r\n", $this->_logglyServer);
-            $out .= "Content-Type: application/json\r\n";
-            $out .= "User-Agent: Vanilla Logger Plugin\r\n";
-            $out .= sprintf("Content-Length: %d\r\n", strlen($message));
-            $out .= "Connection: Close\r\n\r\n";
-            $out .= $message . "\r\n\r\n";
-
-            $result = fwrite($fp, $out);
-            fclose($fp);
-
-            if ($result == false) {
-                throw new Zend_Log_Exception(
-                    sprintf($helper->__('Error occurred posting log message to Loggly via HTTPS. Posted Message: %s'),
-                    $message)
-                );
-            }
-        } catch (Exception $e) {
-            throw new Zend_Log_Exception($e->getMessage(), $e->getCode());
         }
 
         return true;
@@ -184,6 +178,7 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
      */
     protected function _write($event)
     {
+        $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
         $message = $this->BuildJSONMessage($event, $this->_enableBacktrace);
         return $this->PublishMessage($message);
     }

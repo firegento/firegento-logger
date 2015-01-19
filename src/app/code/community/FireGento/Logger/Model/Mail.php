@@ -93,21 +93,35 @@ class FireGento_Logger_Model_Mail extends Zend_Log_Writer_Mail
             /** @var $helper FireGento_Logger_Helper_Data */
             $helper = Mage::helper('firegento_logger');
 
-            $config = array(
-                'auth' => 'login',
-                'username' => $helper->getLoggerConfig('mailconfig/username'),
-                'password' => $helper->getLoggerConfig('mailconfig/password')
-            );
+            $transportFlag = $helper->getLoggerConfig('mailconfig/sendmailtransport');
 
-            // Reset config array if username is empty
-            if (!isset($config['username']) || empty($config['username'])) {
-                $config = array();
+            switch ($transportFlag) {
+                case "1": // use Sendmail transport
+                    $transport = new Zend_Mail_Transport_Sendmail();
+                    break;
+
+                case "0": // use Smtp transport
+                    // fall-through intended
+                default:
+                    $smtpConfig = array(
+                        'auth'     => 'login',
+                        'username' => $helper->getLoggerConfig('mailconfig/username'),
+                        'password' => $helper->getLoggerConfig('mailconfig/password')
+                    );
+
+                    // Reset config array if username is empty
+                    if (empty($smtpConfig['username'])) {
+                        $smtpConfig = array();
+                    }
+
+                    $transport = new Zend_Mail_Transport_Smtp(
+                        $helper->getLoggerConfig('mailconfig/hostname'), $smtpConfig
+                    );
             }
 
-            // Instantiate the transport class
-            $this->_transport = new Zend_Mail_Transport_Smtp($helper->getLoggerConfig('mailconfig/hostname'), $config);
-
+            $this->_transport = $transport;
         }
+
         return $this->_transport;
     }
 

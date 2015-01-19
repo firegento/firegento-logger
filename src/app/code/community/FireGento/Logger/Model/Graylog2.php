@@ -18,8 +18,8 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
-require_once 'lib/Graylog2-gelf-php/GELFMessage.php';
-require_once 'lib/Graylog2-gelf-php/GELFMessagePublisher.php';
+require_once 'Graylog2-gelf-php/GELFMessage.php';
+require_once 'Graylog2-gelf-php/GELFMessagePublisher.php';
 /**
  * Model for Graylog logging
  *
@@ -108,31 +108,35 @@ class FireGento_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
     protected function _write($event)
     {
         try {
+            $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
+
             Mage::helper('firegento_logger')->addEventMetadata($event);
 
-            $eofMessageFirstLine = strpos($event['message'], "\n");
-            $shortMessage = (false === $eofMessageFirstLine) ? $event['message'] :
-                substr($event['message'], 0, $eofMessageFirstLine);
+            $message = $event->getMessage();
+
+            $eofMessageFirstLine = strpos($message, "\n");
+            $shortMessage = (false === $eofMessageFirstLine) ? $message :
+                substr($message, 0, $eofMessageFirstLine);
 
             $msg = new GELFMessage();
             $msg->setTimestamp(microtime(true));
             $msg->setShortMessage($shortMessage);
-            if ($event['backtrace']) {
-                $msg->setFullMessage($event['message'] . "\n\nBacktrace:\n" . $event['backtrace']);
+            if ($event->getBacktrace()) {
+                $msg->setFullMessage($message . "\n\nBacktrace:\n" . $event->getBacktrace());
             } else {
-                $msg->setFullMessage($event['message']);
+                $msg->setFullMessage($message);
             }
             $msg->setHost(gethostname());
-            $msg->setLevel($event['priority']);
+            $msg->setLevel($event->getPriority());
             $msg->setFacility($this->_options['app_name'] . $this->_options['filename']);
-            $msg->setFile($event['file']);
-            $msg->setLine($event['line']);
-            $msg->setAdditional('store_code', $event['store_code']);
-            $msg->setAdditional('time_elapsed', $event['time_elapsed']);
+            $msg->setFile($event->getFile());
+            $msg->setLine($event->getLine());
+            $msg->setAdditional('store_code', $event->getStoreCode());
+            $msg->setAdditional('time_elapsed', $event->getTimeElapsed());
             $msg->setHost(php_uname('n'));
-            foreach (array('REQUEST_METHOD', 'REQUEST_URI', 'REMOTE_IP', 'HTTP_USER_AGENT') as $key) {
-                if (!empty($event[$key])) {
-                    $msg->setAdditional($key, $event[$key]);
+            foreach (array('getRequestMethod', 'getRequestUri', 'getRemoteIp', 'getHttpUserAgent') as $method) {
+                if (is_callable(array($event, $method)) && $event->$method()) {
+                    $msg->setAdditional(lcfirst(substr($method, 3)), $event->$method());
                 }
             }
 

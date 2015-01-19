@@ -50,6 +50,8 @@ class FireGento_Logger_Model_Stream extends Zend_Log_Writer_Stream
      */
     protected function _write($event)
     {
+        $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
+
         $line = $this->_formatter->format($event, $this->_enableBacktrace);
 
         if (false === @fwrite($this->_stream, $line)) {

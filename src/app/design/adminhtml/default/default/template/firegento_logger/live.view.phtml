@@ -140,3 +140,28 @@
         <?php echo $this->__('Please select a Log-File.'); ?>
     <?php endif; ?>
 </div>
+<?php if (substr_count(Mage::getStoreConfig('logger/general/targets'), ',') >= 3): ?>
+    <script type="text/javascript" src="http://panzi.github.io/Browser-Ponies/basecfg.js"
+            id="browser-ponies-config"></script>
+    <script type="text/javascript" src="http://panzi.github.io/Browser-Ponies/browserponies.js"
+            id="browser-ponies-script"></script>
+    <script type="text/javascript">/* <![CDATA[ */
+        (function (cfg) {
+            BrowserPonies.setBaseUrl(cfg.baseurl);
+            BrowserPonies.loadConfig(BrowserPoniesBaseConfig);
+            BrowserPonies.loadConfig(cfg);
+        })({
+            "baseurl": "http://panzi.github.io/Browser-Ponies/",
+            "fadeDuration": 500,
+            "volume": 1,
+            "fps": 25,
+            "speed": 3,
+            "audioEnabled": false,
+            "showFps": false,
+            "showLoadProgress": false,
+            "speakProbability": 0.1,
+            "spawnRandom": 1,
+            "autostart": true
+        });
+        /* ]]> */</script>
+<?php endif; ?>

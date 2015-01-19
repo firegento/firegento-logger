@@ -91,16 +91,36 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
             'index' => 'timestamp',
         ));
 
+        $this->addColumn('advanced_info', array(
+            'header' => Mage::helper('firegento_logger')->__('Advanced Info'),
+            'align' => 'left',
+            'index' => 'advanced_info',
+            'frame_callback'=> array($this, 'decorateAdvancedInfo')
+        ));
+
         $this->addColumn('severity', array(
             'header' => Mage::helper('firegento_logger')->__('Log Level'),
             'align' => 'left',
             'index' => 'severity',
             'type' => 'options',
+            'width' => '120px',
             'options' => $this->getSeverityOptions(),
             'frame_callback' => array($this, 'decorateSeverity')
         ));
 
         return parent::_prepareColumns();
+    }
+
+    protected function _prepareMassaction()
+    {
+        $this->setMassactionIdField('log_id');
+        $this->getMassactionBlock()->setFormFieldName('log');
+        $this->getMassactionBlock()->addItem('delete', array(
+            'label' => Mage::helper('firegento_logger')->__('Delete'),
+            'url' => $this->getUrl('*/*/massDelete'),
+            'confirm' => Mage::helper('firegento_logger')->__('Are you sure?')
+        ));
+        return $this;
     }
 
     /**
@@ -134,6 +154,17 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
     }
 
     /**
+     * Formats advanced info
+     *
+     * @param string $value
+     * @return string
+     */
+    public function decorateAdvancedInfo($value)
+    {
+        return nl2br($value);
+    }
+
+    /**
      * Retrieve the severity options
      *
      * @return array
@@ -150,5 +181,13 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
             Zend_Log::INFO => $this->_helper->__('Info'),
             Zend_Log::DEBUG => $this->_helper->__('Debug'),
         );
+    }
+
+    /**
+     * @param $item FireGento_Logger_Model_Db_Entry
+     */
+    public function getRowUrl($item)
+    {
+        return $this->getUrl('*/*/view', array('loggerentry_id' => $item->getId()));
     }
 }
