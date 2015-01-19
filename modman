@@ -7,5 +7,6 @@ src/lib/Graylog2-gelf-php/                                              lib/Gray
 src/lib/rsyslog/                                                        lib/rsyslog
 src/lib/chromelogger/                                                   lib/chromelogger
 src/shell/logger.php                                                    shell/logger.php
+src/shell/logtest.php                                                   shell/logtest.php
 src/skin/adminhtml/default/default/firegento_logger.css                 skin/adminhtml/default/default/firegento_logger.css
 src/app/locale/en_US/template/email/firegento_logger                    app/locale/en_US/template/email/firegento_logger
