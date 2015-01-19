@@ -77,7 +77,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
     }
 
     /**
-     * Builds a JSON Message that will be sent to a Logstath Server.
+     * Builds a JSON Message that will be sent to a Logstash Server.
      *
      * @param  FireGento_Logger_Model_Event $event           A Magento Log Event.
      * @param  bool                         $enableBacktrace Indicates if a backtrace should be added to the log event.
