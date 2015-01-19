@@ -590,6 +590,58 @@
                         </protocol>
                     </fields>
                 </logstash>
+                <redis translate="label">
+                    <label>Redis Logger Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>150</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <priority translate="label">
+                            <label>Priority Level Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>firegento_logger/system_config_source_prioritydefault</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose the lowest priority level to be logged.</comment>
+                        </priority>
+                        <host>
+                            <label>Host</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </host>
+                        <port>
+                            <label>Port</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-digits required-entry</validate>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </port>
+                        <password translate="label">
+                            <label>Password</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </password>
+                        <db>
+                            <label>Redis Db Number</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-zero-or-greater</validate>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[The <a href="http://www.rediscookbook.org/multiple_databases.html">Redis database number</a>.]]></comment>
+                        </db>
+                        <key>
+                            <label>Key</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-emailSender</validate>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>The name of a Redis list or channel.</comment>
+                        </key>
+                    </fields>
+                </redis>
             </groups>
         </logger>
     </sections>
