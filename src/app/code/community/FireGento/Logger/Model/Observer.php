@@ -126,4 +126,26 @@ class FireGento_Logger_Model_Observer extends Varien_Object
     {
         return Varien_Date::formatDate($date, false);
     }
+
+    /**
+     * add some inline javascript to the head (before anything else)
+     * to enable javascript logging for all following js code
+     *
+     * the alternative would be to rewrite html/head or change the template files, which is both worse ;)
+     *
+     * @param Varien_Event_Observer $observer
+     */
+    public function addLoggerJs(Varien_Event_Observer $observer)
+    {
+        $isHeadBlock = ($observer->getBlock() instanceof Mage_Page_Block_Html_Head);
+        $isFrontendLoggerActivated = (boolean) Mage::helper('firegento_logger')->getLoggerConfig('general/frontend_logger');
+        if ($isHeadBlock && $isFrontendLoggerActivated) {
+            $transport = $observer->getTransport();
+            $html = $transport->getHtml();
+            $block = Mage::app()->getLayout()->createBlock('core/template');
+            $block->setTemplate('firegento_logger/js.phtml');
+            $html = $block->toHtml() . $html;
+            $transport->setHtml($html);
+        }
+    }
 }

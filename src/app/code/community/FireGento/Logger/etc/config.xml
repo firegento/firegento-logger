@@ -250,4 +250,25 @@ FILE: %file%:%line%
             </redis>
         </logger>
     </default>
+    <frontend>
+        <events>
+            <core_block_abstract_to_html_after>
+                <observers>
+                    <add_logger_js>
+                        <class>FireGento_Logger_Model_Observer</class>
+                        <method>addLoggerJs</method>
+                    </add_logger_js>
+                </observers>
+            </core_block_abstract_to_html_after>
+        </events>
+        <routers>
+            <logger>
+                <use>standard</use>
+                <args>
+                    <module>FireGento_Logger</module>
+                    <frontName>logger</frontName>
+                </args>
+            </logger>
+        </routers>
+    </frontend>
 </config>
