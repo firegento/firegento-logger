@@ -150,6 +150,10 @@
                         <label>Logstash Logger</label>
                         <class>FireGento_Logger_Model_Logstash</class>
                     </logstash>
+                    <redis>
+                        <label>Redis Logger</label>
+                        <class>FireGento_Logger_Model_Redis</class>
+                    </redis>
                 </writer_models>
             </core>
         </log>
@@ -235,6 +239,15 @@ FILE: %file%:%line%
                 <port>6666</port>
                 <protocol>udp</protocol>
             </logstash>
+            <redis>
+                <priority>default</priority>
+                <host>127.0.0.1</host>
+                <port>6379</port>
+                <db>0</db>
+                <key>magento-log</key>
+                <password/>
+                <type>magento-log</type>
+            </redis>
         </logger>
     </default>
 </config>
