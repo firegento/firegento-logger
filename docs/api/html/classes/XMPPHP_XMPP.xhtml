@@ -1,964 +1,445 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "html" "">
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <title>FireGento_Logger - XMPPHP_XMPP - API Documentation</title>
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <title>phpDox - XMPPHP_XMPP</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
   <body>
-    <div class="wrapper clearfix">
-      <div class="topbar clearfix">
-        <h1>
-          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
-        </h1>
-        <ul class="nav">
-          <li class="active">
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
             <a href="../index.xhtml">Overview</a>
           </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">XMPPHP_XMPP</li>
         </ul>
       </div>
-      <div class="navigation">
-        <h3>Members</h3>
+      <nav class="box">
         <ul>
           <li>
-            <a href="#server">$server</a>
+            <a href="#introduction">Introduction</a>
           </li>
           <li>
-            <a href="#user">$user</a>
+            <a href="#synopsis">Synopsis</a>
           </li>
           <li>
-            <a href="#password">$password</a>
+            <a href="#hierarchy">Hierarchy</a>
           </li>
           <li>
-            <a href="#resource">$resource</a>
+            <a href="#tasks">Tasks</a>
           </li>
           <li>
-            <a href="#fulljid">$fulljid</a>
+            <a href="#members">Members</a>
           </li>
           <li>
-            <a href="#basejid">$basejid</a>
+            <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="#authed">$authed</a>
-          </li>
-          <li>
-            <a href="#session_started">$session_started</a>
-          </li>
-          <li>
-            <a href="#auto_subscribe">$auto_subscribe</a>
-          </li>
-          <li>
-            <a href="#use_encryption">$use_encryption</a>
-          </li>
-          <li>
-            <a href="#track_presence">$track_presence</a>
-          </li>
-          <li>
-            <a href="#roster">$roster</a>
-          </li>
-          <li>
-            <a href="#socket">$socket</a>
-          </li>
-          <li>
-            <a href="#parser">$parser</a>
-          </li>
-          <li>
-            <a href="#buffer">$buffer</a>
-          </li>
-          <li>
-            <a href="#xml_depth">$xml_depth</a>
-          </li>
-          <li>
-            <a href="#host">$host</a>
-          </li>
-          <li>
-            <a href="#port">$port</a>
-          </li>
-          <li>
-            <a href="#stream_start">$stream_start</a>
-          </li>
-          <li>
-            <a href="#stream_end">$stream_end</a>
-          </li>
-          <li>
-            <a href="#disconnected">$disconnected</a>
-          </li>
-          <li>
-            <a href="#sent_disconnect">$sent_disconnect</a>
-          </li>
-          <li>
-            <a href="#ns_map">$ns_map</a>
-          </li>
-          <li>
-            <a href="#current_ns">$current_ns</a>
-          </li>
-          <li>
-            <a href="#xmlobj">$xmlobj</a>
-          </li>
-          <li>
-            <a href="#nshandlers">$nshandlers</a>
-          </li>
-          <li>
-            <a href="#xpathhandlers">$xpathhandlers</a>
-          </li>
-          <li>
-            <a href="#idhandlers">$idhandlers</a>
-          </li>
-          <li>
-            <a href="#eventhandlers">$eventhandlers</a>
-          </li>
-          <li>
-            <a href="#lastid">$lastid</a>
-          </li>
-          <li>
-            <a href="#default_ns">$default_ns</a>
-          </li>
-          <li>
-            <a href="#until">$until</a>
-          </li>
-          <li>
-            <a href="#until_count">$until_count</a>
-          </li>
-          <li>
-            <a href="#until_happened">$until_happened</a>
-          </li>
-          <li>
-            <a href="#until_payload">$until_payload</a>
-          </li>
-          <li>
-            <a href="#log">$log</a>
-          </li>
-          <li>
-            <a href="#reconnect">$reconnect</a>
-          </li>
-          <li>
-            <a href="#been_reset">$been_reset</a>
-          </li>
-          <li>
-            <a href="#is_server">$is_server</a>
-          </li>
-          <li>
-            <a href="#last_send">$last_send</a>
-          </li>
-          <li>
-            <a href="#use_ssl">$use_ssl</a>
-          </li>
-          <li>
-            <a href="#reconnectTimeout">$reconnectTimeout</a>
+            <a href="../source/lib/XMPPHP/XMPP.php.xhtml#line44">Source</a>
           </li>
         </ul>
-        <h3>Methods</h3>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>XMPPHP_XMPP</h1>
+        <h4>XMPPHP Main Class</h4>
+        <p/>
         <ul>
-          <li>
-            <a href="#Xapply_socket">Xapply_socket</a>
-          </li>
-          <li>
-            <a href="#__construct">__construct</a>
-          </li>
-          <li>
-            <a href="#addEventHandler">addEventHandler</a>
-          </li>
-          <li>
-            <a href="#addHandler">addHandler</a>
-          </li>
-          <li>
-            <a href="#addIdHandler">addIdHandler</a>
-          </li>
-          <li>
-            <a href="#addXPathHandler">addXPathHandler</a>
-          </li>
-          <li>
-            <a href="#autoSubscribe">autoSubscribe</a>
-          </li>
-          <li>
-            <a href="#charXML">charXML</a>
-          </li>
-          <li>
-            <a href="#connect">connect</a>
-          </li>
-          <li>
-            <a href="#disconnect">disconnect</a>
-          </li>
-          <li>
-            <a href="#doReconnect">doReconnect</a>
-          </li>
-          <li>
-            <a href="#endXML">endXML</a>
-          </li>
-          <li>
-            <a href="#event">event</a>
-          </li>
-          <li>
-            <a href="#features_handler">features_handler</a>
-          </li>
-          <li>
-            <a href="#getId">getId</a>
-          </li>
-          <li>
-            <a href="#getLog">getLog</a>
-          </li>
-          <li>
-            <a href="#getRoster">getRoster</a>
-          </li>
-          <li>
-            <a href="#getVCard">getVCard</a>
-          </li>
-          <li>
-            <a href="#isDisconnected">isDisconnected</a>
-          </li>
-          <li>
-            <a href="#message">message</a>
-          </li>
-          <li>
-            <a href="#message_handler">message_handler</a>
-          </li>
-          <li>
-            <a href="#presence">presence</a>
-          </li>
-          <li>
-            <a href="#presence_handler">presence_handler</a>
-          </li>
-          <li>
-            <a href="#process">process</a>
-          </li>
-          <li>
-            <a href="#processTime">processTime</a>
-          </li>
-          <li>
-            <a href="#processUntil">processUntil</a>
-          </li>
-          <li>
-            <a href="#read">read</a>
-          </li>
-          <li>
-            <a href="#readyToProcess">readyToProcess</a>
-          </li>
-          <li>
-            <a href="#reset">reset</a>
-          </li>
-          <li>
-            <a href="#resource_bind_handler">resource_bind_handler</a>
-          </li>
-          <li>
-            <a href="#roster_iq_handler">roster_iq_handler</a>
-          </li>
-          <li>
-            <a href="#sasl_failure_handler">sasl_failure_handler</a>
-          </li>
-          <li>
-            <a href="#sasl_success_handler">sasl_success_handler</a>
-          </li>
-          <li>
-            <a href="#send">send</a>
-          </li>
-          <li>
-            <a href="#session_start_handler">session_start_handler</a>
-          </li>
-          <li>
-            <a href="#setReconnectTimeout">setReconnectTimeout</a>
-          </li>
-          <li>
-            <a href="#setupParser">setupParser</a>
-          </li>
-          <li>
-            <a href="#startXML">startXML</a>
-          </li>
-          <li>
-            <a href="#subscribe">subscribe</a>
-          </li>
-          <li>
-            <a href="#time">time</a>
-          </li>
-          <li>
-            <a href="#tls_proceed_handler">tls_proceed_handler</a>
-          </li>
-          <li>
-            <a href="#useEncryption">useEncryption</a>
-          </li>
-          <li>
-            <a href="#useSSL">useSSL</a>
-          </li>
-          <li>
-            <a href="#vcard_get_handler">vcard_get_handler</a>
-          </li>
+          <li>Author: Nathanael C. Fritz &lt;JID: fritzy@netflint.net&gt;</li>
+          <li>Copyright: 2008 Nathanael C. Fritz</li>
         </ul>
-      </div>
-      <div class="content">
-        <h2><span style="font-size:60%">\</span>XMPPHP_XMPP</h2>
-        <div class="file-notice">
-          <p>XMPPHP Main Class</p>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class XMPPHP_XMPP
+                extends <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream.xhtml">XMPPHP_XMLStream</a>
+            {<br/><ul class="none"><li>// members</li><li>public string <a href="#members">$server</a>;
+                    </li><li>public string <a href="#members">$user</a>;
+                    </li><li>protected string <a href="#members">$password</a>;
+                    </li><li>protected string <a href="#members">$resource</a>;
+                    </li><li>protected string <a href="#members">$fulljid</a>;
+                    </li><li>protected string <a href="#members">$basejid</a>;
+                    </li><li>protected boolean <a href="#members">$authed</a>;
+                    </li><li>protected <a href="#members">$session_started</a>;
+                    </li><li>protected boolean <a href="#members">$auto_subscribe</a>;
+                    </li><li>protected boolean <a href="#members">$use_encryption</a>;
+                    </li><li>public boolean <a href="#members">$track_presence</a>;
+                    </li><li>public <span title=""/> <a href="#members">$roster</a>;
+                    </li></ul><ul class="none"><li>// Inherited members from <span title="XMPPHP_XMLStream">XMPPHP_XMLStream</span></li><li>protected resource <a href="#members">$socket</a>;
+                        </li><li>protected resource <a href="#members">$parser</a>;
+                        </li><li>protected string <a href="#members">$buffer</a>;
+                        </li><li>protected integer <a href="#members">$xml_depth</a>;
+                        </li><li>protected string <a href="#members">$host</a>;
+                        </li><li>protected integer <a href="#members">$port</a>;
+                        </li><li>protected string <a href="#members">$stream_start</a>;
+                        </li><li>protected string <a href="#members">$stream_end</a>;
+                        </li><li>protected boolean <a href="#members">$disconnected</a>;
+                        </li><li>protected boolean <a href="#members">$sent_disconnect</a>;
+                        </li><li>protected array <a href="#members">$ns_map</a>;
+                        </li><li>protected array <a href="#members">$current_ns</a>;
+                        </li><li>protected array <a href="#members">$xmlobj</a>;
+                        </li><li>protected array <a href="#members">$nshandlers</a>;
+                        </li><li>protected array <a href="#members">$xpathhandlers</a>;
+                        </li><li>protected array <a href="#members">$idhandlers</a>;
+                        </li><li>protected array <a href="#members">$eventhandlers</a>;
+                        </li><li>protected integer <a href="#members">$lastid</a>;
+                        </li><li>protected string <a href="#members">$default_ns</a>;
+                        </li><li>protected string <a href="#members">$until</a>;
+                        </li><li>protected string <a href="#members">$until_count</a>;
+                        </li><li>protected array <a href="#members">$until_happened</a>;
+                        </li><li>protected array <a href="#members">$until_payload</a>;
+                        </li><li>protected <span title="XMPPHP_Log">XMPPHP_Log</span> <a href="#members">$log</a>;
+                        </li><li>protected boolean <a href="#members">$reconnect</a>;
+                        </li><li>protected boolean <a href="#members">$been_reset</a>;
+                        </li><li>protected boolean <a href="#members">$is_server</a>;
+                        </li><li>protected integer <a href="#members">$last_send</a>;
+                        </li><li>protected boolean <a href="#members">$use_ssl</a>;
+                        </li><li>protected integer <a href="#members">$reconnectTimeout</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>public void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/useEncryption.xhtml">useEncryption</a>()
+                    </li><li>public void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/autoSubscribe.xhtml">autoSubscribe</a>()
+                    </li><li>public void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/message.xhtml">message</a>()
+                    </li><li>public void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/presence.xhtml">presence</a>()
+                    </li><li>public void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/subscribe.xhtml">subscribe</a>()
+                    </li><li>public void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/message_handler.xhtml">message_handler</a>()
+                    </li><li>public void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/presence_handler.xhtml">presence_handler</a>()
+                    </li><li>protected void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/features_handler.xhtml">features_handler</a>()
+                    </li><li>protected void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/sasl_success_handler.xhtml">sasl_success_handler</a>()
+                    </li><li>protected void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/sasl_failure_handler.xhtml">sasl_failure_handler</a>()
+                    </li><li>protected void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/resource_bind_handler.xhtml">resource_bind_handler</a>()
+                    </li><li>public void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/getRoster.xhtml">getRoster</a>()
+                    </li><li>protected void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/roster_iq_handler.xhtml">roster_iq_handler</a>()
+                    </li><li>protected void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/session_start_handler.xhtml">session_start_handler</a>()
+                    </li><li>protected void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/tls_proceed_handler.xhtml">tls_proceed_handler</a>()
+                    </li><li>public void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/getVCard.xhtml">getVCard</a>()
+                    </li><li>protected void <a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/vcard_get_handler.xhtml">vcard_get_handler</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="XMPPHP_XMLStream">XMPPHP_XMLStream</span></li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/__construct.xhtml">__construct</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/__destruct.xhtml">__destruct</a>()
+                        </li><li>public XMPPHP_Log <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/getLog.xhtml">getLog</a>()
+                        </li><li>public integer <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/getId.xhtml">getId</a>()
+                        </li><li>public integer <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/useSSL.xhtml">useSSL</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/addIdHandler.xhtml">addIdHandler</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/addHandler.xhtml">addHandler</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/addXPathHandler.xhtml">addXPathHandler</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/addEventHandler.xhtml">addEventHandler</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/connect.xhtml">connect</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/doReconnect.xhtml">doReconnect</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/setReconnectTimeout.xhtml">setReconnectTimeout</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/disconnect.xhtml">disconnect</a>()
+                        </li><li>public boolean <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/isDisconnected.xhtml">isDisconnected</a>()
+                        </li><li>public string <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/process.xhtml">process</a>()
+                        </li><li>public string <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/processTime.xhtml">processTime</a>()
+                        </li><li>public string <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/processUntil.xhtml">processUntil</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/Xapply_socket.xhtml">Xapply_socket</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/startXML.xhtml">startXML</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/endXML.xhtml">endXML</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/charXML.xhtml">charXML</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/event.xhtml">event</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/read.xhtml">read</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/send.xhtml">send</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/time.xhtml">time</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/reset.xhtml">reset</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/setupParser.xhtml">setupParser</a>()
+                        </li><li>public void <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/readyToProcess.xhtml">readyToProcess</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a href="../classes/XMPPHP_XMLStream.xhtml">XMPPHP_XMLStream</a>
+            </li>
+          </ul>
+          <h4>Extended by</h4>
+          <ul>
+            <li>
+              <a href="../classes/XMPPHP_BOSH.xhtml">XMPPHP_BOSH</a>
+            </li>
+          </ul>
         </div>
-        <ul class="fileinfos">
-          <li><b>Author: </b>Nathanael C. Fritz &lt;JID: fritzy@netflint.net&gt;</li>
-          <li><b>Author: </b>Stephan Wentz &lt;JID: stephan@jabber.wentz.it&gt;</li>
-          <li><b>Author: </b>Michael Garvin &lt;JID: gar@netflint.net&gt;</li>
-          <li><b>Copyright: </b>2008 Nathanael C. Fritz</li>
-        </ul>
-        <h3>Members</h3>
-        <ul class="varlist">
-          <li>
-            <a name="server"/>
-            <h4><span class="label public">public</span>string 
-                
-                $server</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="user"/>
-            <h4><span class="label public">public</span>string 
-                
-                $user</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="password"/>
-            <h4><span class="label protected">protected</span>string 
-                
-                $password</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="resource"/>
-            <h4><span class="label protected">protected</span>string 
-                
-                $resource</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="fulljid"/>
-            <h4><span class="label protected">protected</span>string 
-                
-                $fulljid</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="basejid"/>
-            <h4><span class="label protected">protected</span>string 
-                
-                $basejid</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="authed"/>
-            <h4><span class="label protected">protected</span>boolean 
-                
-                $authed</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="session_started"/>
-            <h4><span class="label protected">protected</span>
-                $session_started</h4>
-          </li>
-          <li>
-            <a name="auto_subscribe"/>
-            <h4><span class="label protected">protected</span>boolean 
-                
-                $auto_subscribe</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="use_encryption"/>
-            <h4><span class="label protected">protected</span>boolean 
-                
-                $use_encryption</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="track_presence"/>
-            <h4><span class="label public">public</span>boolean 
-                
-                $track_presence</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="roster"/>
-            <h4><span class="label public">public</span>object 
-                
-                $roster</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-        </ul>
-        <h3>Constructor</h3>
-        <ul class="varlist">
-          <li>
-            <a name="__construct"/>
-            <h4><span class="label public">public</span>__construct<span style="font-size:90%;">( <span class="param-type">string</span><strong> $host</strong>, <span class="param-type">integer</span><strong> $port</strong>, <span class="param-type">string</span><strong> $user</strong>, <span class="param-type">string</span><strong> $password</strong>, <span class="param-type">string</span><strong> $resource</strong>, <span class="param-type">string</span><strong> $server</strong>, <span class="param-type">boolean</span><strong> $printlog</strong>, <span class="param-type">string</span><strong> $loglevel</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Constructor</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$host</code> - </li>
-                <li><code>$port</code> - </li>
-                <li><code>$user</code> - </li>
-                <li><code>$password</code> - </li>
-                <li><code>$resource</code> - </li>
-                <li><code>$server</code> - </li>
-                <li><code>$printlog</code> - </li>
-                <li><code>$loglevel</code> - </li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <h3>Destructor</h3>
-        <ul class="varlist">
-          <li>
-            <a name="__destruct"/>
-            <h4><span class="label public">public</span>__destruct<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Destructor Cleanup connection</li>
-            </p>
-          </li>
-        </ul>
-        <h3>Methods</h3>
-        <ul class="varlist">
-          <li>
-            <a name="Xapply_socket"/>
-            <h4><span class="label public">public</span>Xapply_socket<span style="font-size:90%;">( <span class="param-type"/><strong> $socket</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Obsolete?</li>
-            </p>
-          </li>
-          <li>
-            <a name="addEventHandler"/>
-            <h4><span class="label public">public</span>addEventHandler<span style="font-size:90%;">( <span class="param-type"/><strong> $name</strong>, <span class="param-type">string</span><strong> $pointer</strong>, <span class="param-type">string</span><strong> $obj</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Add Event Handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$id</code> - </li>
-                <li><code>$pointer</code> - </li>
-                <li><code>$obj</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="addHandler"/>
-            <h4><span class="label public">public</span>addHandler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $name</strong>, <span class="param-type">string</span><strong> $ns</strong>, <span class="param-type">string</span><strong> $pointer</strong>, <span class="param-type">string</span><strong> $obj</strong>, <span class="param-type">integer</span><strong> $depth</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Add Handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$name</code> - </li>
-                <li><code>$ns</code> - </li>
-                <li><code>$pointer</code> - </li>
-                <li><code>$obj</code> - </li>
-                <li><code>$depth</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="addIdHandler"/>
-            <h4><span class="label public">public</span>addIdHandler<span style="font-size:90%;">( <span class="param-type">integer</span><strong> $id</strong>, <span class="param-type">string</span><strong> $pointer</strong>, <span class="param-type">string</span><strong> $obj</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Add ID Handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$id</code> - </li>
-                <li><code>$pointer</code> - </li>
-                <li><code>$obj</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="addXPathHandler"/>
-            <h4><span class="label public">public</span>addXPathHandler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $xpath</strong>, <span class="param-type">string</span><strong> $pointer</strong>, <span class="param-type"/><strong> $obj</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Add XPath Handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$xpath</code> - </li>
-                <li><code>$pointer</code> - </li>
-                <li><code/> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="autoSubscribe"/>
-            <h4><span class="label public">public</span>autoSubscribe<span style="font-size:90%;">( <span class="param-type">boolean</span><strong> $autoSubscribe</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Turn on auto-authorization of subscription requests.</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$autoSubscribe</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="charXML"/>
-            <h4><span class="label public">public</span>charXML<span style="font-size:90%;">( <span class="param-type">resource</span><strong> $parser</strong>, <span class="param-type">string</span><strong> $data</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>XML character callback</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$parser</code> - </li>
-                <li><code>$data</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="connect"/>
-            <h4><span class="label public">public</span>connect<span style="font-size:90%;">( <span class="param-type">integer</span><strong> $timeout</strong>, <span class="param-type">boolean</span><strong> $persistent</strong>, <span class="param-type">boolean</span><strong> $sendinit</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Connect to XMPP Host</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$timeout</code> - </li>
-                <li><code>$persistent</code> - </li>
-                <li><code>$sendinit</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="disconnect"/>
-            <h4><span class="label public">public</span>disconnect<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Disconnect from XMPP Host</li>
-            </p>
-          </li>
-          <li>
-            <a name="doReconnect"/>
-            <h4><span class="label public">public</span>doReconnect<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Reconnect XMPP Host</li>
-            </p>
-          </li>
-          <li>
-            <a name="endXML"/>
-            <h4><span class="label public">public</span>endXML<span style="font-size:90%;">( <span class="param-type">resource</span><strong> $parser</strong>, <span class="param-type">string</span><strong> $name</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>XML end callback</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$parser</code> - </li>
-                <li><code>$name</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="event"/>
-            <h4><span class="label public">public</span>event<span style="font-size:90%;">( <span class="param-type">string</span><strong> $name</strong>, <span class="param-type">string</span><strong> $payload</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Event?</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$name</code> - </li>
-                <li><code>$payload</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getId"/>
-            <h4><span class="label public">public</span>getId<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Get next ID</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getLog"/>
-            <h4><span class="label public">public</span>getLog<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Return the log instance</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getRoster"/>
-            <h4><span class="label public">public</span>getRoster<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Retrieves the roster</li>
-            </p>
-          </li>
-          <li>
-            <a name="getVCard"/>
-            <h4><span class="label public">public</span>getVCard<span style="font-size:90%;">( <span class="param-type"/><strong> $jid</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Retrieves the vcard</li>
-            </p>
-          </li>
-          <li>
-            <a name="isDisconnected"/>
-            <h4><span class="label public">public</span>isDisconnected<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Are we are disconnected?</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="message"/>
-            <h4><span class="label public">public</span>message<span style="font-size:90%;">( <span class="param-type">string</span><strong> $to</strong>, <span class="param-type">string</span><strong> $body</strong>, <span class="param-type">string</span><strong> $type</strong>, <span class="param-type">string</span><strong> $subject</strong>, <span class="param-type"/><strong> $payload</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Send XMPP Message</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$to</code> - </li>
-                <li><code>$body</code> - </li>
-                <li><code>$type</code> - </li>
-                <li><code>$subject</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="message_handler"/>
-            <h4><span class="label public">public</span>message_handler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $xml</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Message handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$xml</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="presence"/>
-            <h4><span class="label public">public</span>presence<span style="font-size:90%;">( <span class="param-type">string</span><strong> $status</strong>, <span class="param-type">string</span><strong> $show</strong>, <span class="param-type">string</span><strong> $to</strong>, <span class="param-type">string</span><strong> $type</strong>, <span class="param-type">integer</span><strong> $priority</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Set Presence</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$status</code> - </li>
-                <li><code>$show</code> - </li>
-                <li><code>$to</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="presence_handler"/>
-            <h4><span class="label public">public</span>presence_handler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $xml</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Presence handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$xml</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="process"/>
-            <h4><span class="label public">public</span>process<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Process</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="processTime"/>
-            <h4><span class="label public">public</span>processTime<span style="font-size:90%;">( <span class="param-type">integer</span><strong> $timeout</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Process until a timeout occurs</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$timeout</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="processUntil"/>
-            <h4><span class="label public">public</span>processUntil<span style="font-size:90%;">( <span class="param-type"><span title="string|array">string|array</span></span><strong> $event</strong>, <span class="param-type">integer</span><strong> $timeout</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Process until a specified event or a timeout occurs</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$event</code> - </li>
-                <li><code>$timeout</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="read"/>
-            <h4><span class="label public">public</span>read<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Read from socket</li>
-            </p>
-          </li>
-          <li>
-            <a name="readyToProcess"/>
-            <h4><span class="label public">public</span>readyToProcess<span style="font-size:90%;">(  )</span></h4>
-          </li>
-          <li>
-            <a name="reset"/>
-            <h4><span class="label public">public</span>reset<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Reset connection</li>
-            </p>
-          </li>
-          <li>
-            <a name="send"/>
-            <h4><span class="label public">public</span>send<span style="font-size:90%;">( <span class="param-type">string</span><strong> $msg</strong>, <span class="param-type"/><strong> $timeout</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Send to socket</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$msg</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setReconnectTimeout"/>
-            <h4><span class="label public">public</span>setReconnectTimeout<span style="font-size:90%;">( <span class="param-type"/><strong> $timeout</strong> )</span></h4>
-          </li>
-          <li>
-            <a name="setupParser"/>
-            <h4><span class="label public">public</span>setupParser<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Setup the XML parser</li>
-            </p>
-          </li>
-          <li>
-            <a name="startXML"/>
-            <h4><span class="label public">public</span>startXML<span style="font-size:90%;">( <span class="param-type">resource</span><strong> $parser</strong>, <span class="param-type">string</span><strong> $name</strong>, <span class="param-type"/><strong> $attr</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>XML start callback</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$parser</code> - </li>
-                <li><code>$name</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="subscribe"/>
-            <h4><span class="label public">public</span>subscribe<span style="font-size:90%;">( <span class="param-type">string</span><strong> $jid</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Send Auth request</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$jid</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="time"/>
-            <h4><span class="label public">public</span>time<span style="font-size:90%;">(  )</span></h4>
-          </li>
-          <li>
-            <a name="useEncryption"/>
-            <h4><span class="label public">public</span>useEncryption<span style="font-size:90%;">( <span class="param-type">boolean</span><strong> $useEncryption</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Turn encryption on/ff</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$useEncryption</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="useSSL"/>
-            <h4><span class="label public">public</span>useSSL<span style="font-size:90%;">( <span class="param-type"/><strong> $use</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Set SSL</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="features_handler"/>
-            <h4><span class="label protected">protected</span>features_handler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $xml</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Features handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$xml</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="resource_bind_handler"/>
-            <h4><span class="label protected">protected</span>resource_bind_handler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $xml</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Resource bind handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$xml</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="roster_iq_handler"/>
-            <h4><span class="label protected">protected</span>roster_iq_handler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $xml</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Roster iq handler Gets all packets matching XPath "iq/{jabber:iq:roster}query'</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$xml</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="sasl_failure_handler"/>
-            <h4><span class="label protected">protected</span>sasl_failure_handler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $xml</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>SASL feature handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$xml</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="sasl_success_handler"/>
-            <h4><span class="label protected">protected</span>sasl_success_handler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $xml</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>SASL success handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$xml</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="session_start_handler"/>
-            <h4><span class="label protected">protected</span>session_start_handler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $xml</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Session start handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$xml</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="tls_proceed_handler"/>
-            <h4><span class="label protected">protected</span>tls_proceed_handler<span style="font-size:90%;">( <span class="param-type">string</span><strong> $xml</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>TLS proceed handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$xml</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="vcard_get_handler"/>
-            <h4><span class="label protected">protected</span>vcard_get_handler<span style="font-size:90%;">( <span class="param-type"/><strong> $xml</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>VCard retrieval handler</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>Object</code> - $xml</li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
-      </div>
+        <h2 id="tasks">Tasks</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th style="width:3em;">Line</th>
+              <th>Task</th>
+            </tr>
+          </thead>
+          <tr>
+            <td class="nummeric">248</td>
+            <td>deprication warning</td>
+          </tr>
+          <tr>
+            <td class="nummeric">705</td>
+            <td>retry send here</td>
+          </tr>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="authed"><strong>$authed</strong>
+                —
+                boolean</li>
+            <li id="auto_subscribe"><strong>$auto_subscribe</strong>
+                —
+                boolean</li>
+            <li id="basejid"><strong>$basejid</strong>
+                —
+                string</li>
+            <li id="been_reset"><strong>$been_reset</strong>
+                —
+                boolean</li>
+            <li id="buffer"><strong>$buffer</strong>
+                —
+                string</li>
+            <li id="current_ns"><strong>$current_ns</strong>
+                —
+                array</li>
+            <li id="default_ns"><strong>$default_ns</strong>
+                —
+                string</li>
+            <li id="disconnected"><strong>$disconnected</strong>
+                —
+                boolean</li>
+            <li id="eventhandlers"><strong>$eventhandlers</strong>
+                —
+                array</li>
+            <li id="fulljid"><strong>$fulljid</strong>
+                —
+                string</li>
+            <li id="host"><strong>$host</strong>
+                —
+                string</li>
+            <li id="idhandlers"><strong>$idhandlers</strong>
+                —
+                array</li>
+            <li id="is_server"><strong>$is_server</strong>
+                —
+                boolean</li>
+            <li id="last_send"><strong>$last_send</strong>
+                —
+                float</li>
+            <li id="lastid"><strong>$lastid</strong>
+                —
+                integer</li>
+            <li id="log"><strong>$log</strong>
+                —
+                <a href="#">XMPPHP_Log</a></li>
+            <li id="ns_map"><strong>$ns_map</strong>
+                —
+                array</li>
+            <li id="nshandlers"><strong>$nshandlers</strong>
+                —
+                array</li>
+            <li id="parser"><strong>$parser</strong>
+                —
+                resource</li>
+            <li id="password"><strong>$password</strong>
+                —
+                string</li>
+            <li id="port"><strong>$port</strong>
+                —
+                integer</li>
+            <li id="reconnect"><strong>$reconnect</strong>
+                —
+                boolean</li>
+            <li id="reconnectTimeout"><strong>$reconnectTimeout</strong>
+                —
+                integer</li>
+            <li id="resource"><strong>$resource</strong>
+                —
+                string</li>
+            <li id="sent_disconnect"><strong>$sent_disconnect</strong>
+                —
+                boolean</li>
+            <li id="session_started">
+              <strong>$session_started</strong>
+            </li>
+            <li id="socket"><strong>$socket</strong>
+                —
+                resource</li>
+            <li id="stream_end"><strong>$stream_end</strong>
+                —
+                string</li>
+            <li id="stream_start"><strong>$stream_start</strong>
+                —
+                string</li>
+            <li id="until"><strong>$until</strong>
+                —
+                string</li>
+            <li id="until_count"><strong>$until_count</strong>
+                —
+                string</li>
+            <li id="until_happened"><strong>$until_happened</strong>
+                —
+                array</li>
+            <li id="until_payload"><strong>$until_payload</strong>
+                —
+                array</li>
+            <li id="use_encryption"><strong>$use_encryption</strong>
+                —
+                boolean</li>
+            <li id="use_ssl"><strong>$use_ssl</strong>
+                —
+                boolean</li>
+            <li id="xml_depth"><strong>$xml_depth</strong>
+                —
+                integer</li>
+            <li id="xmlobj"><strong>$xmlobj</strong>
+                —
+                array</li>
+            <li id="xpathhandlers"><strong>$xpathhandlers</strong>
+                —
+                array</li>
+          </ul>
+          <h4>public</h4>
+          <ul class="members">
+            <li id="roster"><strong>$roster</strong>
+                —
+                <a href="#"/></li>
+            <li id="server"><strong>$server</strong>
+                —
+                string</li>
+            <li id="track_presence"><strong>$track_presence</strong>
+                —
+                boolean</li>
+            <li id="user"><strong>$user</strong>
+                —
+                string</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="features_handler"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/features_handler.xhtml">features_handler()</a>
+                — Features handler</li>
+            <li id="resource_bind_handler"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/resource_bind_handler.xhtml">resource_bind_handler()</a>
+                — Resource bind handler</li>
+            <li id="roster_iq_handler"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/roster_iq_handler.xhtml">roster_iq_handler()</a>
+                — Roster iq handler Gets all packets matching XPath "iq/{jabber:iq:roster}query'</li>
+            <li id="sasl_failure_handler"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/sasl_failure_handler.xhtml">sasl_failure_handler()</a>
+                — SASL feature handler</li>
+            <li id="sasl_success_handler"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/sasl_success_handler.xhtml">sasl_success_handler()</a>
+                — SASL success handler</li>
+            <li id="session_start_handler"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/session_start_handler.xhtml">session_start_handler()</a>
+                — Session start handler</li>
+            <li id="tls_proceed_handler"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/tls_proceed_handler.xhtml">tls_proceed_handler()</a>
+                — TLS proceed handler</li>
+            <li id="vcard_get_handler"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/vcard_get_handler.xhtml">vcard_get_handler()</a>
+                — VCard retrieval handler</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/__construct.xhtml">__construct()</a>
+                — Constructor</li>
+            <li id="autoSubscribe"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/autoSubscribe.xhtml">autoSubscribe()</a>
+                — Turn on auto-authorization of subscription requests.</li>
+            <li id="getRoster"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/getRoster.xhtml">getRoster()</a>
+                — Retrieves the roster</li>
+            <li id="getVCard"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/getVCard.xhtml">getVCard()</a>
+                — Retrieves the vcard</li>
+            <li id="message"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/message.xhtml">message()</a>
+                — Send XMPP Message</li>
+            <li id="message_handler"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/message_handler.xhtml">message_handler()</a>
+                — Message handler</li>
+            <li id="presence"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/presence.xhtml">presence()</a>
+                — Set Presence</li>
+            <li id="presence_handler"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/presence_handler.xhtml">presence_handler()</a>
+                — Presence handler</li>
+            <li id="subscribe"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/subscribe.xhtml">subscribe()</a>
+                — Send Auth request</li>
+            <li id="useEncryption"><a title="XMPPHP_XMPP" href="../classes/XMPPHP_XMPP/useEncryption.xhtml">useEncryption()</a>
+                — Turn encryption on/ff</li>
+          </ul>
+          <h3>Inherited from <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream.xhtml">XMPPHP_XMLStream</a></h3>
+          <h4>public</h4>
+          <ul>
+            <li id="Xapply_socket"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/Xapply_socket.xhtml">Xapply_socket()</a>
+                — Obsolete?</li>
+            <li id="addEventHandler"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/addEventHandler.xhtml">addEventHandler()</a>
+                — Add Event Handler</li>
+            <li id="addHandler"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/addHandler.xhtml">addHandler()</a>
+                — Add Handler</li>
+            <li id="addIdHandler"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/addIdHandler.xhtml">addIdHandler()</a>
+                — Add ID Handler</li>
+            <li id="addXPathHandler"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/addXPathHandler.xhtml">addXPathHandler()</a>
+                — Add XPath Handler</li>
+            <li id="charXML"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/charXML.xhtml">charXML()</a>
+                — XML character callback</li>
+            <li id="connect"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/connect.xhtml">connect()</a>
+                — Connect to XMPP Host</li>
+            <li id="disconnect"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/disconnect.xhtml">disconnect()</a>
+                — Disconnect from XMPP Host</li>
+            <li id="doReconnect"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/doReconnect.xhtml">doReconnect()</a>
+                — Reconnect XMPP Host</li>
+            <li id="endXML"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/endXML.xhtml">endXML()</a>
+                — XML end callback</li>
+            <li id="event"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/event.xhtml">event()</a>
+                — Event?</li>
+            <li id="getId"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/getId.xhtml">getId()</a>
+                — Get next ID</li>
+            <li id="getLog"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/getLog.xhtml">getLog()</a>
+                — Return the log instance</li>
+            <li id="isDisconnected"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/isDisconnected.xhtml">isDisconnected()</a>
+                — Are we are disconnected?</li>
+            <li id="process"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/process.xhtml">process()</a>
+                — Process</li>
+            <li id="processTime"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/processTime.xhtml">processTime()</a>
+                — Process until a timeout occurs</li>
+            <li id="processUntil"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/processUntil.xhtml">processUntil()</a>
+                — Process until a specified event or a timeout occurs</li>
+            <li id="read"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/read.xhtml">read()</a>
+                — Read from socket</li>
+            <li id="readyToProcess">
+              <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/readyToProcess.xhtml">readyToProcess()</a>
+            </li>
+            <li id="reset"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/reset.xhtml">reset()</a>
+                — Reset connection</li>
+            <li id="send"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/send.xhtml">send()</a>
+                — Send to socket</li>
+            <li id="setReconnectTimeout">
+              <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/setReconnectTimeout.xhtml">setReconnectTimeout()</a>
+            </li>
+            <li id="setupParser"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/setupParser.xhtml">setupParser()</a>
+                — Setup the XML parser</li>
+            <li id="startXML"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/startXML.xhtml">startXML()</a>
+                — XML start callback</li>
+            <li id="time">
+              <a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/time.xhtml">time()</a>
+            </li>
+            <li id="useSSL"><a title="XMPPHP_XMLStream" href="../classes/XMPPHP_XMLStream/useSSL.xhtml">useSSL()</a>
+                — Set SSL</li>
+          </ul>
+        </div>
+      </section>
     </div>
+    <footer>
+      <span/>
+    </footer>
   </body>
 </html>

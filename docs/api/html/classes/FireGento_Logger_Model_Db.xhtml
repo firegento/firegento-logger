@@ -1,141 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "html" "">
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <title>FireGento_Logger - FireGento_Logger_Model_Db - API Documentation</title>
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <title>phpDox - FireGento_Logger_Model_Db</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
   <body>
-    <div class="wrapper clearfix">
-      <div class="topbar clearfix">
-        <h1>
-          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
-        </h1>
-        <ul class="nav">
-          <li class="active">
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
             <a href="../index.xhtml">Overview</a>
           </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">FireGento_Logger_Model_Db</li>
         </ul>
       </div>
-      <div class="navigation">
-        <h3>Members</h3>
+      <nav class="box">
         <ul>
           <li>
-            <a href="#_db">$_db</a>
+            <a href="#introduction">Introduction</a>
           </li>
           <li>
-            <a href="#_table">$_table</a>
+            <a href="#synopsis">Synopsis</a>
           </li>
           <li>
-            <a href="#_columnMap">$_columnMap</a>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/app/code/community/FireGento/Logger/Model/Db.php.xhtml#line28">Source</a>
           </li>
         </ul>
-        <h3>Methods</h3>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>FireGento_Logger_Model_Db</h1>
+        <h4>Model for Database logging</h4>
+        <p/>
         <ul>
-          <li>
-            <a href="#__construct">__construct</a>
-          </li>
-          <li>
-            <a href="#factory">factory</a>
-          </li>
-          <li>
-            <a href="#setFormatter">setFormatter</a>
-          </li>
+          <li>Author: FireGento Team &lt;team@firegento.com&gt;</li>
         </ul>
-      </div>
-      <div class="content">
-        <h2><span style="font-size:60%">\</span>FireGento_Logger_Model_Db</h2>
-        <div class="file-notice">
-          <p>Model for Database logging</p>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class FireGento_Logger_Model_Db
+                extends <a title="Zend_Log_Writer_Db" href="../classes/Zend_Log_Writer_Db.xhtml">Zend_Log_Writer_Db</a>
+            {<br/><ul class="none"><li>// methods</li><li>public void <a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/setFormatter.xhtml">setFormatter</a>()
+                    </li><li>public static void|Zend_Log_FactoryInterface <a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/factory.xhtml">factory</a>()
+                    </li><li>protected string <a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/getAdvancedInfo.xhtml">getAdvancedInfo</a>()
+                    </li><li>protected void <a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/_write.xhtml">_write</a>()
+                    </li><li>protected bool <a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/_matchRule.xhtml">_matchRule</a>()
+                    </li><li>protected void <a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/_sendNotification.xhtml">_sendNotification</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a href="../classes/Zend_Log_Writer_Db.xhtml">Zend_Log_Writer_Db</a>
+            </li>
+          </ul>
         </div>
-        <ul class="fileinfos">
-          <li><b>Author: </b>FireGento Team &lt;team@firegento.com&gt;</li>
-        </ul>
-        <h3>Members</h3>
-        <ul class="varlist">
-          <li>
-            <a name="_db"/>
-            <h4><span class="label private">private</span>object 
-                
-                $_db</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="_table"/>
-            <h4><span class="label private">private</span>string 
-                
-                $_table</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="_columnMap"/>
-            <h4><span class="label private">private</span>object 
-                
-                $_columnMap</h4>
-            <ul class="varlist">
-              <li>Relates database columns names to log data field keys.</li>
-            </ul>
-          </li>
-        </ul>
-        <h3>Constructor</h3>
-        <ul class="varlist">
-          <li>
-            <a name="__construct"/>
-            <h4><span class="label public">public</span>__construct<span style="font-size:90%;">( <span class="param-type">string</span><strong> $filename</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Class constructor</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$filename</code> - Filename</li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <h3>Methods</h3>
-        <ul class="varlist">
-          <li>
-            <a name="factory"/>
-            <h4><span class="label true">true</span><span class="label public">public</span>factory<span style="font-size:90%;">( <span class="param-type"><span title="array|Zend_Config">array|Zend_Config</span></span><strong> $config</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Satisfy newer Zend Framework</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$config</code> - Configuration</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setFormatter"/>
-            <h4><span class="label public">public</span>setFormatter<span style="font-size:90%;">( <span class="param-type"><span title="\\Zend_Log_Formatter_Interface">Zend_Log_Formatter_Interface</span></span><strong> $formatter</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Set a custom formatter</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$formatter</code> - Formatter</li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
-      </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="_matchRule"><a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/_matchRule.xhtml">_matchRule()</a>
+                — Does the rule match</li>
+            <li id="_sendNotification"><a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/_sendNotification.xhtml">_sendNotification()</a>
+                — Send notifcations.</li>
+            <li id="_write"><a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/_write.xhtml">_write()</a>
+                — After writing the log entry to the database, conditionally send out a notification based on the notification rules.</li>
+            <li id="getAdvancedInfo"><a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/getAdvancedInfo.xhtml">getAdvancedInfo()</a>
+                — Returns log data in advanced format</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/__construct.xhtml">__construct()</a>
+                — Class constructor</li>
+            <li id="factory"><a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/factory.xhtml">factory()</a>
+                — Satisfy newer Zend Framework</li>
+            <li id="setFormatter"><a title="FireGento_Logger_Model_Db" href="../classes/FireGento_Logger_Model_Db/setFormatter.xhtml">setFormatter()</a>
+                — Set a custom formatter</li>
+          </ul>
+        </div>
+      </section>
     </div>
+    <footer>
+      <span/>
+    </footer>
   </body>
 </html>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="XMPPHP_XMLObj" namespace="" name="XMPPHP_XMLObj" abstract="false" final="false" start="40" end="158">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP" file="XMLObj.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/XMLObj.php" size="3528" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="0a18efda53a9c99f934fa494ef285aab867ecb62"/>
+<class xmlns="http://xml.phpdox.net/src" full="XMPPHP_XMLObj" namespace="" name="XMPPHP_XMLObj" abstract="false" final="false" start="40" end="158">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/XMPPHP" file="XMLObj.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/XMPPHP/XMLObj.php" size="3528" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="0a18efda53a9c99f934fa494ef285aab867ecb62" relative="lib/XMPPHP/XMLObj.php"/>
   <docblock>
     <description compact="XMPPHP XML Object"/>
     <category value="xmpphp"/>
@@ -11,31 +11,31 @@
     <copyright value="2008 Nathanael C. Fritz"/>
     <version value="$Id$"/>
   </docblock>
-  <member name="name" type="{unknown}" visibility="public">
+  <member name="name" type="{unknown}" visibility="public" line="46">
     <docblock>
       <description compact="Tag name"/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="ns" type="{unknown}" visibility="public">
+  <member name="ns" type="{unknown}" visibility="public" line="53">
     <docblock>
       <description compact="Namespace"/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="attrs" type="array" visibility="public">
+  <member name="attrs" type="array" visibility="public" line="60">
     <docblock>
       <description compact="Attributes"/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="subs" type="array" visibility="public">
+  <member name="subs" type="array" visibility="public" line="67">
     <docblock>
       <description compact="Subs?"/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="data" type="string" default="" visibility="public">
+  <member name="data" type="string" default="''" visibility="public" line="74">
     <docblock>
       <description compact="Node data"/>
       <var type="string"/>
@@ -50,23 +50,23 @@
       <param type="string" variable="$data"/>
     </docblock>
     <parameter name="name" byreference="false" type="{unknown}"/>
-    <parameter name="ns" byreference="false" type="string" default=""/>
+    <parameter name="ns" byreference="false" type="string" default="''"/>
     <parameter name="attrs" byreference="false" type="array"/>
-    <parameter name="data" byreference="false" type="string" default=""/>
+    <parameter name="data" byreference="false" type="string" default="''"/>
   </constructor>
   <method name="printObj" start="100" end="106" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Dump this XML Object to output."/>
       <param type="integer" variable="$depth"/>
     </docblock>
-    <parameter name="depth" byreference="false" type="integer" default=""/>
+    <parameter name="depth" byreference="false" type="integer" default="0"/>
   </method>
   <method name="toString" start="113" end="128" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Return this XML Object in xml notation"/>
       <param type="string" variable="$str"/>
     </docblock>
-    <parameter name="str" byreference="false" type="string" default=""/>
+    <parameter name="str" byreference="false" type="string" default="''"/>
   </method>
   <method name="hasSub" start="136" end="141" abstract="false" final="false" static="false" visibility="public">
     <docblock>
@@ -87,5 +87,8 @@
     <parameter name="name" byreference="false" type="{unknown}"/>
     <parameter name="attrs" byreference="false" type="{unknown}" default="null"/>
     <parameter name="ns" byreference="false" type="{unknown}" default="null"/>
+    <inline>
+      <todo value="attrs is ignored" line="151"/>
+    </inline>
   </method>
 </class>

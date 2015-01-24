@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Graylog2" namespace="" name="FireGento_Logger_Model_Graylog2" abstract="false" final="false" start="30" end="155">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Graylog2.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Graylog2.php" size="4961" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="b5eb41f3a08fe58423d4ba8fa689bcd8bb8091d6"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Graylog2" namespace="" name="FireGento_Logger_Model_Graylog2" abstract="false" final="false" start="30" end="159">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Graylog2.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Graylog2.php" size="5136" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="057e7d51867bd081e7fcb6bb188503d66e7429d9" relative="app/code/community/FireGento/Logger/Model/Graylog2.php"/>
   <docblock>
     <description compact="Model for Graylog logging"/>
     <category value="FireGento"/>
@@ -8,31 +8,31 @@
     <author value="FireGento Team &lt;team@firegento.com&gt;"/>
   </docblock>
   <extends full="Zend_Log_Writer_Abstract" namespace="" name="Zend_Log_Writer_Abstract"/>
-  <member name="_options" type="array" visibility="protected">
+  <member name="_options" type="array" visibility="protected" line="35">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="_publisher" type="{unknown}" visibility="protected">
+  <member name="_publisher" type="{unknown}" visibility="protected" line="40">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="object">
         <type full="GELFMessagePublisher" namespace="" name="GELFMessagePublisher"/>
       </var>
     </docblock>
   </member>
-  <member name="_publishers" type="array" visibility="protected">
+  <member name="_publishers" type="array" visibility="protected" line="45">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array" of="object">
         <type full="GELFMessagePublisher" namespace="" name="GELFMessagePublisher"/>
       </var>
     </docblock>
   </member>
-  <member name="_enableBacktrace" type="{unknown}" default="false" visibility="protected">
+  <member name="_enableBacktrace" type="{unknown}" default="false" visibility="protected" line="50">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="object">
         <type full="bool" namespace="" name="bool"/>
       </var>
@@ -53,7 +53,7 @@
       <param description="Hostname" type="string" variable="$hostname"/>
       <param description="Port" type="int" variable="$port"/>
       <param description="Chunk Size" type="int" variable="$chunkSize"/>
-      <static value=""/>
+      <static/>
       <return type="object">
         <type full="GELFMessagePublisher" namespace="" name="GELFMessagePublisher"/>
       </return>
@@ -72,15 +72,17 @@
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
   </constructor>
-  <method name="_write" start="108" end="143" abstract="false" final="false" static="false" visibility="protected">
+  <method name="_write" start="108" end="147" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="Places event line into array of lines to be used as message body."/>
       <param description="Event data" type="array" variable="$event"/>
-      <throws value="Zend_Log_Exception"/>
+      <throws type="object">
+        <type full="Zend_Log_Exception" namespace="" name="Zend_Log_Exception"/>
+      </throws>
     </docblock>
     <parameter name="event" byreference="false" type="{unknown}"/>
   </method>
-  <method name="factory" start="151" end="154" abstract="false" final="false" static="true" visibility="public">
+  <method name="factory" start="155" end="158" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="Satisfy newer Zend Framework"/>
       <param description="Configuration" type="object" variable="$config">

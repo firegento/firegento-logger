@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="XMPPHP_XMLStream" namespace="" name="XMPPHP_XMLStream" abstract="false" final="false" start="49" end="763">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP" file="XMLStream.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/XMLStream.php" size="18382" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="c674143d4c127e7485b9d03dbfb81df8dd4e5ebf"/>
+<class xmlns="http://xml.phpdox.net/src" full="XMPPHP_XMLStream" namespace="" name="XMPPHP_XMLStream" abstract="false" final="false" start="49" end="763">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/XMPPHP" file="XMLStream.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/XMPPHP/XMLStream.php" size="18382" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="c674143d4c127e7485b9d03dbfb81df8dd4e5ebf" relative="lib/XMPPHP/XMLStream.php"/>
   <docblock>
     <description compact="XMPPHP XML Stream"/>
     <category value="xmpphp"/>
@@ -11,185 +11,185 @@
     <copyright value="2008 Nathanael C. Fritz"/>
     <version value="$Id$"/>
   </docblock>
-  <member name="socket" type="{unknown}" visibility="protected">
+  <member name="socket" type="{unknown}" visibility="protected" line="53">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="resource"/>
     </docblock>
   </member>
-  <member name="parser" type="{unknown}" visibility="protected">
+  <member name="parser" type="{unknown}" visibility="protected" line="57">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="resource"/>
     </docblock>
   </member>
-  <member name="buffer" type="{unknown}" visibility="protected">
+  <member name="buffer" type="{unknown}" visibility="protected" line="61">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="xml_depth" type="integer" default="" visibility="protected">
+  <member name="xml_depth" type="integer" default="0" visibility="protected" line="65">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </member>
-  <member name="host" type="{unknown}" visibility="protected">
+  <member name="host" type="{unknown}" visibility="protected" line="69">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="port" type="{unknown}" visibility="protected">
+  <member name="port" type="{unknown}" visibility="protected" line="73">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </member>
-  <member name="stream_start" type="string" default="" visibility="protected">
+  <member name="stream_start" type="string" default="'&lt;stream&gt;'" visibility="protected" line="77">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="stream_end" type="string" default="" visibility="protected">
+  <member name="stream_end" type="string" default="'&lt;/stream&gt;'" visibility="protected" line="81">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="disconnected" type="{unknown}" default="false" visibility="protected">
+  <member name="disconnected" type="{unknown}" default="false" visibility="protected" line="85">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="boolean"/>
     </docblock>
   </member>
-  <member name="sent_disconnect" type="{unknown}" default="false" visibility="protected">
+  <member name="sent_disconnect" type="{unknown}" default="false" visibility="protected" line="89">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="boolean"/>
     </docblock>
   </member>
-  <member name="ns_map" type="array" visibility="protected">
+  <member name="ns_map" type="array" visibility="protected" line="93">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="current_ns" type="array" visibility="protected">
+  <member name="current_ns" type="array" visibility="protected" line="97">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="xmlobj" type="{unknown}" default="null" visibility="protected">
+  <member name="xmlobj" type="{unknown}" default="null" visibility="protected" line="101">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="nshandlers" type="array" visibility="protected">
+  <member name="nshandlers" type="array" visibility="protected" line="105">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="xpathhandlers" type="array" visibility="protected">
+  <member name="xpathhandlers" type="array" visibility="protected" line="109">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="idhandlers" type="array" visibility="protected">
+  <member name="idhandlers" type="array" visibility="protected" line="113">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="eventhandlers" type="array" visibility="protected">
+  <member name="eventhandlers" type="array" visibility="protected" line="117">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="lastid" type="integer" default="" visibility="protected">
+  <member name="lastid" type="integer" default="0" visibility="protected" line="121">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </member>
-  <member name="default_ns" type="{unknown}" visibility="protected">
+  <member name="default_ns" type="{unknown}" visibility="protected" line="125">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="until" type="string" default="" visibility="protected">
+  <member name="until" type="string" default="''" visibility="protected" line="129">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="until_count" type="string" default="" visibility="protected">
+  <member name="until_count" type="string" default="''" visibility="protected" line="133">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="until_happened" type="{unknown}" default="false" visibility="protected">
+  <member name="until_happened" type="{unknown}" default="false" visibility="protected" line="137">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="until_payload" type="array" visibility="protected">
+  <member name="until_payload" type="array" visibility="protected" line="141">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="log" type="{unknown}" visibility="protected">
+  <member name="log" type="{unknown}" visibility="protected" line="145">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="object">
         <type full="XMPPHP_Log" namespace="" name="XMPPHP_Log"/>
       </var>
     </docblock>
   </member>
-  <member name="reconnect" type="{unknown}" default="true" visibility="protected">
+  <member name="reconnect" type="{unknown}" default="true" visibility="protected" line="149">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="boolean"/>
     </docblock>
   </member>
-  <member name="been_reset" type="{unknown}" default="false" visibility="protected">
+  <member name="been_reset" type="{unknown}" default="false" visibility="protected" line="153">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="boolean"/>
     </docblock>
   </member>
-  <member name="is_server" type="{unknown}" visibility="protected">
+  <member name="is_server" type="{unknown}" visibility="protected" line="157">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="boolean"/>
     </docblock>
   </member>
-  <member name="last_send" type="integer" default="" visibility="protected">
+  <member name="last_send" type="integer" default="0" visibility="protected" line="161">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="float"/>
     </docblock>
   </member>
-  <member name="use_ssl" type="{unknown}" default="false" visibility="protected">
+  <member name="use_ssl" type="{unknown}" default="false" visibility="protected" line="165">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="boolean"/>
     </docblock>
   </member>
-  <member name="reconnectTimeout" type="integer" default="" visibility="protected">
+  <member name="reconnectTimeout" type="integer" default="30" visibility="protected" line="169">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </member>
@@ -258,7 +258,10 @@
     <parameter name="ns" byreference="false" type="{unknown}"/>
     <parameter name="pointer" byreference="false" type="{unknown}"/>
     <parameter name="obj" byreference="false" type="{unknown}" default="null"/>
-    <parameter name="depth" byreference="false" type="integer" default=""/>
+    <parameter name="depth" byreference="false" type="integer" default="1"/>
+    <inline>
+      <todo value="deprication warning" line="248"/>
+    </inline>
   </method>
   <method name="addXPathHandler" start="259" end="275" abstract="false" final="false" static="false" visibility="public">
     <docblock>
@@ -289,9 +292,12 @@
       <param type="boolean" variable="$persistent"/>
       <param type="boolean" variable="$sendinit"/>
     </docblock>
-    <parameter name="timeout" byreference="false" type="integer" default=""/>
+    <parameter name="timeout" byreference="false" type="integer" default="30"/>
     <parameter name="persistent" byreference="false" type="{unknown}" default="false"/>
     <parameter name="sendinit" byreference="false" type="{unknown}" default="true"/>
+    <inline>
+      <comment value="Take it easy for a few seconds" line="318"/>
+    </inline>
   </method>
   <method name="doReconnect" start="334" end="341" abstract="false" final="false" static="false" visibility="public">
     <docblock>
@@ -316,7 +322,7 @@
     <docblock>
       <description compact="Core reading tool 0 -&gt; only read if data is immediately ready NULL -&gt; wait forever and ever integer -&gt; process for this amount of time"/>
     </docblock>
-    <parameter name="maximum" byreference="false" type="integer" default=""/>
+    <parameter name="maximum" byreference="false" type="integer" default="5"/>
   </method>
   <method name="process" start="436" end="438" abstract="false" final="false" static="false" visibility="public">
     <docblock>
@@ -342,7 +348,7 @@
       <return type="string"/>
     </docblock>
     <parameter name="event" byreference="false" type="{unknown}"/>
-    <parameter name="timeout" byreference="false" type="integer" default=""/>
+    <parameter name="timeout" byreference="false" type="integer" default="1"/>
   </method>
   <method name="Xapply_socket" start="487" end="489" abstract="false" final="false" static="false" visibility="public">
     <docblock>
@@ -370,6 +376,13 @@
     </docblock>
     <parameter name="parser" byreference="false" type="{unknown}"/>
     <parameter name="name" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="$this-&gt;log-&gt;log(&quot;Ending $name&quot;,  XMPPHP_Log::LEVEL_DEBUG);" line="541"/>
+      <comment value="print &quot;$name\n&quot;;" line="542"/>
+      <comment value="clean-up old objects" line="549"/>
+      <comment value="$found = false; #FIXME This didn't appear to be in use --Gar" line="550"/>
+      <comment value="id handlers are only used once" line="588"/>
+    </inline>
   </method>
   <method name="charXML" start="624" end="628" abstract="false" final="false" static="false" visibility="public">
     <docblock>
@@ -402,6 +415,9 @@
     </docblock>
     <parameter name="msg" byreference="false" type="{unknown}"/>
     <parameter name="timeout" byreference="false" type="{unknown}" default="NULL"/>
+    <inline>
+      <todo value="retry send here" line="705"/>
+    </inline>
   </method>
   <method name="time" start="725" end="728" abstract="false" final="false" static="false" visibility="public"/>
   <method name="reset" start="733" end="742" abstract="false" final="false" static="false" visibility="public">
@@ -417,5 +433,4 @@
   <method name="readyToProcess" start="756" end="762" abstract="false" final="false" static="false" visibility="public"/>
   <extender full="XMPPHP_BOSH" namespace="" name="XMPPHP_BOSH"/>
   <extender full="XMPPHP_XMPP" namespace="" name="XMPPHP_XMPP"/>
-  <extender full="XMPPHP_XMPPOld" namespace="" name="XMPPHP_XMPPOld"/>
 </class>

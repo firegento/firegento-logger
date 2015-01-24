@@ -1,340 +1,170 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "html" "">
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <title>FireGento_Logger - GELFMessagePublisher - API Documentation</title>
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <title>phpDox - GELFMessagePublisher</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
   <body>
-    <div class="wrapper clearfix">
-      <div class="topbar clearfix">
-        <h1>
-          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
-        </h1>
-        <ul class="nav">
-          <li class="active">
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
             <a href="../index.xhtml">Overview</a>
           </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">GELFMessagePublisher</li>
         </ul>
       </div>
-      <div class="navigation">
-        <h3>Constants</h3>
+      <nav class="box">
         <ul>
           <li>
-            <a href="#CHUNK_SIZE_WAN">CHUNK_SIZE_WAN</a>
+            <a href="#introduction">Introduction</a>
           </li>
           <li>
-            <a href="#CHUNK_SIZE_LAN">CHUNK_SIZE_LAN</a>
+            <a href="#synopsis">Synopsis</a>
           </li>
           <li>
-            <a href="#GRAYLOG2_DEFAULT_PORT">GRAYLOG2_DEFAULT_PORT</a>
+            <a href="#constants">Constants</a>
           </li>
           <li>
-            <a href="#GRAYLOG2_PROTOCOL_VERSION">GRAYLOG2_PROTOCOL_VERSION</a>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/lib/Graylog2-gelf-php/GELFMessagePublisher.php.xhtml#line2">Source</a>
           </li>
         </ul>
-        <h3>Members</h3>
-        <ul>
-          <li>
-            <a href="#hostname">$hostname</a>
-          </li>
-          <li>
-            <a href="#port">$port</a>
-          </li>
-          <li>
-            <a href="#chunkSize">$chunkSize</a>
-          </li>
-        </ul>
-        <h3>Methods</h3>
-        <ul>
-          <li>
-            <a href="#__construct">__construct</a>
-          </li>
-          <li>
-            <a href="#getMessageChunks">getMessageChunks</a>
-          </li>
-          <li>
-            <a href="#getMessageId">getMessageId</a>
-          </li>
-          <li>
-            <a href="#getPreparedMessage">getPreparedMessage</a>
-          </li>
-          <li>
-            <a href="#getSocketConnection">getSocketConnection</a>
-          </li>
-          <li>
-            <a href="#isMessageSizeGreaterChunkSize">isMessageSizeGreaterChunkSize</a>
-          </li>
-          <li>
-            <a href="#prependChunkInformation">prependChunkInformation</a>
-          </li>
-          <li>
-            <a href="#publish">publish</a>
-          </li>
-          <li>
-            <a href="#writeMessageChunkToSocket">writeMessageChunkToSocket</a>
-          </li>
-          <li>
-            <a href="#writeMessageToSocket">writeMessageToSocket</a>
-          </li>
-        </ul>
-      </div>
-      <div class="content">
-        <h2><span style="font-size:60%">\</span>GELFMessagePublisher</h2>
-        <ul class="fileinfos"/>
-        <h3>Constants</h3>
-        <ul class="varlist">
-          <li><a name="CHUNK_SIZE_WAN"/>CHUNK_SIZE_WAN = 1420<em> integer</em><p><li/></p><hr/></li>
-          <li><a name="CHUNK_SIZE_LAN"/>CHUNK_SIZE_LAN = 8154<em> integer</em><p><li/></p><hr/></li>
-          <li><a name="GRAYLOG2_DEFAULT_PORT"/>GRAYLOG2_DEFAULT_PORT = 12201<em> integer</em><p><li/></p><hr/></li>
-          <li><a name="GRAYLOG2_PROTOCOL_VERSION"/>GRAYLOG2_PROTOCOL_VERSION = '1.0'<em> string</em><p><li/></p><hr/></li>
-        </ul>
-        <h3>Members</h3>
-        <ul class="varlist">
-          <li>
-            <a name="hostname"/>
-            <h4><span class="label protected">protected</span>string 
-                
-                $hostname</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="port"/>
-            <h4><span class="label protected">protected</span>integer 
-                
-                $port</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="chunkSize"/>
-            <h4><span class="label protected">protected</span>integer 
-                
-                $chunkSize</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-        </ul>
-        <h3>Constructor</h3>
-        <ul class="varlist">
-          <li>
-            <a name="__construct"/>
-            <h4><span class="label public">public</span>__construct<span style="font-size:90%;">( <span class="param-type">string</span><strong> $hostname</strong>, <span class="param-type">integer</span><strong> $port</strong>, <span class="param-type">integer</span><strong> $chunkSize</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Creates a new publisher that sends errors to a Graylog2 server via UDP</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$hostname</code> - </li>
-                <li><code>$port</code> - </li>
-                <li><code>$chunkSize</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="throws">Throws:</h4>
-              <ul class="throws">
-                <li>
-                  <code>InvalidArgumentException</code>
-                </li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <h3>Methods</h3>
-        <ul class="varlist">
-          <li>
-            <a name="publish"/>
-            <h4><span class="label public">public</span>publish<span style="font-size:90%;">( <span class="param-type"><span title="\\GELFMessage">GELFMessage</span></span><strong> $message</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Publishes a GELFMessage, returns false if an error occured during write</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$message</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="throws">Throws:</h4>
-              <ul class="throws">
-                <li>
-                  <code>UnexpectedValueException</code>
-                </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getMessageChunks"/>
-            <h4><span class="label protected">protected</span>getMessageChunks<span style="font-size:90%;">( <span class="param-type">string</span><strong> $preparedMessage</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$preparedMessage</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getMessageId"/>
-            <h4><span class="label protected">protected</span>getMessageId<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getPreparedMessage"/>
-            <h4><span class="label protected">protected</span>getPreparedMessage<span style="font-size:90%;">( <span class="param-type"><span title="\\GELFMessage">GELFMessage</span></span><strong> $message</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$message</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getSocketConnection"/>
-            <h4><span class="label protected">protected</span>getSocketConnection<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="isMessageSizeGreaterChunkSize"/>
-            <h4><span class="label protected">protected</span>isMessageSizeGreaterChunkSize<span style="font-size:90%;">( <span class="param-type">string</span><strong> $preparedMessage</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$preparedMessage</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="prependChunkInformation"/>
-            <h4><span class="label protected">protected</span>prependChunkInformation<span style="font-size:90%;">( <span class="param-type">float</span><strong> $messageId</strong>, <span class="param-type">string</span><strong> $data</strong>, <span class="param-type">integer</span><strong> $sequence</strong>, <span class="param-type">integer</span><strong> $sequenceSize</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$messageId</code> - </li>
-                <li><code>$data</code> - </li>
-                <li><code>$sequence</code> - </li>
-                <li><code>$sequenceSize</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="throws">Throws:</h4>
-              <ul class="throws">
-                <li>
-                  <code>InvalidArgumentException</code>
-                </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="writeMessageChunkToSocket"/>
-            <h4><span class="label protected">protected</span>writeMessageChunkToSocket<span style="font-size:90%;">( <span class="param-type">resource</span><strong> $socket</strong>, <span class="param-type">float</span><strong> $messageId</strong>, <span class="param-type">string</span><strong> $messageChunk</strong>, <span class="param-type">integer</span><strong> $messageChunkIndex</strong>, <span class="param-type">integer</span><strong> $messageChunksCount</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$socket</code> - </li>
-                <li><code>$messageId</code> - </li>
-                <li><code>$messageChunk</code> - </li>
-                <li><code>$messageChunkIndex</code> - </li>
-                <li><code>$messageChunksCount</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="writeMessageToSocket"/>
-            <h4><span class="label protected">protected</span>writeMessageToSocket<span style="font-size:90%;">( <span class="param-type">resource</span><strong> $socket</strong>, <span class="param-type">string</span><strong> $preparedMessage</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$socket</code> - </li>
-                <li><code>$preparedMessage</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
-      </div>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>GELFMessagePublisher</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class GELFMessagePublisher
+            {<br/><ul class="none"><li>// constants</li><li>const CHUNK_SIZE_WAN = 1420;</li><li>const CHUNK_SIZE_LAN = 8154;</li><li>const GRAYLOG2_DEFAULT_PORT = 12201;</li><li>const GRAYLOG2_PROTOCOL_VERSION = '1.0';</li></ul><ul class="none"><li>// members</li><li>protected string <a href="#members">$hostname</a>;
+                    </li><li>protected integer <a href="#members">$port</a>;
+                    </li><li>protected integer <a href="#members">$chunkSize</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/__construct.xhtml">__construct</a>()
+                    </li><li>public boolean <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/publish.xhtml">publish</a>()
+                    </li><li>protected string <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/getPreparedMessage.xhtml">getPreparedMessage</a>()
+                    </li><li>protected resource <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/getSocketConnection.xhtml">getSocketConnection</a>()
+                    </li><li>protected boolean <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/isMessageSizeGreaterChunkSize.xhtml">isMessageSizeGreaterChunkSize</a>()
+                    </li><li>protected float <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/getMessageId.xhtml">getMessageId</a>()
+                    </li><li>protected array <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/getMessageChunks.xhtml">getMessageChunks</a>()
+                    </li><li>protected string <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/prependChunkInformation.xhtml">prependChunkInformation</a>()
+                    </li><li>protected integer|boolean <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/writeMessageChunkToSocket.xhtml">writeMessageChunkToSocket</a>()
+                    </li><li>protected integer|boolean <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/writeMessageToSocket.xhtml">writeMessageToSocket</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="CHUNK_SIZE_WAN">CHUNK_SIZE_WAN</td>
+              <td>1420</td>
+            </tr>
+            <tr>
+              <td id="CHUNK_SIZE_LAN">CHUNK_SIZE_LAN</td>
+              <td>8154</td>
+            </tr>
+            <tr>
+              <td id="GRAYLOG2_DEFAULT_PORT">GRAYLOG2_DEFAULT_PORT</td>
+              <td>12201</td>
+            </tr>
+            <tr>
+              <td id="GRAYLOG2_PROTOCOL_VERSION">GRAYLOG2_PROTOCOL_VERSION</td>
+              <td>'1.0'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="chunkSize"><strong>$chunkSize</strong>
+                —
+                integer</li>
+            <li id="hostname"><strong>$hostname</strong>
+                —
+                string</li>
+            <li id="port"><strong>$port</strong>
+                —
+                integer</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="getMessageChunks">
+              <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/getMessageChunks.xhtml">getMessageChunks()</a>
+            </li>
+            <li id="getMessageId">
+              <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/getMessageId.xhtml">getMessageId()</a>
+            </li>
+            <li id="getPreparedMessage">
+              <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/getPreparedMessage.xhtml">getPreparedMessage()</a>
+            </li>
+            <li id="getSocketConnection">
+              <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/getSocketConnection.xhtml">getSocketConnection()</a>
+            </li>
+            <li id="isMessageSizeGreaterChunkSize">
+              <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/isMessageSizeGreaterChunkSize.xhtml">isMessageSizeGreaterChunkSize()</a>
+            </li>
+            <li id="prependChunkInformation">
+              <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/prependChunkInformation.xhtml">prependChunkInformation()</a>
+            </li>
+            <li id="writeMessageChunkToSocket">
+              <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/writeMessageChunkToSocket.xhtml">writeMessageChunkToSocket()</a>
+            </li>
+            <li id="writeMessageToSocket">
+              <a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/writeMessageToSocket.xhtml">writeMessageToSocket()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/__construct.xhtml">__construct()</a>
+                — Creates a new publisher that sends errors to a Graylog2 server via UDP</li>
+            <li id="publish"><a title="GELFMessagePublisher" href="../classes/GELFMessagePublisher/publish.xhtml">publish()</a>
+                — Publishes a GELFMessage, returns false if an error occured during write</li>
+          </ul>
+        </div>
+      </section>
     </div>
+    <footer>
+      <span/>
+    </footer>
   </body>
 </html>

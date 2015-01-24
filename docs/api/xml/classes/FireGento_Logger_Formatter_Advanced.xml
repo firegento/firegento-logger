@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Formatter_Advanced" namespace="" name="FireGento_Logger_Formatter_Advanced" abstract="false" final="false" start="28" end="66">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Formatter" file="Advanced.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Formatter/Advanced.php" size="2077" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="864cc26cdcbabfe2a0a954ecead1469489d242eb"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Formatter_Advanced" namespace="" name="FireGento_Logger_Formatter_Advanced" abstract="false" final="false" start="28" end="66">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Formatter" file="Advanced.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Formatter/Advanced.php" size="2144" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="b6a047c253b2f7e88a49d9468062e20a84de73f8" relative="app/code/community/FireGento/Logger/Formatter/Advanced.php"/>
   <docblock>
     <description compact="Advanced Formatted Logger"/>
     <category value="FireGento"/>
@@ -25,7 +25,9 @@
   <method name="format" start="60" end="65" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Formats data into a single line to be written by the writer."/>
-      <param description="Event Data" type="array" variable="$event"/>
+      <param description="Event Data" type="object" variable="$event">
+        <type full="FireGento_Logger_Model_Event" namespace="" name="FireGento_Logger_Model_Event"/>
+      </param>
       <param description="Backtrace Flag" type="object" variable="$enableBacktrace">
         <type full="bool" namespace="" name="bool"/>
       </param>

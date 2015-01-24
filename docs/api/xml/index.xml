@@ -1,48 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<index xmlns="http://xml.phpdox.de/src#">
+<index xmlns="http://xml.phpdox.net/src" basedir="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src">
   <namespace name="">
-    <class name="FireGento_Logger_Block_Adminhtml_LiveView" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/LiveView.php" xml="classes/FireGento_Logger_Block_Adminhtml_LiveView.xml"/>
-    <class name="FireGento_Logger_Block_Adminhtml_Logger_Grid" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/Logger/Grid.php" xml="classes/FireGento_Logger_Block_Adminhtml_Logger_Grid.xml"/>
-    <class name="FireGento_Logger_Block_Adminhtml_Logger" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/Logger.php" xml="classes/FireGento_Logger_Block_Adminhtml_Logger.xml"/>
-    <class name="FireGento_Logger_Block_Adminhtml_System_Config_Renderer_Select" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Renderer/Select.php" xml="classes/FireGento_Logger_Block_Adminhtml_System_Config_Renderer_Select.xml"/>
-    <class name="FireGento_Logger_Block_Adminhtml_System_Config_Targetmap" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Targetmap.php" xml="classes/FireGento_Logger_Block_Adminhtml_System_Config_Targetmap.xml"/>
-    <class name="FireGento_Logger_Adminhtml_LoggerController" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/controllers/Adminhtml/LoggerController.php" xml="classes/FireGento_Logger_Adminhtml_LoggerController.xml"/>
-    <class name="FireGento_Logger_Formatter_Advanced" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Formatter/Advanced.php" xml="classes/FireGento_Logger_Formatter_Advanced.xml"/>
-    <class name="FireGento_Logger_Helper_Data" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Helper/Data.php" xml="classes/FireGento_Logger_Helper_Data.xml"/>
-    <class name="FireGento_Logger_Model_Chromelogger_Library_ChromePhp" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Chromelogger/Library/ChromePhp.php" xml="classes/FireGento_Logger_Model_Chromelogger_Library_ChromePhp.xml"/>
-    <class name="FireGento_Logger_Model_Chromelogger" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Chromelogger.php" xml="classes/FireGento_Logger_Model_Chromelogger.xml"/>
-    <class name="FireGento_Logger_Model_Db_Entry" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Db/Entry.php" xml="classes/FireGento_Logger_Model_Db_Entry.xml"/>
-    <class name="FireGento_Logger_Model_Db" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Db.php" xml="classes/FireGento_Logger_Model_Db.xml"/>
-    <class name="FireGento_Logger_Model_Graylog2" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Graylog2.php" xml="classes/FireGento_Logger_Model_Graylog2.xml"/>
-    <class name="FireGento_Logger_Model_Loggly_LogglySyslogMessage" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Loggly/LogglySyslogMessage.php" xml="classes/FireGento_Logger_Model_Loggly_LogglySyslogMessage.xml"/>
-    <class name="FireGento_Logger_Model_Logglyhttps" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Logglyhttps.php" xml="classes/FireGento_Logger_Model_Logglyhttps.xml"/>
-    <class name="FireGento_Logger_Model_Logglysyslog" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Logglysyslog.php" xml="classes/FireGento_Logger_Model_Logglysyslog.xml"/>
-    <class name="FireGento_Logger_Model_Mail" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Mail.php" xml="classes/FireGento_Logger_Model_Mail.xml"/>
-    <class name="FireGento_Logger_Model_Observer" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Observer.php" xml="classes/FireGento_Logger_Model_Observer.xml"/>
-    <class name="FireGento_Logger_Model_Queue" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Queue.php" xml="classes/FireGento_Logger_Model_Queue.xml"/>
-    <class name="FireGento_Logger_Model_Resource_Db_Entry_Collection" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Resource/Db/Entry/Collection.php" xml="classes/FireGento_Logger_Model_Resource_Db_Entry_Collection.xml"/>
-    <class name="FireGento_Logger_Model_Resource_Db_Entry" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Resource/Db/Entry.php" xml="classes/FireGento_Logger_Model_Resource_Db_Entry.xml"/>
-    <class name="FireGento_Logger_Model_Rsyslog" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Rsyslog.php" xml="classes/FireGento_Logger_Model_Rsyslog.xml"/>
-    <class name="FireGento_Logger_Model_Stream" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Stream.php" xml="classes/FireGento_Logger_Model_Stream.xml"/>
-    <class name="FireGento_Logger_Model_System_Config_Source_Priorities" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/System/Config/Source/Priorities.php" xml="classes/FireGento_Logger_Model_System_Config_Source_Priorities.xml"/>
-    <class name="FireGento_Logger_Model_System_Config_Source_Prioritydefault" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/System/Config/Source/Prioritydefault.php" xml="classes/FireGento_Logger_Model_System_Config_Source_Prioritydefault.xml"/>
-    <class name="FireGento_Logger_Model_System_Config_Source_Targets" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/System/Config/Source/Targets.php" xml="classes/FireGento_Logger_Model_System_Config_Source_Targets.xml"/>
-    <class name="FireGento_Logger_Model_Xmpp" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Xmpp.php" xml="classes/FireGento_Logger_Model_Xmpp.xml"/>
-    <class name="GELFMessage" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/Graylog2-gelf-php/GELFMessage.php" xml="classes/GELFMessage.xml"/>
-    <class name="GELFMessagePublisher" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/Graylog2-gelf-php/GELFMessagePublisher.php" xml="classes/GELFMessagePublisher.xml"/>
-    <class name="RSyslog" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/rsyslog/rsyslog.php" xml="classes/RSyslog.xml"/>
-    <class name="SyslogFacility" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/rsyslog/syslogfacility.php" xml="classes/SyslogFacility.xml"/>
-    <class name="SyslogMessage" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/rsyslog/syslogmessage.php" xml="classes/SyslogMessage.xml"/>
-    <class name="SyslogSeverity" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/rsyslog/syslogseverity.php" xml="classes/SyslogSeverity.xml"/>
-    <class name="XMPPHP_BOSH" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/BOSH.php" xml="classes/XMPPHP_BOSH.xml"/>
-    <class name="XMPPHP_Exception" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/Exception.php" xml="classes/XMPPHP_Exception.xml"/>
-    <class name="XMPPHP_Log" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/Log.php" xml="classes/XMPPHP_Log.xml"/>
-    <class name="Roster" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/Roster.php" xml="classes/Roster.xml"/>
-    <class name="XMPPHP_XMLObj" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/XMLObj.php" xml="classes/XMPPHP_XMLObj.xml"/>
-    <class name="XMPPHP_XMLStream" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/XMLStream.php" xml="classes/XMPPHP_XMLStream.xml"/>
-    <class name="XMPPHP_XMPP" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/XMPP.php" xml="classes/XMPPHP_XMPP.xml"/>
-    <class name="XMPPHP_XMPPOld" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/XMPP_Old.php" xml="classes/XMPPHP_XMPPOld.xml"/>
-    <class name="FireGento_Logger_Shell" src="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/shell/logger.php" xml="classes/FireGento_Logger_Shell.xml"/>
-    <class name="Exception" src="" xml="classes/Exception.xml"/>
+    <class name="FireGento_Logger_Block_Adminhtml_LiveView" src="app/code/community/FireGento/Logger/Block/Adminhtml/LiveView.php" description="Block for live viewing the log files in the backend" xml="classes/FireGento_Logger_Block_Adminhtml_LiveView.xml"/>
+    <class name="FireGento_Logger_Block_Adminhtml_Logger_Grid" src="app/code/community/FireGento/Logger/Block/Adminhtml/Logger/Grid.php" description="Logger Grid" xml="classes/FireGento_Logger_Block_Adminhtml_Logger_Grid.xml"/>
+    <class name="FireGento_Logger_Block_Adminhtml_Logger_View" src="app/code/community/FireGento/Logger/Block/Adminhtml/Logger/View.php" description="Log/Report Viewer for the backend" xml="classes/FireGento_Logger_Block_Adminhtml_Logger_View.xml"/>
+    <class name="FireGento_Logger_Block_Adminhtml_Logger" src="app/code/community/FireGento/Logger/Block/Adminhtml/Logger.php" description="Logger Grid Container" xml="classes/FireGento_Logger_Block_Adminhtml_Logger.xml"/>
+    <class name="FireGento_Logger_Block_Adminhtml_System_Config_EmailNotificationRule" src="app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/EmailNotificationRule.php" description="Backend configuration to setup email rules." xml="classes/FireGento_Logger_Block_Adminhtml_System_Config_EmailNotificationRule.xml"/>
+    <class name="FireGento_Logger_Block_Adminhtml_System_Config_Renderer_Select" src="app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Renderer/Select.php" description="Target Map Select Field Block for system config" xml="classes/FireGento_Logger_Block_Adminhtml_System_Config_Renderer_Select.xml"/>
+    <class name="FireGento_Logger_Block_Adminhtml_System_Config_Targetmap" src="app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Targetmap.php" description="Target Map Block for system config" xml="classes/FireGento_Logger_Block_Adminhtml_System_Config_Targetmap.xml"/>
+    <class name="FireGento_Logger_Block_Adminhtml_Test" src="app/code/community/FireGento/Logger/Block/Adminhtml/Test.php" description="Block for live viewing the log files in the backend" xml="classes/FireGento_Logger_Block_Adminhtml_Test.xml"/>
+    <class name="FireGento_Logger_Adminhtml_LoggerController" src="app/code/community/FireGento/Logger/controllers/Adminhtml/LoggerController.php" description="Log/Report Viewer for the backend" xml="classes/FireGento_Logger_Adminhtml_LoggerController.xml"/>
+    <class name="FireGento_Logger_Formatter_Advanced" src="app/code/community/FireGento/Logger/Formatter/Advanced.php" description="Advanced Formatted Logger" xml="classes/FireGento_Logger_Formatter_Advanced.xml"/>
+    <class name="FireGento_Logger_Formatter_Simple" src="app/code/community/FireGento/Logger/Formatter/Simple.php" description="Simple Formatted Logger" xml="classes/FireGento_Logger_Formatter_Simple.xml"/>
+    <class name="FireGento_Logger_Helper_Data" src="app/code/community/FireGento/Logger/Helper/Data.php" description="Helper Class" xml="classes/FireGento_Logger_Helper_Data.xml"/>
+    <class name="FireGento_Logger_Model_Chromelogger" src="app/code/community/FireGento/Logger/Model/Chromelogger.php" description="Model for Chrome logging" xml="classes/FireGento_Logger_Model_Chromelogger.xml"/>
+    <class name="FireGento_Logger_Model_Db_Entry" src="app/code/community/FireGento/Logger/Model/Db/Entry.php" description="Db Entry Model" xml="classes/FireGento_Logger_Model_Db_Entry.xml"/>
+    <class name="FireGento_Logger_Model_Db" src="app/code/community/FireGento/Logger/Model/Db.php" description="Model for Database logging" xml="classes/FireGento_Logger_Model_Db.xml"/>
+    <class name="FireGento_Logger_Model_Event" src="app/code/community/FireGento/Logger/Model/Event.php" description="General Event Model to abstract from Zend API." xml="classes/FireGento_Logger_Model_Event.xml"/>
+    <class name="FireGento_Logger_Model_Graylog2" src="app/code/community/FireGento/Logger/Model/Graylog2.php" description="Model for Graylog logging" xml="classes/FireGento_Logger_Model_Graylog2.xml"/>
+    <class name="FireGento_Logger_Model_Loggly_LogglySyslogMessage" src="app/code/community/FireGento/Logger/Model/Loggly/LogglySyslogMessage.php" description="Implementation of Remote Syslog Message for Loggly. This class logs the events using JSON, which allows providing more details than basic Syslog." xml="classes/FireGento_Logger_Model_Loggly_LogglySyslogMessage.xml"/>
+    <class name="FireGento_Logger_Model_Logglyhttps" src="app/code/community/FireGento/Logger/Model/Logglyhttps.php" description="Model for Loggly HTTPS logging" xml="classes/FireGento_Logger_Model_Logglyhttps.xml"/>
+    <class name="FireGento_Logger_Model_Logglysyslog" src="app/code/community/FireGento/Logger/Model/Logglysyslog.php" description="Model for Loggly Syslog logging" xml="classes/FireGento_Logger_Model_Logglysyslog.xml"/>
+    <class name="FireGento_Logger_Model_Logstash" src="app/code/community/FireGento/Logger/Model/Logstash.php" description="Model for Logstash" xml="classes/FireGento_Logger_Model_Logstash.xml"/>
+    <class name="FireGento_Logger_Model_Mail" src="app/code/community/FireGento/Logger/Model/Mail.php" description="Mail Logger" xml="classes/FireGento_Logger_Model_Mail.xml"/>
+    <class name="FireGento_Logger_Model_Observer" src="app/code/community/FireGento/Logger/Model/Observer.php" description="Observer Class" xml="classes/FireGento_Logger_Model_Observer.xml"/>
+    <class name="FireGento_Logger_Model_Queue" src="app/code/community/FireGento/Logger/Model/Queue.php" description="This writer is the one actually used by Magento. It acts as a proxy to support one or more writers set from the config and optionally as a &quot;queue&quot; to hold all events until shutdown." xml="classes/FireGento_Logger_Model_Queue.xml"/>
+    <class name="FireGento_Logger_Model_Redis" src="app/code/community/FireGento/Logger/Model/Redis.php" description="Model for Redis" xml="classes/FireGento_Logger_Model_Redis.xml"/>
+    <class name="FireGento_Logger_Model_Resource_Db_Entry_Collection" src="app/code/community/FireGento/Logger/Model/Resource/Db/Entry/Collection.php" description="Db Entry Resource Collection Model" xml="classes/FireGento_Logger_Model_Resource_Db_Entry_Collection.xml"/>
+    <class name="FireGento_Logger_Model_Resource_Db_Entry" src="app/code/community/FireGento/Logger/Model/Resource/Db/Entry.php" description="Db Entry Resource Model" xml="classes/FireGento_Logger_Model_Resource_Db_Entry.xml"/>
+    <class name="FireGento_Logger_Model_Rsyslog" src="app/code/community/FireGento/Logger/Model/Rsyslog.php" description="Remote Syslog writer. Sends the Log Messages to a Remote Syslog server." xml="classes/FireGento_Logger_Model_Rsyslog.xml"/>
+    <class name="FireGento_Logger_Model_Stream" src="app/code/community/FireGento/Logger/Model/Stream.php" description="Like ZLWStream but overrides the formatter to use the advanced formatter" xml="classes/FireGento_Logger_Model_Stream.xml"/>
+    <class name="FireGento_Logger_Model_Syslog" src="app/code/community/FireGento/Logger/Model/Syslog.php" description="Syslog Wrapper" xml="classes/FireGento_Logger_Model_Syslog.xml"/>
+    <class name="FireGento_Logger_Model_System_Config_Source_Priorities" src="app/code/community/FireGento/Logger/Model/System/Config/Source/Priorities.php" description="Log priorities" xml="classes/FireGento_Logger_Model_System_Config_Source_Priorities.xml"/>
+    <class name="FireGento_Logger_Model_System_Config_Source_Prioritydefault" src="app/code/community/FireGento/Logger/Model/System/Config/Source/Prioritydefault.php" description="Log priorities" xml="classes/FireGento_Logger_Model_System_Config_Source_Prioritydefault.xml"/>
+    <class name="FireGento_Logger_Model_System_Config_Source_Protocol" src="app/code/community/FireGento/Logger/Model/System/Config/Source/Protocol.php" description="Different protocol version" xml="classes/FireGento_Logger_Model_System_Config_Source_Protocol.xml"/>
+    <class name="FireGento_Logger_Model_System_Config_Source_SyslogFacilities" src="app/code/community/FireGento/Logger/Model/System/Config/Source/SyslogFacilities.php" description="Syslog Facilities" xml="classes/FireGento_Logger_Model_System_Config_Source_SyslogFacilities.xml"/>
+    <class name="FireGento_Logger_Model_System_Config_Source_Targets" src="app/code/community/FireGento/Logger/Model/System/Config/Source/Targets.php" description="Logging Targets" xml="classes/FireGento_Logger_Model_System_Config_Source_Targets.xml"/>
+    <class name="FireGento_Logger_Model_Xmpp" src="app/code/community/FireGento/Logger/Model/Xmpp.php" description="Model for XMPP logging" xml="classes/FireGento_Logger_Model_Xmpp.xml"/>
+    <class name="ChromePhp" src="lib/chromelogger/ChromePHP.php" description="Server Side Chrome PHP debugger class" xml="classes/ChromePhp.xml"/>
+    <class name="GELFMessage" src="lib/Graylog2-gelf-php/GELFMessage.php" xml="classes/GELFMessage.xml"/>
+    <class name="GELFMessagePublisher" src="lib/Graylog2-gelf-php/GELFMessagePublisher.php" xml="classes/GELFMessagePublisher.xml"/>
+    <class name="RSyslog" src="lib/rsyslog/rsyslog.php" description="Sends SysLog messages to a Remote Server." xml="classes/RSyslog.xml"/>
+    <class name="SyslogFacility" src="lib/rsyslog/syslogfacility.php" description="Holds the possible values for Syslog Facility" xml="classes/SyslogFacility.xml"/>
+    <class name="SyslogMessage" src="lib/rsyslog/syslogmessage.php" description="Encapsulates a Syslog Message." xml="classes/SyslogMessage.xml"/>
+    <class name="SyslogSeverity" src="lib/rsyslog/syslogseverity.php" description="Holds the possible values for Syslog Severity" xml="classes/SyslogSeverity.xml"/>
+    <class name="XMPPHP_BOSH" src="lib/XMPPHP/BOSH.php" description="XMPPHP Main Class" xml="classes/XMPPHP_BOSH.xml"/>
+    <class name="XMPPHP_Exception" src="lib/XMPPHP/Exception.php" description="XMPPHP Exception" xml="classes/XMPPHP_Exception.xml"/>
+    <class name="XMPPHP_Log" src="lib/XMPPHP/Log.php" description="XMPPHP Log" xml="classes/XMPPHP_Log.xml"/>
+    <class name="Roster" src="lib/XMPPHP/Roster.php" description="XMPPHP Roster Object" xml="classes/Roster.xml"/>
+    <class name="XMPPHP_XMLObj" src="lib/XMPPHP/XMLObj.php" description="XMPPHP XML Object" xml="classes/XMPPHP_XMLObj.xml"/>
+    <class name="XMPPHP_XMLStream" src="lib/XMPPHP/XMLStream.php" description="XMPPHP XML Stream" xml="classes/XMPPHP_XMLStream.xml"/>
+    <class name="XMPPHP_XMPP" src="lib/XMPPHP/XMPP.php" description="XMPPHP Main Class" xml="classes/XMPPHP_XMPP.xml"/>
+    <class name="FireGento_Logger_Shell" src="shell/logger.php" description="Shell script; see usageHelp for options" xml="classes/FireGento_Logger_Shell.xml"/>
+    <class name="Exception" xml="classes/Exception.xml"/>
   </namespace>
 </index>

@@ -1,69 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="GELFMessage" namespace="" name="GELFMessage" abstract="false" final="false" start="2" end="236">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/Graylog2-gelf-php" file="GELFMessage.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/Graylog2-gelf-php/GELFMessage.php" size="4375" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="dbc7c8548b59bee64ab0e992ad775455147966cb"/>
-  <member name="version" type="{unknown}" default="null" visibility="private">
+<class xmlns="http://xml.phpdox.net/src" full="GELFMessage" namespace="" name="GELFMessage" abstract="false" final="false" start="2" end="236">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/Graylog2-gelf-php" file="GELFMessage.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/Graylog2-gelf-php/GELFMessage.php" size="4375" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="dbc7c8548b59bee64ab0e992ad775455147966cb" relative="lib/Graylog2-gelf-php/GELFMessage.php"/>
+  <member name="version" type="{unknown}" default="null" visibility="private" line="6">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="timestamp" type="{unknown}" default="null" visibility="private">
+  <member name="timestamp" type="{unknown}" default="null" visibility="private" line="11">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </member>
-  <member name="shortMessage" type="{unknown}" default="null" visibility="private">
+  <member name="shortMessage" type="{unknown}" default="null" visibility="private" line="16">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="fullMessage" type="{unknown}" default="null" visibility="private">
+  <member name="fullMessage" type="{unknown}" default="null" visibility="private" line="21">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="facility" type="{unknown}" default="null" visibility="private">
+  <member name="facility" type="{unknown}" default="null" visibility="private" line="26">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="host" type="{unknown}" default="null" visibility="private">
+  <member name="host" type="{unknown}" default="null" visibility="private" line="31">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="level" type="{unknown}" default="null" visibility="private">
+  <member name="level" type="{unknown}" default="null" visibility="private" line="36">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </member>
-  <member name="file" type="{unknown}" default="null" visibility="private">
+  <member name="file" type="{unknown}" default="null" visibility="private" line="41">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="line" type="{unknown}" default="null" visibility="private">
+  <member name="line" type="{unknown}" default="null" visibility="private" line="46">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </member>
-  <member name="data" type="array" visibility="private">
+  <member name="data" type="array" visibility="private" line="51">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
   <method name="setVersion" start="57" end="60" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="string" variable="$version"/>
       <return type="object">
         <type full="GELFMessage" namespace="" name="GELFMessage"/>
@@ -73,13 +73,13 @@
   </method>
   <method name="getVersion" start="65" end="67" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="string"/>
     </docblock>
   </method>
   <method name="setTimestamp" start="73" end="76" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="integer" variable="$timestamp"/>
       <return type="object">
         <type full="GELFMessage" namespace="" name="GELFMessage"/>
@@ -89,13 +89,13 @@
   </method>
   <method name="getTimestamp" start="81" end="83" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="integer"/>
     </docblock>
   </method>
   <method name="setShortMessage" start="89" end="92" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="string" variable="$shortMessage"/>
       <return type="object">
         <type full="GELFMessage" namespace="" name="GELFMessage"/>
@@ -105,13 +105,13 @@
   </method>
   <method name="getShortMessage" start="97" end="99" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="string"/>
     </docblock>
   </method>
   <method name="setFullMessage" start="105" end="108" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="string" variable="$fullMessage"/>
       <return type="object">
         <type full="GELFMessage" namespace="" name="GELFMessage"/>
@@ -121,13 +121,13 @@
   </method>
   <method name="getFullMessage" start="113" end="115" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="string"/>
     </docblock>
   </method>
   <method name="setFacility" start="121" end="124" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="string" variable="$facility"/>
       <return type="object">
         <type full="GELFMessage" namespace="" name="GELFMessage"/>
@@ -137,13 +137,13 @@
   </method>
   <method name="getFacility" start="129" end="131" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="string"/>
     </docblock>
   </method>
   <method name="setHost" start="137" end="140" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="string" variable="$host"/>
       <return type="object">
         <type full="GELFMessage" namespace="" name="GELFMessage"/>
@@ -153,13 +153,13 @@
   </method>
   <method name="getHost" start="145" end="147" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="string"/>
     </docblock>
   </method>
   <method name="setLevel" start="153" end="156" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="integer" variable="$level"/>
       <return type="object">
         <type full="GELFMessage" namespace="" name="GELFMessage"/>
@@ -169,13 +169,13 @@
   </method>
   <method name="getLevel" start="161" end="163" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="integer"/>
     </docblock>
   </method>
   <method name="setFile" start="169" end="172" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="string" variable="$file"/>
       <return type="object">
         <type full="GELFMessage" namespace="" name="GELFMessage"/>
@@ -185,13 +185,13 @@
   </method>
   <method name="getFile" start="177" end="179" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="string"/>
     </docblock>
   </method>
   <method name="setLine" start="185" end="188" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="integer" variable="$line"/>
       <return type="object">
         <type full="GELFMessage" namespace="" name="GELFMessage"/>
@@ -201,13 +201,13 @@
   </method>
   <method name="getLine" start="193" end="195" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="integer"/>
     </docblock>
   </method>
   <method name="setAdditional" start="202" end="205" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="string" variable="$key"/>
       <param type="mixed" variable="$value"/>
       <return type="object">
@@ -219,14 +219,14 @@
   </method>
   <method name="getAdditional" start="210" end="212" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="mixed"/>
     </docblock>
     <parameter name="key" byreference="false" type="{unknown}"/>
   </method>
   <method name="toArray" start="217" end="235" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="array"/>
     </docblock>
   </method>

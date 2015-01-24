@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="RSyslog" namespace="" name="RSyslog" abstract="false" final="false" start="18" end="99">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/rsyslog" file="rsyslog.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/rsyslog/rsyslog.php" size="2838" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="e3ef138b2b956ecacf53f4b4ac07451f92574ca0"/>
+<class xmlns="http://xml.phpdox.net/src" full="RSyslog" namespace="" name="RSyslog" abstract="false" final="false" start="18" end="99">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/rsyslog" file="rsyslog.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/rsyslog/rsyslog.php" size="2838" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="e3ef138b2b956ecacf53f4b4ac07451f92574ca0" relative="lib/rsyslog/rsyslog.php"/>
   <docblock>
     <description compact="Sends SysLog messages to a Remote Server."/>
   </docblock>
-  <member name="LogServer" type="{unknown}" visibility="private"/>
-  <member name="Port" type="integer" default="" visibility="private"/>
-  <member name="Timeout" type="{unknown}" visibility="private"/>
+  <member name="LogServer" type="{unknown}" visibility="private" line="20"/>
+  <member name="Port" type="integer" default="514" visibility="private" line="22"/>
+  <member name="Timeout" type="{unknown}" visibility="private" line="24"/>
   <constructor name="__construct" start="33" end="36" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Class constructor."/>
-      <param description="Name or IP Address of the remote Log Server. It can be" type="object" variable="The">indicated in format &lt;server&gt;[:&lt;port&gt;].<type full="LogServer" namespace="" name="LogServer"/></param>
-      <param description="timeout for the UDP connection, in seconds." type="object" variable="The">
+      <param description="The Name or IP Address of the remote Log Server. It can be" type="object">indicated in format &lt;server&gt;[:&lt;port&gt;].<type full="LogServer" namespace="" name="LogServer"/></param>
+      <param description="The timeout for the UDP connection, in seconds." type="object">
         <type full="Timeout" namespace="" name="Timeout"/>
       </param>
     </docblock>
     <parameter name="LogServer" byreference="false" type="{unknown}"/>
-    <parameter name="Timeout" byreference="false" type="integer" default=""/>
+    <parameter name="Timeout" byreference="false" type="integer" default="1"/>
   </constructor>
   <method name="SetLogServer" start="41" end="51" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Setter for LogServer property."/>
     </docblock>
     <parameter name="LogServer" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="LogServer can be in format &lt;server&gt;:&lt;port&gt;" line="46"/>
+    </inline>
   </method>
   <method name="SetPort" start="56" end="60" abstract="false" final="false" static="false" visibility="public">
     <docblock>
@@ -39,12 +42,12 @@
   <method name="Send" start="83" end="98" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Sends a Message to the remote Log Server."/>
-      <param description="instance of SyslogMessage class." type="object" variable="An">
+      <param description="An instance of SyslogMessage class." type="object">
         <type full="Message" namespace="" name="Message"/>
       </param>
-      <param description="Server to which the message will be sent. If omitted," type="object" variable="The">the one specified when the class was instantiated will be used instead. It
+      <param description="The Server to which the message will be sent. If omitted," type="object">the one specified when the class was instantiated will be used instead. It
 can be indicated as &lt;server&gt;[:&lt;port&gt;].<type full="LogServer" namespace="" name="LogServer"/></param>
-      <param description="for the UDP Connection, in seconds. If omitted," type="object" variable="Timeout">the one specified when the class was instantiated will be used instead.<type full="Timeout" namespace="" name="Timeout"/></param>
+      <param description="Timeout for the UDP Connection, in seconds. If omitted," type="object">the one specified when the class was instantiated will be used instead.<type full="Timeout" namespace="" name="Timeout"/></param>
       <return description="if the message was sent correctly. If not, an array containing" type="object">an Error Code and an Error Message.<type full="True" namespace="" name="True"/></return>
     </docblock>
     <parameter name="Message" byreference="false" type="object">

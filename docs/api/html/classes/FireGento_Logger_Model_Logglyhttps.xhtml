@@ -1,270 +1,152 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "html" "">
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <title>FireGento_Logger - FireGento_Logger_Model_Logglyhttps - API Documentation</title>
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <title>phpDox - FireGento_Logger_Model_Logglyhttps</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
   <body>
-    <div class="wrapper clearfix">
-      <div class="topbar clearfix">
-        <h1>
-          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
-        </h1>
-        <ul class="nav">
-          <li class="active">
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
             <a href="../index.xhtml">Overview</a>
           </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">FireGento_Logger_Model_Logglyhttps</li>
         </ul>
       </div>
-      <div class="navigation">
-        <h3>Members</h3>
+      <nav class="box">
         <ul>
           <li>
-            <a href="#_logglyServer">$_logglyServer</a>
+            <a href="#introduction">Introduction</a>
           </li>
           <li>
-            <a href="#_logglyPort">$_logglyPort</a>
+            <a href="#synopsis">Synopsis</a>
           </li>
           <li>
-            <a href="#_logglyPath">$_logglyPath</a>
+            <a href="#hierarchy">Hierarchy</a>
           </li>
           <li>
-            <a href="#_inputKey">$_inputKey</a>
+            <a href="#members">Members</a>
           </li>
           <li>
-            <a href="#_timeout">$_timeout</a>
+            <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="#_options">$_options</a>
-          </li>
-          <li>
-            <a href="#_enableBacktrace">$_enableBacktrace</a>
+            <a href="../source/app/code/community/FireGento/Logger/Model/Logglyhttps.php.xhtml#line29">Source</a>
           </li>
         </ul>
-        <h3>Methods</h3>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>FireGento_Logger_Model_Logglyhttps</h1>
+        <h4>Model for Loggly HTTPS logging</h4>
+        <p/>
         <ul>
-          <li>
-            <a href="#BuildJSONMessage">BuildJSONMessage</a>
-          </li>
-          <li>
-            <a href="#PublishMessage">PublishMessage</a>
-          </li>
-          <li>
-            <a href="#__construct">__construct</a>
-          </li>
-          <li>
-            <a href="#_write">_write</a>
-          </li>
-          <li>
-            <a href="#factory">factory</a>
-          </li>
-          <li>
-            <a href="#setEnableBacktrace">setEnableBacktrace</a>
-          </li>
+          <li>Author: FireGento Team &lt;team@firegento.com&gt;</li>
         </ul>
-      </div>
-      <div class="content">
-        <h2><span style="font-size:60%">\</span>FireGento_Logger_Model_Logglyhttps</h2>
-        <div class="file-notice">
-          <p>Model for Loggly HTTPS logging</p>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class FireGento_Logger_Model_Logglyhttps
+                extends <a title="Zend_Log_Writer_Abstract" href="../classes/Zend_Log_Writer_Abstract.xhtml">Zend_Log_Writer_Abstract</a>
+            {<br/><ul class="none"><li>// members</li><li>protected string <a href="#members">$_logglyServer</a>;
+                    </li><li>protected integer <a href="#members">$_logglyPort</a>;
+                    </li><li>protected string <a href="#members">$_logglyPath</a>;
+                    </li><li>protected string <a href="#members">$_inputKey</a>;
+                    </li><li>protected integer <a href="#members">$_timeout</a>;
+                    </li><li>protected array <a href="#members">$_options</a>;
+                    </li><li>protected <span title="bool">bool</span> <a href="#members">$_enableBacktrace</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="FireGento_Logger_Model_Logglyhttps" href="../classes/FireGento_Logger_Model_Logglyhttps/setEnableBacktrace.xhtml">setEnableBacktrace</a>()
+                    </li><li>public FireGento_Logger_Model_Logglyhttps <a title="FireGento_Logger_Model_Logglyhttps" href="../classes/FireGento_Logger_Model_Logglyhttps/__construct.xhtml">__construct</a>()
+                    </li><li>protected string <a title="FireGento_Logger_Model_Logglyhttps" href="../classes/FireGento_Logger_Model_Logglyhttps/BuildJSONMessage.xhtml">BuildJSONMessage</a>()
+                    </li><li>protected bool <a title="FireGento_Logger_Model_Logglyhttps" href="../classes/FireGento_Logger_Model_Logglyhttps/PublishMessage.xhtml">PublishMessage</a>()
+                    </li><li>protected bool <a title="FireGento_Logger_Model_Logglyhttps" href="../classes/FireGento_Logger_Model_Logglyhttps/_write.xhtml">_write</a>()
+                    </li><li>public static void|Zend_Log_FactoryInterface <a title="FireGento_Logger_Model_Logglyhttps" href="../classes/FireGento_Logger_Model_Logglyhttps/factory.xhtml">factory</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a href="../classes/Zend_Log_Writer_Abstract.xhtml">Zend_Log_Writer_Abstract</a>
+            </li>
+          </ul>
         </div>
-        <ul class="fileinfos">
-          <li><b>Author: </b>FireGento Team &lt;team@firegento.com&gt;</li>
-        </ul>
-        <h3>Members</h3>
-        <ul class="varlist">
-          <li>
-            <a name="_logglyServer"/>
-            <h4><span class="label protected">protected</span>string 
-                
-                $_logglyServer</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="_logglyPort"/>
-            <h4><span class="label protected">protected</span>int 
-                
-                $_logglyPort</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="_logglyPath"/>
-            <h4><span class="label protected">protected</span>string 
-                
-                $_logglyPath</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="_inputKey"/>
-            <h4><span class="label protected">protected</span>string 
-                
-                $_inputKey</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="_timeout"/>
-            <h4><span class="label protected">protected</span>int 
-                
-                $_timeout</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="_options"/>
-            <h4><span class="label protected">protected</span>array 
-                
-                $_options</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="_enableBacktrace"/>
-            <h4><span class="label protected">protected</span>object 
-                
-                $_enableBacktrace</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-        </ul>
-        <h3>Constructor</h3>
-        <ul class="varlist">
-          <li>
-            <a name="__construct"/>
-            <h4><span class="label public">public</span>__construct<span style="font-size:90%;">( <span class="param-type">string</span><strong> $filename</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Class constructor</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$filename</code> - Filename</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <h3>Methods</h3>
-        <ul class="varlist">
-          <li>
-            <a name="factory"/>
-            <h4><span class="label true">true</span><span class="label public">public</span>factory<span style="font-size:90%;">( <span class="param-type"><span title="array|Zend_Config">array|Zend_Config</span></span><strong> $config</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Satisfy newer Zend Framework</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$config</code> - Configuration</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setEnableBacktrace"/>
-            <h4><span class="label public">public</span>setEnableBacktrace<span style="font-size:90%;">( <span class="param-type"><span title="bool">bool</span></span><strong> $flag</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Setter for class variable _enableBacktrace</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$flag</code> - Flag for Backtrace</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="BuildJSONMessage"/>
-            <h4><span class="label protected">protected</span>BuildJSONMessage<span style="font-size:90%;">( <span class="param-type">array</span><strong> $event</strong>, <span class="param-type"><span title="bool">bool</span></span><strong> $enableBacktrace</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Builds a JSON Message that will be sent to a Loggly Server.</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$event</code> - A Magento Log Event.</li>
-                <li><code>$enableBacktrace</code> - Indicates if a backtrace should be added to the log event.</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>A JSON structure representing the message.</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="PublishMessage"/>
-            <h4><span class="label protected">protected</span>PublishMessage<span style="font-size:90%;">( <span class="param-type">string</span><strong> $message</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Sends a JSON Message to Loggly.</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$message</code> - The JSON-Encoded Message to be sent.</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>True if message was sent correctly, False otherwise.</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="throws">Throws:</h4>
-              <ul class="throws">
-                <li>
-                  <code>Zend_Log_Exception</code>
-                </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="_write"/>
-            <h4><span class="label protected">protected</span>_write<span style="font-size:90%;">( <span class="param-type">array</span><strong> $event</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Places event line into array of lines to be used as message body.</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$event</code> - Event data</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>True if message was sent correctly, False otherwise.</li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
-      </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="_enableBacktrace"><strong>$_enableBacktrace</strong>
+                —
+                <a href="#">bool</a></li>
+            <li id="_inputKey"><strong>$_inputKey</strong>
+                —
+                string</li>
+            <li id="_logglyPath"><strong>$_logglyPath</strong>
+                —
+                string</li>
+            <li id="_logglyPort"><strong>$_logglyPort</strong>
+                —
+                int</li>
+            <li id="_logglyServer"><strong>$_logglyServer</strong>
+                —
+                string</li>
+            <li id="_options"><strong>$_options</strong>
+                —
+                array</li>
+            <li id="_timeout"><strong>$_timeout</strong>
+                —
+                int</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="BuildJSONMessage"><a title="FireGento_Logger_Model_Logglyhttps" href="../classes/FireGento_Logger_Model_Logglyhttps/BuildJSONMessage.xhtml">BuildJSONMessage()</a>
+                — Builds a JSON Message that will be sent to a Loggly Server.</li>
+            <li id="PublishMessage"><a title="FireGento_Logger_Model_Logglyhttps" href="../classes/FireGento_Logger_Model_Logglyhttps/PublishMessage.xhtml">PublishMessage()</a>
+                — Sends a JSON Message to Loggly.</li>
+            <li id="_write"><a title="FireGento_Logger_Model_Logglyhttps" href="../classes/FireGento_Logger_Model_Logglyhttps/_write.xhtml">_write()</a>
+                — Places event line into array of lines to be used as message body.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="FireGento_Logger_Model_Logglyhttps" href="../classes/FireGento_Logger_Model_Logglyhttps/__construct.xhtml">__construct()</a>
+                — Class constructor</li>
+            <li id="factory"><a title="FireGento_Logger_Model_Logglyhttps" href="../classes/FireGento_Logger_Model_Logglyhttps/factory.xhtml">factory()</a>
+                — Satisfy newer Zend Framework</li>
+            <li id="setEnableBacktrace"><a title="FireGento_Logger_Model_Logglyhttps" href="../classes/FireGento_Logger_Model_Logglyhttps/setEnableBacktrace.xhtml">setEnableBacktrace()</a>
+                — Setter for class variable _enableBacktrace</li>
+          </ul>
+        </div>
+      </section>
     </div>
+    <footer>
+      <span/>
+    </footer>
   </body>
 </html>

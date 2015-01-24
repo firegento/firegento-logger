@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Db_Entry" namespace="" name="FireGento_Logger_Model_Db_Entry" abstract="false" final="false" start="28" end="37">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Db" file="Entry.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Db/Entry.php" size="1151" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="de19b1df3e579d7f0baed96c9d4e9819907784f1"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Db_Entry" namespace="" name="FireGento_Logger_Model_Db_Entry" abstract="false" final="false" start="31" end="40">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Db" file="Entry.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Db/Entry.php" size="1203" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="830a3b5c538ff7135b86c45a4005bec2286fd17f" relative="app/code/community/FireGento/Logger/Model/Db/Entry.php"/>
   <docblock>
     <description compact="Db Entry Model"/>
     <category value="FireGento"/>
     <package value="FireGento_Logger"/>
     <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+    <method value="getMessage()"/>
+    <method value="getSeverity()"/>
   </docblock>
   <extends full="Mage_Core_Model_Abstract" namespace="" name="Mage_Core_Model_Abstract"/>
-  <method name="_construct" start="33" end="36" abstract="false" final="false" static="false" visibility="protected">
+  <method name="_construct" start="36" end="39" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="Init the resource model"/>
     </docblock>

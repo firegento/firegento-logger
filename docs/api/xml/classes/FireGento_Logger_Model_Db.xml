@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Db" namespace="" name="FireGento_Logger_Model_Db" abstract="false" final="false" start="28" end="81">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Db.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Db.php" size="2313" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="a6ce164f9f22c88097a66a582e4b139a59f18651"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Db" namespace="" name="FireGento_Logger_Model_Db" abstract="false" final="false" start="28" end="178">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Db.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Db.php" size="5760" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="6f1cf05f55137d9c905b503b6c692fcd0e68ae75" relative="app/code/community/FireGento/Logger/Model/Db.php"/>
   <docblock>
     <description compact="Model for Database logging"/>
     <category value="FireGento"/>
@@ -8,36 +8,14 @@
     <author value="FireGento Team &lt;team@firegento.com&gt;"/>
   </docblock>
   <extends full="Zend_Log_Writer_Db" namespace="" name="Zend_Log_Writer_Db"/>
-  <member name="_db" type="{unknown}" visibility="private">
-    <docblock>
-      <description compact=""/>
-      <var description="Database adapter instance" type="object">
-        <type full="Zend_Db_Adapter" namespace="" name="Zend_Db_Adapter"/>
-      </var>
-    </docblock>
-  </member>
-  <member name="_table" type="{unknown}" visibility="private">
-    <docblock>
-      <description compact=""/>
-      <var description="Name of the log table in the database" type="string"/>
-    </docblock>
-  </member>
-  <member name="_columnMap" type="{unknown}" visibility="private">
-    <docblock>
-      <description compact="Relates database columns names to log data field keys."/>
-      <var type="object">
-        <type full="null|array" namespace="" name="null|array"/>
-      </var>
-    </docblock>
-  </member>
-  <constructor name="__construct" start="52" end="59" abstract="false" final="false" static="false" visibility="public">
+  <constructor name="__construct" start="35" end="42" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Class constructor"/>
       <param description="Filename" type="string" variable="$filename"/>
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
   </constructor>
-  <method name="setFormatter" start="66" end="69" abstract="false" final="false" static="false" visibility="public">
+  <method name="setFormatter" start="49" end="52" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Set a custom formatter"/>
       <param description="Formatter" type="object" variable="$formatter">
@@ -48,7 +26,7 @@
       <type full="\\Zend_Log_Formatter_Interface" namespace="\" name="Zend_Log_Formatter_Interface"/>
     </parameter>
   </method>
-  <method name="factory" start="77" end="80" abstract="false" final="false" static="true" visibility="public">
+  <method name="factory" start="60" end="63" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="Satisfy newer Zend Framework"/>
       <param description="Configuration" type="object" variable="$config">
@@ -59,5 +37,53 @@
       </return>
     </docblock>
     <parameter name="config" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getAdvancedInfo" start="72" end="76" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Returns log data in advanced format"/>
+      <param description="the log event" type="object" variable="$event">
+        <type full="FireGento_Logger_Model_Event" namespace="" name="FireGento_Logger_Model_Event"/>
+      </param>
+      <return type="string"/>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_write" start="85" end="122" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="After writing the log entry to the database, conditionally send out a notification based on the notification rules."/>
+      <param description="the log event" type="array" variable="$event"/>
+      <throws type="object">
+        <type full="Zend_Log_Exception" namespace="" name="Zend_Log_Exception"/>
+      </throws>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="preformat the message" line="88"/>
+    </inline>
+  </method>
+  <method name="_matchRule" start="131" end="148" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Does the rule match"/>
+      <param description="the rule to use" type="array" variable="$rule"/>
+      <param description="the entry" type="object" variable="$loggerEntry">
+        <type full="FireGento_Logger_Model_Db_Entry" namespace="" name="FireGento_Logger_Model_Db_Entry"/>
+      </param>
+      <return type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="rule" byreference="false" type="{unknown}"/>
+    <parameter name="loggerEntry" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_sendNotification" start="156" end="177" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Send notifcations."/>
+      <param description="the rule" type="array" variable="$rule"/>
+      <param description="the db entry" type="object" variable="$loggerEntry">
+        <type full="FireGento_Logger_Model_Db_Entry" namespace="" name="FireGento_Logger_Model_Db_Entry"/>
+      </param>
+    </docblock>
+    <parameter name="rule" byreference="false" type="{unknown}"/>
+    <parameter name="loggerEntry" byreference="false" type="{unknown}"/>
   </method>
 </class>

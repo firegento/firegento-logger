@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Block_Adminhtml_LiveView" namespace="" name="FireGento_Logger_Block_Adminhtml_LiveView" abstract="false" final="false" start="28" end="50">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml" file="LiveView.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/LiveView.php" size="1586" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="a847e464d2405b33a123ec227438ac8fccc1258c"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Block_Adminhtml_LiveView" namespace="" name="FireGento_Logger_Block_Adminhtml_LiveView" abstract="false" final="false" start="28" end="50">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml" file="LiveView.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/LiveView.php" size="1586" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="a847e464d2405b33a123ec227438ac8fccc1258c" relative="app/code/community/FireGento/Logger/Block/Adminhtml/LiveView.php"/>
   <docblock>
     <description compact="Block for live viewing the log files in the backend"/>
     <category value="FireGento"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Logglyhttps" namespace="" name="FireGento_Logger_Model_Logglyhttps" abstract="false" final="false" start="29" end="201">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Logglyhttps.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Logglyhttps.php" size="6471" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="4dbf426a6c1d7d06200488c57efa2bdc149ef0bc"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Logglyhttps" namespace="" name="FireGento_Logger_Model_Logglyhttps" abstract="false" final="false" start="29" end="198">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Logglyhttps.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Logglyhttps.php" size="6746" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="9b4e7baa28e75a234a5eb6bdecf63ea253a9216b" relative="app/code/community/FireGento/Logger/Model/Logglyhttps.php"/>
   <docblock>
     <description compact="Model for Loggly HTTPS logging"/>
     <category value="FireGento"/>
@@ -8,45 +8,45 @@
     <author value="FireGento Team &lt;team@firegento.com&gt;"/>
   </docblock>
   <extends full="Zend_Log_Writer_Abstract" namespace="" name="Zend_Log_Writer_Abstract"/>
-  <member name="_logglyServer" type="string" default="" visibility="protected">
+  <member name="_logglyServer" type="string" default="'logs-01.loggly.com'" visibility="protected" line="34">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var description="The URL of Loggly Log Server" type="string"/>
     </docblock>
   </member>
-  <member name="_logglyPort" type="integer" default="" visibility="protected">
+  <member name="_logglyPort" type="integer" default="443" visibility="protected" line="39">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var description="The port to use to communicate with Loggly Server." type="int"/>
     </docblock>
   </member>
-  <member name="_logglyPath" type="string" default="" visibility="protected">
+  <member name="_logglyPath" type="string" default="'/inputs'" visibility="protected" line="44">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var description="The Loggly path where to send Log Messages." type="string"/>
     </docblock>
   </member>
-  <member name="_inputKey" type="{unknown}" visibility="protected">
+  <member name="_inputKey" type="{unknown}" visibility="protected" line="49">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var description="The SHA Input Key to be used to send Logs to Loggly via HTTPS" type="string"/>
     </docblock>
   </member>
-  <member name="_timeout" type="integer" default="" visibility="protected">
+  <member name="_timeout" type="integer" default="5" visibility="protected" line="54">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var description="The timeout to apply when sending data to Loggly servers, in seconds." type="int"/>
     </docblock>
   </member>
-  <member name="_options" type="array" visibility="protected">
+  <member name="_options" type="array" visibility="protected" line="59">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var description="Contains configuration options." type="array"/>
     </docblock>
   </member>
-  <member name="_enableBacktrace" type="{unknown}" default="false" visibility="protected">
+  <member name="_enableBacktrace" type="{unknown}" default="false" visibility="protected" line="64">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var description="Indicates if backtrace should be added to the Log Message." type="object">
         <type full="bool" namespace="" name="bool"/>
       </var>
@@ -71,7 +71,7 @@
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
   </constructor>
-  <method name="BuildJSONMessage" start="101" end="128" abstract="false" final="false" static="false" visibility="protected">
+  <method name="BuildJSONMessage" start="101" end="129" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="Builds a JSON Message that will be sent to a Loggly Server."/>
       <param description="A Magento Log Event." type="array" variable="$event"/>
@@ -83,18 +83,24 @@
     <parameter name="event" byreference="false" type="{unknown}"/>
     <parameter name="enableBacktrace" byreference="false" type="{unknown}" default="false"/>
   </method>
-  <method name="PublishMessage" start="137" end="177" abstract="false" final="false" static="false" visibility="protected">
+  <method name="PublishMessage" start="138" end="173" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="Sends a JSON Message to Loggly."/>
       <param description="The JSON-Encoded Message to be sent." type="string" variable="$message"/>
-      <throws value="Zend_Log_Exception"/>
+      <throws type="object">
+        <type full="Zend_Log_Exception" namespace="" name="Zend_Log_Exception"/>
+      </throws>
       <return description="True if message was sent correctly, False otherwise." type="object">
         <type full="bool" namespace="" name="bool"/>
       </return>
     </docblock>
     <parameter name="message" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Execute the request." line="156"/>
+      <comment value="close cURL resource, and free up system resources" line="162"/>
+    </inline>
   </method>
-  <method name="_write" start="185" end="189" abstract="false" final="false" static="false" visibility="protected">
+  <method name="_write" start="181" end="186" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="Places event line into array of lines to be used as message body."/>
       <param description="Event data" type="array" variable="$event"/>
@@ -104,7 +110,7 @@
     </docblock>
     <parameter name="event" byreference="false" type="{unknown}"/>
   </method>
-  <method name="factory" start="197" end="200" abstract="false" final="false" static="true" visibility="public">
+  <method name="factory" start="194" end="197" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="Satisfy newer Zend Framework"/>
       <param description="Configuration" type="object" variable="$config">

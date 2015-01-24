@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Chromelogger" namespace="" name="FireGento_Logger_Model_Chromelogger" abstract="false" final="false" start="28" end="75">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Chromelogger.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Chromelogger.php" size="2473" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="a0f3db9cdcafe1d0bf747fdf3fb4f931f3376906"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Chromelogger" namespace="" name="FireGento_Logger_Model_Chromelogger" abstract="false" final="false" start="27" end="78">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Chromelogger.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Chromelogger.php" size="2445" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="5311f2057205e9ea4e11b7c2b0865f21891f5e9a" relative="app/code/community/FireGento/Logger/Model/Chromelogger.php"/>
   <docblock>
-    <description compact="Model for Database logging"/>
+    <description compact="Model for Chrome logging"/>
     <category value="FireGento"/>
     <package value="FireGento_Logger"/>
     <author value="FireGento Team &lt;team@firegento.com&gt;"/>
   </docblock>
   <extends full="Zend_Log_Writer_Abstract" namespace="" name="Zend_Log_Writer_Abstract"/>
-  <method name="_write" start="35" end="63" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="Write the data"/>
-      <param description="Event Data" type="array" variable="$event"/>
-    </docblock>
-    <parameter name="event" byreference="false" type="{unknown}"/>
-  </method>
-  <method name="factory" start="71" end="74" abstract="false" final="false" static="true" visibility="public">
+  <method name="factory" start="36" end="39" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="Satisfy newer Zend Framework"/>
       <param description="Configuration" type="object" variable="$config">
@@ -26,5 +19,12 @@
       </return>
     </docblock>
     <parameter name="config" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_write" start="46" end="77" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Write the data"/>
+      <param description="Event Data" type="array" variable="$event"/>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
   </method>
 </class>

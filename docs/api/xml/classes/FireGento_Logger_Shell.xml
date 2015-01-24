@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Shell" namespace="" name="FireGento_Logger_Shell" abstract="false" final="false" start="29" end="71">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/shell" file="logger.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/shell/logger.php" size="2269" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="cbe638f3f38aef3b93445b88ac7a90ca64d00f9d"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Shell" namespace="" name="FireGento_Logger_Shell" abstract="false" final="false" start="29" end="102">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/shell" file="logger.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/shell/logger.php" size="2916" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="4c868f54c05af2ac4fb7e2f8c1c60ac98fcb20a8" relative="shell/logger.php"/>
   <docblock>
     <description compact="Shell script; see usageHelp for options"/>
     <category value="FireGento"/>
@@ -8,12 +8,27 @@
     <author value="FireGento Team &lt;team@firegento.com&gt;"/>
   </docblock>
   <extends full="Mage_Shell_Abstract" namespace="" name="Mage_Shell_Abstract"/>
-  <method name="run" start="34" end="51" abstract="false" final="false" static="false" visibility="public">
+  <method name="runClean" start="34" end="43" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Clean logs"/>
+    </docblock>
+  </method>
+  <method name="runRotate" start="48" end="52" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Rotate log files"/>
+    </docblock>
+  </method>
+  <method name="runTestMessage" start="57" end="64" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Log a test message"/>
+    </docblock>
+  </method>
+  <method name="run" start="69" end="80" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Run shell script"/>
     </docblock>
   </method>
-  <method name="usageHelp" start="58" end="70" abstract="false" final="false" static="false" visibility="public">
+  <method name="usageHelp" start="87" end="101" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Retrieve Usage Help Message"/>
       <return type="string"/>

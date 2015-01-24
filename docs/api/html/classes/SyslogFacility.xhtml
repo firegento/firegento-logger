@@ -1,164 +1,192 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "html" "">
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <title>FireGento_Logger - SyslogFacility - API Documentation</title>
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <title>phpDox - SyslogFacility</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
   <body>
-    <div class="wrapper clearfix">
-      <div class="topbar clearfix">
-        <h1>
-          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
-        </h1>
-        <ul class="nav">
-          <li class="active">
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
             <a href="../index.xhtml">Overview</a>
           </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">SyslogFacility</li>
         </ul>
       </div>
-      <div class="navigation">
-        <h3>Constants</h3>
+      <nav class="box">
         <ul>
           <li>
-            <a href="#KERNEL">KERNEL</a>
+            <a href="#introduction">Introduction</a>
           </li>
           <li>
-            <a href="#USER">USER</a>
+            <a href="#synopsis">Synopsis</a>
           </li>
           <li>
-            <a href="#MAIL">MAIL</a>
+            <a href="#constants">Constants</a>
           </li>
           <li>
-            <a href="#SYSDAEMON">SYSDAEMON</a>
+            <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="#SECURITY1">SECURITY1</a>
-          </li>
-          <li>
-            <a href="#SYSLOG">SYSLOG</a>
-          </li>
-          <li>
-            <a href="#LINEPRINTER">LINEPRINTER</a>
-          </li>
-          <li>
-            <a href="#NETWORK">NETWORK</a>
-          </li>
-          <li>
-            <a href="#UUCP">UUCP</a>
-          </li>
-          <li>
-            <a href="#CLOCK">CLOCK</a>
-          </li>
-          <li>
-            <a href="#SECURITY2">SECURITY2</a>
-          </li>
-          <li>
-            <a href="#FTPDAEMON">FTPDAEMON</a>
-          </li>
-          <li>
-            <a href="#NTP">NTP</a>
-          </li>
-          <li>
-            <a href="#LOGAUDIT">LOGAUDIT</a>
-          </li>
-          <li>
-            <a href="#LOGALERT">LOGALERT</a>
-          </li>
-          <li>
-            <a href="#CLOCKDAEMON">CLOCKDAEMON</a>
-          </li>
-          <li>
-            <a href="#LOCAL0">LOCAL0</a>
-          </li>
-          <li>
-            <a href="#LOCAL1">LOCAL1</a>
-          </li>
-          <li>
-            <a href="#LOCAL2">LOCAL2</a>
-          </li>
-          <li>
-            <a href="#LOCAL3">LOCAL3</a>
-          </li>
-          <li>
-            <a href="#LOCAL4">LOCAL4</a>
-          </li>
-          <li>
-            <a href="#LOCAL5">LOCAL5</a>
-          </li>
-          <li>
-            <a href="#LOCAL6">LOCAL6</a>
-          </li>
-          <li>
-            <a href="#LOCAL7">LOCAL7</a>
+            <a href="../source/lib/rsyslog/syslogfacility.php.xhtml#line14">Source</a>
           </li>
         </ul>
-        <h3>Methods</h3>
-        <ul>
-          <li>
-            <a href="#IsValidFacility">IsValidFacility</a>
-          </li>
-        </ul>
-      </div>
-      <div class="content">
-        <h2><span style="font-size:60%">\</span>SyslogFacility</h2>
-        <div class="file-notice">
-          <p>Holds the possible values for Syslog Facility</p>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>SyslogFacility</h1>
+        <h4>Holds the possible values for Syslog Facility</h4>
+        <p/>
+        <ul/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class SyslogFacility
+            {<br/><ul class="none"><li>// constants</li><li>const KERNEL = 0;</li><li>const USER = 1;</li><li>const MAIL = 2;</li><li>const SYSDAEMON = 3;</li><li>const SECURITY1 = 4;</li><li>const SYSLOG = 5;</li><li>const LINEPRINTER = 6;</li><li>const NETWORK = 7;</li><li>const UUCP = 8;</li><li>const CLOCK = 9;</li><li>const SECURITY2 = 10;</li><li>const FTPDAEMON = 11;</li><li>const NTP = 12;</li><li>const LOGAUDIT = 13;</li><li>const LOGALERT = 14;</li><li>const CLOCKDAEMON = 15;</li><li>const LOCAL0 = 16;</li><li>const LOCAL1 = 17;</li><li>const LOCAL2 = 18;</li><li>const LOCAL3 = 19;</li><li>const LOCAL4 = 20;</li><li>const LOCAL5 = 21;</li><li>const LOCAL6 = 22;</li><li>const LOCAL7 = 23;</li></ul><ul class="none"><li>// methods</li><li>public static True <a title="SyslogFacility" href="../classes/SyslogFacility/IsValidFacility.xhtml">IsValidFacility</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="KERNEL">KERNEL</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td id="USER">USER</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td id="MAIL">MAIL</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td id="SYSDAEMON">SYSDAEMON</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td id="SECURITY1">SECURITY1</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td id="SYSLOG">SYSLOG</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td id="LINEPRINTER">LINEPRINTER</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td id="NETWORK">NETWORK</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td id="UUCP">UUCP</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td id="CLOCK">CLOCK</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td id="SECURITY2">SECURITY2</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td id="FTPDAEMON">FTPDAEMON</td>
+              <td>11</td>
+            </tr>
+            <tr>
+              <td id="NTP">NTP</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td id="LOGAUDIT">LOGAUDIT</td>
+              <td>13</td>
+            </tr>
+            <tr>
+              <td id="LOGALERT">LOGALERT</td>
+              <td>14</td>
+            </tr>
+            <tr>
+              <td id="CLOCKDAEMON">CLOCKDAEMON</td>
+              <td>15</td>
+            </tr>
+            <tr>
+              <td id="LOCAL0">LOCAL0</td>
+              <td>16</td>
+            </tr>
+            <tr>
+              <td id="LOCAL1">LOCAL1</td>
+              <td>17</td>
+            </tr>
+            <tr>
+              <td id="LOCAL2">LOCAL2</td>
+              <td>18</td>
+            </tr>
+            <tr>
+              <td id="LOCAL3">LOCAL3</td>
+              <td>19</td>
+            </tr>
+            <tr>
+              <td id="LOCAL4">LOCAL4</td>
+              <td>20</td>
+            </tr>
+            <tr>
+              <td id="LOCAL5">LOCAL5</td>
+              <td>21</td>
+            </tr>
+            <tr>
+              <td id="LOCAL6">LOCAL6</td>
+              <td>22</td>
+            </tr>
+            <tr>
+              <td id="LOCAL7">LOCAL7</td>
+              <td>23</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="IsValidFacility"><a title="SyslogFacility" href="../classes/SyslogFacility/IsValidFacility.xhtml">IsValidFacility()</a>
+                — Checks if a value is a valid Syslog Facility.</li>
+          </ul>
         </div>
-        <ul class="fileinfos"/>
-        <h3>Constants</h3>
-        <ul class="varlist">
-          <li><a name="KERNEL"/>KERNEL = 0<hr/></li>
-          <li><a name="USER"/>USER = 1<hr/></li>
-          <li><a name="MAIL"/>MAIL = 2<hr/></li>
-          <li><a name="SYSDAEMON"/>SYSDAEMON = 3<hr/></li>
-          <li><a name="SECURITY1"/>SECURITY1 = 4<hr/></li>
-          <li><a name="SYSLOG"/>SYSLOG = 5<hr/></li>
-          <li><a name="LINEPRINTER"/>LINEPRINTER = 6<hr/></li>
-          <li><a name="NETWORK"/>NETWORK = 7<hr/></li>
-          <li><a name="UUCP"/>UUCP = 8<hr/></li>
-          <li><a name="CLOCK"/>CLOCK = 9<hr/></li>
-          <li><a name="SECURITY2"/>SECURITY2 = 10<hr/></li>
-          <li><a name="FTPDAEMON"/>FTPDAEMON = 11<hr/></li>
-          <li><a name="NTP"/>NTP = 12<hr/></li>
-          <li><a name="LOGAUDIT"/>LOGAUDIT = 13<hr/></li>
-          <li><a name="LOGALERT"/>LOGALERT = 14<hr/></li>
-          <li><a name="CLOCKDAEMON"/>CLOCKDAEMON = 15<hr/></li>
-          <li><a name="LOCAL0"/>LOCAL0 = 16<hr/></li>
-          <li><a name="LOCAL1"/>LOCAL1 = 17<hr/></li>
-          <li><a name="LOCAL2"/>LOCAL2 = 18<hr/></li>
-          <li><a name="LOCAL3"/>LOCAL3 = 19<hr/></li>
-          <li><a name="LOCAL4"/>LOCAL4 = 20<hr/></li>
-          <li><a name="LOCAL5"/>LOCAL5 = 21<hr/></li>
-          <li><a name="LOCAL6"/>LOCAL6 = 22<hr/></li>
-          <li><a name="LOCAL7"/>LOCAL7 = 23<hr/></li>
-        </ul>
-        <h3>Methods</h3>
-        <ul class="varlist">
-          <li>
-            <a name="IsValidFacility"/>
-            <h4><span class="label true">true</span><span class="label public">public</span>IsValidFacility<span style="font-size:90%;">( <span class="param-type"/><strong> $Facility</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Checks if a value is a valid Syslog Facility.</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>The</code> - value to validate.</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>if the value is a valid Facility, False otherwise.</li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
-      </div>
+      </section>
     </div>
+    <footer>
+      <span/>
+    </footer>
   </body>
 </html>

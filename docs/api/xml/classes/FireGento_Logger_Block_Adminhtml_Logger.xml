@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Block_Adminhtml_Logger" namespace="" name="FireGento_Logger_Block_Adminhtml_Logger" abstract="false" final="false" start="28" end="42">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml" file="Logger.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/Logger.php" size="1381" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="603b6774e2535a7006621ad151f6cdd9f534048d"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Block_Adminhtml_Logger" namespace="" name="FireGento_Logger_Block_Adminhtml_Logger" abstract="false" final="false" start="28" end="42">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml" file="Logger.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/Logger.php" size="1381" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="603b6774e2535a7006621ad151f6cdd9f534048d" relative="app/code/community/FireGento/Logger/Block/Adminhtml/Logger.php"/>
   <docblock>
     <description compact="Logger Grid Container"/>
     <category value="FireGento"/>

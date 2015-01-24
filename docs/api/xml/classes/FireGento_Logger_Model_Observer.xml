@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Observer" namespace="" name="FireGento_Logger_Model_Observer" abstract="false" final="false" start="28" end="129">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Observer.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Observer.php" size="3989" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="e8a0f55d507127e7162ad1581028fb88c81df469"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Observer" namespace="" name="FireGento_Logger_Model_Observer" abstract="false" final="false" start="28" end="129">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Observer.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Observer.php" size="3989" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="e8a0f55d507127e7162ad1581028fb88c81df469" relative="app/code/community/FireGento/Logger/Model/Observer.php"/>
   <docblock>
     <description compact="Observer Class"/>
     <category value="FireGento"/>

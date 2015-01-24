@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Helper_Data" namespace="" name="FireGento_Logger_Helper_Data" abstract="false" final="false" start="28" end="280">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Helper" file="Data.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Helper/Data.php" size="10105" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="725762e2723a35f2eae4d377c2a8672c704aaf81"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Helper_Data" namespace="" name="FireGento_Logger_Helper_Data" abstract="false" final="false" start="28" end="371">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Helper" file="Data.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Helper/Data.php" size="12931" time="2015-01-24T21:45:01+00:00" unixtime="1422135901" sha1="1cc812590445b89c8dd10f4d46db349d78f830c8" relative="app/code/community/FireGento/Logger/Helper/Data.php"/>
   <docblock>
     <description compact="Helper Class"/>
     <category value="FireGento"/>
@@ -10,15 +10,23 @@
   <extends full="Mage_Core_Helper_Abstract" namespace="" name="Mage_Core_Helper_Abstract"/>
   <constant name="XML_PATH_PRIORITY" value="'general/priority'"/>
   <constant name="XML_PATH_MAX_DAYS" value="'db/max_days_to_keep'"/>
-  <member name="_targetMap" type="{unknown}" default="null" visibility="protected">
+  <member name="_targetMap" type="{unknown}" default="null" visibility="protected" line="36">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="object">
         <type full="null" namespace="" name="null"/>
       </var>
     </docblock>
   </member>
-  <method name="getLoggerConfig" start="44" end="47" abstract="false" final="false" static="false" visibility="public">
+  <member name="_notificationRules" type="{unknown}" default="null" visibility="protected" line="41">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="null" namespace="" name="null"/>
+      </var>
+    </docblock>
+  </member>
+  <method name="getLoggerConfig" start="49" end="52" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Get logger config value"/>
       <param description="Config Path" type="string" variable="$path"/>
@@ -26,7 +34,7 @@
     </docblock>
     <parameter name="path" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getMappedTargets" start="56" end="79" abstract="false" final="false" static="false" visibility="public">
+  <method name="getMappedTargets" start="61" end="84" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Returns an array of targets mapped or null if there was an error or there is no map.">Keys are target codes, values are bool indicating if backtrace is enabled</description>
       <param description="Filename" type="string" variable="$filename"/>
@@ -36,13 +44,13 @@
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
   </method>
-  <method name="getMaxDaysToKeep" start="86" end="89" abstract="false" final="false" static="false" visibility="public">
+  <method name="getMaxDaysToKeep" start="91" end="94" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="The maximun of days to keep log messages in the database table."/>
       <return description="Days to keep" type="string"/>
     </docblock>
   </method>
-  <method name="addPriorityFilter" start="97" end="112" abstract="false" final="false" static="false" visibility="public">
+  <method name="addPriorityFilter" start="102" end="117" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Add priority filte to writer instance"/>
       <param description="Writer Instance" type="object" variable="$writer">
@@ -57,10 +65,12 @@
     </parameter>
     <parameter name="configPath" byreference="false" type="{unknown}" default="null"/>
   </method>
-  <method name="addEventMetadata" start="121" end="279" abstract="false" final="false" static="false" visibility="public">
+  <method name="addEventMetadata" start="126" end="286" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Add useful metadata to the event"/>
-      <param description="Event Data" type="array" variable="&amp;$event"/>
+      <param description="&amp;$event Event Data" type="object">
+        <type full="FireGento_Logger_Model_Event" namespace="" name="FireGento_Logger_Model_Event"/>
+      </param>
       <param description="Not available" type="object" variable="$notAvailable">
         <type full="null|string" namespace="" name="null|string"/>
       </param>
@@ -71,5 +81,55 @@
     <parameter name="event" byreference="true" type="{unknown}"/>
     <parameter name="notAvailable" byreference="false" type="{unknown}" default="null"/>
     <parameter name="enableBacktrace" byreference="false" type="{unknown}" default="false"/>
+    <inline>
+      <comment value="Add request time" line="134"/>
+      <comment value="Find file and line where message originated from and optionally get backtrace lines" line="141"/>
+      <comment value="1 level up in case deployed with symlinks from parent directory" line="142"/>
+      <comment value="Skip backtrace frames until we reach Mage::log(Exception)" line="143"/>
+      <comment value="Don't record backtrace for Mage::logException" line="182"/>
+      <comment value="Set file" line="204"/>
+      <comment value="Set line" line="211"/>
+      <comment value="Fetch request data" line="256"/>
+      <comment value="Add hostname to log message ..." line="280"/>
+    </inline>
+  </method>
+  <method name="filterSensibleData" start="294" end="307" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="filter sensible data like credit card and password from requests"/>
+      <param description="the data to be filtered" type="array" variable="$data"/>
+      <return type="array"/>
+    </docblock>
+    <parameter name="data" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="filterDataFromMultidimensionalKey" start="316" end="328" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Filter the data."/>
+      <param description="array to be filtered" type="array" variable="$data"/>
+      <param description="list of multidimensional keys" type="array" variable="$subkeys"/>
+      <return type="array"/>
+    </docblock>
+    <parameter name="data" byreference="false" type="array"/>
+    <parameter name="subkeys" byreference="false" type="array"/>
+  </method>
+  <method name="getEmailNotificationRules" start="335" end="349" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get all the notification rules."/>
+      <return description="an array of rules" type="object">
+        <type full="array|mixed|null" namespace="" name="array|mixed|null"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="getEventObjectFromArray" start="358" end="369" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Convert Array to Event Object"/>
+      <param description="Event" type="array" variable="$event"/>
+      <return type="object">
+        <type full="FireGento_Logger_Model_Event" namespace="" name="FireGento_Logger_Model_Event"/>
+      </return>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="if more than one logger is active the first logger convert the array" line="360"/>
+    </inline>
   </method>
 </class>

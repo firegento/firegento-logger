@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Block_Adminhtml_System_Config_Renderer_Select" namespace="" name="FireGento_Logger_Block_Adminhtml_System_Config_Renderer_Select" abstract="false" final="false" start="28" end="58">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Renderer" file="Select.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Renderer/Select.php" size="1956" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="e8d06d422866b02a44f699eb1e73f67e5f903f59"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Block_Adminhtml_System_Config_Renderer_Select" namespace="" name="FireGento_Logger_Block_Adminhtml_System_Config_Renderer_Select" abstract="false" final="false" start="28" end="58">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Renderer" file="Select.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Renderer/Select.php" size="1956" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="e8d06d422866b02a44f699eb1e73f67e5f903f59" relative="app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Renderer/Select.php"/>
   <docblock>
     <description compact="Target Map Select Field Block for system config"/>
     <category value="FireGento"/>
@@ -13,5 +13,8 @@
       <description compact="Return the select html"/>
       <return type="string"/>
     </docblock>
+    <inline>
+      <comment value="Escape properly and use javascript to set the selected values" line="48"/>
+    </inline>
   </method>
 </class>

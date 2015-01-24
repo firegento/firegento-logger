@@ -1,52 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="GELFMessagePublisher" namespace="" name="GELFMessagePublisher" abstract="false" final="false" start="2" end="218">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/Graylog2-gelf-php" file="GELFMessagePublisher.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/Graylog2-gelf-php/GELFMessagePublisher.php" size="6556" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="5bbe04c4e5f00cceb621f4160a910ee33a67723e"/>
+<class xmlns="http://xml.phpdox.net/src" full="GELFMessagePublisher" namespace="" name="GELFMessagePublisher" abstract="false" final="false" start="2" end="218">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/Graylog2-gelf-php" file="GELFMessagePublisher.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/Graylog2-gelf-php/GELFMessagePublisher.php" size="6556" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="5bbe04c4e5f00cceb621f4160a910ee33a67723e" relative="lib/Graylog2-gelf-php/GELFMessagePublisher.php"/>
   <constant name="CHUNK_SIZE_WAN" value="1420">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </constant>
   <constant name="CHUNK_SIZE_LAN" value="8154">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </constant>
   <constant name="GRAYLOG2_DEFAULT_PORT" value="12201">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </constant>
   <constant name="GRAYLOG2_PROTOCOL_VERSION" value="'1.0'">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </constant>
-  <member name="hostname" type="{unknown}" default="null" visibility="protected">
+  <member name="hostname" type="{unknown}" default="null" visibility="protected" line="26">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="string"/>
     </docblock>
   </member>
-  <member name="port" type="{unknown}" default="null" visibility="protected">
+  <member name="port" type="{unknown}" default="null" visibility="protected" line="31">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </member>
-  <member name="chunkSize" type="{unknown}" default="null" visibility="protected">
+  <member name="chunkSize" type="{unknown}" default="null" visibility="protected" line="36">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </member>
   <constructor name="__construct" start="46" end="63" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Creates a new publisher that sends errors to a Graylog2 server via UDP"/>
-      <throws value="InvalidArgumentException"/>
+      <throws type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
       <param type="string" variable="$hostname"/>
       <param type="integer" variable="$port"/>
       <param type="integer" variable="$chunkSize"/>
@@ -54,11 +56,16 @@
     <parameter name="hostname" byreference="false" type="{unknown}"/>
     <parameter name="port" byreference="false" type="{unknown}" default="self::GRAYLOG2_DEFAULT_PORT"/>
     <parameter name="chunkSize" byreference="false" type="{unknown}" default="self::CHUNK_SIZE_WAN"/>
+    <inline>
+      <comment value="Check whether the parameters are set correctly" line="47"/>
+    </inline>
   </constructor>
   <method name="publish" start="72" end="127" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Publishes a GELFMessage, returns false if an error occured during write"/>
-      <throws value="UnexpectedValueException"/>
+      <throws type="object">
+        <type full="UnexpectedValueException" namespace="" name="UnexpectedValueException"/>
+      </throws>
       <param type="object" variable="$message">
         <type full="unknown_type" namespace="" name="unknown_type"/>
       </param>
@@ -67,10 +74,24 @@
     <parameter name="message" byreference="false" type="object">
       <type full="\\GELFMessage" namespace="\" name="GELFMessage"/>
     </parameter>
+    <inline>
+      <comment value="Check if required message parameters are set" line="73"/>
+      <comment value="Set Graylog protocol version" line="80"/>
+      <comment value="Encode the message as json string and compress it using gzip" line="83"/>
+      <comment value="Open a udp connection to graylog server" line="86"/>
+      <comment value="Several udp writes are required to publish the message" line="89"/>
+      <comment value="A unique id which consists of the microtime and a random value" line="91"/>
+      <comment value="Split the message into chunks" line="94"/>
+      <comment value="Send chunks to graylog server" line="98"/>
+      <comment value="Abort due to write error" line="109"/>
+      <comment value="This increases stability a lot if messages are sent in a loop" line="121"/>
+      <comment value="A value of 20 means 0.02 ms" line="122"/>
+      <comment value="Message successful sent" line="125"/>
+    </inline>
   </method>
   <method name="getPreparedMessage" start="133" end="135" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="object" variable="$message">
         <type full="GELFMessage" namespace="" name="GELFMessage"/>
       </param>
@@ -82,13 +103,13 @@
   </method>
   <method name="getSocketConnection" start="140" end="142" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="resource"/>
     </docblock>
   </method>
   <method name="isMessageSizeGreaterChunkSize" start="148" end="150" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="string" variable="$preparedMessage"/>
       <return type="boolean"/>
     </docblock>
@@ -96,13 +117,13 @@
   </method>
   <method name="getMessageId" start="155" end="157" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
-      <description compact=""/>
+      <description/>
       <return type="float"/>
     </docblock>
   </method>
   <method name="getMessageChunks" start="163" end="165" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="string" variable="$preparedMessage"/>
       <return type="array"/>
     </docblock>
@@ -110,12 +131,14 @@
   </method>
   <method name="prependChunkInformation" start="175" end="193" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="float" variable="$messageId"/>
       <param type="string" variable="$data"/>
       <param type="integer" variable="$sequence"/>
       <param type="integer" variable="$sequenceSize"/>
-      <throws value="InvalidArgumentException"/>
+      <throws type="object">
+        <type full="InvalidArgumentException" namespace="" name="InvalidArgumentException"/>
+      </throws>
       <return type="string"/>
     </docblock>
     <parameter name="messageId" byreference="false" type="{unknown}"/>
@@ -125,7 +148,7 @@
   </method>
   <method name="writeMessageChunkToSocket" start="203" end="208" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="resource" variable="$socket"/>
       <param type="float" variable="$messageId"/>
       <param type="string" variable="$messageChunk"/>
@@ -143,7 +166,7 @@
   </method>
   <method name="writeMessageToSocket" start="215" end="217" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
-      <description compact=""/>
+      <description/>
       <param type="resource" variable="$socket"/>
       <param type="string" variable="$preparedMessage"/>
       <return type="object">

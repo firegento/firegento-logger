@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="XMPPHP_Log" namespace="" name="XMPPHP_Log" abstract="false" final="false" start="39" end="119">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP" file="Log.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/Log.php" size="3076" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="e9d03e1627aaff069fd910c2b216145eee9c1dcd"/>
+<class xmlns="http://xml.phpdox.net/src" full="XMPPHP_Log" namespace="" name="XMPPHP_Log" abstract="false" final="false" start="39" end="119">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/XMPPHP" file="Log.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/XMPPHP/Log.php" size="3076" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="e9d03e1627aaff069fd910c2b216145eee9c1dcd" relative="lib/XMPPHP/Log.php"/>
   <docblock>
     <description compact="XMPPHP Log"/>
     <package value="XMPPHP"/>
@@ -15,27 +15,27 @@
   <constant name="LEVEL_INFO" value="2"/>
   <constant name="LEVEL_DEBUG" value="3"/>
   <constant name="LEVEL_VERBOSE" value="4"/>
-  <member name="data" type="array" visibility="protected">
+  <member name="data" type="array" visibility="protected" line="50">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="names" type="array" visibility="protected">
+  <member name="names" type="array" visibility="protected" line="55">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="runlevel" type="{unknown}" visibility="protected">
+  <member name="runlevel" type="{unknown}" visibility="protected" line="60">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="integer"/>
     </docblock>
   </member>
-  <member name="printout" type="{unknown}" visibility="protected">
+  <member name="printout" type="{unknown}" visibility="protected" line="65">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="boolean"/>
     </docblock>
   </member>
@@ -56,6 +56,9 @@
     </docblock>
     <parameter name="msg" byreference="false" type="{unknown}"/>
     <parameter name="runlevel" byreference="false" type="{unknown}" default="self::LEVEL_INFO"/>
+    <inline>
+      <comment value="$this-&gt;data[] = array($this-&gt;runlevel, $msg, $time);" line="87"/>
+    </inline>
   </method>
   <method name="printout" start="100" end="112" abstract="false" final="false" static="false" visibility="public">
     <docblock>
@@ -70,5 +73,8 @@
     <parameter name="msg" byreference="false" type="{unknown}"/>
     <parameter name="runlevel" byreference="false" type="{unknown}"/>
     <parameter name="time" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="echo date('Y-m-d H:i:s', $time).&quot; [&quot;.$this-&gt;names[$runlevel].&quot;]: &quot;.$msg.&quot;\n&quot;;" line="115"/>
+    </inline>
   </method>
 </class>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Queue" namespace="" name="FireGento_Logger_Model_Queue" abstract="false" final="false" start="29" end="175">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Queue.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Queue.php" size="5522" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="adbef99f90b142679662158cb1082676c3f62023"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Queue" namespace="" name="FireGento_Logger_Model_Queue" abstract="false" final="false" start="29" end="206">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Queue.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Queue.php" size="6775" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="8ad84740456635a9e8d059ccebe1830eacbb864a" relative="app/code/community/FireGento/Logger/Model/Queue.php"/>
   <docblock>
     <description compact="This writer is the one actually used by Magento. It acts as a proxy to support one or more writers set from the config and optionally as a &quot;queue&quot; to hold all events until shutdown."/>
     <category value="FireGento"/>
@@ -8,61 +8,85 @@
     <author value="FireGento Team &lt;team@firegento.com&gt;"/>
   </docblock>
   <extends full="Zend_Log_Writer_Abstract" namespace="" name="Zend_Log_Writer_Abstract"/>
-  <member name="_writers" type="array" visibility="protected">
+  <member name="_writers" type="array" visibility="protected" line="34">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array" of="object">
         <type full="Zend_Log_Writer_Abstract" namespace="" name="Zend_Log_Writer_Abstract"/>
       </var>
     </docblock>
   </member>
-  <member name="_loggerCache" type="array" visibility="private">
+  <member name="_loggerCache" type="array" visibility="private" line="39">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="_useQueue" type="{unknown}" visibility="protected">
+  <member name="_useQueue" type="{unknown}" visibility="protected" line="44">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="object">
         <type full="bool" namespace="" name="bool"/>
       </var>
     </docblock>
   </member>
-  <member name="_advancedFormatter" type="{unknown}" visibility="protected">
+  <member name="_advancedFormatter" type="{unknown}" visibility="protected" line="49">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="object">
         <type full="FireGento_Logger_Formatter_Advanced" namespace="" name="FireGento_Logger_Formatter_Advanced"/>
       </var>
     </docblock>
   </member>
-  <constructor name="__construct" start="56" end="87" abstract="false" final="false" static="false" visibility="public">
+  <member name="_simpleFormatter" type="{unknown}" visibility="protected" line="54">
+    <docblock>
+      <description/>
+      <var type="object">
+        <type full="Zend_Log_Formatter_Simple" namespace="" name="Zend_Log_Formatter_Simple"/>
+      </var>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="61" end="94" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Class constructor"/>
       <param description="Filename" type="string" variable="$filename"/>
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Only instantiate writers that are needed for this file based on the Filename Filters" line="66"/>
+      <comment value="No filters, enable backtrace for all targets" line="71"/>
+      <comment value="writer intstantiation" line="76"/>
+      <comment value="add filter to target" line="81"/>
+      <comment value="add backtrace if you need if support is enabled" line="83"/>
+    </inline>
   </constructor>
-  <destructor name="__destruct" start="92" end="95" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="Call shutdown method flush outstanding messages from writer."/>
-    </docblock>
-  </destructor>
-  <method name="_write" start="102" end="117" abstract="false" final="false" static="false" visibility="protected">
+  <method name="_write" start="101" end="114" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="Write a message to the log."/>
       <param description="log data event" type="array" variable="$event"/>
     </docblock>
     <parameter name="event" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="if queue is enabled then add to internal cache" line="107"/>
+    </inline>
   </method>
-  <method name="shutdown" start="122" end="131" abstract="false" final="false" static="false" visibility="public">
+  <method name="shutdown" start="119" end="128" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="At the end of the request we write to the actual logger"/>
     </docblock>
+    <inline>
+      <comment value="only implode if queue is enabled and cache has entries" line="122"/>
+    </inline>
   </method>
-  <method name="setFormatter" start="138" end="148" abstract="false" final="false" static="false" visibility="public">
+  <method name="implodeEvents" start="137" end="154" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Generate one big event out of queued events."/>
+      <param description="all queued events" type="array" variable="$events"/>
+      <return type="array"/>
+    </docblock>
+    <parameter name="events" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setFormatter" start="161" end="171" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Override this method since Mage::log doesn't let us set a formatter any other way."/>
       <param description="Formatter" type="object" variable="$formatter">
@@ -73,15 +97,22 @@
       <type full="\\Zend_Log_Formatter_Interface" namespace="\" name="Zend_Log_Formatter_Interface"/>
     </parameter>
   </method>
-  <method name="getAdvancedFormatter" start="155" end="163" abstract="false" final="false" static="true" visibility="public">
+  <method name="getFormatter" start="179" end="194" abstract="false" final="false" static="true" visibility="public">
     <docblock>
-      <description compact="Returns the advanced formatter"/>
+      <description compact="Returns the advanced or simple formatter based on the flag given"/>
+      <param description="switch advance logging on" type="object" variable="$bAdvanced">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
       <return type="object">
-        <type full="FireGento_Logger_Formatter_Advanced" namespace="" name="FireGento_Logger_Formatter_Advanced"/>
+        <type full="FireGento_Logger_Formatter_Advanced|FireGento_Logger_Formatter_Simple" namespace="" name="FireGento_Logger_Formatter_Advanced|FireGento_Logger_Formatter_Simple"/>
       </return>
     </docblock>
+    <parameter name="bAdvanced" byreference="false" type="{unknown}" default="true"/>
+    <inline>
+      <comment value="Use singletons since all instances will be identical anyway" line="181"/>
+    </inline>
   </method>
-  <method name="factory" start="171" end="174" abstract="false" final="false" static="true" visibility="public">
+  <method name="factory" start="202" end="205" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="Satisfy newer Zend Framework"/>
       <param description="Configuration" type="object" variable="$config">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="XMPPHP_Exception" namespace="" name="XMPPHP_Exception" abstract="false" final="false" start="40" end="41">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP" file="Exception.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/Exception.php" size="1437" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="80505e461668275895cc0ba40ad54d6dfdcb53f2"/>
+<class xmlns="http://xml.phpdox.net/src" full="XMPPHP_Exception" namespace="" name="XMPPHP_Exception" abstract="false" final="false" start="40" end="41">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/XMPPHP" file="Exception.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/XMPPHP/Exception.php" size="1437" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="80505e461668275895cc0ba40ad54d6dfdcb53f2" relative="lib/XMPPHP/Exception.php"/>
   <docblock>
     <description compact="XMPPHP Exception"/>
     <category value="xmpphp"/>
@@ -12,7 +12,7 @@
     <version value="$Id$"/>
   </docblock>
   <extends full="Exception" namespace="" name="Exception"/>
-  <parent full="Exception" namepsace="" name="Exception">
+  <parent full="Exception" namespace="" name="Exception">
     <member name="message" static="false" visibility="protected">
     <default>null</default>
     <docblock>

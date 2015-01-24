@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<source xmlns="http://xml.phpdox.de/src#">
-  <dir name="src">
+<source xmlns="http://xml.phpdox.net/src">
+  <dir name="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src">
     <dir name="app">
       <dir name="code">
         <dir name="community">
@@ -8,76 +8,88 @@
             <dir name="Logger">
               <dir name="Block">
                 <dir name="Adminhtml">
-                  <file name="LiveView.php" size="1586" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="a847e464d2405b33a123ec227438ac8fccc1258c"/>
+                  <file name="LiveView.php" size="1586" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="a847e464d2405b33a123ec227438ac8fccc1258c" xml="tokens/app/code/community/FireGento/Logger/Block/Adminhtml/LiveView.php.xml"/>
                   <dir name="Logger">
-                    <file name="Grid.php" size="4650" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="bed390c89fb92df0ff2b9400abd7d6a22dc72d6b"/>
+                    <file name="Grid.php" size="6007" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="95018decd9ae990939de6aa73756061aa79f877f" xml="tokens/app/code/community/FireGento/Logger/Block/Adminhtml/Logger/Grid.php.xml"/>
+                    <file name="View.php" size="1248" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="6cf5d2115db39ed7d19d731e75dd56a2e74d9db1" xml="tokens/app/code/community/FireGento/Logger/Block/Adminhtml/Logger/View.php.xml"/>
                   </dir>
-                  <file name="Logger.php" size="1381" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="603b6774e2535a7006621ad151f6cdd9f534048d"/>
+                  <file name="Logger.php" size="1381" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="603b6774e2535a7006621ad151f6cdd9f534048d" xml="tokens/app/code/community/FireGento/Logger/Block/Adminhtml/Logger.php.xml"/>
                   <dir name="System">
                     <dir name="Config">
+                      <file name="EmailNotificationRule.php" size="2114" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="1dab945754963401fd249f276cbbdca767106749" xml="tokens/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/EmailNotificationRule.php.xml"/>
                       <dir name="Renderer">
-                        <file name="Select.php" size="1956" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="e8d06d422866b02a44f699eb1e73f67e5f903f59"/>
+                        <file name="Select.php" size="1956" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="e8d06d422866b02a44f699eb1e73f67e5f903f59" xml="tokens/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Renderer/Select.php.xml"/>
                       </dir>
-                      <file name="Targetmap.php" size="3566" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="22148a50110332410f2eb3ba5552a90b6fca713d"/>
+                      <file name="Targetmap.php" size="3566" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="22148a50110332410f2eb3ba5552a90b6fca713d" xml="tokens/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Targetmap.php.xml"/>
                     </dir>
                   </dir>
+                  <file name="Test.php" size="1409" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="458a4f57ac6856caec89d52d3743547145353f1b" xml="tokens/app/code/community/FireGento/Logger/Block/Adminhtml/Test.php.xml"/>
                 </dir>
               </dir>
               <dir name="controllers">
                 <dir name="Adminhtml">
-                  <file name="LoggerController.php" size="3775" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="54d1bf9a2d722ae503b4f331bd286ca67dfa621e"/>
+                  <file name="LoggerController.php" size="5800" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="eafc8d3d0f070669ac55b93cd28c7a32daacaa9b" xml="tokens/app/code/community/FireGento/Logger/controllers/Adminhtml/LoggerController.php.xml"/>
+                </dir>
+              </dir>
+              <dir name="data">
+                <dir name="logger_setup">
+                  <file name="data-install-1.3.0.php" size="1060" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="b44fd1bde8fc439967b5b597867d786b1fb201a8" xml="tokens/app/code/community/FireGento/Logger/data/logger_setup/data-install-1.3.0.php.xml"/>
+                  <file name="data-upgrade-1.3.0-1.4.0.php" size="1429" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="3d27922fb685fea69e8ded695165b7aaa01677e7" xml="tokens/app/code/community/FireGento/Logger/data/logger_setup/data-upgrade-1.3.0-1.4.0.php.xml"/>
+                  <file name="data-upgrade-1.4.0-1.4.1.php" size="1215" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="1b9eab29bc5d5c36ca69166ad0357dd78c5d8c9f" xml="tokens/app/code/community/FireGento/Logger/data/logger_setup/data-upgrade-1.4.0-1.4.1.php.xml"/>
                 </dir>
               </dir>
               <dir name="Formatter">
-                <file name="Advanced.php" size="2077" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="864cc26cdcbabfe2a0a954ecead1469489d242eb"/>
+                <file name="Advanced.php" size="2144" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="b6a047c253b2f7e88a49d9468062e20a84de73f8" xml="tokens/app/code/community/FireGento/Logger/Formatter/Advanced.php.xml"/>
+                <file name="Simple.php" size="1334" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="8ab49c9023cd1a02238bb14bd2cb414b03fd8556" xml="tokens/app/code/community/FireGento/Logger/Formatter/Simple.php.xml"/>
               </dir>
               <dir name="Helper">
-                <file name="Data.php" size="10105" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="725762e2723a35f2eae4d377c2a8672c704aaf81"/>
+                <file name="Data.php" size="12931" time="2015-01-24T21:45:01+00:00" unixtime="1422135901" sha1="1cc812590445b89c8dd10f4d46db349d78f830c8" xml="tokens/app/code/community/FireGento/Logger/Helper/Data.php.xml"/>
               </dir>
               <dir name="Model">
-                <dir name="Chromelogger">
-                  <dir name="Library">
-                    <file name="ChromePhp.php" size="10593" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="21dea4119949680f8bfdbc0324186adf5dcb934f"/>
-                  </dir>
-                </dir>
-                <file name="Chromelogger.php" size="2473" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="a0f3db9cdcafe1d0bf747fdf3fb4f931f3376906"/>
+                <file name="Chromelogger.php" size="2445" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="5311f2057205e9ea4e11b7c2b0865f21891f5e9a" xml="tokens/app/code/community/FireGento/Logger/Model/Chromelogger.php.xml"/>
                 <dir name="Db">
-                  <file name="Entry.php" size="1151" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="de19b1df3e579d7f0baed96c9d4e9819907784f1"/>
+                  <file name="Entry.php" size="1203" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="830a3b5c538ff7135b86c45a4005bec2286fd17f" xml="tokens/app/code/community/FireGento/Logger/Model/Db/Entry.php.xml"/>
                 </dir>
-                <file name="Db.php" size="2313" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="a6ce164f9f22c88097a66a582e4b139a59f18651"/>
-                <file name="Graylog2.php" size="4961" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="b5eb41f3a08fe58423d4ba8fa689bcd8bb8091d6"/>
+                <file name="Db.php" size="5760" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="6f1cf05f55137d9c905b503b6c692fcd0e68ae75" xml="tokens/app/code/community/FireGento/Logger/Model/Db.php.xml"/>
+                <file name="Event.php" size="8840" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="245a36f545a6388490c70d3b6b448e56dbe664d8" xml="tokens/app/code/community/FireGento/Logger/Model/Event.php.xml"/>
+                <file name="Graylog2.php" size="5136" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="057e7d51867bd081e7fcb6bb188503d66e7429d9" xml="tokens/app/code/community/FireGento/Logger/Model/Graylog2.php.xml"/>
                 <dir name="Loggly">
-                  <file name="LogglySyslogMessage.php" size="2496" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="e1a5c19184f7fe1378e0c139cc4ce5b61c19a56c"/>
+                  <file name="LogglySyslogMessage.php" size="1556" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="9fd77e08dee700f79005595afb0f7d2005bd717d" xml="tokens/app/code/community/FireGento/Logger/Model/Loggly/LogglySyslogMessage.php.xml"/>
                 </dir>
-                <file name="Logglyhttps.php" size="6471" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="4dbf426a6c1d7d06200488c57efa2bdc149ef0bc"/>
-                <file name="Logglysyslog.php" size="3826" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="d9a3874280b40f716ab26d9c6e073470dd8bdb0c"/>
-                <file name="Mail.php" size="3538" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="f770370bc405f14d5defc32771ba8b444a28354c"/>
-                <file name="Observer.php" size="3989" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="e8a0f55d507127e7162ad1581028fb88c81df469"/>
-                <file name="Queue.php" size="5522" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="adbef99f90b142679662158cb1082676c3f62023"/>
+                <file name="Logglyhttps.php" size="6746" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="9b4e7baa28e75a234a5eb6bdecf63ea253a9216b" xml="tokens/app/code/community/FireGento/Logger/Model/Logglyhttps.php.xml"/>
+                <file name="Logglysyslog.php" size="4178" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="255df2c4c7b61394217c38aad0dd645020c4e60d" xml="tokens/app/code/community/FireGento/Logger/Model/Logglysyslog.php.xml"/>
+                <file name="Logstash.php" size="5142" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="8dcb5276dd1dea8270d172cffe6a9609610aa988" xml="tokens/app/code/community/FireGento/Logger/Model/Logstash.php.xml"/>
+                <file name="Mail.php" size="4051" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="edf6a8712d76038904c50b87af912a16195e2d9e" xml="tokens/app/code/community/FireGento/Logger/Model/Mail.php.xml"/>
+                <file name="Observer.php" size="3989" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="e8a0f55d507127e7162ad1581028fb88c81df469" xml="tokens/app/code/community/FireGento/Logger/Model/Observer.php.xml"/>
+                <file name="Queue.php" size="6775" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="8ad84740456635a9e8d059ccebe1830eacbb864a" xml="tokens/app/code/community/FireGento/Logger/Model/Queue.php.xml"/>
+                <file name="Redis.php" size="5097" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="e3cd2a3fb8182757af16990fa93c45ca008f6013" xml="tokens/app/code/community/FireGento/Logger/Model/Redis.php.xml"/>
                 <dir name="Resource">
                   <dir name="Db">
                     <dir name="Entry">
-                      <file name="Collection.php" size="1225" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="5676008695b6399e12e2308f496afb565f2d3a20"/>
+                      <file name="Collection.php" size="1225" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="5676008695b6399e12e2308f496afb565f2d3a20" xml="tokens/app/code/community/FireGento/Logger/Model/Resource/Db/Entry/Collection.php.xml"/>
                     </dir>
-                    <file name="Entry.php" size="1771" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="2e6017fd1f076a71eb1634b31e3629fbec09907e"/>
+                    <file name="Entry.php" size="1771" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="2e6017fd1f076a71eb1634b31e3629fbec09907e" xml="tokens/app/code/community/FireGento/Logger/Model/Resource/Db/Entry.php.xml"/>
                   </dir>
                 </dir>
-                <file name="Rsyslog.php" size="5622" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="5f8bfeca1e34f4d1c92d01177d618266e5964d9c"/>
-                <file name="Stream.php" size="2011" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="884e8c71ffe852a03a595c92702b55a6ae63e63f"/>
+                <file name="Rsyslog.php" size="5915" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="1aedf5f5bb83d5cc3ce63cd8603d0947ec728b56" xml="tokens/app/code/community/FireGento/Logger/Model/Rsyslog.php.xml"/>
+                <file name="Stream.php" size="2096" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="30510471a8249d3e1e2c00b28ef48660bdd13abb" xml="tokens/app/code/community/FireGento/Logger/Model/Stream.php.xml"/>
+                <file name="Syslog.php" size="1583" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="1133cb3ad4cb3b101e48c56e04b57f24ec8fa82b" xml="tokens/app/code/community/FireGento/Logger/Model/Syslog.php.xml"/>
                 <dir name="System">
                   <dir name="Config">
                     <dir name="Source">
-                      <file name="Priorities.php" size="1874" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="102b98fc1a1065ddcf8b40226572bb628ff91dce"/>
-                      <file name="Prioritydefault.php" size="1441" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="78b971afbc713f88bde355a74887a98f9ff4b16a"/>
-                      <file name="Targets.php" size="1694" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="9c9edb2f84e07de05c428206b1fdca149fd2c3cf"/>
+                      <file name="Priorities.php" size="1874" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="102b98fc1a1065ddcf8b40226572bb628ff91dce" xml="tokens/app/code/community/FireGento/Logger/Model/System/Config/Source/Priorities.php.xml"/>
+                      <file name="Prioritydefault.php" size="1441" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="78b971afbc713f88bde355a74887a98f9ff4b16a" xml="tokens/app/code/community/FireGento/Logger/Model/System/Config/Source/Prioritydefault.php.xml"/>
+                      <file name="Protocol.php" size="1452" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="5221ea43bb07558781874e68fd5ab19eeee3ab8a" xml="tokens/app/code/community/FireGento/Logger/Model/System/Config/Source/Protocol.php.xml"/>
+                      <file name="SyslogFacilities.php" size="1915" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="a60fa6dd463cbe0997d0a3ec5a2e5defe1cd2784" xml="tokens/app/code/community/FireGento/Logger/Model/System/Config/Source/SyslogFacilities.php.xml"/>
+                      <file name="Targets.php" size="1694" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="9c9edb2f84e07de05c428206b1fdca149fd2c3cf" xml="tokens/app/code/community/FireGento/Logger/Model/System/Config/Source/Targets.php.xml"/>
                     </dir>
                   </dir>
                 </dir>
-                <file name="Xmpp.php" size="4265" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="7f894c2892b11ec133254b19adf71113c038e73a"/>
+                <file name="Xmpp.php" size="4345" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="dd4a3658a3c6d697ecf273aa9683422acb8c1267" xml="tokens/app/code/community/FireGento/Logger/Model/Xmpp.php.xml"/>
               </dir>
               <dir name="sql">
                 <dir name="logger_setup">
-                  <file name="mysql4-install-0.0.1.php" size="1432" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="b4c834cdec511b35d8673dd22ad4cb111a14224e"/>
+                  <file name="mysql4-install-0.0.1.php" size="1432" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="b4c834cdec511b35d8673dd22ad4cb111a14224e" xml="tokens/app/code/community/FireGento/Logger/sql/logger_setup/mysql4-install-0.0.1.php.xml"/>
                 </dir>
               </dir>
             </dir>
@@ -86,30 +98,32 @@
       </dir>
     </dir>
     <dir name="lib">
+      <dir name="chromelogger">
+        <file name="ChromePHP.php" size="10549" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="982133d155a8c5ed5e4c3a6fb83bda01ebdf0350" xml="tokens/lib/chromelogger/ChromePHP.php.xml"/>
+      </dir>
       <dir name="Graylog2-gelf-php">
-        <file name="GELFMessage.php" size="4375" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="dbc7c8548b59bee64ab0e992ad775455147966cb"/>
-        <file name="GELFMessagePublisher.php" size="6556" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="5bbe04c4e5f00cceb621f4160a910ee33a67723e"/>
-        <file name="index.php" size="504" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="db444e1a98d154f5258fbf93382cc6803173e9c7"/>
+        <file name="GELFMessage.php" size="4375" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="dbc7c8548b59bee64ab0e992ad775455147966cb" xml="tokens/lib/Graylog2-gelf-php/GELFMessage.php.xml"/>
+        <file name="GELFMessagePublisher.php" size="6556" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="5bbe04c4e5f00cceb621f4160a910ee33a67723e" xml="tokens/lib/Graylog2-gelf-php/GELFMessagePublisher.php.xml"/>
+        <file name="index.php" size="504" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="db444e1a98d154f5258fbf93382cc6803173e9c7" xml="tokens/lib/Graylog2-gelf-php/index.php.xml"/>
       </dir>
       <dir name="rsyslog">
-        <file name="rsyslog.php" size="2838" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="e3ef138b2b956ecacf53f4b4ac07451f92574ca0"/>
-        <file name="syslogfacility.php" size="1410" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="fd88100f9b10bb727bcbe39879e780d267708b6a"/>
-        <file name="syslogmessage.php" size="8320" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="8e50b256ea89b248eb85b1c1e30c8f732bcfa27c"/>
-        <file name="syslogseverity.php" size="904" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="1f6a171b594c22344647fbd6685ecaffb718100d"/>
+        <file name="rsyslog.php" size="2838" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="e3ef138b2b956ecacf53f4b4ac07451f92574ca0" xml="tokens/lib/rsyslog/rsyslog.php.xml"/>
+        <file name="syslogfacility.php" size="1410" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="fd88100f9b10bb727bcbe39879e780d267708b6a" xml="tokens/lib/rsyslog/syslogfacility.php.xml"/>
+        <file name="syslogmessage.php" size="8320" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="8e50b256ea89b248eb85b1c1e30c8f732bcfa27c" xml="tokens/lib/rsyslog/syslogmessage.php.xml"/>
+        <file name="syslogseverity.php" size="904" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="1f6a171b594c22344647fbd6685ecaffb718100d" xml="tokens/lib/rsyslog/syslogseverity.php.xml"/>
       </dir>
       <dir name="XMPPHP">
-        <file name="BOSH.php" size="6469" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="fed9c1c731e0e2f333e6717c7ad1d936a03c35b7"/>
-        <file name="Exception.php" size="1437" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="80505e461668275895cc0ba40ad54d6dfdcb53f2"/>
-        <file name="Log.php" size="3076" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="e9d03e1627aaff069fd910c2b216145eee9c1dcd"/>
-        <file name="Roster.php" size="4546" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="51f40d9aa72463a3d96ded6b3c6ba32357695cd9"/>
-        <file name="XMLObj.php" size="3528" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="0a18efda53a9c99f934fa494ef285aab867ecb62"/>
-        <file name="XMLStream.php" size="18382" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="c674143d4c127e7485b9d03dbfb81df8dd4e5ebf"/>
-        <file name="XMPP.php" size="12214" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="dae21b331520cdd9a517484075758f3cb957af83"/>
-        <file name="XMPP_Old.php" size="3757" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="654da15216753bccb5958dca886609231d6f79bb"/>
+        <file name="BOSH.php" size="6469" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="fed9c1c731e0e2f333e6717c7ad1d936a03c35b7" xml="tokens/lib/XMPPHP/BOSH.php.xml"/>
+        <file name="Exception.php" size="1437" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="80505e461668275895cc0ba40ad54d6dfdcb53f2" xml="tokens/lib/XMPPHP/Exception.php.xml"/>
+        <file name="Log.php" size="3076" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="e9d03e1627aaff069fd910c2b216145eee9c1dcd" xml="tokens/lib/XMPPHP/Log.php.xml"/>
+        <file name="Roster.php" size="4546" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="51f40d9aa72463a3d96ded6b3c6ba32357695cd9" xml="tokens/lib/XMPPHP/Roster.php.xml"/>
+        <file name="XMLObj.php" size="3528" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="0a18efda53a9c99f934fa494ef285aab867ecb62" xml="tokens/lib/XMPPHP/XMLObj.php.xml"/>
+        <file name="XMLStream.php" size="18382" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="c674143d4c127e7485b9d03dbfb81df8dd4e5ebf" xml="tokens/lib/XMPPHP/XMLStream.php.xml"/>
+        <file name="XMPP.php" size="12214" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="dae21b331520cdd9a517484075758f3cb957af83" xml="tokens/lib/XMPPHP/XMPP.php.xml"/>
       </dir>
     </dir>
     <dir name="shell">
-      <file name="logger.php" size="2269" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="cbe638f3f38aef3b93445b88ac7a90ca64d00f9d"/>
+      <file name="logger.php" size="2916" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="4c868f54c05af2ac4fb7e2f8c1c60ac98fcb20a8" xml="tokens/shell/logger.php.xml"/>
     </dir>
   </dir>
 </source>

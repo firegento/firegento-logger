@@ -1,205 +1,142 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "html" "">
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <title>FireGento_Logger - XMPPHP_XMLObj - API Documentation</title>
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <title>phpDox - XMPPHP_XMLObj</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
   <body>
-    <div class="wrapper clearfix">
-      <div class="topbar clearfix">
-        <h1>
-          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
-        </h1>
-        <ul class="nav">
-          <li class="active">
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
             <a href="../index.xhtml">Overview</a>
           </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">XMPPHP_XMLObj</li>
         </ul>
       </div>
-      <div class="navigation">
-        <h3>Members</h3>
+      <nav class="box">
         <ul>
           <li>
-            <a href="#name">$name</a>
+            <a href="#introduction">Introduction</a>
           </li>
           <li>
-            <a href="#ns">$ns</a>
+            <a href="#synopsis">Synopsis</a>
           </li>
           <li>
-            <a href="#attrs">$attrs</a>
+            <a href="#tasks">Tasks</a>
           </li>
           <li>
-            <a href="#subs">$subs</a>
+            <a href="#members">Members</a>
           </li>
           <li>
-            <a href="#data">$data</a>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/lib/XMPPHP/XMLObj.php.xhtml#line40">Source</a>
           </li>
         </ul>
-        <h3>Methods</h3>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>XMPPHP_XMLObj</h1>
+        <h4>XMPPHP XML Object</h4>
+        <p/>
         <ul>
-          <li>
-            <a href="#__construct">__construct</a>
-          </li>
-          <li>
-            <a href="#hasSub">hasSub</a>
-          </li>
-          <li>
-            <a href="#printObj">printObj</a>
-          </li>
-          <li>
-            <a href="#sub">sub</a>
-          </li>
-          <li>
-            <a href="#toString">toString</a>
-          </li>
+          <li>Author: Nathanael C. Fritz &lt;JID: fritzy@netflint.net&gt;</li>
+          <li>Copyright: 2008 Nathanael C. Fritz</li>
         </ul>
-      </div>
-      <div class="content">
-        <h2><span style="font-size:60%">\</span>XMPPHP_XMLObj</h2>
-        <div class="file-notice">
-          <p>XMPPHP XML Object</p>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class XMPPHP_XMLObj
+            {<br/><ul class="none"><li>// members</li><li>public string <a href="#members">$name</a>;
+                    </li><li>public string <a href="#members">$ns</a>;
+                    </li><li>public array <a href="#members">$attrs</a>;
+                    </li><li>public array <a href="#members">$subs</a>;
+                    </li><li>public string <a href="#members">$data</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="XMPPHP_XMLObj" href="../classes/XMPPHP_XMLObj/__construct.xhtml">__construct</a>()
+                    </li><li>public void <a title="XMPPHP_XMLObj" href="../classes/XMPPHP_XMLObj/printObj.xhtml">printObj</a>()
+                    </li><li>public void <a title="XMPPHP_XMLObj" href="../classes/XMPPHP_XMLObj/toString.xhtml">toString</a>()
+                    </li><li>public boolean <a title="XMPPHP_XMLObj" href="../classes/XMPPHP_XMLObj/hasSub.xhtml">hasSub</a>()
+                    </li><li>public void <a title="XMPPHP_XMLObj" href="../classes/XMPPHP_XMLObj/sub.xhtml">sub</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="tasks">Tasks</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th style="width:3em;">Line</th>
+              <th>Task</th>
+            </tr>
+          </thead>
+          <tr>
+            <td class="nummeric">151</td>
+            <td>attrs is ignored</td>
+          </tr>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>public</h4>
+          <ul class="members">
+            <li id="attrs"><strong>$attrs</strong>
+                —
+                array<br/><span class="indent">Attributes</span></li>
+            <li id="data"><strong>$data</strong>
+                —
+                string<br/><span class="indent">Node data</span></li>
+            <li id="name"><strong>$name</strong>
+                —
+                string<br/><span class="indent">Tag name</span></li>
+            <li id="ns"><strong>$ns</strong>
+                —
+                string<br/><span class="indent">Namespace</span></li>
+            <li id="subs"><strong>$subs</strong>
+                —
+                array<br/><span class="indent">Subs?</span></li>
+          </ul>
         </div>
-        <ul class="fileinfos">
-          <li><b>Author: </b>Nathanael C. Fritz &lt;JID: fritzy@netflint.net&gt;</li>
-          <li><b>Author: </b>Stephan Wentz &lt;JID: stephan@jabber.wentz.it&gt;</li>
-          <li><b>Author: </b>Michael Garvin &lt;JID: gar@netflint.net&gt;</li>
-          <li><b>Copyright: </b>2008 Nathanael C. Fritz</li>
-        </ul>
-        <h3>Members</h3>
-        <ul class="varlist">
-          <li>
-            <a name="name"/>
-            <h4><span class="label public">public</span>string 
-                
-                $name</h4>
-            <ul class="varlist">
-              <li>Tag name</li>
-            </ul>
-          </li>
-          <li>
-            <a name="ns"/>
-            <h4><span class="label public">public</span>string 
-                
-                $ns</h4>
-            <ul class="varlist">
-              <li>Namespace</li>
-            </ul>
-          </li>
-          <li>
-            <a name="attrs"/>
-            <h4><span class="label public">public</span>array 
-                
-                $attrs</h4>
-            <ul class="varlist">
-              <li>Attributes</li>
-            </ul>
-          </li>
-          <li>
-            <a name="subs"/>
-            <h4><span class="label public">public</span>array 
-                
-                $subs</h4>
-            <ul class="varlist">
-              <li>Subs?</li>
-            </ul>
-          </li>
-          <li>
-            <a name="data"/>
-            <h4><span class="label public">public</span>string 
-                
-                $data</h4>
-            <ul class="varlist">
-              <li>Node data</li>
-            </ul>
-          </li>
-        </ul>
-        <h3>Constructor</h3>
-        <ul class="varlist">
-          <li>
-            <a name="__construct"/>
-            <h4><span class="label public">public</span>__construct<span style="font-size:90%;">( <span class="param-type">string</span><strong> $name</strong>, <span class="param-type">string</span><strong> $ns</strong>, <span class="param-type">Array</span><strong> $attrs</strong>, <span class="param-type">string</span><strong> $data</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Constructor</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$name</code> - </li>
-                <li><code>$ns</code> - </li>
-                <li><code>$attrs</code> - </li>
-                <li><code>$data</code> - </li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <h3>Methods</h3>
-        <ul class="varlist">
-          <li>
-            <a name="hasSub"/>
-            <h4><span class="label public">public</span>hasSub<span style="font-size:90%;">( <span class="param-type">string</span><strong> $name</strong>, <span class="param-type"/><strong> $ns</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Has this XML Object the given sub?</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$name</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="printObj"/>
-            <h4><span class="label public">public</span>printObj<span style="font-size:90%;">( <span class="param-type">integer</span><strong> $depth</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Dump this XML Object to output.</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$depth</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="sub"/>
-            <h4><span class="label public">public</span>sub<span style="font-size:90%;">( <span class="param-type">string</span><strong> $name</strong>, <span class="param-type">string</span><strong> $attrs</strong>, <span class="param-type">string</span><strong> $ns</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Return a sub</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$name</code> - </li>
-                <li><code>$attrs</code> - </li>
-                <li><code>$ns</code> - </li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="toString"/>
-            <h4><span class="label public">public</span>toString<span style="font-size:90%;">( <span class="param-type">string</span><strong> $str</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Return this XML Object in xml notation</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$str</code> - </li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
-      </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="XMPPHP_XMLObj" href="../classes/XMPPHP_XMLObj/__construct.xhtml">__construct()</a>
+                — Constructor</li>
+            <li id="hasSub"><a title="XMPPHP_XMLObj" href="../classes/XMPPHP_XMLObj/hasSub.xhtml">hasSub()</a>
+                — Has this XML Object the given sub?</li>
+            <li id="printObj"><a title="XMPPHP_XMLObj" href="../classes/XMPPHP_XMLObj/printObj.xhtml">printObj()</a>
+                — Dump this XML Object to output.</li>
+            <li id="sub"><a title="XMPPHP_XMLObj" href="../classes/XMPPHP_XMLObj/sub.xhtml">sub()</a>
+                — Return a sub</li>
+            <li id="toString"><a title="XMPPHP_XMLObj" href="../classes/XMPPHP_XMLObj/toString.xhtml">toString()</a>
+                — Return this XML Object in xml notation</li>
+          </ul>
+        </div>
+      </section>
     </div>
+    <footer>
+      <span/>
+    </footer>
   </body>
 </html>

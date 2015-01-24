@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Mail" namespace="" name="FireGento_Logger_Model_Mail" abstract="false" final="false" start="28" end="124">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Mail.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Mail.php" size="3538" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="f770370bc405f14d5defc32771ba8b444a28354c"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Mail" namespace="" name="FireGento_Logger_Model_Mail" abstract="false" final="false" start="28" end="138">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Mail.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Mail.php" size="4051" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="edf6a8712d76038904c50b87af912a16195e2d9e" relative="app/code/community/FireGento/Logger/Model/Mail.php"/>
   <docblock>
     <description compact="Mail Logger"/>
     <category value="FireGento"/>
@@ -8,9 +8,9 @@
     <author value="FireGento Team &lt;team@firegento.com&gt;"/>
   </docblock>
   <extends full="Zend_Log_Writer_Mail" namespace="" name="Zend_Log_Writer_Mail"/>
-  <member name="_transport" type="{unknown}" default="null" visibility="protected">
+  <member name="_transport" type="{unknown}" default="null" visibility="protected" line="33">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="object">
         <type full="Zend_Mail_Transport_Smtp|null" namespace="" name="Zend_Mail_Transport_Smtp|null"/>
       </var>
@@ -29,6 +29,9 @@
       <param description="Event data" type="array" variable="$event"/>
     </docblock>
     <parameter name="event" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Lazy intatiation of underlying mailer" line="52"/>
+    </inline>
   </method>
   <method name="getMail" start="65" end="83" abstract="false" final="false" static="false" visibility="public">
     <docblock>
@@ -38,7 +41,7 @@
       </return>
     </docblock>
   </method>
-  <method name="getTransport" start="90" end="112" abstract="false" final="false" static="false" visibility="public">
+  <method name="getTransport" start="90" end="126" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Retreive the transport object"/>
       <return description="Transport Object" type="object">
@@ -46,7 +49,7 @@
       </return>
     </docblock>
   </method>
-  <method name="factory" start="120" end="123" abstract="false" final="false" static="true" visibility="public">
+  <method name="factory" start="134" end="137" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="Satisfy newer Zend Framework"/>
       <param description="Configuration" type="object" variable="$config">
