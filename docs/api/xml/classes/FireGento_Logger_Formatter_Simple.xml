@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Formatter_Simple" namespace="" name="FireGento_Logger_Formatter_Simple" abstract="false" final="false" start="28" end="40">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Formatter" file="Simple.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Formatter/Simple.php" size="1334" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="8ab49c9023cd1a02238bb14bd2cb414b03fd8556" relative="app/code/community/FireGento/Logger/Formatter/Simple.php"/>
+  <docblock>
+    <description compact="Simple Formatted Logger"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Zend_Log_Formatter_Simple" namespace="" name="Zend_Log_Formatter_Simple"/>
+  <method name="format" start="36" end="39" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Formats data into a single line to be written by the writer."/>
+      <param description="Event Data" type="object" variable="$event">
+        <type full="FireGento_Logger_Model_Event" namespace="" name="FireGento_Logger_Model_Event"/>
+      </param>
+      <return description="formatted line to write to the log" type="string"/>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+  </method>
+</class>

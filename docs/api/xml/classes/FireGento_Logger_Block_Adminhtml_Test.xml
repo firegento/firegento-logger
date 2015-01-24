@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Block_Adminhtml_Test" namespace="" name="FireGento_Logger_Block_Adminhtml_Test" abstract="false" final="false" start="28" end="43">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml" file="Test.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/Test.php" size="1409" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="458a4f57ac6856caec89d52d3743547145353f1b" relative="app/code/community/FireGento/Logger/Block/Adminhtml/Test.php"/>
+  <docblock>
+    <description compact="Block for live viewing the log files in the backend"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Adminhtml_Block_Template" namespace="" name="Mage_Adminhtml_Block_Template"/>
+  <method name="generateLogMessage" start="37" end="42" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="This method will generate a log message."/>
+      <param description="a level to generate" type="int" variable="$level"/>
+      <return type="string"/>
+    </docblock>
+    <parameter name="level" byreference="false" type="{unknown}" default="Zend_Log::INFO"/>
+  </method>
+</class>

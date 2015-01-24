@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Block_Adminhtml_Logger_View" namespace="" name="FireGento_Logger_Block_Adminhtml_Logger_View" abstract="false" final="false" start="28" end="39">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/Logger" file="View.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/Logger/View.php" size="1248" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="6cf5d2115db39ed7d19d731e75dd56a2e74d9db1" relative="app/code/community/FireGento/Logger/Block/Adminhtml/Logger/View.php"/>
+  <docblock>
+    <description compact="Log/Report Viewer for the backend"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Core_Block_Template" namespace="" name="Mage_Core_Block_Template"/>
+  <method name="getLoggerEntry" start="35" end="38" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the logger entry"/>
+      <return description="the entry" type="object">
+        <type full="FireGento_Logger_Model_Db_Entry" namespace="" name="FireGento_Logger_Model_Db_Entry"/>
+      </return>
+    </docblock>
+  </method>
+</class>

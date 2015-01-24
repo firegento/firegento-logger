@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - FireGento_Logger_Model_Logstash</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">FireGento_Logger_Model_Logstash</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/app/code/community/FireGento/Logger/Model/Logstash.php.xhtml#line28">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>FireGento_Logger_Model_Logstash</h1>
+        <h4>Model for Logstash</h4>
+        <p/>
+        <ul>
+          <li>Author: FireGento Team &lt;team@firegento.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class FireGento_Logger_Model_Logstash
+                extends <a title="Zend_Log_Writer_Abstract" href="../classes/Zend_Log_Writer_Abstract.xhtml">Zend_Log_Writer_Abstract</a>
+            {<br/><ul class="none"><li>// members</li><li>protected <span title="bool">bool</span> <a href="#members">$_enableBacktrace</a>;
+                    </li><li>protected <a href="#members">$_logstashServer</a>;
+                    </li><li>protected <a href="#members">$_logstashPort</a>;
+                    </li><li>protected <a href="#members">$_logstashProtocol</a>;
+                    </li><li>protected <a href="#members">$_options</a>;
+                    </li><li>protected integer <a href="#members">$_timeout</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public void <a title="FireGento_Logger_Model_Logstash" href="../classes/FireGento_Logger_Model_Logstash/__construct.xhtml">__construct</a>()
+                    </li><li>public static void|Zend_Log_FactoryInterface <a title="FireGento_Logger_Model_Logstash" href="../classes/FireGento_Logger_Model_Logstash/factory.xhtml">factory</a>()
+                    </li><li>public void <a title="FireGento_Logger_Model_Logstash" href="../classes/FireGento_Logger_Model_Logstash/setEnableBacktrace.xhtml">setEnableBacktrace</a>()
+                    </li><li>protected string <a title="FireGento_Logger_Model_Logstash" href="../classes/FireGento_Logger_Model_Logstash/buildJSONMessage.xhtml">buildJSONMessage</a>()
+                    </li><li>protected bool <a title="FireGento_Logger_Model_Logstash" href="../classes/FireGento_Logger_Model_Logstash/publishMessage.xhtml">publishMessage</a>()
+                    </li><li>protected bool <a title="FireGento_Logger_Model_Logstash" href="../classes/FireGento_Logger_Model_Logstash/_write.xhtml">_write</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a href="../classes/Zend_Log_Writer_Abstract.xhtml">Zend_Log_Writer_Abstract</a>
+            </li>
+          </ul>
+        </div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="_enableBacktrace"><strong>$_enableBacktrace</strong>
+                —
+                <a href="#">bool</a></li>
+            <li id="_logstashPort">
+              <strong>$_logstashPort</strong>
+            </li>
+            <li id="_logstashProtocol">
+              <strong>$_logstashProtocol</strong>
+            </li>
+            <li id="_logstashServer">
+              <strong>$_logstashServer</strong>
+            </li>
+            <li id="_options">
+              <strong>$_options</strong>
+            </li>
+            <li id="_timeout"><strong>$_timeout</strong>
+                —
+                int</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="_write"><a title="FireGento_Logger_Model_Logstash" href="../classes/FireGento_Logger_Model_Logstash/_write.xhtml">_write()</a>
+                — Places event line into array of lines to be used as message body.</li>
+            <li id="buildJSONMessage"><a title="FireGento_Logger_Model_Logstash" href="../classes/FireGento_Logger_Model_Logstash/buildJSONMessage.xhtml">buildJSONMessage()</a>
+                — Builds a JSON Message that will be sent to a Logstash Server.</li>
+            <li id="publishMessage"><a title="FireGento_Logger_Model_Logstash" href="../classes/FireGento_Logger_Model_Logstash/publishMessage.xhtml">publishMessage()</a>
+                — Sends a JSON Message to Loggly.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="FireGento_Logger_Model_Logstash" href="../classes/FireGento_Logger_Model_Logstash/__construct.xhtml">__construct()</a>
+                — Class constructor</li>
+            <li id="factory"><a title="FireGento_Logger_Model_Logstash" href="../classes/FireGento_Logger_Model_Logstash/factory.xhtml">factory()</a>
+                — Satisfy newer Zend Framework</li>
+            <li id="setEnableBacktrace"><a title="FireGento_Logger_Model_Logstash" href="../classes/FireGento_Logger_Model_Logstash/setEnableBacktrace.xhtml">setEnableBacktrace()</a>
+                — Setter for class variable _enableBacktrace</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span/>
+    </footer>
+  </body>
+</html>

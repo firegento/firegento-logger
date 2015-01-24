@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <title>phpDox - ChromePhp</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  </head>
+  <body>
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
+            <a href="../index.xhtml">Overview</a>
+          </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">ChromePhp</li>
+        </ul>
+      </div>
+      <nav class="box">
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/lib/chromelogger/ChromePHP.php.xhtml#line25">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>ChromePhp</h1>
+        <h4>Server Side Chrome PHP debugger class</h4>
+        <p/>
+        <ul>
+          <li>Author: Craig Campbell &lt;iamcraigcampbell@gmail.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class ChromePhp
+            {<br/><ul class="none"><li>// constants</li><li>const VERSION = '4.1.0';</li><li>const HEADER_NAME = 'X-ChromeLogger-Data';</li><li>const BACKTRACE_LEVEL = 'backtrace_level';</li><li>const LOG = 'log';</li><li>const WARN = 'warn';</li><li>const ERROR = 'error';</li><li>const GROUP = 'group';</li><li>const INFO = 'info';</li><li>const GROUP_END = 'groupEnd';</li><li>const GROUP_COLLAPSED = 'groupCollapsed';</li><li>const TABLE = 'table';</li></ul><ul class="none"><li>// members</li><li>protected string <a href="#members">$_php_version</a>;
+                    </li><li>protected int <a href="#members">$_timestamp</a>;
+                    </li><li>protected array <a href="#members">$_json</a>;
+                    </li><li>protected array <a href="#members">$_backtraces</a>;
+                    </li><li>protected <span title="bool">bool</span> <a href="#members">$_error_triggered</a>;
+                    </li><li>protected array <a href="#members">$_settings</a>;
+                    </li><li>protected <span title="ChromePhp">ChromePhp</span> <a href="#members">$_instance</a>;
+                    </li><li>protected array <a href="#members">$_processed</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>private void <a title="ChromePhp" href="../classes/ChromePhp/__construct.xhtml">__construct</a>()
+                    </li><li>public static ChromePhp <a title="ChromePhp" href="../classes/ChromePhp/getInstance.xhtml">getInstance</a>()
+                    </li><li>public static void <a title="ChromePhp" href="../classes/ChromePhp/log.xhtml">log</a>()
+                    </li><li>public static void <a title="ChromePhp" href="../classes/ChromePhp/warn.xhtml">warn</a>()
+                    </li><li>public static void <a title="ChromePhp" href="../classes/ChromePhp/error.xhtml">error</a>()
+                    </li><li>public static void <a title="ChromePhp" href="../classes/ChromePhp/group.xhtml">group</a>()
+                    </li><li>public static void <a title="ChromePhp" href="../classes/ChromePhp/info.xhtml">info</a>()
+                    </li><li>public static void <a title="ChromePhp" href="../classes/ChromePhp/groupCollapsed.xhtml">groupCollapsed</a>()
+                    </li><li>public static void <a title="ChromePhp" href="../classes/ChromePhp/groupEnd.xhtml">groupEnd</a>()
+                    </li><li>public static void <a title="ChromePhp" href="../classes/ChromePhp/table.xhtml">table</a>()
+                    </li><li>protected static void <a title="ChromePhp" href="../classes/ChromePhp/_log.xhtml">_log</a>()
+                    </li><li>protected array <a title="ChromePhp" href="../classes/ChromePhp/_convert.xhtml">_convert</a>()
+                    </li><li>protected string <a title="ChromePhp" href="../classes/ChromePhp/_getPropertyKey.xhtml">_getPropertyKey</a>()
+                    </li><li>protected void <a title="ChromePhp" href="../classes/ChromePhp/_addRow.xhtml">_addRow</a>()
+                    </li><li>protected void <a title="ChromePhp" href="../classes/ChromePhp/_writeHeader.xhtml">_writeHeader</a>()
+                    </li><li>protected string <a title="ChromePhp" href="../classes/ChromePhp/_encode.xhtml">_encode</a>()
+                    </li><li>public void <a title="ChromePhp" href="../classes/ChromePhp/addSetting.xhtml">addSetting</a>()
+                    </li><li>public void <a title="ChromePhp" href="../classes/ChromePhp/addSettings.xhtml">addSettings</a>()
+                    </li><li>public mixed <a title="ChromePhp" href="../classes/ChromePhp/getSetting.xhtml">getSetting</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="VERSION">VERSION</td>
+              <td>'4.1.0'</td>
+            </tr>
+            <tr>
+              <td id="HEADER_NAME">HEADER_NAME</td>
+              <td>'X-ChromeLogger-Data'</td>
+            </tr>
+            <tr>
+              <td id="BACKTRACE_LEVEL">BACKTRACE_LEVEL</td>
+              <td>'backtrace_level'</td>
+            </tr>
+            <tr>
+              <td id="LOG">LOG</td>
+              <td>'log'</td>
+            </tr>
+            <tr>
+              <td id="WARN">WARN</td>
+              <td>'warn'</td>
+            </tr>
+            <tr>
+              <td id="ERROR">ERROR</td>
+              <td>'error'</td>
+            </tr>
+            <tr>
+              <td id="GROUP">GROUP</td>
+              <td>'group'</td>
+            </tr>
+            <tr>
+              <td id="INFO">INFO</td>
+              <td>'info'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_END">GROUP_END</td>
+              <td>'groupEnd'</td>
+            </tr>
+            <tr>
+              <td id="GROUP_COLLAPSED">GROUP_COLLAPSED</td>
+              <td>'groupCollapsed'</td>
+            </tr>
+            <tr>
+              <td id="TABLE">TABLE</td>
+              <td>'table'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="_backtraces"><strong>$_backtraces</strong>
+                —
+                array</li>
+            <li id="_error_triggered"><strong>$_error_triggered</strong>
+                —
+                <a href="#">bool</a></li>
+            <li id="_instance"><strong>$_instance</strong>
+                —
+                <a href="#">ChromePhp</a></li>
+            <li id="_json"><strong>$_json</strong>
+                —
+                array</li>
+            <li id="_php_version"><strong>$_php_version</strong>
+                —
+                string</li>
+            <li id="_processed"><strong>$_processed</strong>
+                —
+                array<br/><span class="indent">Prevent recursion when working with objects referring to each other</span></li>
+            <li id="_settings"><strong>$_settings</strong>
+                —
+                array</li>
+            <li id="_timestamp"><strong>$_timestamp</strong>
+                —
+                int</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="_addRow"><a title="ChromePhp" href="../classes/ChromePhp/_addRow.xhtml">_addRow()</a>
+                — adds a value to the data array</li>
+            <li id="_convert"><a title="ChromePhp" href="../classes/ChromePhp/_convert.xhtml">_convert()</a>
+                — converts an object to a better format for logging</li>
+            <li id="_encode"><a title="ChromePhp" href="../classes/ChromePhp/_encode.xhtml">_encode()</a>
+                — encodes the data to be sent along with the request</li>
+            <li id="_getPropertyKey"><a title="ChromePhp" href="../classes/ChromePhp/_getPropertyKey.xhtml">_getPropertyKey()</a>
+                — takes a reflection property and returns a nicely formatted key of the property name</li>
+            <li id="_log"><a title="ChromePhp" href="../classes/ChromePhp/_log.xhtml">_log()</a>
+                — internal logging call</li>
+            <li id="_writeHeader">
+              <a title="ChromePhp" href="../classes/ChromePhp/_writeHeader.xhtml">_writeHeader()</a>
+            </li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="addSetting"><a title="ChromePhp" href="../classes/ChromePhp/addSetting.xhtml">addSetting()</a>
+                — adds a setting</li>
+            <li id="addSettings"><a title="ChromePhp" href="../classes/ChromePhp/addSettings.xhtml">addSettings()</a>
+                — add ability to set multiple settings in one call</li>
+            <li id="error"><a title="ChromePhp" href="../classes/ChromePhp/error.xhtml">error()</a>
+                — logs an error to the console</li>
+            <li id="getInstance"><a title="ChromePhp" href="../classes/ChromePhp/getInstance.xhtml">getInstance()</a>
+                — gets instance of this class</li>
+            <li id="getSetting"><a title="ChromePhp" href="../classes/ChromePhp/getSetting.xhtml">getSetting()</a>
+                — gets a setting</li>
+            <li id="group"><a title="ChromePhp" href="../classes/ChromePhp/group.xhtml">group()</a>
+                — sends a group log</li>
+            <li id="groupCollapsed"><a title="ChromePhp" href="../classes/ChromePhp/groupCollapsed.xhtml">groupCollapsed()</a>
+                — sends a collapsed group log</li>
+            <li id="groupEnd"><a title="ChromePhp" href="../classes/ChromePhp/groupEnd.xhtml">groupEnd()</a>
+                — ends a group log</li>
+            <li id="info"><a title="ChromePhp" href="../classes/ChromePhp/info.xhtml">info()</a>
+                — sends an info log</li>
+            <li id="log"><a title="ChromePhp" href="../classes/ChromePhp/log.xhtml">log()</a>
+                — logs a variable to the console</li>
+            <li id="table"><a title="ChromePhp" href="../classes/ChromePhp/table.xhtml">table()</a>
+                — sends a table log</li>
+            <li id="warn"><a title="ChromePhp" href="../classes/ChromePhp/warn.xhtml">warn()</a>
+                — logs a warning to the console</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <footer>
+      <span/>
+    </footer>
+  </body>
+</html>

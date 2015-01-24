@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_System_Config_Source_SyslogFacilities" namespace="" name="FireGento_Logger_Model_System_Config_Source_SyslogFacilities" abstract="false" final="false" start="28" end="70">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/System/Config/Source" file="SyslogFacilities.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/System/Config/Source/SyslogFacilities.php" size="1915" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="a60fa6dd463cbe0997d0a3ec5a2e5defe1cd2784" relative="app/code/community/FireGento/Logger/Model/System/Config/Source/SyslogFacilities.php"/>
+  <docblock>
+    <description compact="Syslog Facilities"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="Lee Saferite &lt;lee.saferite@aoe.com&gt;"/>
+  </docblock>
+  <method name="toOptionArray" start="33" end="69" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <return type="array"/>
+    </docblock>
+  </method>
+</class>

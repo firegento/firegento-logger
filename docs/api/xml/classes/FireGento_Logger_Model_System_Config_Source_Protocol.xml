@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_System_Config_Source_Protocol" namespace="" name="FireGento_Logger_Model_System_Config_Source_Protocol" abstract="false" final="false" start="28" end="49">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/System/Config/Source" file="Protocol.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/System/Config/Source/Protocol.php" size="1452" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="5221ea43bb07558781874e68fd5ab19eeee3ab8a" relative="app/code/community/FireGento/Logger/Model/System/Config/Source/Protocol.php"/>
+  <docblock>
+    <description compact="Different protocol version"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <member name="_options" type="array" visibility="protected" line="33">
+    <docblock>
+      <description/>
+      <var description="Options" type="array"/>
+    </docblock>
+  </member>
+  <method name="toOptionArray" start="40" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Retrieve all targets as option arry"/>
+      <return description="Targets" type="array"/>
+    </docblock>
+  </method>
+</class>

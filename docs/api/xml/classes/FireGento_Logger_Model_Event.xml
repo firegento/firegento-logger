@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Event" namespace="" name="FireGento_Logger_Model_Event" abstract="false" final="false" start="28" end="431">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Event.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Event.php" size="8840" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="245a36f545a6388490c70d3b6b448e56dbe664d8" relative="app/code/community/FireGento/Logger/Model/Event.php"/>
+  <docblock>
+    <description compact="General Event Model to abstract from Zend API."/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Varien_Object" namespace="" name="Varien_Object"/>
+  <member name="_iTimestamp" type="{unknown}" visibility="private" line="31"/>
+  <member name="_iPriority" type="{unknown}" visibility="private" line="32"/>
+  <member name="_sPriorityName" type="{unknown}" visibility="private" line="33"/>
+  <member name="_sMessage" type="{unknown}" visibility="private" line="34"/>
+  <member name="_sFile" type="{unknown}" visibility="private" line="35"/>
+  <member name="_iLine" type="{unknown}" visibility="private" line="36"/>
+  <member name="_sBacktrace" type="{unknown}" visibility="private" line="37"/>
+  <member name="_sStoreCode" type="{unknown}" visibility="private" line="38"/>
+  <member name="_iTimeElapsed" type="{unknown}" visibility="private" line="39"/>
+  <member name="_sRequestMethod" type="{unknown}" visibility="private" line="40"/>
+  <member name="_sRequestUri" type="{unknown}" visibility="private" line="41"/>
+  <member name="_sHttpUserAgent" type="{unknown}" visibility="private" line="42"/>
+  <member name="_sRequestData" type="{unknown}" visibility="private" line="43"/>
+  <member name="_sRemoteAddress" type="{unknown}" visibility="private" line="44"/>
+  <member name="_sHostname" type="{unknown}" visibility="private" line="45"/>
+  <method name="setHostname" start="54" end="58" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the current hostname"/>
+      <param description="the hostname" type="string" variable="$sHostname"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="sHostname" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getHostname" start="65" end="68" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the current hostname"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setRemoteAddress" start="77" end="81" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the remote address"/>
+      <param description="the remote address" type="string" variable="$sRemoteAddress"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="sRemoteAddress" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getRemoteAddress" start="88" end="91" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the current remote address"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setRequestData" start="100" end="104" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the Requestdata header."/>
+      <param description="the request data" type="string" variable="$sRequestData"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="sRequestData" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getRequestData" start="111" end="114" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the request data"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setRequestMethod" start="124" end="128" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the request Method"/>
+      <param description="the request mwethod" type="string" variable="$sRequestMethod"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="sRequestMethod" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getRequestMethod" start="135" end="138" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The request method"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setRequestUri" start="147" end="151" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Sett the request uri."/>
+      <param description="the rquest uri" type="string" variable="$sRequestUri"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="sRequestUri" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getRequestUri" start="158" end="161" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the request uri"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setHttpUserAgent" start="170" end="174" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the user agent."/>
+      <param description="the user agent" type="string" variable="$sHttpUserAgent"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="sHttpUserAgent" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getHttpUserAgent" start="181" end="184" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the user agent."/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setFile" start="193" end="197" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the current working file."/>
+      <param description="the current working file" type="string" variable="$sFile"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="sFile" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getFile" start="204" end="207" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the current working file."/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setBacktrace" start="216" end="220" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the backtrace to log."/>
+      <param description="the current backtrace" type="string" variable="$sBacktrace"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="sBacktrace" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getBacktrace" start="227" end="230" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the backtrace."/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setLine" start="239" end="243" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the current line."/>
+      <param description="the current line." type="integer" variable="$iLine"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="iLine" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getLine" start="250" end="253" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the current line."/>
+      <return type="integer"/>
+    </docblock>
+  </method>
+  <method name="setStoreCode" start="262" end="266" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the current store code."/>
+      <param description="the store code." type="string" variable="$sStoreCode"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="sStoreCode" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getStoreCode" start="273" end="276" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the store code."/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setTimeElapsed" start="285" end="289" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set time elapsed"/>
+      <param description="time elapsed" type="integer" variable="$iTimeElapsed"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="iTimeElapsed" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getTimeElapsed" start="296" end="299" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get time elapsed."/>
+      <return type="integer"/>
+    </docblock>
+  </method>
+  <method name="setPriority" start="308" end="312" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the priority"/>
+      <param description="the priority" type="integer" variable="$iPriority"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="iPriority" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getPriority" start="319" end="322" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the priority"/>
+      <return type="integer"/>
+    </docblock>
+  </method>
+  <method name="setTimestamp" start="331" end="335" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="The the time stamp."/>
+      <param description="the timestamp" type="integer" variable="$iTimestamp"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="iTimestamp" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getTimestamp" start="342" end="345" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the timestamp"/>
+      <return type="integer"/>
+    </docblock>
+  </method>
+  <method name="setMessage" start="354" end="358" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the actual message"/>
+      <param description="the message" type="string" variable="$sMessage"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="sMessage" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getMessage" start="365" end="368" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the message."/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="setPriorityName" start="377" end="381" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Set the priority name"/>
+      <param description="the name of the priority" type="string" variable="$sPriorityName"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="sPriorityName" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getPriorityName" start="388" end="391" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the priority name"/>
+      <return type="string"/>
+    </docblock>
+  </method>
+  <method name="addMessage" start="400" end="404" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Append content to the message"/>
+      <param description="message to append." type="string" variable="$sMessage"/>
+      <return type="object">
+        <type full="$this" namespace="" name="$this"/>
+      </return>
+    </docblock>
+    <parameter name="sMessage" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getEventDataArray" start="411" end="430" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Get the current data in an array"/>
+      <return type="array"/>
+    </docblock>
+  </method>
+</class>
