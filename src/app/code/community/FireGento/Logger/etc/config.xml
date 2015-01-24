@@ -180,6 +180,12 @@ ADDRESS: %remoteAddress%
 USER AGENT: %httpUserAgent%
 FILE: %file%:%line%
 %message%]]></format>
+                <filter_request_data><![CDATA[
+payment.cc_number
+payment.cc_cid
+login.password
+password
+confirmation]]></filter_request_data>
                 <max_backtrace_lines>0</max_backtrace_lines>
                 <viewer_enabled>0</viewer_enabled>
             </general>

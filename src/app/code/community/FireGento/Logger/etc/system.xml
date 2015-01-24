@@ -84,6 +84,15 @@
                               %backtrace%
                             ]]></comment>
                         </format>
+                        <filter_request_data translate="label">
+                            <label>Filter Request Data</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Data of the request arrays to be filtered for security reasons.
+                                ]]></comment>
+                        </filter_request_data>
                         <max_backtrace_lines translate="label">
                             <label>Max Backtrace Lines</label>
                             <frontend_type>text</frontend_type>
@@ -318,10 +327,10 @@
                         </chunk_size>
                         <app_name>
                             <label>Application Name</label>
-                          <frontend_type>text</frontend_type>
-                          <sort_order>40</sort_order>
-                          <show_in_default>1</show_in_default>
-                          <comment>This value will prefix the file name as the Facility.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>This value will prefix the file name as the Facility.</comment>
                         </app_name>
                     </fields>
                 </graylog2>
