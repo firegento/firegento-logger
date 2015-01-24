@@ -256,10 +256,10 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         // Fetch request data
         $requestData = array();
         if (!empty($_GET)) {
-            $requestData[] = '  GET|'.substr(@json_encode($_GET), 0, 1000);
+            $requestData[] = '  GET|'.substr(@json_encode($this->filterSensibleData($_GET)), 0, 1000);
         }
         if (!empty($_POST)) {
-            $requestData[] = '  POST|'.substr(@json_encode($_POST), 0, 1000);
+            $requestData[] = '  POST|'.substr(@json_encode($this->filterSensibleData($_POST)), 0, 1000);
         }
         if (!empty($_FILES)) {
             $requestData[] = '  FILES|'.substr(@json_encode($_FILES), 0, 1000);
@@ -283,6 +283,25 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         } else {
             $event->setHostname('Could not determine hostname !');
         }
+    }
+
+    /**
+     * filter sensible data like credit card and password from requests
+     *
+     * @param array $array
+     * @return array
+     */
+    private function filterSensibleData($array) {
+        if (isset($array['payment'])) {
+            unset($array['payment']['cc_number']);
+            unset($array['payment']['cc_cid']);
+        }
+        if (isset($array['login'])) {
+            unset($array['login']['password']);
+        }
+        unset($array['password']);
+        unset($array['confirmation']);
+        return $array;
     }
 
     public function getEmailNotificationRules()
