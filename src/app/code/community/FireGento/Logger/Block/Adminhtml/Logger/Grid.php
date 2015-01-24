@@ -56,7 +56,7 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
     /**
      * Prepare the grid collection with the database log entries
      *
-     * @return FireGento_Logger_Block_Adminhtml_Logger_Grid
+     * @return FireGento_Logger_Block_Adminhtml_Logger_Grid the grid
      */
     protected function _prepareCollection()
     {
@@ -111,6 +111,11 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
         return parent::_prepareColumns();
     }
 
+    /**
+     * Prepare mass actions.
+     *
+     * @return $this current
+     */
     protected function _prepareMassaction()
     {
         $this->setMassactionIdField('log_id');
@@ -156,7 +161,7 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
     /**
      * Formats advanced info
      *
-     * @param string $value
+     * @param  string $value just a value
      * @return string
      */
     public function decorateAdvancedInfo($value)
@@ -184,7 +189,11 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
     }
 
     /**
-     * @param $item FireGento_Logger_Model_Db_Entry
+     * Get the current row url
+     *
+     * @param  FireGento_Logger_Model_Db_Entry $item the entry
+     *
+     * @return string
      */
     public function getRowUrl($item)
     {

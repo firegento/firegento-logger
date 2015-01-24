@@ -140,7 +140,8 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
         /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
 
-        $curlHandler = curl_init(sprintf('https://%s/%s/%s/', $this->_logglyServer, $this->_logglyPath, $this->_inputKey));
+        $curlHandler = curl_init(sprintf('https://%s/%s/%s/',
+            $this->_logglyServer, $this->_logglyPath, $this->_inputKey));
 
         curl_setopt($curlHandler, CURLOPT_POST, 1);
         curl_setopt($curlHandler, CURLOPT_HTTPHEADER, array(
@@ -163,7 +164,8 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
 
         if (! ($succeeded && $responseCode == 200)) {
             throw new Zend_Log_Exception(
-                sprintf('Error occurred posting log message to Loggly via HTTPS. CurlError: %s, ResponseCode: %s, Response: %s', $errorMsg, $responseCode, $result)
+                sprintf('Error occurred posting log message to Loggly via HTTPS.
+                CurlError: %s, ResponseCode: %s, Response: %s', $errorMsg, $responseCode, $result)
             );
         }
 

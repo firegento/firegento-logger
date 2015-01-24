@@ -18,7 +18,6 @@
  * @copyright Lee Saferite <lee.saferite@aoe.com>
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
-
 /**
  * Syslog Wrapper
  *

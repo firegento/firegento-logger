@@ -119,9 +119,9 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     /**
      * Add useful metadata to the event
      *
-     * @param FireGento_Logger_Model_Event       &$event          Event Data
-     * @param null|string $notAvailable    Not available
-     * @param bool        $enableBacktrace Flag for Backtrace
+     * @param FireGento_Logger_Model_Event &$event          Event Data
+     * @param null|string                  $notAvailable    Not available
+     * @param bool                         $enableBacktrace Flag for Backtrace
      */
     public function addEventMetadata(&$event, $notAvailable = null, $enableBacktrace = false)
     {
@@ -285,6 +285,11 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         }
     }
 
+    /**
+     * Get all the notification rules.
+     *
+     * @return array|mixed|null an array of rules
+     */
     public function getEmailNotificationRules()
     {
         if ($this->_notificationRules != null) {
@@ -304,14 +309,14 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     /**
      * Convert Array to Event Object
      *
-     * @param array $event Event
+     * @param  array $event Event
      *
      * @return FireGento_Logger_Model_Event
      */
     public function getEventObjectFromArray($event)
     {
         // if more than one logger is active the first logger convert the array
-        if(is_object($event) && get_class($event) == get_class(Mage::getModel('firegento_logger/event'))) {
+        if (is_object($event) && get_class($event) == get_class(Mage::getModel('firegento_logger/event'))) {
             return $event;
         }
         return Mage::getModel('firegento_logger/event')

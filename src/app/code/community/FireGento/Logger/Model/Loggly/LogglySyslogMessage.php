@@ -39,7 +39,11 @@ class FireGento_Logger_Model_Loggly_LogglySyslogMessage extends SyslogMessage
         return $this->Message;
     }
 
-    public function GetMessageChunks() {
+    /**
+     * @return array
+     */
+    public function GetMessageChunks()
+    {
         return array($this->FormatMessage());
     }
 }

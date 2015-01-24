@@ -39,6 +39,18 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
         $this->renderLayout();
     }
 
+    /**
+     * Test the logger
+     */
+    public function testAction()
+    {
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
+    /**
+     * Show the details of a log entry
+     */
     public function viewAction()
     {
         $this->loadLayout();
@@ -48,7 +60,9 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
     }
 
     /**
-     * @return FireGento_Logger_Model_Db_Entry
+     * Get the logger entry
+     *
+     * @return FireGento_Logger_Model_Db_Entry the entry
      */
     protected function _getLoggerEntry()
     {
@@ -75,11 +89,15 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
         $this->renderLayout();
     }
 
+    /**
+     * Action to do mass deletion
+     */
     public function massDeleteAction()
     {
         $ids = $this->getRequest()->getParam('log');
-        if(!is_array($ids)) {
-            Mage::getSingleton('adminhtml/session')->addError(Mage::helper('firegento_logger')->__('Please select entries.'));
+        if (!is_array($ids)) {
+            Mage::getSingleton('adminhtml/session')
+                ->addError(Mage::helper('firegento_logger')->__('Please select entries.'));
         } else {
             try {
                 $logModel = Mage::getModel('firegento_logger/db_entry');

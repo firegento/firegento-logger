@@ -19,22 +19,25 @@
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
 /**
- * Simple Formatted Logger
+ * Block for live viewing the log files in the backend
  *
  * @category FireGento
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Logger_Formatter_Simple extends Zend_Log_Formatter_Simple
+class FireGento_Logger_Block_Adminhtml_Test extends Mage_Adminhtml_Block_Template
 {
     /**
-     * Formats data into a single line to be written by the writer.
+     * This method will generate a log message.
      *
-     * @param  FireGento_Logger_Model_Event $event Event Data
-     * @return string formatted line to write to the log
+     * @param  int $level a level to generate
+     *
+     * @return string
      */
-    public function format($event)
+    public function generateLogMessage($level = Zend_Log::INFO)
     {
-        return parent::format($event->getEventDataArray());
+        $message = sprintf("This is an log event with level %s", $level);
+        Mage::log($message, $level);
+        echo $message;
     }
 }

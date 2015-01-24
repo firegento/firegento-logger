@@ -173,7 +173,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
     /**
      * Returns the advanced or simple formatter based on the flag given
      *
-     * @param bool $bAdvanced
+     * @param  bool $bAdvanced switch advance logging on
      * @return FireGento_Logger_Formatter_Advanced|FireGento_Logger_Formatter_Simple
      */
     public static function getFormatter($bAdvanced = true)
@@ -186,7 +186,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
             self::$_simpleFormatter = new FireGento_Logger_Formatter_Simple;
         }
 
-        if ($bAdvanced){
+        if ($bAdvanced) {
             return self::$_advancedFormatter;
         } else {
             return self::$_simpleFormatter;

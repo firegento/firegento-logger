@@ -60,7 +60,7 @@ class FireGento_Logger_Model_Logglysyslog extends FireGento_Logger_Model_Rsyslog
      * Transforms a Magento Log event into an associative array.
      *
      * @param  FireGento_Logger_Model_Event $event           A Magento Log Event.
-     * @param  bool  $enableBacktrace Indicates if a backtrace should be added to the log event.
+     * @param  bool                         $enableBacktrace Indicates if a backtrace should be added to the log event.
      * @return array An associative array representation of the event.
      */
     protected function BuildJSONMessage( $event, $enableBacktrace = false)
@@ -105,8 +105,6 @@ class FireGento_Logger_Model_Logglysyslog extends FireGento_Logger_Model_Rsyslog
         if (! is_string($message)) {
             $message = json_encode($message);
         }
-
-//        $message = sprintf('[%s@41058] %s', $this->_inputKey, $message);
 
         return new FireGento_Logger_Model_Loggly_LogglySyslogMessage (
             $message,

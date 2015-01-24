@@ -7,6 +7,7 @@
  * This script is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ *
  * PHP version 5
  *
  * @category  FireGento
@@ -15,6 +16,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+require_once 'chromelogger' . DS . 'ChromePHP.php';
 /**
  * Model for Chrome logging
  *
@@ -22,7 +24,6 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-require_once 'chromelogger' . DS . 'ChromePHP.php';
 class FireGento_Logger_Model_Chromelogger extends Zend_Log_Writer_Abstract
 {
     /**

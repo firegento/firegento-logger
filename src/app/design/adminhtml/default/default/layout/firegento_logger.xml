@@ -31,6 +31,14 @@
         </reference>
     </adminhtml_logger_index>
 
+    <adminhtml_logger_test>
+        <update handle="adminhtml_firegento_head" />
+        <reference name="content">
+            <block type="firegento_logger/adminhtml_test" name="logger.testView"
+                   template="firegento_logger/test.view.phtml" />
+        </reference>
+    </adminhtml_logger_test>
+
     <adminhtml_logger_liveview>
         <update handle="adminhtml_firegento_head" />
         <reference name="content">
@@ -42,14 +50,16 @@
     <adminhtml_logger_reportview>
         <update handle="adminhtml_firegento_head" />
         <reference name="content">
-            <block type="adminhtml/template" name="logger.reportView" template="firegento_logger/report.view.phtml" />
+            <block type="adminhtml/template" name="logger.reportView"
+                   template="firegento_logger/report.view.phtml" />
         </reference>
     </adminhtml_logger_reportview>
 
     <adminhtml_logger_view>
         <update handle="adminhtml_firegento_head" />
         <reference name="content">
-            <block type="firegento_logger/adminhtml_logger_view" name="logger_view" template="firegento_logger/detail.view.phtml"/>
+            <block type="firegento_logger/adminhtml_logger_view" name="logger_view"
+                   template="firegento_logger/detail.view.phtml"/>
         </reference>
     </adminhtml_logger_view>
 </layout>

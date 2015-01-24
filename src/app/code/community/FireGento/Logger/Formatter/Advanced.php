@@ -54,7 +54,7 @@ class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
      * Formats data into a single line to be written by the writer.
      *
      * @param  FireGento_Logger_Model_Event $event           Event Data
-     * @param  bool  $enableBacktrace Backtrace Flag
+     * @param  bool                         $enableBacktrace Backtrace Flag
      * @return string formatted line to write to the log
      */
     public function format($event, $enableBacktrace = false)
