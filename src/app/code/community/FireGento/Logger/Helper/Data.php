@@ -288,20 +288,38 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     /**
      * filter sensible data like credit card and password from requests
      *
-     * @param array $array
+     * @param array $data
      * @return array
      */
-    private function filterSensibleData($array) {
-        if (isset($array['payment'])) {
-            unset($array['payment']['cc_number']);
-            unset($array['payment']['cc_cid']);
+    private function filterSensibleData($data) {
+        if (is_array($data)) {
+            $keysToFilter = explode("\n", Mage::helper('firegento_logger')->getLoggerConfig('general/filter_request_data'));
+            foreach ($keysToFilter as $key) {
+                if ($key !== '') {
+                    $subkeys = explode('.', $key);
+                    $data = $this->filterDataFromMultidimensionalKey($data, $subkeys);
+                }
+            }
         }
-        if (isset($array['login'])) {
-            unset($array['login']['password']);
+        return $data;
+    }
+
+    /**
+     * @param array $data array to be filtered
+     * @param array $subkeys list of multidimensional keys
+     * @return array
+     */
+    private function filterDataFromMultidimensionalKey(array $data, array $subkeys) {
+        $countSubkeys = count($subkeys);
+        $lastSubkey = ($countSubkeys - 1);
+        $subdata =& $data;
+        for ($i = 0; $i < $lastSubkey; $i++) {
+            if (isset($subdata[$subkeys[$i]])) {
+                $subdata =& $subdata[$subkeys[$i]];
+            }
         }
-        unset($array['password']);
-        unset($array['confirmation']);
-        return $array;
+        $subdata[$subkeys[$lastSubkey]] = '*****';
+        return $data;
     }
 
     public function getEmailNotificationRules()
