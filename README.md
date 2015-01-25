@@ -7,7 +7,7 @@ firegento community.
 
 See the [**Usage**](#usage) Chapter below to see how to use it.
 
-Pleas be aware of the following restrictions:
+Please be aware of the following restrictions:
 
 * The ProxiBlue NewRelic extension use the same logic to log to NewRelic and will block
   FireGento Logger extension.
