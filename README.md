@@ -109,8 +109,8 @@ For ChromeLogger we use https://github.com/ccampbell/chromephp
 Make a fork, commit to develop branch and make a pull request
 
 ### Some Hints
-* There are combinations there doesn't work together
-** You can't use Chromelogger with the embeded queueing model, because the queueing takes place after the response
+* There are combinations that don't work together
+  * You can't use Chromelogger with the embeded queueing model, because the queueing takes place after the response
 is send to the client
 
 Licence
