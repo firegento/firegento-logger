@@ -119,6 +119,13 @@
                             <show_in_default>1</show_in_default>
                             <comment>If "No", the "View Error Log" menu item will not be present.</comment>
                         </viewer_enabled>
+                        <test translate="label comment">
+                          <comment>Save settings before running this test.</comment>
+                          <frontend_type>select</frontend_type>
+                          <frontend_model>FireGento_Logger_Block_Adminhtml_Test</frontend_model>
+                          <sort_order>100</sort_order>
+                          <show_in_default>1</show_in_default>
+                        </test>
                     </fields>
                 </general>
                 <default translate="label">
