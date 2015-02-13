@@ -1,0 +1,75 @@
+<div class="content-header">
+    <h3 class="icon-head head-products"><?php echo $this->__("Active Modules") ?></h3>
+</div>
+<div class="modulelist">
+    <table width="100%">
+        <thead>
+            <tr>
+                <th><?php echo $this->__("Module Name") ?></th>
+                <th><?php echo $this->__("Module Path") ?></th>
+                <th><?php echo $this->__("Logging Enabled?") ?></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php $_modules = $this->getModules(); ?>
+        <?php foreach ($_modules as $_module): ?>
+            <?php $logEnabled = (isset($_module['log_enabled']) ? $_module['log_enabled'] : true); ?>
+            <tr id="<?php echo $_module['name']; ?>_row" class="<?php if(!$logEnabled): ?>no<?php endif;?>">
+                <td><?php echo $_module['name']; ?></td>
+                <td><?php echo $_module['path']; ?></td>
+                <td class="value-row">
+                    <?php echo ($logEnabled ? $this->__("Yes") : $this->__("No")); ?>
+                </td>
+                <td>
+                    <a href="#" onclick="changeLogPath('<?php echo $_module["name"]; ?>', '<?php echo $logEnabled; ?>');">
+                        <?php echo ($logEnabled ? $this->__("Disable") : $this->__("Enable")); ?>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+<script>
+    /**
+     * Lets us double check that we really do want to disable logging without going back to the server
+     * @todo move this to a .js file perhaps.
+     * @param  module           : module key we're working with
+     * @param  int currentVal   : is the module logging currently enabled or disabled
+     * @return false
+     */
+    function changeLogPath(module, currentVal) {
+        var question;
+        var url;
+        if(currentVal == 1) {
+            question = '<?php echo $this->__("Are you sure you want to turn OFF logging for the module: "); ?>';
+            url = '<?php echo $this->getUrl("adminhtml/managelog/disable") ?>module/'+module;
+        } else {
+            question = '<?php echo $this->__("Are you sure you want to turn ON logging for the module: "); ?>';
+            url = '<?php echo $this->getUrl("adminhtml/managelog/enable") ?>module/'+module;
+        }
+        if(!confirm(question + module)) {
+            return false;
+        }
+        if(currentVal == 1) {
+            question = '<?php echo $this->__("Are you sure you want to turn OFF logging for the module: "); ?>';
+            url = '<?php echo $this->getUrl("adminhtml/managelog/disable") ?>module/'+module;
+        } else {
+            question = '<?php echo $this->__("Are you sure you want to turn ON logging for the module: "); ?>';
+            url = '<?php echo $this->getUrl("adminhtml/managelog/enable") ?>module/'+module;
+        }
+
+        window.location = url;
+
+        return false;
+    }
+</script>
+<style>
+.modulelist tbody tr:hover {
+    background-color: #FFF9E9;
+}
+.modulelist tbody tr.no {
+    background-color: rgb(255, 207, 207);
+}
+</style>

@@ -10,3 +10,6 @@ src/lib/chromelogger/                                                   lib/chro
 src/shell/logger.php                                                    shell/logger.php
 src/skin/adminhtml/default/default/firegento_logger.css                 skin/adminhtml/default/default/firegento_logger.css
 src/app/locale/en_US/template/email/firegento_logger                    app/locale/en_US/template/email/firegento_logger
+src/app/code/community/Wf/Logmanager/                                app/code/community/Wf/Logmanager/
+src/app/etc/modules/Wf_Logmanager.xml                                app/etc/modules/Wf_Logmanager.xml
+src/app/design/adminhtml/default/default/template/wf/logmanager/     app/design/adminhtml/default/default/template/wf/logmanager/

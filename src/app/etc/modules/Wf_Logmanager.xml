@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wf_Logmanager>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Wf_Logmanager>
+    </modules>
+</config> 
