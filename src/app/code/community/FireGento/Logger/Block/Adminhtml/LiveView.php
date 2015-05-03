@@ -35,8 +35,14 @@ class FireGento_Logger_Block_Adminhtml_LiveView extends Mage_Adminhtml_Block_Tem
     public function getLogFiles()
     {
         $logFiles = array();
+        $logFolderPath = Mage::getBaseDir('var') . DS . 'log';
 
-        $directory = new DirectoryIterator(Mage::getBaseDir('var') . DS . 'log');
+        if (!file_exists($logFolderPath)) {
+            mkdir($logFolderPath, 0755, true);
+        }
+
+        $directory = new DirectoryIterator($logFolderPath);
+
         foreach ($directory as $fileInfo) {
             if (!$fileInfo->isFile() || !preg_match('/\.(?:log)$/', $fileInfo->getFilename())) {
                 continue;
