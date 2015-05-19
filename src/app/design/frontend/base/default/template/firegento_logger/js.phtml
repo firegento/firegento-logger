@@ -1,11 +1,26 @@
 <script type="text/javascript">
-    window.onerror = function (message, url, lineNumber) {
-        var xhttp = new XMLHttpRequest();
+    window.onerror = function (msg, file, line, col, err)
+    {
+        var parameters = {
+            message: msg,
+            url: window.location,
+            file: file,
+            line: line,
+            col: col
+        };
+
+        if (err) {
+            parameters.stack = err.stack;
+        }
 
         // build parameters
-        var params = 'message=' + encodeURIComponent(message);
-        params += '&url=' + encodeURIComponent(document.location);
+        var params = [];
+        for (var param in parameters) {
+            params.push(param+'='+encodeURIComponent(parameters[param]));
+        }
+        params = params.join('&');
 
+        var xhttp = new XMLHttpRequest();
         xhttp.open("POST", '<?php echo $this->getUrl('logger/error/send'); ?>', true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send(params);
