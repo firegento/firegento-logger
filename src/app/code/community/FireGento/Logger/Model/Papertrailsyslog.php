@@ -46,6 +46,30 @@ class FireGento_Logger_Model_Papertrailsyslog extends FireGento_Logger_Model_Rsy
     }
 
     /**
+     * Transforms a Magento Log event into a string with meta information.
+     *
+     * @param  FireGento_Logger_Model_Event $event A Magento Log Event.
+     * @param  bool $enableBacktrace Indicates if a backtrace should be added to the log event.
+     * @return array An associative array representation of the event.
+     */
+    protected function BuildStringMessage( $event, $enableBacktrace = false)
+    {
+        Mage::helper('firegento_logger')->addEventMetadata($event, null, $enableBacktrace);
+        $message = ' ' . $event->getFile() . ':' . $event->getLine();
+        $message .= ' [' . $event->getPriorityName() . ']';
+        $message .= ' [' . $event->getStoreCode() . ']';
+        foreach (array('getUserAgent', 'getRequestUri', 'getRequestData', 'getRemoteIp', 'getHttpUserAgent', 'getRemoteAddress') as $method) {
+            if (is_callable(array($event, $method)) && $event->$method()) {
+                $message .= '[' . substr($method, 3) . ':' . $event->$method() . '] ';
+            }
+        }
+        $message .= ' ' . $event->getTimeElapsed() . '';
+        $message .= ' ' . $event->getMessage();
+        $message .= ($event->getBacktrace() ? ' ' . $event->getBacktrace() : ' ');
+        return $message;
+    }
+
+    /**
      * Builds a Message that will be sent to the Papertrail Server.
      *
      * @param  FireGento_Logger_Model_Event $event A Magento Log Event.
@@ -53,10 +77,35 @@ class FireGento_Logger_Model_Papertrailsyslog extends FireGento_Logger_Model_Rsy
      */
     protected function buildSysLogMessage($event)
     {
+        $message = $this->BuildStringMessage($event, $this->_enableBacktrace);
+        $priority = $event->getPriority();
+        if ($priority !== false) {
+            switch ($priority)
+            {
+                case Zend_Log::EMERG:
+                case Zend_Log::ALERT:
+                case Zend_Log::CRIT:
+                case Zend_Log::ERR:
+                    $priority = 'error';
+                    break;
+                case Zend_Log::WARN:
+                    $priority = 'warn';
+                    break;
+                case Zend_Log::NOTICE:
+                case Zend_Log::INFO:
+                case Zend_Log::DEBUG:
+                    $priority = 'debug';
+                    break;
+                default:
+                    $priority = $event->getPriority();
+                    break;
+            }
+        }
+        
         return new FireGento_Logger_Model_Papertrail_PapertrailSyslogMessage(
-            $this->_formatter->format($event, $this->_enableBacktrace),
+            $message,
             $this->_options['AppName'],
-            $event->getPriority(),
+            $priority,
             strtotime($event->getTimestamp())
         );
     }
