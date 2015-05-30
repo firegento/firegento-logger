@@ -76,6 +76,7 @@ Configure the different loggers in `System > Configuration > Advanced > Firegent
 * Daniel Kröger
 * Michael Ryvlin
 * Tobias Zander
+* Achim Rosenhagen
 
 ### Current Status of Project
 
@@ -88,6 +89,7 @@ Complete, working logger interfaces:
 - Graylog2
 - RSyslog (UDP)
 - Loggly (UDP/HTTPS)
+- Papertrail (UDP)
 - Chromelogger
 - Logstash
 
@@ -112,6 +114,7 @@ Make a fork, commit to develop branch and make a pull request
 * There are combinations there doesn't work together
 ** You can't use Chromelogger with the embeded queueing model, because the queueing takes place after the response
 is send to the client
+** You can't use Papertrail with the embeded queueing model
 
 Licence
 -------
