@@ -559,11 +559,10 @@
                 <papertrailsyslog translate="label">
                     <label>Papertrail via Remote Syslog (UDP) Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>100</sort_order>
+                    <sort_order>110</sort_order>
                     <show_in_default>1</show_in_default>
                     <comment><![CDATA[
-                        Sends log messages in <strong>JSON format</strong> to Papertrail, using RSyslog (UDP) Protocol.
-                        This logger is much faster than the HTTPS one, and can be used for all log messages.
+                        Sends log messages to Papertrail, using RSyslog (UDP) Protocol.
                     ]]></comment>
                     <fields>
                         <priority translate="label">
