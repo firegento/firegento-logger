@@ -556,6 +556,52 @@
                         </app_name>
                     </fields>
                 </logglysyslog>
+                <papertrailsyslog translate="label">
+                    <label>Papertrail via Remote Syslog (UDP) Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <comment><![CDATA[
+                        Sends log messages in <strong>JSON format</strong> to Papertrail, using RSyslog (UDP) Protocol.
+                        This logger is much faster than the HTTPS one, and can be used for all log messages.
+                    ]]></comment>
+                    <fields>
+                        <priority translate="label">
+                            <label>Priority Level Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>firegento_logger/system_config_source_prioritydefault</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose the lowest priority level to be logged.</comment>
+                        </priority>
+                        <hostname translate="label">
+                            <label>Host Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Host Name of the Papertrail server.
+                                To find this information, <a href="https://papertrailapp.com/systems/setup">setup a new system on Papertrail</a>.
+                            ]]></comment>
+                        </hostname>
+                        <port translate="label">
+                            <label>Port</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Enter UDP Port to use to connect to Papertrail.
+                            ]]></comment>
+                        </port>
+                        <app_name>
+                            <label>Application Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>This value will be prefixed to the Log messages.</comment>
+                        </app_name>
+                    </fields>
+                </papertrailsyslog>
                 <chromelogger>
                     <label>Chromelogger Configuration</label>
                     <frontend_type>text</frontend_type>
