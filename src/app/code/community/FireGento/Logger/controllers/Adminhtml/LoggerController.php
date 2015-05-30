@@ -187,6 +187,49 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
     }
 
     /**
+     * Lists the modules and gives the user the option to dsiable/enable log output for them.
+     * @return $this
+     */
+    public function manageModulesLogAction()
+    {
+        $this->loadLayout();
+        $this->_setActiveMenu('system/firegento_logger/log_manager');
+        $listBlock = $this->getLayout()->createBlock('firegento_logger/adminhtml_logger_manager', 'log_manager')->setTemplate('firegento_logger/manager.phtml');
+        $this->_addContent($listBlock);
+        $this->renderLayout();
+    }
+
+    /**
+     * Disables provided module key's log output
+     * @return $this
+     */
+    public function enableModulesLogAction()
+    {
+        $moduleKey = $this->getRequest()->getParam('module');
+        Mage::getSingleton('firegento_logger/manager')->enableLogging($moduleKey);
+        Mage::app()->getCacheInstance()->cleanType('config');
+        $successMsg = Mage::helper('firegento_logger')->__("Logging for the module '%s' was successfully ENABLED.", $moduleKey);
+        Mage::getSingleton('core/session')->addSuccess($successMsg);
+        $this->_redirect("adminhtml/logger/manageModulesLog");
+        return $this;
+    }
+
+    /**
+     * Disables provided module key's log output
+     * @return $this
+     */
+    public function disableModulesLogAction()
+    {
+        $moduleKey = $this->getRequest()->getParam('module');
+        Mage::getSingleton('firegento_logger/manager')->disableLogging($moduleKey);
+        Mage::app()->getCacheInstance()->cleanType('config');
+        $successMsg = Mage::helper('firegento_logger')->__("Logging for the module '%s' was successfully DISABLED.", $moduleKey);
+        Mage::getSingleton('core/session')->addSuccess($successMsg);
+        $this->_redirect("adminhtml/logger/manageModulesLog");
+        return $this;
+    }
+
+    /**
      * Check if admin user is allowed to view this controller actions
      *
      * @return bool Flag
