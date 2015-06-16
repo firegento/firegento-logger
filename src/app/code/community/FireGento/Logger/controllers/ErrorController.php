@@ -32,6 +32,12 @@ class FireGento_Logger_ErrorController extends Mage_Core_Controller_Front_Action
      */
     public function sendAction()
     {
+        foreach (explode(';', Mage::getStoreConfig('logger/general/frontend_bots')) as $agent) {
+            if (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], trim($agent)) !== false) {
+                return;
+            }
+        }
+
         $params = $this->getRequest()->getPost();
         $message = '';
         foreach ($params as $paramKey => $paramValue) {
