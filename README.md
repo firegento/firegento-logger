@@ -98,6 +98,7 @@ It is possible to use **Multiple-Targets**!
 ### Other Features
 - Log Live View (Like a tail in terminal)
 - Report View (Shows content of a report in backend)
+- Manage modules log output (enable/disable log messages of extensions)
 
 ### Further work
 
