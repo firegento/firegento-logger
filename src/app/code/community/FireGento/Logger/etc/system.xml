@@ -122,6 +122,13 @@
                                 send these errors also to the configured logging backend. <br />
                             ]]></comment>
                         </frontend_logger>
+                        <frontend_bots>
+                            <label>Frontend Logger Exclude Bots</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Field above is used to match any of semicolon separated values inside user agent string and to decide whether bot or real user is currently browsing.</comment>
+                        </frontend_bots>
                         <viewer_enabled translate="label">
                             <label>Enable Log Viewer</label>
                             <frontend_type>select</frontend_type>
