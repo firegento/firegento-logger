@@ -317,13 +317,15 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     {
         $countSubkeys = count($subkeys);
         $lastSubkey = ($countSubkeys - 1);
-        $subdata =& $data;
+        $subdata = &$data;
         for ($i = 0; $i < $lastSubkey; $i++) {
             if (isset($subdata[$subkeys[$i]])) {
-                $subdata =& $subdata[$subkeys[$i]];
+                $subdata =  &$subdata[$subkeys[$i]];
             }
         }
-        $subdata[$subkeys[$lastSubkey]] = '*****';
+        if (array_key_exists($subkeys[$lastSubkey], $subdata)) {
+            $subdata[$subkeys[$lastSubkey]] = '*****';
+        }
         return $data;
     }
 

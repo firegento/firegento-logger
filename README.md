@@ -7,7 +7,7 @@ firegento community.
 
 See the [**Usage**](#usage) Chapter below to see how to use it.
 
-Pleas be aware of the following restrictions:
+Please be aware of the following restrictions:
 
 * The ProxiBlue NewRelic extension use the same logic to log to NewRelic and will block
   FireGento Logger extension.
@@ -76,6 +76,7 @@ Configure the different loggers in `System > Configuration > Advanced > Firegent
 * Daniel Kröger
 * Michael Ryvlin
 * Tobias Zander
+* Achim Rosenhagen
 
 ### Current Status of Project
 
@@ -88,6 +89,7 @@ Complete, working logger interfaces:
 - Graylog2
 - RSyslog (UDP)
 - Loggly (UDP/HTTPS)
+- Papertrail (UDP)
 - Chromelogger
 - Logstash
 
@@ -112,6 +114,7 @@ Make a fork, commit to develop branch and make a pull request
 * There are combinations that don't work together
   * You can't use Chromelogger with the embeded queueing model, because the queueing takes place after the response
 is send to the client
+** You can't use Papertrail with the embeded queueing model
 
 Licence
 -------

@@ -118,9 +118,10 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
      */
     public function shutdown()
     {
+        $cacheSize =  count($this->_loggerCache);
         foreach ($this->_writers as $writer) {
             //only implode if queue is enabled and cache has entries
-            if ($this->_useQueue && count($this->_loggerCache) > 0) {
+            if ($this->_useQueue && $cacheSize > 0) {
                 $writer->write($this->implodeEvents($this->_loggerCache));
             }
             $writer->shutdown();
@@ -157,6 +158,8 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
      * Override this method since Mage::log doesn't let us set a formatter any other way.
      *
      * @param Zend_Log_Formatter_Interface $formatter Formatter
+     *
+     * @return void
      */
     public function setFormatter(Zend_Log_Formatter_Interface $formatter)
     {
