@@ -88,7 +88,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
 
         $fields = array();
-                $fields['@timestamp'] = date('c', strtotime($event->getTimestamp()));
+        $fields['@timestamp'] = date('c', strtotime($event->getTimestamp()));
         $fields['@version'] = "1";
         $fields['Level'] = $event->getPriority();
         $fields['File'] = $event->getFile();
