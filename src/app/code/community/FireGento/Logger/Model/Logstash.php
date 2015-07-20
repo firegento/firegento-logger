@@ -101,7 +101,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         $fields['RequestMethod'] = $event->getRequestMethod();
         $fields['RequestData'] = $event->getRequestData();
         $fields['RemoteAddress'] = $event->getRemoteAddress();
-        $fields['BaseUrl'] = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);  
+        $fields['HttpHost'] = Mage::app()->getRequest()->getHttpHost();
 
         // udp/tcp inputs require a trailing EOL character.
         $encodedMessage = trim(json_encode($fields)) . "\n";
