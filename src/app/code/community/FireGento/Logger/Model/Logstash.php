@@ -90,13 +90,18 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         $fields = array();
         $fields['@timestamp'] = date('c', strtotime($event->getTimestamp()));
         $fields['@version'] = "1";
-        $fields['level'] = $event->getPriority();
-        $fields['file'] = $event->getFile();
+        $fields['Level'] = $event->getPriorityName();
+        $fields['File'] = $event->getFile();
         $fields['LineNumber'] = $event->getLine();
         $fields['StoreCode'] = $event->getStoreCode();
         $fields['TimeElapsed'] = $event->getTimeElapsed();
-        $fields['source_host'] = $event->getHostname();
-        $fields['message'] = $event->getMessage();
+        $fields['SourceHost'] = $event->getHostname();
+        $fields['Message'] = $event->getMessage();
+        $fields['Backtrace'] = $event->getBacktrace();
+        $fields['RequestMethod'] = $event->getRequestMethod();
+        $fields['RequestData'] = $event->getRequestData();
+        $fields['RemoteAddress'] = $event->getRemoteAddress();
+        $fields['HttpHost'] = Mage::app()->getRequest()->getHttpHost();
 
         // udp/tcp inputs require a trailing EOL character.
         $encodedMessage = trim(json_encode($fields)) . "\n";
