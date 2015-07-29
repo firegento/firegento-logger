@@ -35,6 +35,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
     protected $_logstashPort = false;
     protected $_logstashProtocol = false;
     protected $_options = null;
+    protected $_logFileName = '';
     /**
      * @var int The timeout to apply when sending data to Loggly servers, in seconds.
      */
