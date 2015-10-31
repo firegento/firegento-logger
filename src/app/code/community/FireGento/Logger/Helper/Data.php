@@ -215,7 +215,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                             : ( is_array($value)
                                 ? 'array('.count($value).')'
                                 : ( is_string($value)
-                                    ? "'".(strlen($value) > 28 ? "'".substr($value, 0, 25)."...'" : $value)."'"
+                                    ? "'".(strlen($value) > 100 ? "'".substr($value, 0, 100)."...'" : $value)."'"
                                     : gettype($value)."($value)"
                                 )
                             )
