@@ -297,6 +297,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             $keysToFilter = explode("\n",
                 Mage::helper('firegento_logger')->getLoggerConfig('general/filter_request_data'));
             foreach ($keysToFilter as $key) {
+                $key = trim($key);
                 if ($key !== '') {
                     $subkeys = explode('.', $key);
                     $data = $this->filterDataFromMultidimensionalKey($data, $subkeys);
