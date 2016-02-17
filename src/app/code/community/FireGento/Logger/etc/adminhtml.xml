@@ -45,6 +45,11 @@
                             <sort_order>30</sort_order>
                             <action>adminhtml/logger/reportView</action>
                         </report_viewer>
+                        <log_manager translate="title" module="firegento_logger">
+                            <title>Log Manager</title>
+                            <sort_order>30</sort_order>
+                            <action>adminhtml/logger/manageModulesLog</action>
+                        </log_manager>
                     </children>
                 </firegento_logger>
             </children>

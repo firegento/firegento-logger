@@ -105,6 +105,7 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
             $dataToInsert['advanced_info'] = $this->getAdvancedInfo($event);
         }
 
+        $dataToInsert['timestamp'] = Mage::getSingleton('core/date')->gmtDate();
         $this->_db->insert($this->_table, $dataToInsert);
 
         /** @var Varien_Db_Adapter_Pdo_Mysql $db */

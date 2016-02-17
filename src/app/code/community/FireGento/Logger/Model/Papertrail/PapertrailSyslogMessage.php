@@ -19,22 +19,33 @@
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
 /**
- * Log JS errors to the backend
+ * Implementation of Remote Syslog Message for Papertrail.
  *
  * @category FireGento
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Logger_ErrorController extends Mage_Core_Controller_Front_Action
+class FireGento_Logger_Model_Papertrail_PapertrailSyslogMessage extends SyslogMessage
 {
+
     /**
-     * send a js error to the backend
+    * Puts all Log Message elements together to form a string that will be passed
+    * to the Papertrail Server.
+    *
+    * @return string The Message as a string.
+    */
+    protected function FormatMessage() {
+        return sprintf('%s %s',
+            $this->Facility,
+            $this->Message
+        );
+    }
+
+    /**
+     * @return array
      */
-    public function sendAction()
+    public function GetMessageChunks()
     {
-        $request = $this->getRequest();
-        $errorMessage = 'MESSAGE|' . $request->getParam('message') . "\n";
-        $errorMessage .= 'URL|' . $request->getParam('url');
-        Mage::log($errorMessage, ZEND_LOG::ERR);
+        return array($this->FormatMessage());
     }
 }

@@ -35,6 +35,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
     protected $_logstashPort = false;
     protected $_logstashProtocol = false;
     protected $_options = null;
+    protected $_logFileName = '';
     /**
      * @var int The timeout to apply when sending data to Loggly servers, in seconds.
      */
@@ -52,6 +53,8 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         $this->_logstashServer = $helper->getLoggerConfig('logstash/host');
         $this->_logstashPort = $helper->getLoggerConfig('logstash/port');
         $this->_logstashProtocol = $helper->getLoggerConfig('logstash/protocol');
+        $logDir = Mage::getBaseDir('var') . DS . 'log' . DS;
+        $this->_logFileName = str_replace($logDir, '', $filename);
 
     }
 
@@ -90,13 +93,21 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         $fields = array();
         $fields['@timestamp'] = date('c', strtotime($event->getTimestamp()));
         $fields['@version'] = "1";
-        $fields['level'] = $event->getPriority();
-        $fields['file'] = $event->getFile();
+        $fields['Level'] = $event->getPriorityName();
+        $fields['File'] = $event->getFile();
         $fields['LineNumber'] = $event->getLine();
         $fields['StoreCode'] = $event->getStoreCode();
         $fields['TimeElapsed'] = $event->getTimeElapsed();
-        $fields['source_host'] = $event->getHostname();
-        $fields['message'] = $event->getMessage();
+        $fields['SourceHost'] = $event->getHostname();
+        $fields['Message'] = $event->getMessage();
+        $fields['Backtrace'] = $event->getBacktrace();
+        $fields['RequestMethod'] = $event->getRequestMethod();
+        $fields['RequestData'] = $event->getRequestData();
+        $fields['RemoteAddress'] = $event->getRemoteAddress();
+        $fields['HttpHost'] = Mage::app()->getRequest()->getHttpHost();
+        $fields['LogFileName'] = $this->_logFileName;
+        $fields['SessionId'] = Mage::getSingleton("core/session")->getEncryptedSessionId();
+        $fields['CustomerId'] = Mage::getSingleton('customer/session')->getCustomerId(); 
 
         // udp/tcp inputs require a trailing EOL character.
         $encodedMessage = trim(json_encode($fields)) . "\n";
@@ -130,7 +141,7 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
             if ($result == false) {
                 throw new Zend_Log_Exception(
                     sprintf($helper->__('Error occurred posting log message to logstash via tcp. Posted Message: %s'),
-                    $message)
+                        $message)
                 );
             }
         } catch (Exception $e) {

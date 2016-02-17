@@ -87,6 +87,7 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
 
         $this->addColumn('timestamp', array(
             'header' => Mage::helper('firegento_logger')->__('Timestamp'),
+            'type' => 'datetime',
             'align' => 'left',
             'index' => 'timestamp',
         ));

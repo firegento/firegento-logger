@@ -142,6 +142,10 @@
                         <label>Loggly, via HTTPS</label>
                         <class>FireGento_Logger_Model_Logglyhttps</class>
                     </logglyhttps>
+                    <papertrailsyslog>
+                        <label>Papertrail, via Remote Syslog (UDP)</label>
+                        <class>FireGento_Logger_Model_Papertrailsyslog</class>
+                    </papertrailsyslog>
                     <chromelogger>
                         <label>Chrome Logger</label>
                         <class>FireGento_Logger_Model_Chromelogger</class>
@@ -236,6 +240,12 @@ confirmation]]></filter_request_data>
                 <timeout>5</timeout>
                 <app_name>Magento/</app_name>
             </logglysyslog>
+            <papertrailsyslog>
+                <priority>default</priority>
+                <hostname>logs.papertrailapp.com</hostname>
+                <port></port>
+                <app_name>Magento</app_name>
+            </papertrailsyslog>
             <chrome>
                 <priority>default</priority>
             </chrome>
