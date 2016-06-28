@@ -61,7 +61,9 @@ class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
         $prettyPrint = $helper->getLoggerConfig('general/pretty_print') && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : 0;
         $output = preg_replace_callback('/%(\w+)%/', function ($match) use ($event, $maxDataLength, $prettyPrint) {
             $value = isset($event[$match[1]]) ? $event[$match[1]] : '-';
-            if (is_string($value) || (is_object($value) && method_exists($value, '__toString'))) {
+            if (is_bool($value)) {
+                return $value ? 'TRUE' : 'FALSE';
+            } else if (is_scalar($value) || (is_object($value) && method_exists($value, '__toString'))) {
                 return "$value";
             } else if (is_array($value)) {
                 return substr(@json_encode($value, $prettyPrint), 0, $maxDataLength);
