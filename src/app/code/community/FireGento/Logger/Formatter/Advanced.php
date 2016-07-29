@@ -61,6 +61,44 @@ class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
     {
         Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
 
+        if (substr(trim($this->_format), 0, 1) == '{') {
+            return $this->_formatJson($event);
+        }
+
         return parent::format($event->getEventDataArray());
+    }
+
+    /**
+     * @param FireGento_Logger_Model_Event $event
+     * @return string
+     */
+    protected function _formatJson($event)
+    {
+        $format = str_replace("\n", '', $this->_format);
+        $format = str_replace(' ', '', $format);
+        $json = json_decode($format, true);
+        if ($json === null) {
+            return '';
+        }
+
+        $eventData = $event->getEventDataArray();
+
+        foreach ($json as $key => $jsonValue) {
+            $eventDataKey = trim($jsonValue, '%');
+
+            if (!array_key_exists($eventDataKey, $eventData)) {
+                continue;
+            }
+
+            $value = $eventData[$eventDataKey];
+            if ((is_object($value) && !method_exists($value, '__toString')) || is_array($value)) {
+                $value = gettype($value);
+            }
+
+            $json[$key] = (string) $value;
+        }
+
+        $output = json_encode($json) . PHP_EOL;
+        return $output;
     }
 }
