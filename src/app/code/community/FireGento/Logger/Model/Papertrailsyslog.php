@@ -109,7 +109,7 @@ class FireGento_Logger_Model_Papertrailsyslog extends FireGento_Logger_Model_Rsy
             $priority,
             strtotime($event->getTimestamp()),
             [
-                'HostName' => sprintf(∂
+                'HostName' => sprintf(
                     '%s %s/%s',
                     $event->getHostname(),
                     $this->_options['AppName'],
