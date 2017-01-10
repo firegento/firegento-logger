@@ -143,7 +143,7 @@ class FireGento_Logger_Model_Observer extends Varien_Object
      */
     public function addLoggerJs(Varien_Event_Observer $observer)
     {
-        if ($this->init && !Mage::helper('core')->isDevAllowed()) {
+        if ($this->init && Mage::helper('core')->isDevAllowed()) {
             $this->init = false;
         }
 
