@@ -271,6 +271,7 @@ confirmation]]></filter_request_data>
             <core_block_abstract_to_html_after>
                 <observers>
                     <add_logger_js>
+                        <type>singleton</type>
                         <class>FireGento_Logger_Model_Observer</class>
                         <method>addLoggerJs</method>
                     </add_logger_js>

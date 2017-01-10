@@ -18,6 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
  * Observer Class
  *
@@ -31,6 +32,11 @@ class FireGento_Logger_Model_Observer extends Varien_Object
      * Constant how long the files should be kept on the filesystem before they are rotated
      */
     const MAX_FILE_DAYS = 30;
+
+    /**
+     * @var bool
+     */
+    protected $init = true;
 
     /**
      * Cron job for cleaning firegento log table
@@ -76,8 +82,8 @@ class FireGento_Logger_Model_Observer extends Varien_Object
     /**
      * Get all files which are older than X days and containing a pattern.
      *
-     * @param  int    $days     Days
-     * @param  string $dir      Directory
+     * @param  int $days Days
+     * @param  string $dir Directory
      * @param  string $filename Filename
      * @return array
      */
@@ -137,15 +143,21 @@ class FireGento_Logger_Model_Observer extends Varien_Object
      */
     public function addLoggerJs(Varien_Event_Observer $observer)
     {
-        $isHeadBlock = ($observer->getBlock() instanceof Mage_Page_Block_Html_Head);
-        $isFrontendLoggerActivated = (boolean) Mage::helper('firegento_logger')->getLoggerConfig('general/frontend_logger');
-        if ($isHeadBlock && $isFrontendLoggerActivated) {
+        if ($this->init && !Mage::helper('core')->isDevAllowed()) {
+            $this->init = false;
+        }
+
+        if ($this->init && $observer->getBlock()->getNameInLayout() === 'head'
+            && (boolean)Mage::helper('firegento_logger')->getLoggerConfig('general/frontend_logger')
+        ) {
             $transport = $observer->getTransport();
             $html = $transport->getHtml();
             $block = Mage::app()->getLayout()->createBlock('core/template');
             $block->setTemplate('firegento_logger/js.phtml');
             $html = $block->toHtml() . $html;
             $transport->setHtml($html);
+
+            $this->init = false;
         }
     }
 }
