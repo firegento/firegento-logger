@@ -119,7 +119,8 @@
                             <show_in_default>1</show_in_default>
                             <comment><![CDATA[
                                 When set to "Yes", JS errors in the frontend will be send to an action to
-                                send these errors also to the configured logging backend. <br />
+                                send these errors also to the configured logging backend. <br> />
+                                Note: only if client is not defined in dev/restrict/allow_ips <br />
                             ]]></comment>
                         </frontend_logger>
                         <viewer_enabled translate="label">
