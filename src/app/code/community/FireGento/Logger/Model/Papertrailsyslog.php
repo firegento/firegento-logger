@@ -40,6 +40,8 @@ class FireGento_Logger_Model_Papertrailsyslog extends FireGento_Logger_Model_Rsy
         /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
         $this->_options['AppName'] = $helper->getLoggerConfig('papertrailsyslog/app_name');
+        $this->_options['FileName'] = basename($filename);
+
         $this->_hostName = $helper->getLoggerConfig('papertrailsyslog/hostname');
         $this->_port = $helper->getLoggerConfig('papertrailsyslog/port');
         return $this;
@@ -55,8 +57,7 @@ class FireGento_Logger_Model_Papertrailsyslog extends FireGento_Logger_Model_Rsy
     protected function BuildStringMessage( $event, $enableBacktrace = false)
     {
         Mage::helper('firegento_logger')->addEventMetadata($event, null, $enableBacktrace);
-        $message = ' ' . $event->getFile() . ':' . $event->getLine();
-        $message .= ' [' . $event->getPriorityName() . ']';
+        $message = '[' . $event->getPriorityName() . ']';
         $message .= ' [' . $event->getStoreCode() . ']';
         foreach (array('getUserAgent', 'getRequestUri', 'getRequestData', 'getRemoteIp', 'getHttpUserAgent', 'getRemoteAddress') as $method) {
             if (is_callable(array($event, $method)) && $event->$method()) {
@@ -101,12 +102,22 @@ class FireGento_Logger_Model_Papertrailsyslog extends FireGento_Logger_Model_Rsy
                     break;
             }
         }
-        
+
         return new FireGento_Logger_Model_Papertrail_PapertrailSyslogMessage(
             $message,
-            $this->_options['AppName'],
+            16,
             $priority,
-            strtotime($event->getTimestamp())
+            strtotime($event->getTimestamp()),
+            [
+                'HostName' => sprintf(
+                    '%s %s/%s',
+                    $event->getHostname(),
+                    $this->_options['AppName'],
+                    $this->_options['FileName']
+                ),
+                'FQDN' => null,
+                'ProcessName' => $event->getFile() . ':' . $event->getLine()
+            ]
         );
     }
 }
