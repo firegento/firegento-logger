@@ -1,0 +1,37 @@
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <tools>
+                                <children>
+                                    <logmanager translate="title" module="logmanager">
+                                        <title>Module Log Manager</title>
+                                        <sort_order>120</sort_order>
+                                    </logmanager>
+                                </children>
+                            </tools>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <system>
+            <children>
+                <tools>
+                    <children>
+                        <logmanager translate="title" module="logmanager">
+                            <title>Module Log Manager</title>
+                            <sort_order>120</sort_order>
+                            <action>adminhtml/managelog</action>
+                        </logmanager>
+                    </children>
+                </tools>
+            </children>
+        </system>
+    </menu>
+</config>

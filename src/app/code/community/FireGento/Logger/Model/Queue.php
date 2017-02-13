@@ -103,6 +103,31 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
         /** @var $event FireGento_Logger_Model_Event */
         $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
 
+        // Next few lines utilize the log manager in case it's installed.
+        if(Mage::helper('core')->isModuleEnabled('Wf_Logmanager')) {
+            $backtrace = debug_backtrace();
+            array_shift($backtrace);
+            array_shift($backtrace);
+            array_shift($backtrace);
+            $file = $backtrace[0]['file'];
+
+            $moduleDir = $file;
+
+            // The way this works is it sifts backwards through the log to find which module called this log.
+            $codeStart = stripos($file, DS.'code'.DS);
+            $moduleDir = substr($moduleDir, $codeStart +strlen(DS.'code'.DS));
+            $moduleDir = str_ireplace('community' . DS, '', $moduleDir);
+            $moduleDir = str_ireplace('local' . DS, '', $moduleDir);
+            
+            $endIndex = stripos($moduleDir, DS, stripos($moduleDir, DS)+1);
+            $moduleKey = str_replace(DS, "_", substr($moduleDir, 0, $endIndex));
+            
+            // If logging for the module is not enabled, then don't write anything.
+            if(!Mage::getSingleton('logmanager/manager')->isEnabled($moduleKey)) {
+                return $this;
+            }
+        }
+
         if ($this->_useQueue) {
             // if queue is enabled then add to internal cache
             $this->_loggerCache[] = $event;
