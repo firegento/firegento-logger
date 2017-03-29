@@ -110,6 +110,10 @@
                         <label>Files (Advanced Format)</label>
                         <class>FireGento_Logger_Model_Stream</class>
                     </advanced>
+                    <json>
+                        <label>Files (JSON Lines)</label>
+                        <class>FireGento_Logger_Model_JsonStream</class>
+                    </json>
                     <mailconfig>
                         <label>Mail</label>
                         <class>FireGento_Logger_Model_Mail</class>
