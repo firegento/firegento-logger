@@ -143,6 +143,9 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         $nextIsFirst = false;                        // Skip backtrace frames until we reach Mage::log(Exception)
         $recordBacktrace = false;
         $maxBacktraceLines = $enableBacktrace ? (int) $this->getLoggerConfig('general/max_backtrace_lines') : 0;
+        $maxDataLength = $this->getLoggerConfig('general/max_data_length') ?: 1000;
+        $prettyPrint = $this->getLoggerConfig('general/pretty_print') && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : 0;
+
         $backtraceFrames = array();
         if (version_compare(PHP_VERSION, '5.3.6') < 0 ) {
             $debugBacktrace = debug_backtrace(false);
@@ -237,15 +240,6 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             $event->setBacktrace(implode("\n", $backtrace));
         }
 
-
-        foreach(array('HTTP_HOST', 'REQUEST_METHOD', 'REQUEST_URI', 'HTTP_USER_AGENT', 'HTTP_COOKIE') as $key) {
-            if (!empty($_SERVER[$key])) {
-                $event[$key] = $_SERVER[$key];
-            } else {
-                $event[$key] = $notAvailable;
-            }
-        }
-
         if (!empty($_SERVER['REQUEST_METHOD'])) {
             $event->setRequestMethod($_SERVER['REQUEST_METHOD']);
         } else {
@@ -273,21 +267,23 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         // Fetch request data
         $requestData = array();
         if (!empty($_GET)) {
-            $requestData[] = '  GET|'.substr(@json_encode($this->filterSensibleData($_GET)), 0, 1000);
+            $requestData[] = '  GET|'.substr(@json_encode($this->filterSensibleData($_GET), $prettyPrint), 0, $maxDataLength);
         }
         if (!empty($_POST)) {
-            $requestData[] = '  POST|'.substr(@json_encode($this->filterSensibleData($_POST)), 0, 1000);
+            $requestData[] = '  POST|'.substr(@json_encode($this->filterSensibleData($_POST), $prettyPrint), 0, $maxDataLength);
         }
         if (!empty($_FILES)) {
-            $requestData[] = '  FILES|'.substr(@json_encode($_FILES), 0, 1000);
+            $requestData[] = '  FILES|'.substr(@json_encode($_FILES, $prettyPrint), 0, $maxDataLength);
         }
         if (Mage::registry('raw_post_data')) {
-            $requestData[] = '  RAWPOST|'.substr(Mage::registry('raw_post_data'), 0, 1000);
+            $requestData[] = '  RAWPOST|'.substr(Mage::registry('raw_post_data'), 0, $maxDataLength);
         }
         $event->setRequestData($requestData ? implode("\n", $requestData) : $notAvailable);
 
-        // Add session data
-        $event['SESSION_DATA'] = empty($_SESSION) ? $notAvailable : $_SESSION;
+        // Add session data if enabled
+        if ($this->getLoggerConfig('general/add_session_data')) {
+            $event->setSessionData(empty($_SESSION) ? $notAvailable : substr(@json_encode($_SESSION, $prettyPrint), 0, $maxDataLength));
+        }
 
         if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             $event->setRemoteAddress($_SERVER['HTTP_X_FORWARDED_FOR']);
@@ -315,7 +311,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     {
         if (is_array($data)) {
             $keysToFilter = explode("\n",
-                Mage::helper('firegento_logger')->getLoggerConfig('general/filter_request_data'));
+                $this->getLoggerConfig('general/filter_request_data'));
             foreach ($keysToFilter as $key) {
                 $key = trim($key);
                 if ($key !== '') {

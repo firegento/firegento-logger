@@ -67,8 +67,6 @@ class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
                 return "$value";
             } else if (is_array($value)) {
                 return substr(@json_encode($value, $prettyPrint), 0, $maxDataLength);
-            } else if (is_bool($value)) {
-                return $value ? 'TRUE':'FALSE';
             } else if (is_scalar($value)) {
                 return "$value";
             } else {
