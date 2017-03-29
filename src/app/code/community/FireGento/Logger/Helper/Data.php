@@ -36,6 +36,11 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     protected $_targetMap = null;
 
     /**
+     * @var null
+     */
+    protected $_notificationRules = null;
+
+    /**
      * Get logger config value
      *
      * @param  string $path Config Path
@@ -114,22 +119,23 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     /**
      * Add useful metadata to the event
      *
-     * @param array       &$event          Event Data
-     * @param null|string $notAvailable    Not available
-     * @param bool        $enableBacktrace Flag for Backtrace
+     * @param FireGento_Logger_Model_Event &$event          Event Data
+     * @param null|string                  $notAvailable    Not available
+     * @param bool                         $enableBacktrace Flag for Backtrace
      */
     public function addEventMetadata(&$event, $notAvailable = null, $enableBacktrace = false)
     {
-        $event['file'] = $notAvailable;
-        $event['line'] = $notAvailable;
-        $event['backtrace'] = $notAvailable;
-        $event['store_code'] = Mage::app()->getStore()->getCode();
+        $event
+            ->setFile($notAvailable)
+            ->setLine($notAvailable)
+            ->setBacktrace($notAvailable)
+            ->setStoreCode(Mage::app()->getStore()->getCode());
 
         // Add request time
         if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
-            $event['time_elapsed'] = sprintf('%f', microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']);
+            $event->setTimeElapsed((float) sprintf('%f', microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']));
         } else {
-            $event['time_elapsed'] = sprintf('%d', time() - $_SERVER['REQUEST_TIME']);
+            $event->setTimeElapsed((float) sprintf('%d', time() - $_SERVER['REQUEST_TIME']));
         }
 
         // Find file and line where message originated from and optionally get backtrace lines
@@ -161,8 +167,9 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                 )
             ) {
                 if (isset($frame['file']) && isset($frame['line'])) {
-                    $event['file'] = str_replace($basePath, '', $frame['file']);
-                    $event['line'] = $frame['line'];
+                    $event
+                        ->setFile(str_replace($basePath, '', $frame['file']))
+                        ->setLine($frame['line']);
                     if ($maxBacktraceLines) {
                         $backtraceFrames = array();
                     } elseif ($nextIsFirst) {
@@ -227,8 +234,9 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                 $backtrace[] = "#{$index} {$frame['file']}:{$frame['line']} $function($args)";
             }
 
-            $event['backtrace'] = implode("\n", $backtrace);
+            $event->setBacktrace(implode("\n", $backtrace));
         }
+
 
         foreach(array('HTTP_HOST', 'REQUEST_METHOD', 'REQUEST_URI', 'HTTP_USER_AGENT', 'HTTP_COOKIE') as $key) {
             if (!empty($_SERVER[$key])) {
@@ -238,44 +246,149 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             }
         }
 
-        if ($event['REQUEST_METHOD'] == $notAvailable) {
-            $event['REQUEST_METHOD'] = php_sapi_name();
+        if (!empty($_SERVER['REQUEST_METHOD'])) {
+            $event->setRequestMethod($_SERVER['REQUEST_METHOD']);
+        } else {
+            $event->setRequestMethod(php_sapi_name());
         }
-        if ($event['REQUEST_URI'] == $notAvailable && isset($_SERVER['PHP_SELF'])) {
-            $event['REQUEST_URI'] = $_SERVER['PHP_SELF'];
+
+        if (!empty($_SERVER['REQUEST_URI'])) {
+            $event->setRequestMethod($_SERVER['REQUEST_URI']);
+        } else {
+            $event->setRequestMethod($_SERVER['PHP_SELF']);
+        }
+
+        if (!empty($_SERVER['HTTP_USER_AGENT'])) {
+            $event->setHttpUserAgent($_SERVER['HTTP_USER_AGENT']);
+        }
+
+        if (!empty($_SERVER['HTTP_HOST'])) {
+            $event->setHttpHost($_SERVER['HTTP_HOST']);
+        }
+
+        if (!empty($_SERVER['HTTP_COOKIE'])) {
+            $event->setHttpCookie($_SERVER['HTTP_COOKIE']);
         }
 
         // Fetch request data
         $requestData = array();
         if (!empty($_GET)) {
-            $requestData['GET'] = $_GET;
+            $requestData[] = '  GET|'.substr(@json_encode($this->filterSensibleData($_GET)), 0, 1000);
         }
         if (!empty($_POST)) {
-            $requestData['POST'] = $_POST;
+            $requestData[] = '  POST|'.substr(@json_encode($this->filterSensibleData($_POST)), 0, 1000);
         }
         if (!empty($_FILES)) {
-            $requestData['FILES'] = $_FILES;
+            $requestData[] = '  FILES|'.substr(@json_encode($_FILES), 0, 1000);
         }
         if (Mage::registry('raw_post_data')) {
-            $requestData['RAWPOST'] = Mage::registry('raw_post_data');
+            $requestData[] = '  RAWPOST|'.substr(Mage::registry('raw_post_data'), 0, 1000);
         }
-        $event['REQUEST_DATA'] = $requestData ?: $notAvailable;
+        $event->setRequestData($requestData ? implode("\n", $requestData) : $notAvailable);
 
+        // Add session data
         $event['SESSION_DATA'] = empty($_SESSION) ? $notAvailable : $_SESSION;
 
         if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-            $event['REMOTE_ADDR'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+            $event->setRemoteAddress($_SERVER['HTTP_X_FORWARDED_FOR']);
         } elseif (!empty($_SERVER['REMOTE_ADDR'])) {
-            $event['REMOTE_ADDR'] = $_SERVER['REMOTE_ADDR'];
+            $event->setRemoteAddress($_SERVER['REMOTE_ADDR']);
         } else {
-            $event['REMOTE_ADDR'] = $notAvailable;
+            $event->setRemoteAddress($notAvailable);
         }
 
         // Add hostname to log message ...
         if (gethostname() !== false) {
-            $event['HOSTNAME'] = gethostname();
+            $event->setHostname(gethostname());
         } else {
-            $event['HOSTNAME'] = $notAvailable;
+            $event->setHostname('Could not determine hostname !');
         }
     }
+
+    /**
+     * filter sensible data like credit card and password from requests
+     *
+     * @param  array $data the data to be filtered
+     * @return array
+     */
+    private function filterSensibleData($data)
+    {
+        if (is_array($data)) {
+            $keysToFilter = explode("\n",
+                Mage::helper('firegento_logger')->getLoggerConfig('general/filter_request_data'));
+            foreach ($keysToFilter as $key) {
+                $key = trim($key);
+                if ($key !== '') {
+                    $subkeys = explode('.', $key);
+                    $data = $this->filterDataFromMultidimensionalKey($data, $subkeys);
+                }
+            }
+        }
+        return $data;
+    }
+
+    /**
+     * Filter the data.
+     *
+     * @param  array $data    array to be filtered
+     * @param  array $subkeys list of multidimensional keys
+     * @return array
+     */
+    private function filterDataFromMultidimensionalKey(array $data, array $subkeys)
+    {
+        $countSubkeys = count($subkeys);
+        $lastSubkey = ($countSubkeys - 1);
+        $subdata = &$data;
+        for ($i = 0; $i < $lastSubkey; $i++) {
+            if (isset($subdata[$subkeys[$i]])) {
+                $subdata =  &$subdata[$subkeys[$i]];
+            }
+        }
+        if (array_key_exists($subkeys[$lastSubkey], $subdata)) {
+            $subdata[$subkeys[$lastSubkey]] = '*****';
+        }
+        return $data;
+    }
+
+    /**
+     * Get all the notification rules.
+     *
+     * @return array|mixed|null an array of rules
+     */
+    public function getEmailNotificationRules()
+    {
+        if ($this->_notificationRules != null) {
+            return $this->_notificationRules;
+        }
+
+        $notificationRulesSerialized = $this->getLoggerConfig('db/email_notification_rule');
+        if (! $notificationRulesSerialized) {
+            return array();
+        }
+        $notificationRules = unserialize($notificationRulesSerialized);
+
+        $this->_notificationRules = $notificationRules;
+        return $notificationRules;
+    }
+
+    /**
+     * Convert Array to Event Object
+     *
+     * @param  array $event Event
+     *
+     * @return FireGento_Logger_Model_Event
+     */
+    public function getEventObjectFromArray($event)
+    {
+        // if more than one logger is active the first logger convert the array
+        if (is_object($event) && get_class($event) == get_class(Mage::getModel('firegento_logger/event'))) {
+            return $event;
+        }
+        return Mage::getModel('firegento_logger/event')
+            ->setTimestamp($event['timestamp'])
+            ->setMessage($event['message'])
+            ->setPriority($event['priority'])
+            ->setPriorityName($event['priorityName']);
+    }
+
 }

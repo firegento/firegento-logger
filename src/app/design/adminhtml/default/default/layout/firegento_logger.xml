@@ -19,25 +19,47 @@
  */
  -->
 <layout>
+    <adminhtml_firegento_head>
+        <reference name="head">
+            <action method="addCss"><name>firegento_logger.css</name></action>
+        </reference>
+    </adminhtml_firegento_head>
+
     <adminhtml_logger_index>
         <reference name="content">
             <block type="firegento_logger/adminhtml_logger" name="logger" />
         </reference>
     </adminhtml_logger_index>
-    <adminhtml_logger_liveview>
-        <reference name="head">
-            <action method="addCss"><name>firegento_logger.css</name></action>
-        </reference>
+
+    <adminhtml_logger_test>
+        <update handle="adminhtml_firegento_head" />
         <reference name="content">
-            <block type="firegento_logger/adminhtml_liveView" name="logger.liveView" template="firegento_logger/live.view.phtml" />
+            <block type="firegento_logger/adminhtml_test" name="logger.testView"
+                   template="firegento_logger/test.view.phtml" />
+        </reference>
+    </adminhtml_logger_test>
+
+    <adminhtml_logger_liveview>
+        <update handle="adminhtml_firegento_head" />
+        <reference name="content">
+            <block type="firegento_logger/adminhtml_liveView" name="logger.liveView"
+                   template="firegento_logger/live.view.phtml"/>
         </reference>
     </adminhtml_logger_liveview>
+
     <adminhtml_logger_reportview>
-        <reference name="head">
-            <action method="addCss"><name>firegento_logger.css</name></action>
-        </reference>
+        <update handle="adminhtml_firegento_head" />
         <reference name="content">
-            <block type="adminhtml/template" name="logger.reportView" template="firegento_logger/report.view.phtml" />
+            <block type="adminhtml/template" name="logger.reportView"
+                   template="firegento_logger/report.view.phtml" />
         </reference>
     </adminhtml_logger_reportview>
+
+    <adminhtml_logger_view>
+        <update handle="adminhtml_firegento_head" />
+        <reference name="content">
+            <block type="firegento_logger/adminhtml_logger_view" name="logger_view"
+                   template="firegento_logger/detail.view.phtml"/>
+        </reference>
+    </adminhtml_logger_view>
 </layout>

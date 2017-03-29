@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Block_Adminhtml_System_Config_Targetmap" namespace="" name="FireGento_Logger_Block_Adminhtml_System_Config_Targetmap" abstract="false" final="false" start="28" end="95">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config" file="Targetmap.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Targetmap.php" size="3566" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="22148a50110332410f2eb3ba5552a90b6fca713d"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Block_Adminhtml_System_Config_Targetmap" namespace="" name="FireGento_Logger_Block_Adminhtml_System_Config_Targetmap" abstract="false" final="false" start="28" end="95">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config" file="Targetmap.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Targetmap.php" size="3566" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="22148a50110332410f2eb3ba5552a90b6fca713d" relative="app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/Targetmap.php"/>
   <docblock>
     <description compact="Target Map Block for system config"/>
     <category value="FireGento"/>
@@ -18,5 +18,9 @@
       <description compact="Return the targetmap html"/>
       <return type="string"/>
     </docblock>
+    <inline>
+      <comment value="Make sure id is set before template is rendered or else we can't know the id." line="77"/>
+      <comment value="Scripts in the template must be evaluated so that select values can be set." line="83"/>
+    </inline>
   </method>
 </class>

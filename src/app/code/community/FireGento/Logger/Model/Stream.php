@@ -50,6 +50,24 @@ class FireGento_Logger_Model_Stream extends Zend_Log_Writer_Stream
      */
     protected function _write($event)
     {
+        $backtrace = debug_backtrace();
+        array_shift($backtrace);
+        array_shift($backtrace);
+        array_shift($backtrace);
+        $file = $backtrace[0]['file'];
+        $moduleDir = $file;
+        // The way this works is it sifts backwards through the log to find which module called this log.
+        $codeStart = stripos($file, DS.'code'.DS);
+        $moduleDir = substr($moduleDir, $codeStart +strlen(DS.'code'.DS));
+        $moduleDir = str_ireplace('community' . DS, '', $moduleDir);
+        $moduleDir = str_ireplace('local' . DS, '', $moduleDir);
+        $endIndex = stripos($moduleDir, DS, stripos($moduleDir, DS)+1);
+        $moduleKey = str_replace(DS, "_", substr($moduleDir, 0, $endIndex));
+        if (!Mage::getSingleton('firegento_logger/manager')->isEnabled($moduleKey)) {
+            return $this;
+        }
+        $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
+
         $line = $this->_formatter->format($event, $this->_enableBacktrace);
 
         if (false === @fwrite($this->_stream, $line)) {

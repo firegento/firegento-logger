@@ -27,6 +27,8 @@
  */
 class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Controller_Action
 {
+    protected $_loggerEntry;
+
     /**
      * Show grid viewer
      */
@@ -38,6 +40,46 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
     }
 
     /**
+     * Test the logger
+     */
+    public function testAction()
+    {
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
+    /**
+     * Show the details of a log entry
+     */
+    public function viewAction()
+    {
+        $this->loadLayout();
+        Mage::register('current_loggerentry', $this->_getLoggerEntry());
+        $this->_title("Logger Entry #" . $this->_getLoggerEntry()->getId());
+        $this->renderLayout();
+    }
+
+    /**
+     * Get the logger entry
+     *
+     * @return FireGento_Logger_Model_Db_Entry the entry
+     */
+    protected function _getLoggerEntry()
+    {
+        if (isset($this->_loggerEntry)) {
+            return $this->_loggerEntry;
+        }
+
+        $loggerEntry = Mage::getModel('firegento_logger/db_entry');
+        if ($this->getRequest()->getParam('loggerentry_id')) {
+            $loggerEntry->load($this->getRequest()->getParam('loggerentry_id'));
+        }
+
+        $this->_loggerEntry = $loggerEntry;
+        return $this->_loggerEntry;
+    }
+
+    /**
      * Show the log viewer
      */
     public function liveViewAction()
@@ -45,6 +87,33 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
         $this->loadLayout();
         $this->_setActiveMenu('system/firegento_logger/live_viewer');
         $this->renderLayout();
+    }
+
+    /**
+     * Action to do mass deletion
+     */
+    public function massDeleteAction()
+    {
+        $ids = $this->getRequest()->getParam('log');
+        if (!is_array($ids)) {
+            Mage::getSingleton('adminhtml/session')
+                ->addError(Mage::helper('firegento_logger')->__('Please select entries.'));
+        } else {
+            try {
+                $logModel = Mage::getModel('firegento_logger/db_entry');
+                foreach ($ids as $id) {
+                    $logModel->load($id)->delete();
+                }
+                Mage::getSingleton('adminhtml/session')->addSuccess(
+                    Mage::helper('firegento_logger')->__(
+                        'Total of %d record(s) were deleted.', count($ids)
+                    )
+                );
+            } catch (Exception $e) {
+                Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
+            }
+        }
+        $this->_redirect('*/*/index');
     }
 
     /**
@@ -115,6 +184,49 @@ class FireGento_Logger_Adminhtml_LoggerController extends Mage_Adminhtml_Control
         $this->getResponse()->setBody(
             Zend_Json::encode(array('text' => $text))
         );
+    }
+
+    /**
+     * Lists the modules and gives the user the option to dsiable/enable log output for them.
+     * @return $this
+     */
+    public function manageModulesLogAction()
+    {
+        $this->loadLayout();
+        $this->_setActiveMenu('system/firegento_logger/log_manager');
+        $listBlock = $this->getLayout()->createBlock('firegento_logger/adminhtml_logger_manager', 'log_manager')->setTemplate('firegento_logger/manager.phtml');
+        $this->_addContent($listBlock);
+        $this->renderLayout();
+    }
+
+    /**
+     * Disables provided module key's log output
+     * @return $this
+     */
+    public function enableModulesLogAction()
+    {
+        $moduleKey = $this->getRequest()->getParam('module');
+        Mage::getSingleton('firegento_logger/manager')->enableLogging($moduleKey);
+        Mage::app()->getCacheInstance()->cleanType('config');
+        $successMsg = Mage::helper('firegento_logger')->__("Logging for the module '%s' was successfully ENABLED.", $moduleKey);
+        Mage::getSingleton('core/session')->addSuccess($successMsg);
+        $this->_redirect("adminhtml/logger/manageModulesLog");
+        return $this;
+    }
+
+    /**
+     * Disables provided module key's log output
+     * @return $this
+     */
+    public function disableModulesLogAction()
+    {
+        $moduleKey = $this->getRequest()->getParam('module');
+        Mage::getSingleton('firegento_logger/manager')->disableLogging($moduleKey);
+        Mage::app()->getCacheInstance()->cleanType('config');
+        $successMsg = Mage::helper('firegento_logger')->__("Logging for the module '%s' was successfully DISABLED.", $moduleKey);
+        Mage::getSingleton('core/session')->addSuccess($successMsg);
+        $this->_redirect("adminhtml/logger/manageModulesLog");
+        return $this;
     }
 
     /**

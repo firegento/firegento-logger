@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Syslog" namespace="" name="FireGento_Logger_Model_Syslog" abstract="false" final="false" start="29" end="49">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Syslog.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Syslog.php" size="1583" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="1133cb3ad4cb3b101e48c56e04b57f24ec8fa82b" relative="app/code/community/FireGento/Logger/Model/Syslog.php"/>
+  <docblock>
+    <description compact="Syslog Wrapper"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="Lee Saferite &lt;lee.saferite@aoe.com&gt;"/>
+    <since value="2014-07-01"/>
+  </docblock>
+  <extends full="Zend_Log_Writer_Syslog" namespace="" name="Zend_Log_Writer_Syslog"/>
+  <constructor name="__construct" start="34" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description/>
+      <param type="string" variable="$filename"/>
+    </docblock>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+  </constructor>
+</class>

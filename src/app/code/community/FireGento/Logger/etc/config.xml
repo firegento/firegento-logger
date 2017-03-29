@@ -21,7 +21,7 @@
 <config>
     <modules>
         <FireGento_Logger>
-            <version>1.3.1</version>
+            <version>1.4.2</version>
         </FireGento_Logger>
     </modules>
     <crontab>
@@ -126,6 +126,10 @@
                         <label>Graylog2 (experimental)</label>
                         <class>FireGento_Logger_Model_Graylog2</class>
                     </graylog2>
+                    <syslog translate="label">
+                        <label>Local Syslog</label>
+                        <class>FireGento_Logger_Model_Syslog</class>
+                    </syslog>
                     <rsyslog>
                         <label>Remote Syslog (UDP)</label>
                         <class>FireGento_Logger_Model_Rsyslog</class>
@@ -138,13 +142,34 @@
                         <label>Loggly, via HTTPS</label>
                         <class>FireGento_Logger_Model_Logglyhttps</class>
                     </logglyhttps>
+                    <papertrailsyslog>
+                        <label>Papertrail, via Remote Syslog (UDP)</label>
+                        <class>FireGento_Logger_Model_Papertrailsyslog</class>
+                    </papertrailsyslog>
                     <chromelogger>
                         <label>Chrome Logger</label>
                         <class>FireGento_Logger_Model_Chromelogger</class>
                     </chromelogger>
+                    <logstash>
+                        <label>Logstash Logger</label>
+                        <class>FireGento_Logger_Model_Logstash</class>
+                    </logstash>
+                    <redis>
+                        <label>Redis Logger</label>
+                        <class>FireGento_Logger_Model_Redis</class>
+                    </redis>
                 </writer_models>
             </core>
         </log>
+        <template>
+            <email>
+                <firegento_logger_notification_email_template>
+                    <label>Notification Email Template</label>
+                    <file>firegento_logger/notification.html</file>
+                    <type>html</type>
+                </firegento_logger_notification_email_template>
+            </email>
+        </template>
     </global>
     <default>
         <logger>
@@ -152,14 +177,20 @@
                 <targets>advanced</targets>
                 <priority>7</priority>
                 <format><![CDATA[
-%timestamp% %priorityName% (%store_code%): %REQUEST_METHOD% %REQUEST_URI%
-MESSAGE: %message%
-REQUEST: %REQUEST_DATA%
-TIME: %time_elapsed%s
+%timestamp% %priorityName% (%storeCode%): %requestMethod% %requestUri%
+REQUEST: %requestData%
+TIME: %timeElapsed%s
+ADDRESS: %remoteAddress%
+USER AGENT: %httpUserAgent%
 FILE: %file%:%line%
-\n
-]]></format>
+%message%]]></format>
                 <max_data_length>1000</max_data_length>
+                <filter_request_data><![CDATA[
+payment.cc_number
+payment.cc_cid
+login.password
+password
+confirmation]]></filter_request_data>
                 <max_backtrace_lines>0</max_backtrace_lines>
                 <viewer_enabled>0</viewer_enabled>
             </general>
@@ -186,6 +217,11 @@ FILE: %file%:%line%
                 <chunk_size>1420</chunk_size>
                 <app_name>Magento/</app_name>
             </graylog2>
+            <syslog>
+                <priority>default</priority>
+                <application>Magento/</application>
+                <facility>8</facility>
+            </syslog>
             <rsyslog>
                 <priority>default</priority>
                 <timeout>5</timeout>
@@ -193,20 +229,64 @@ FILE: %file%:%line%
             </rsyslog>
             <logglyhttps>
                 <priority>default</priority>
+                <hostname>logs-01.loggly.com</hostname>
                 <timeout>5</timeout>
                 <inputkey></inputkey>
                 <app_name>Magento/</app_name>
             </logglyhttps>
             <logglysyslog>
                 <priority>default</priority>
-                <hostname>logs.loggly.com</hostname>
-                <port>42146</port>
+                <hostname>logs-01.loggly.com</hostname>
+                <port>514</port>
                 <timeout>5</timeout>
                 <app_name>Magento/</app_name>
             </logglysyslog>
+            <papertrailsyslog>
+                <priority>default</priority>
+                <hostname>logs.papertrailapp.com</hostname>
+                <port></port>
+                <app_name>Magento</app_name>
+            </papertrailsyslog>
             <chrome>
                 <priority>default</priority>
             </chrome>
+            <logstash>
+                <priority>default</priority>
+                <host>127.0.0.1</host>
+                <port>6666</port>
+                <protocol>udp</protocol>
+            </logstash>
+            <redis>
+                <priority>default</priority>
+                <host>127.0.0.1</host>
+                <port>6379</port>
+                <db>0</db>
+                <key>magento-log</key>
+                <password/>
+                <type>magento-log</type>
+            </redis>
         </logger>
     </default>
+    <frontend>
+        <events>
+            <core_block_abstract_to_html_after>
+                <observers>
+                    <add_logger_js>
+                        <type>singleton</type>
+                        <class>FireGento_Logger_Model_Observer</class>
+                        <method>addLoggerJs</method>
+                    </add_logger_js>
+                </observers>
+            </core_block_abstract_to_html_after>
+        </events>
+        <routers>
+            <logger>
+                <use>standard</use>
+                <args>
+                    <module>FireGento_Logger</module>
+                    <frontName>logger</frontName>
+                </args>
+            </logger>
+        </routers>
+    </frontend>
 </config>

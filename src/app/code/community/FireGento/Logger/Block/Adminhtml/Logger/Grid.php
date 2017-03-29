@@ -56,7 +56,7 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
     /**
      * Prepare the grid collection with the database log entries
      *
-     * @return FireGento_Logger_Block_Adminhtml_Logger_Grid
+     * @return FireGento_Logger_Block_Adminhtml_Logger_Grid the grid
      */
     protected function _prepareCollection()
     {
@@ -87,8 +87,16 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
 
         $this->addColumn('timestamp', array(
             'header' => Mage::helper('firegento_logger')->__('Timestamp'),
+            'type' => 'datetime',
             'align' => 'left',
             'index' => 'timestamp',
+        ));
+
+        $this->addColumn('advanced_info', array(
+            'header' => Mage::helper('firegento_logger')->__('Advanced Info'),
+            'align' => 'left',
+            'index' => 'advanced_info',
+            'frame_callback'=> array($this, 'decorateAdvancedInfo')
         ));
 
         $this->addColumn('severity', array(
@@ -96,11 +104,29 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
             'align' => 'left',
             'index' => 'severity',
             'type' => 'options',
+            'width' => '120px',
             'options' => $this->getSeverityOptions(),
             'frame_callback' => array($this, 'decorateSeverity')
         ));
 
         return parent::_prepareColumns();
+    }
+
+    /**
+     * Prepare mass actions.
+     *
+     * @return $this current
+     */
+    protected function _prepareMassaction()
+    {
+        $this->setMassactionIdField('log_id');
+        $this->getMassactionBlock()->setFormFieldName('log');
+        $this->getMassactionBlock()->addItem('delete', array(
+            'label' => Mage::helper('firegento_logger')->__('Delete'),
+            'url' => $this->getUrl('*/*/massDelete'),
+            'confirm' => Mage::helper('firegento_logger')->__('Are you sure?')
+        ));
+        return $this;
     }
 
     /**
@@ -134,6 +160,17 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
     }
 
     /**
+     * Formats advanced info
+     *
+     * @param  string $value just a value
+     * @return string
+     */
+    public function decorateAdvancedInfo($value)
+    {
+        return nl2br($value);
+    }
+
+    /**
      * Retrieve the severity options
      *
      * @return array
@@ -150,5 +187,17 @@ class FireGento_Logger_Block_Adminhtml_Logger_Grid
             Zend_Log::INFO => $this->_helper->__('Info'),
             Zend_Log::DEBUG => $this->_helper->__('Debug'),
         );
+    }
+
+    /**
+     * Get the current row url
+     *
+     * @param  FireGento_Logger_Model_Db_Entry $item the entry
+     *
+     * @return string
+     */
+    public function getRowUrl($item)
+    {
+        return $this->getUrl('*/*/view', array('loggerentry_id' => $item->getId()));
     }
 }

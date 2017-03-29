@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Logglysyslog" namespace="" name="FireGento_Logger_Model_Logglysyslog" abstract="false" final="false" start="29" end="107">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Logglysyslog.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Logglysyslog.php" size="3826" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="d9a3874280b40f716ab26d9c6e073470dd8bdb0c"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Logglysyslog" namespace="" name="FireGento_Logger_Model_Logglysyslog" abstract="false" final="false" start="29" end="116">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Logglysyslog.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Logglysyslog.php" size="4178" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="255df2c4c7b61394217c38aad0dd645020c4e60d" relative="app/code/community/FireGento/Logger/Model/Logglysyslog.php"/>
   <docblock>
     <description compact="Model for Loggly Syslog logging"/>
     <category value="FireGento"/>
@@ -10,31 +10,11 @@
   <extends full="FireGento_Logger_Model_Rsyslog" namespace="" name="FireGento_Logger_Model_Rsyslog"/>
   <constant name="DEFAULT_PORT" value="42146">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var description="Default UDP Port for JSON Remote Syslog on Loggly" type="int"/>
     </docblock>
   </constant>
-  <method name="BuildJSONMessage" start="43" end="70" abstract="false" final="false" static="false" visibility="protected">
-    <docblock>
-      <description compact="Transforms a Magento Log event into an associative array."/>
-      <param description="A Magento Log Event." type="array" variable="$event"/>
-      <param description="Indicates if a backtrace should be added to the log event." type="object" variable="$enableBacktrace">
-        <type full="bool" namespace="" name="bool"/>
-      </param>
-      <return description="An associative array representation of the event." type="array"/>
-    </docblock>
-    <parameter name="event" byreference="false" type="{unknown}"/>
-    <parameter name="enableBacktrace" byreference="false" type="{unknown}" default="false"/>
-  </method>
-  <method name="BuildSysLogMessage" start="78" end="85" abstract="false" final="false" static="false" visibility="protected">
-    <docblock>
-      <description compact="Builds a Message that will be sent to a RSyslog Server."/>
-      <param description="A Magento Log Event." type="array" variable="$event"/>
-      <return description="A string representing the message." type="string"/>
-    </docblock>
-    <parameter name="event" byreference="false" type="{unknown}"/>
-  </method>
-  <constructor name="__construct" start="93" end="106" abstract="false" final="false" static="false" visibility="public">
+  <constructor name="__construct" start="43" end="56" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Class constructor"/>
       <param description="Filename" type="string" variable="$filename"/>
@@ -44,56 +24,80 @@
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
   </constructor>
-  <parent full="FireGento_Logger_Model_Rsyslog" namepsace="" name="FireGento_Logger_Model_Rsyslog">
+  <method name="BuildJSONMessage" start="66" end="94" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Transforms a Magento Log event into an associative array."/>
+      <param description="A Magento Log Event." type="object" variable="$event">
+        <type full="FireGento_Logger_Model_Event" namespace="" name="FireGento_Logger_Model_Event"/>
+      </param>
+      <param description="Indicates if a backtrace should be added to the log event." type="object" variable="$enableBacktrace">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return description="An associative array representation of the event." type="array"/>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+    <parameter name="enableBacktrace" byreference="false" type="{unknown}" default="false"/>
+  </method>
+  <method name="buildSysLogMessage" start="102" end="115" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Builds a Message that will be sent to a RSyslog Server."/>
+      <param description="A Magento Log Event." type="object" variable="$event">
+        <type full="FireGento_Logger_Model_Event" namespace="" name="FireGento_Logger_Model_Event"/>
+      </param>
+      <return description="A string representing the message." type="string"/>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+  </method>
+  <parent full="FireGento_Logger_Model_Rsyslog" namespace="" name="FireGento_Logger_Model_Rsyslog">
     <extends full="Zend_Log_Writer_Abstract" namespace="" name="Zend_Log_Writer_Abstract"/>
     <constant name="DEFAULT_TIMEOUT" value="1">
       <docblock>
-        <description compact=""/>
+        <description/>
         <var description="The default Timeout to be used when communicating with the Remote Syslog Server." type="int"/>
       </docblock>
     </constant>
     <constant name="DEFAULT_FACILITY" value="">
       <docblock>
-        <description compact=""/>
+        <description/>
         <todo value="Allow User to choose the Facility from one of the values provided by SyslogFacility Class."/>
         <var description="The default Facility used to build Syslog Messages." type="int"/>
       </docblock>
     </constant>
-    <member name="_syslogPublisher" type="{unknown}" visibility="protected">
+    <member name="_syslogPublisher" type="{unknown}" visibility="protected" line="47">
       <docblock>
-        <description compact=""/>
+        <description/>
         <var description="Writer Instance" type="object">
           <type full="RSyslog" namespace="" name="RSyslog"/>
         </var>
       </docblock>
     </member>
-    <member name="_hostName" type="{unknown}" visibility="protected">
+    <member name="_hostName" type="{unknown}" visibility="protected" line="54">
       <docblock>
         <description compact="The properties below will be set automatically by Log4php with the data it will get from the configuration."/>
         <var description="The address of the RSyslog log to which the log messages will be sent." type="string"/>
       </docblock>
     </member>
-    <member name="_port" type="{unknown}" visibility="protected">
+    <member name="_port" type="{unknown}" visibility="protected" line="59">
       <docblock>
-        <description compact=""/>
+        <description/>
         <var description="The port to use to connect to RSyslog server." type="int"/>
       </docblock>
     </member>
-    <member name="_timeout" type="{unknown}" visibility="protected">
+    <member name="_timeout" type="{unknown}" visibility="protected" line="64">
       <docblock>
-        <description compact=""/>
+        <description/>
         <var description="Timeout tro be used when communicating with Remote SysLog Server" type="int"/>
       </docblock>
     </member>
-    <member name="_options" type="array" visibility="protected">
+    <member name="_options" type="array" visibility="protected" line="69">
       <docblock>
-        <description compact=""/>
+        <description/>
         <var description="Contains configuration options." type="array"/>
       </docblock>
     </member>
-    <member name="_enableBacktrace" type="{unknown}" default="false" visibility="protected">
+    <member name="_enableBacktrace" type="{unknown}" default="false" visibility="protected" line="74">
       <docblock>
-        <description compact=""/>
+        <description/>
         <var description="Indicates if backtrace should be added to the Log Message." type="object">
           <type full="bool" namespace="" name="bool"/>
         </var>
@@ -108,32 +112,48 @@
       </docblock>
       <parameter name="flag" byreference="false" type="{unknown}"/>
     </method>
-    <method name="GetSyslogPublisher" start="91" end="98" abstract="false" final="false" static="false" visibility="protected">
+    <method name="getSyslogPublisher" start="91" end="98" abstract="false" final="false" static="false" visibility="protected">
       <docblock>
         <description compact="Builds and returns the full URL where the Log messages will be sent."/>
-        <return description="The full URL where the Log messages will be sent." type="string"/>
+        <return type="object">
+          <type full="\RSyslog" namespace="" name="RSyslog"/>
+        </return>
       </docblock>
     </method>
-    <method name="BuildSysLogMessage" start="106" end="113" abstract="false" final="false" static="false" visibility="protected">
+    <method name="buildSysLogMessage" start="106" end="120" abstract="false" final="false" static="false" visibility="protected">
       <docblock>
         <description compact="Builds a Message that will be sent to a RSyslog Server."/>
-        <param description="A Log4php Event." type="array" variable="$event"/>
-        <return description="A string representing the message." type="string"/>
+        <param description="A Log4php Event." type="object" variable="$event">
+          <type full="FireGento_Logger_Model_Event" namespace="" name="FireGento_Logger_Model_Event"/>
+        </param>
+        <return type="object">
+          <type full="SyslogMessage" namespace="" name="SyslogMessage"/>
+        </return>
       </docblock>
       <parameter name="event" byreference="false" type="{unknown}"/>
     </method>
-    <method name="PublishMessage" start="122" end="143" abstract="false" final="false" static="false" visibility="protected">
+    <method name="publishMessage" start="129" end="148" abstract="false" final="false" static="false" visibility="protected">
       <docblock>
         <description compact="Sends a Message to a RSyslog server."/>
-        <param description="The Message to be sent." type="string" variable="$message"/>
-        <throws value="Zend_Log_Exception"/>
+        <param description="The Message to be sent." type="object" variable="$message">
+          <type full="SyslogMessage" namespace="" name="SyslogMessage"/>
+        </param>
+        <throws type="object">
+          <type full="Zend_Log_Exception" namespace="" name="Zend_Log_Exception"/>
+        </throws>
         <return description="True if message was sent correctly, False otherwise." type="object">
           <type full="bool" namespace="" name="bool"/>
         </return>
       </docblock>
-      <parameter name="message" byreference="false" type="{unknown}"/>
+      <parameter name="message" byreference="false" type="object">
+        <type full="\\SyslogMessage" namespace="\" name="SyslogMessage"/>
+      </parameter>
+      <inline>
+        <comment value="In case of error, RSysLog publisher returns an array containing an Error Number" line="139"/>
+        <comment value="and an Error Message" line="140"/>
+      </inline>
     </method>
-    <constructor name="__construct" start="151" end="164" abstract="false" final="false" static="false" visibility="public">
+    <constructor name="__construct" start="156" end="169" abstract="false" final="false" static="false" visibility="public">
       <docblock>
         <description compact="Class constructor"/>
         <param description="Filename" type="string" variable="$filename"/>
@@ -143,7 +163,7 @@
       </docblock>
       <parameter name="filename" byreference="false" type="{unknown}"/>
     </constructor>
-    <method name="_write" start="172" end="176" abstract="false" final="false" static="false" visibility="protected">
+    <method name="_write" start="177" end="183" abstract="false" final="false" static="false" visibility="protected">
       <docblock>
         <description compact="Places event line into array of lines to be used as message body."/>
         <param description="Event data" type="array" variable="$event"/>
@@ -153,7 +173,7 @@
       </docblock>
       <parameter name="event" byreference="false" type="{unknown}"/>
     </method>
-    <method name="factory" start="184" end="186" abstract="false" final="false" static="true" visibility="public">
+    <method name="factory" start="191" end="193" abstract="false" final="false" static="true" visibility="public">
       <docblock>
         <description compact="Satisfy newer Zend Framework"/>
         <param description="Configuration" type="object" variable="$config">

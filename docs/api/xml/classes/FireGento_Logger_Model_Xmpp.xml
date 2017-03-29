@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Xmpp" namespace="" name="FireGento_Logger_Model_Xmpp" abstract="false" final="false" start="29" end="139">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Xmpp.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Xmpp.php" size="4265" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="7f894c2892b11ec133254b19adf71113c038e73a"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Xmpp" namespace="" name="FireGento_Logger_Model_Xmpp" abstract="false" final="false" start="29" end="140">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Xmpp.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Xmpp.php" size="4345" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="dd4a3658a3c6d697ecf273aa9683422acb8c1267" relative="app/code/community/FireGento/Logger/Model/Xmpp.php"/>
   <docblock>
     <description compact="Model for XMPP logging"/>
     <category value="FireGento"/>
@@ -8,13 +8,13 @@
     <author value="FireGento Team &lt;team@firegento.com&gt;"/>
   </docblock>
   <extends full="Zend_Log_Writer_Abstract" namespace="" name="Zend_Log_Writer_Abstract"/>
-  <member name="_eventsToSend" type="array" visibility="protected">
+  <member name="_eventsToSend" type="array" visibility="protected" line="36">
     <docblock>
       <description compact="Array of formatted events to include in message body."/>
       <var type="array"/>
     </docblock>
   </member>
-  <member name="options" type="array" visibility="public">
+  <member name="options" type="array" visibility="public" line="43">
     <docblock>
       <description compact="Array of xmpp connection information. default to gtalk/gmail info"/>
       <var type="array"/>
@@ -30,20 +30,28 @@
     </docblock>
     <parameter name="filename" byreference="false" type="{unknown}"/>
   </constructor>
-  <method name="_write" start="80" end="84" abstract="false" final="false" static="false" visibility="protected">
+  <method name="_write" start="80" end="85" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="Places event line into array of lines to be used as message body."/>
       <param description="Event data" type="array" variable="$event"/>
     </docblock>
     <parameter name="event" byreference="false" type="{unknown}"/>
   </method>
-  <method name="shutdown" start="91" end="127" abstract="false" final="false" static="false" visibility="public">
+  <method name="shutdown" start="92" end="128" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Sends message recipient if log entries are present."/>
-      <throws value="Exception"/>
+      <throws type="object">
+        <type full="Exception" namespace="" name="Exception"/>
+      </throws>
     </docblock>
+    <inline>
+      <comment value="If there are events to send, use them as message body." line="94"/>
+      <comment value="Otherwise, there is no message to be sent." line="95"/>
+      <comment value="Finally, send the IM, but re-throw any exceptions at the" line="100"/>
+      <comment value="proper level of abstraction." line="101"/>
+    </inline>
   </method>
-  <method name="factory" start="135" end="138" abstract="false" final="false" static="true" visibility="public">
+  <method name="factory" start="136" end="139" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="Satisfy newer Zend Framework"/>
       <param description="Configuration" type="object" variable="$config">

@@ -18,7 +18,7 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
-require_once 'lib/XMPPHP/XMPP.php';
+require_once 'XMPPHP/XMPP.php';
 /**
  * Model for XMPP logging
  *
@@ -79,6 +79,7 @@ class FireGento_Logger_Model_Xmpp extends Zend_Log_Writer_Abstract
      */
     protected function _write($event)
     {
+        $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
         $formattedEvent = $this->_formatter->format($event);
         $this->_eventsToSend[] = $formattedEvent;
     }

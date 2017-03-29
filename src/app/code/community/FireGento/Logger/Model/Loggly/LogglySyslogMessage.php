@@ -29,20 +29,6 @@
 class FireGento_Logger_Model_Loggly_LogglySyslogMessage extends SyslogMessage
 {
     /**
-     * Class constructor
-     *
-     * @param string $message   Message to log
-     * @param int    $facility  Facility
-     * @param int    $severity  Severity
-     * @param int    $timestamp Timestamp
-     * @param null   $options   Options
-     */
-    public function __construct($message, $facility = 16, $severity = 5, $timestamp, $options = null)
-    {
-        parent::__construct($message, $facility, $severity, $timestamp, $options);
-    }
-
-    /**
      * Puts all Log Message elements together to form a JSON String that will be
      * passed to the RSysLog Server.
      *
@@ -50,23 +36,14 @@ class FireGento_Logger_Model_Loggly_LogglySyslogMessage extends SyslogMessage
      */
     protected function FormatMessage()
     {
-        // @codingStandardsIgnoreStart
-        $this->Message['FQDN'] = $this->GetFQDN();
-        $this->Message['ProcessName'] = $this->GetProcessName();
-        $this->Message['PID'] = getmypid();
-        return json_encode($this->Message);
-        // @codingStandardsIgnoreEnd
+        return $this->Message;
     }
 
     /**
-     * Returns the chunks of the message to send to the RSysLog server.
-     * Note: this specific implementation sends messages as whole JSON Objects,
-     * there are no "chunks".
-     *
-     * @return string A JSON representation of the Log message.
+     * @return array
      */
     public function GetMessageChunks()
     {
-        return (array($this->FormatMessage()));
+        return array($this->FormatMessage());
     }
 }

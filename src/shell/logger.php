@@ -29,22 +29,51 @@ require_once 'abstract.php';
 class FireGento_Logger_Shell extends Mage_Shell_Abstract
 {
     /**
+     * Clean logs
+     */
+    protected function runClean()
+    {
+        $days = $this->getArg('days');
+        if (!$days) {
+            $days = Mage::helper('firegento_logger')->getMaxDaysToKeep();
+        }
+
+        $deleted = Mage::getResourceSingleton('firegento_logger/db_entry')->cleanLogs($days);
+        echo "Database log cleaned: kept $days days, deleted $deleted records." . PHP_EOL;
+    }
+
+    /**
+     * Rotate log files
+     */
+    protected function runRotate()
+    {
+        Mage::getSingleton('firegento_logger/observer')->rotateLogs();
+        echo "Rotation of log files finished.".PHP_EOL;
+    }
+
+    /**
+     * Log a test message
+     */
+    protected function runTestMessage()
+    {
+        $message = $this->getArg('message');
+        if (!$message) {
+            $message = 'This is a test message.';
+        }
+        Mage::log($message);
+    }
+
+    /**
      * Run shell script
      */
     public function run()
     {
         if ($this->getArg('clean')) {
-            $days = $this->getArg('days');
-            if (!$days) {
-                $days = Mage::helper('firegento_logger')->getMaxDaysToKeep();
-            }
-
-            $deleted = Mage::getResourceSingleton('firegento_logger/db_entry')->cleanLogs($days);
-
-            echo "Database log cleaned: kept $days days, deleted $deleted records." . PHP_EOL;
+            $this->runClean();
         } elseif ($this->getArg('rotate')) {
-            Mage::getSingleton('firegento_logger/observer')->rotateLogs();
-            echo "Rotation of log files finished.".PHP_EOL;
+            $this->runRotate();
+        } elseif ($this->getArg('test')) {
+            $this->runTestMessage();
         } else {
             echo $this->usageHelp();
         }
@@ -58,11 +87,13 @@ class FireGento_Logger_Shell extends Mage_Shell_Abstract
     public function usageHelp()
     {
         return <<<USAGE
-Usage:  php -f log.php -- [options]
-        php -f log.php -- clean --days 1
+Usage:  php -f logger.php -- [options]
+        php -f logger.php -- clean --days 1
 
   clean             Clean Logs
   --days <days>     Save log, days. (Minimum 1 day, if defined - ignoring system value)
+  test              Log a test message to the configured logs
+  --message <text>  Message to log. Optional.
   rotate            Rotate every file in var/log with ends with .log
   help              This help
 

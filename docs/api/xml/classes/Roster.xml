@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="Roster" namespace="" name="Roster" abstract="false" final="false" start="41" end="162">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP" file="Roster.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/XMPPHP/Roster.php" size="4546" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="51f40d9aa72463a3d96ded6b3c6ba32357695cd9"/>
+<class xmlns="http://xml.phpdox.net/src" full="Roster" namespace="" name="Roster" abstract="false" final="false" start="41" end="162">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/XMPPHP" file="Roster.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/XMPPHP/Roster.php" size="4546" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="51f40d9aa72463a3d96ded6b3c6ba32357695cd9" relative="lib/XMPPHP/Roster.php"/>
   <docblock>
     <description compact="XMPPHP Roster Object"/>
     <category value="xmpphp"/>
@@ -11,7 +11,7 @@
     <copyright value="2008 Nathanael C. Fritz"/>
     <version value="$Id$"/>
   </docblock>
-  <member name="roster_array" type="array" visibility="protected">
+  <member name="roster_array" type="array" visibility="protected" line="47">
     <docblock>
       <description compact="Roster array, handles contacts and presence.  Indexed by jid.">Contains array with potentially two indexes 'contact' and 'presence'</description>
       <var type="array"/>
@@ -29,6 +29,9 @@
       <param type="array" variable="$roster_array"/>
     </docblock>
     <parameter name="roster_array" byreference="false" type="{unknown}"/>
+    <inline>
+      <todo value="once we know *what* a valid roster array looks like" line="67"/>
+    </inline>
   </method>
   <method name="addContact" start="80" end="87" abstract="false" final="false" static="false" visibility="public">
     <docblock>
@@ -40,7 +43,7 @@
     </docblock>
     <parameter name="jid" byreference="false" type="{unknown}"/>
     <parameter name="subscription" byreference="false" type="{unknown}"/>
-    <parameter name="name" byreference="false" type="string" default=""/>
+    <parameter name="name" byreference="false" type="string" default="''"/>
     <parameter name="groups" byreference="false" type="array"/>
   </method>
   <method name="getContact" start="95" end="99" abstract="false" final="false" static="false" visibility="public">
@@ -72,6 +75,10 @@
   </method>
   <method name="getPresence" start="139" end="153" abstract="false" final="false" static="false" visibility="public">
     <parameter name="jid" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Priorities can only be -128 = 127" line="143"/>
+      <comment value="Highest available priority or just highest priority" line="145"/>
+    </inline>
   </method>
   <method name="getRoster" start="159" end="161" abstract="false" final="false" static="false" visibility="public">
     <docblock>

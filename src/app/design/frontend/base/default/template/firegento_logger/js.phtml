@@ -1,0 +1,16 @@
+<script type="text/javascript">
+    window.onerror = function (message, url, lineNumber) {
+        var xhttp = new XMLHttpRequest();
+
+        // build parameters
+        var params = 'message=' + encodeURIComponent(message);
+        params += '&url=' + encodeURIComponent(document.location);
+
+        xhttp.open("POST", '<?php echo $this->getUrl('logger/error/send'); ?>', true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send(params);
+
+        // continue with default error handler
+        return false;
+    };
+</script>

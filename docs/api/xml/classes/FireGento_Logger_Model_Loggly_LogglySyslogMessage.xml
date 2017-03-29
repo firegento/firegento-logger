@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Loggly_LogglySyslogMessage" namespace="" name="FireGento_Logger_Model_Loggly_LogglySyslogMessage" abstract="false" final="false" start="29" end="72">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Loggly" file="LogglySyslogMessage.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Loggly/LogglySyslogMessage.php" size="2496" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="e1a5c19184f7fe1378e0c139cc4ce5b61c19a56c"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Loggly_LogglySyslogMessage" namespace="" name="FireGento_Logger_Model_Loggly_LogglySyslogMessage" abstract="false" final="false" start="29" end="49">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Loggly" file="LogglySyslogMessage.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Loggly/LogglySyslogMessage.php" size="1556" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="9fd77e08dee700f79005595afb0f7d2005bd717d" relative="app/code/community/FireGento/Logger/Model/Loggly/LogglySyslogMessage.php"/>
   <docblock>
     <description compact="Implementation of Remote Syslog Message for Loggly. This class logs the events using JSON, which allows providing more details than basic Syslog."/>
     <category value="FireGento"/>
@@ -8,49 +8,31 @@
     <author value="FireGento Team &lt;team@firegento.com&gt;"/>
   </docblock>
   <extends full="SyslogMessage" namespace="" name="SyslogMessage"/>
-  <constructor name="__construct" start="40" end="43" abstract="false" final="false" static="false" visibility="public">
-    <docblock>
-      <description compact="Class constructor"/>
-      <param description="Message to log" type="string" variable="$message"/>
-      <param description="Facility" type="int" variable="$facility"/>
-      <param description="Severity" type="int" variable="$severity"/>
-      <param description="Timestamp" type="int" variable="$timestamp"/>
-      <param description="Options" type="object" variable="$options">
-        <type full="null" namespace="" name="null"/>
-      </param>
-    </docblock>
-    <parameter name="message" byreference="false" type="{unknown}"/>
-    <parameter name="facility" byreference="false" type="integer" default=""/>
-    <parameter name="severity" byreference="false" type="integer" default=""/>
-    <parameter name="timestamp" byreference="false" type="{unknown}"/>
-    <parameter name="options" byreference="false" type="{unknown}" default="null"/>
-  </constructor>
-  <method name="FormatMessage" start="51" end="59" abstract="false" final="false" static="false" visibility="protected">
+  <method name="FormatMessage" start="37" end="40" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="Puts all Log Message elements together to form a JSON String that will be passed to the RSysLog Server."/>
       <return description="The Message as a JSON object." type="string"/>
     </docblock>
   </method>
-  <method name="GetMessageChunks" start="68" end="71" abstract="false" final="false" static="false" visibility="public">
+  <method name="GetMessageChunks" start="45" end="48" abstract="false" final="false" static="false" visibility="public">
     <docblock>
-      <description compact="Returns the chunks of the message to send to the RSysLog server.">Note: this specific implementation sends messages as whole JSON Objects,
-there are no "chunks".</description>
-      <return description="A JSON representation of the Log message." type="string"/>
+      <description/>
+      <return type="array"/>
     </docblock>
   </method>
-  <parent full="SyslogMessage" namepsace="" name="SyslogMessage">
+  <parent full="SyslogMessage" namespace="" name="SyslogMessage">
     <constant name="MAX_MESSAGE_LENGTH" value="1024"/>
     <constant name="MAX_TAG_LENGTH" value="1024"/>
     <constant name="DEFAULT_PROCESSNAME" value="'PHP'"/>
     <constant name="DEFAULT_HOSTNAME" value="'NONAME'"/>
-    <member name="Facility" type="{unknown}" visibility="protected"/>
-    <member name="Severity" type="{unknown}" visibility="protected"/>
-    <member name="HostName" type="{unknown}" visibility="protected"/>
-    <member name="FQDN" type="{unknown}" visibility="protected"/>
-    <member name="IPAddress" type="{unknown}" visibility="protected"/>
-    <member name="ProcessName" type="{unknown}" visibility="protected"/>
-    <member name="Message" type="{unknown}" visibility="protected"/>
-    <member name="Timestamp" type="{unknown}" visibility="protected"/>
+    <member name="Facility" type="{unknown}" visibility="protected" line="22"/>
+    <member name="Severity" type="{unknown}" visibility="protected" line="23"/>
+    <member name="HostName" type="{unknown}" visibility="protected" line="24"/>
+    <member name="FQDN" type="{unknown}" visibility="protected" line="25"/>
+    <member name="IPAddress" type="{unknown}" visibility="protected" line="26"/>
+    <member name="ProcessName" type="{unknown}" visibility="protected" line="27"/>
+    <member name="Message" type="{unknown}" visibility="protected" line="28"/>
+    <member name="Timestamp" type="{unknown}" visibility="protected" line="29"/>
     <method name="Coalesce" start="36" end="44" abstract="false" final="false" static="false" visibility="protected">
       <docblock>
         <description compact="Returns the first non null value amongst the arguments."/>
@@ -86,7 +68,7 @@ there are no "chunks".</description>
     <method name="SetOptions" start="109" end="113" abstract="false" final="false" static="false" visibility="protected">
       <docblock>
         <description compact="Sets several options for the instance."/>
-        <param description="array of options that will be used to configure the" type="object" variable="An">instance.<type full="Options" namespace="" name="Options"/></param>
+        <param description="An array of options that will be used to configure the" type="object">instance.<type full="Options" namespace="" name="Options"/></param>
       </docblock>
       <parameter name="Options" byreference="false" type="array"/>
     </method>
@@ -107,6 +89,9 @@ there are no "chunks".</description>
         <description compact="Setter for ProcessName property."/>
       </docblock>
       <parameter name="ProcessName" byreference="false" type="{unknown}"/>
+      <inline>
+        <comment value="Process Name can have a maximum length of 32 characters" line="140"/>
+      </inline>
     </method>
     <method name="SetMessage" start="147" end="149" abstract="false" final="false" static="false" visibility="public">
       <docblock>
@@ -124,25 +109,25 @@ there are no "chunks".</description>
     <constructor name="__construct" start="172" end="181" abstract="false" final="false" static="false" visibility="public">
       <docblock>
         <description compact="Class constructor."/>
-        <param description="log message." type="object" variable="The">
+        <param description="The log message." type="object">
           <type full="Message" namespace="" name="Message"/>
         </param>
-        <param description="Facility that generated the message (@link SyslogFacility)." type="object" variable="The">
+        <param description="The Facility that generated the message (@link SyslogFacility)." type="object">
           <type full="Facility" namespace="" name="Facility"/>
         </param>
-        <param description="Severity of the message (@link SyslogSeverity)." type="object" variable="The">
+        <param description="The Severity of the message (@link SyslogSeverity)." type="object">
           <type full="Severity" namespace="" name="Severity"/>
         </param>
-        <param description="timestamp of the log message." type="object" variable="The">
+        <param description="The timestamp of the log message." type="object">
           <type full="Timestamp" namespace="" name="Timestamp"/>
         </param>
-        <param description="configuration options (@link Options)." type="object" variable="Additional">
+        <param description="Additional configuration options (@link Options)." type="object">
           <type full="Options" namespace="" name="Options"/>
         </param>
       </docblock>
       <parameter name="Message" byreference="false" type="{unknown}"/>
-      <parameter name="Facility" byreference="false" type="integer" default=""/>
-      <parameter name="Severity" byreference="false" type="integer" default=""/>
+      <parameter name="Facility" byreference="false" type="integer" default="16"/>
+      <parameter name="Severity" byreference="false" type="integer" default="5"/>
       <parameter name="Timestamp" byreference="false" type="{unknown}"/>
       <parameter name="Options" byreference="false" type="{unknown}" default="null"/>
     </constructor>
@@ -157,6 +142,15 @@ there are no "chunks".</description>
         <description compact="Returns the chunks that form the full log message. If the message is short enough, it's not split and just returned."/>
         <return description="array containing the chunk of the Log Message. If the message is" type="object">short enough, the array will contain only one value.<type full="An" namespace="" name="An"/></return>
       </docblock>
+      <inline>
+        <comment value="If the Tag+Message string is short enough to fit in a single message," line="255"/>
+        <comment value="simply return it" line="256"/>
+        <comment value="If Message is too long, split it. To make it easier to put the pieces" line="261"/>
+        <comment value="together, append a Unique ID to each piece of the message" line="262"/>
+        <comment value="Split the message in chunks, so that each one is small enough to be sent" line="265"/>
+        <comment value="with the header" line="266"/>
+        <comment value="Build a full message for each chunk, adding Tag and Message ID" line="270"/>
+      </inline>
     </method>
   </parent>
 </class>

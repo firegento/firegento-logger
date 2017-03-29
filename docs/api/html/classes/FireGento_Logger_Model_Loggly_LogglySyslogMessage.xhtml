@@ -1,280 +1,222 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "html" "">
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <title>FireGento_Logger - FireGento_Logger_Model_Loggly_LogglySyslogMessage - API Documentation</title>
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <title>phpDox - FireGento_Logger_Model_Loggly_LogglySyslogMessage</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
   <body>
-    <div class="wrapper clearfix">
-      <div class="topbar clearfix">
-        <h1>
-          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
-        </h1>
-        <ul class="nav">
-          <li class="active">
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
             <a href="../index.xhtml">Overview</a>
           </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">FireGento_Logger_Model_Loggly_LogglySyslogMessage</li>
         </ul>
       </div>
-      <div class="navigation">
-        <h3>Methods</h3>
+      <nav class="box">
         <ul>
           <li>
-            <a href="#Coalesce">Coalesce</a>
+            <a href="#introduction">Introduction</a>
           </li>
           <li>
-            <a href="#FormatMessage">FormatMessage</a>
+            <a href="#synopsis">Synopsis</a>
           </li>
           <li>
-            <a href="#FormatMessage">FormatMessage</a>
+            <a href="#hierarchy">Hierarchy</a>
           </li>
           <li>
-            <a href="#GetFQDN">GetFQDN</a>
+            <a href="#constants">Constants</a>
           </li>
           <li>
-            <a href="#GetHostName">GetHostName</a>
+            <a href="#members">Members</a>
           </li>
           <li>
-            <a href="#GetIPAddress">GetIPAddress</a>
+            <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="#GetMessageChunks">GetMessageChunks</a>
-          </li>
-          <li>
-            <a href="#GetMessageChunks">GetMessageChunks</a>
-          </li>
-          <li>
-            <a href="#GetProcessName">GetProcessName</a>
-          </li>
-          <li>
-            <a href="#SetFacility">SetFacility</a>
-          </li>
-          <li>
-            <a href="#SetMessage">SetMessage</a>
-          </li>
-          <li>
-            <a href="#SetOptions">SetOptions</a>
-          </li>
-          <li>
-            <a href="#SetProcessName">SetProcessName</a>
-          </li>
-          <li>
-            <a href="#SetSeverity">SetSeverity</a>
-          </li>
-          <li>
-            <a href="#SetTimestamp">SetTimestamp</a>
-          </li>
-          <li>
-            <a href="#__construct">__construct</a>
+            <a href="../source/app/code/community/FireGento/Logger/Model/Loggly/LogglySyslogMessage.php.xhtml#line29">Source</a>
           </li>
         </ul>
-      </div>
-      <div class="content">
-        <h2><span style="font-size:60%">\</span>FireGento_Logger_Model_Loggly_LogglySyslogMessage</h2>
-        <div class="file-notice">
-          <p>Implementation of Remote Syslog Message for Loggly. This class logs the events using JSON, which allows providing more details than basic Syslog.</p>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>FireGento_Logger_Model_Loggly_LogglySyslogMessage</h1>
+        <h4>Implementation of Remote Syslog Message for Loggly. This class logs the events using JSON, which allows providing more details than basic Syslog.</h4>
+        <p/>
+        <ul>
+          <li>Author: FireGento Team &lt;team@firegento.com&gt;</li>
+        </ul>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class FireGento_Logger_Model_Loggly_LogglySyslogMessage
+                extends <a title="SyslogMessage" href="../classes/SyslogMessage.xhtml">SyslogMessage</a>
+            {<br/><ul class="none"><li>// Inherited constants from <a title="SyslogMessage" href="../classes/SyslogMessage.xhtml">SyslogMessage</a></li><li>const <a href="#MAX_MESSAGE_LENGTH">MAX_MESSAGE_LENGTH</a> = 1024;</li><li>const <a href="#MAX_TAG_LENGTH">MAX_TAG_LENGTH</a> = 1024;</li><li>const <a href="#DEFAULT_PROCESSNAME">DEFAULT_PROCESSNAME</a> = 'PHP';</li><li>const <a href="#DEFAULT_HOSTNAME">DEFAULT_HOSTNAME</a> = 'NONAME';</li></ul><ul class="none"><li>// Inherited members from <span title="SyslogMessage">SyslogMessage</span></li><li>protected <a href="#members">$Facility</a>;
+                        </li><li>protected <a href="#members">$Severity</a>;
+                        </li><li>protected <a href="#members">$HostName</a>;
+                        </li><li>protected <a href="#members">$FQDN</a>;
+                        </li><li>protected <a href="#members">$IPAddress</a>;
+                        </li><li>protected <a href="#members">$ProcessName</a>;
+                        </li><li>protected <a href="#members">$Message</a>;
+                        </li><li>protected <a href="#members">$Timestamp</a>;
+                        </li></ul><ul class="none"><li>// methods</li><li>protected string <a title="FireGento_Logger_Model_Loggly_LogglySyslogMessage" href="../classes/FireGento_Logger_Model_Loggly_LogglySyslogMessage/FormatMessage.xhtml">FormatMessage</a>()
+                    </li><li>public array <a title="FireGento_Logger_Model_Loggly_LogglySyslogMessage" href="../classes/FireGento_Logger_Model_Loggly_LogglySyslogMessage/GetMessageChunks.xhtml">GetMessageChunks</a>()
+                    </li></ul><ul class="none"><li>// Inherited methods from <span title="SyslogMessage">SyslogMessage</span></li><li>protected The <a title="SyslogMessage" href="../classes/SyslogMessage/Coalesce.xhtml">Coalesce</a>()
+                        </li><li>protected The <a title="SyslogMessage" href="../classes/SyslogMessage/GetHostName.xhtml">GetHostName</a>()
+                        </li><li>protected Fully <a title="SyslogMessage" href="../classes/SyslogMessage/GetFQDN.xhtml">GetFQDN</a>()
+                        </li><li>protected The <a title="SyslogMessage" href="../classes/SyslogMessage/GetIPAddress.xhtml">GetIPAddress</a>()
+                        </li><li>protected The <a title="SyslogMessage" href="../classes/SyslogMessage/GetProcessName.xhtml">GetProcessName</a>()
+                        </li><li>protected void <a title="SyslogMessage" href="../classes/SyslogMessage/SetOptions.xhtml">SetOptions</a>()
+                        </li><li>public void <a title="SyslogMessage" href="../classes/SyslogMessage/SetFacility.xhtml">SetFacility</a>()
+                        </li><li>public void <a title="SyslogMessage" href="../classes/SyslogMessage/SetSeverity.xhtml">SetSeverity</a>()
+                        </li><li>public void <a title="SyslogMessage" href="../classes/SyslogMessage/SetProcessName.xhtml">SetProcessName</a>()
+                        </li><li>public void <a title="SyslogMessage" href="../classes/SyslogMessage/SetMessage.xhtml">SetMessage</a>()
+                        </li><li>public void <a title="SyslogMessage" href="../classes/SyslogMessage/SetTimestamp.xhtml">SetTimestamp</a>()
+                        </li><li>public void <a title="SyslogMessage" href="../classes/SyslogMessage/__construct.xhtml">__construct</a>()
+                        </li><li>protected string <a title="SyslogMessage" href="../classes/SyslogMessage/FormatMessage.xhtml">FormatMessage</a>()
+                        </li><li>public An <a title="SyslogMessage" href="../classes/SyslogMessage/GetMessageChunks.xhtml">GetMessageChunks</a>()
+                        </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a href="../classes/SyslogMessage.xhtml">SyslogMessage</a>
+            </li>
+          </ul>
         </div>
-        <ul class="fileinfos">
-          <li><b>Author: </b>FireGento Team &lt;team@firegento.com&gt;</li>
-        </ul>
-        <h3>Constants</h3>
-        <ul class="varlist"/>
-        <h3>Members</h3>
-        <ul class="varlist"/>
-        <h3>Constructor</h3>
-        <ul class="varlist">
-          <li>
-            <a name="__construct"/>
-            <h4><span class="label public">public</span>__construct<span style="font-size:90%;">( <span class="param-type">string</span><strong> $message</strong>, <span class="param-type">integer</span><strong> $facility</strong>, <span class="param-type">integer</span><strong> $severity</strong>, <span class="param-type">int</span><strong> $timestamp</strong>, <span class="param-type"><span title="null">null</span></span><strong> $options</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Class constructor</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$message</code> - Message to log</li>
-                <li><code>$facility</code> - Facility</li>
-                <li><code>$severity</code> - Severity</li>
-                <li><code>$timestamp</code> - Timestamp</li>
-                <li><code>$options</code> - Options</li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <h3>Methods</h3>
-        <ul class="varlist">
-          <li>
-            <a name="GetMessageChunks"/>
-            <h4><span class="label public">public</span>GetMessageChunks<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Returns the chunks of the message to send to the RSysLog server.<pre>Note: this specific implementation sends messages as whole JSON Objects,
-there are no "chunks".</pre></li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>A JSON representation of the Log message.</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="GetMessageChunks"/>
-            <h4><span class="label public">public</span>GetMessageChunks<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Returns the chunks that form the full log message. If the message is short enough, it's not split and just returned.</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>array containing the chunk of the Log Message. If the message is</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="SetFacility"/>
-            <h4><span class="label public">public</span>SetFacility<span style="font-size:90%;">( <span class="param-type"/><strong> $Facility</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Setter for Facility property.</li>
-            </p>
-          </li>
-          <li>
-            <a name="SetMessage"/>
-            <h4><span class="label public">public</span>SetMessage<span style="font-size:90%;">( <span class="param-type"/><strong> $Message</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Setter for Message property.</li>
-            </p>
-          </li>
-          <li>
-            <a name="SetProcessName"/>
-            <h4><span class="label public">public</span>SetProcessName<span style="font-size:90%;">( <span class="param-type"/><strong> $ProcessName</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Setter for ProcessName property.</li>
-            </p>
-          </li>
-          <li>
-            <a name="SetSeverity"/>
-            <h4><span class="label public">public</span>SetSeverity<span style="font-size:90%;">( <span class="param-type"/><strong> $Severity</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Setter for Severity property.</li>
-            </p>
-          </li>
-          <li>
-            <a name="SetTimestamp"/>
-            <h4><span class="label public">public</span>SetTimestamp<span style="font-size:90%;">( <span class="param-type"/><strong> $Timestamp</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Setter for Timestamp property.</li>
-            </p>
-          </li>
-          <li>
-            <a name="Coalesce"/>
-            <h4><span class="label protected">protected</span>Coalesce<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Returns the first non null value amongst the arguments.</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>first non null value amongst the arguments.</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="FormatMessage"/>
-            <h4><span class="label protected">protected</span>FormatMessage<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Puts all Log Message elements together to form a JSON String that will be passed to the RSysLog Server.</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>The Message as a JSON object.</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="FormatMessage"/>
-            <h4><span class="label protected">protected</span>FormatMessage<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Puts all Log Message elements together to form a string that will be passed to the RSysLog Server.</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>The Message as a string.</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="GetFQDN"/>
-            <h4><span class="label protected">protected</span>GetFQDN<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Returns the Fully Qualified Domain Name of the Server.</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>Qualified Domain Name of the Server, or an empty string if the</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="GetHostName"/>
-            <h4><span class="label protected">protected</span>GetHostName<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Returns the Host Name.</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>Host Name of the machine where the script is running, or a</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="GetIPAddress"/>
-            <h4><span class="label protected">protected</span>GetIPAddress<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Returns the IP Address of the Server.</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>IP Address of the Server, or an empty string if the address</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="GetProcessName"/>
-            <h4><span class="label protected">protected</span>GetProcessName<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Returns the Process Name.</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>Name of the Process that is running the script, or a default</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="SetOptions"/>
-            <h4><span class="label protected">protected</span>SetOptions<span style="font-size:90%;">( <span class="param-type">Array</span><strong> $Options</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Sets several options for the instance.</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>An</code> - array of options that will be used to configure the</li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
-      </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="MAX_MESSAGE_LENGTH">MAX_MESSAGE_LENGTH</td>
+              <td>1024</td>
+            </tr>
+            <tr>
+              <td id="MAX_TAG_LENGTH">MAX_TAG_LENGTH</td>
+              <td>1024</td>
+            </tr>
+            <tr>
+              <td id="DEFAULT_PROCESSNAME">DEFAULT_PROCESSNAME</td>
+              <td>'PHP'</td>
+            </tr>
+            <tr>
+              <td id="DEFAULT_HOSTNAME">DEFAULT_HOSTNAME</td>
+              <td>'NONAME'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="FQDN">
+              <strong>$FQDN</strong>
+            </li>
+            <li id="Facility">
+              <strong>$Facility</strong>
+            </li>
+            <li id="HostName">
+              <strong>$HostName</strong>
+            </li>
+            <li id="IPAddress">
+              <strong>$IPAddress</strong>
+            </li>
+            <li id="Message">
+              <strong>$Message</strong>
+            </li>
+            <li id="ProcessName">
+              <strong>$ProcessName</strong>
+            </li>
+            <li id="Severity">
+              <strong>$Severity</strong>
+            </li>
+            <li id="Timestamp">
+              <strong>$Timestamp</strong>
+            </li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="FormatMessage"><a title="FireGento_Logger_Model_Loggly_LogglySyslogMessage" href="../classes/FireGento_Logger_Model_Loggly_LogglySyslogMessage/FormatMessage.xhtml">FormatMessage()</a>
+                — Puts all Log Message elements together to form a JSON String that will be passed to the RSysLog Server.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="GetMessageChunks">
+              <a title="FireGento_Logger_Model_Loggly_LogglySyslogMessage" href="../classes/FireGento_Logger_Model_Loggly_LogglySyslogMessage/GetMessageChunks.xhtml">GetMessageChunks()</a>
+            </li>
+          </ul>
+          <h3>Inherited from <a title="SyslogMessage" href="../classes/SyslogMessage.xhtml">SyslogMessage</a></h3>
+          <h4>protected</h4>
+          <ul>
+            <li id="Coalesce"><a title="SyslogMessage" href="../classes/SyslogMessage/Coalesce.xhtml">Coalesce()</a>
+                — Returns the first non null value amongst the arguments.</li>
+            <li id="FormatMessage"><a title="SyslogMessage" href="../classes/SyslogMessage/FormatMessage.xhtml">FormatMessage()</a>
+                — Puts all Log Message elements together to form a string that will be passed to the RSysLog Server.</li>
+            <li id="GetFQDN"><a title="SyslogMessage" href="../classes/SyslogMessage/GetFQDN.xhtml">GetFQDN()</a>
+                — Returns the Fully Qualified Domain Name of the Server.</li>
+            <li id="GetHostName"><a title="SyslogMessage" href="../classes/SyslogMessage/GetHostName.xhtml">GetHostName()</a>
+                — Returns the Host Name.</li>
+            <li id="GetIPAddress"><a title="SyslogMessage" href="../classes/SyslogMessage/GetIPAddress.xhtml">GetIPAddress()</a>
+                — Returns the IP Address of the Server.</li>
+            <li id="GetProcessName"><a title="SyslogMessage" href="../classes/SyslogMessage/GetProcessName.xhtml">GetProcessName()</a>
+                — Returns the Process Name.</li>
+            <li id="SetOptions"><a title="SyslogMessage" href="../classes/SyslogMessage/SetOptions.xhtml">SetOptions()</a>
+                — Sets several options for the instance.</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="GetMessageChunks"><a title="SyslogMessage" href="../classes/SyslogMessage/GetMessageChunks.xhtml">GetMessageChunks()</a>
+                — Returns the chunks that form the full log message. If the message is short enough, it's not split and just returned.</li>
+            <li id="SetFacility"><a title="SyslogMessage" href="../classes/SyslogMessage/SetFacility.xhtml">SetFacility()</a>
+                — Setter for Facility property.</li>
+            <li id="SetMessage"><a title="SyslogMessage" href="../classes/SyslogMessage/SetMessage.xhtml">SetMessage()</a>
+                — Setter for Message property.</li>
+            <li id="SetProcessName"><a title="SyslogMessage" href="../classes/SyslogMessage/SetProcessName.xhtml">SetProcessName()</a>
+                — Setter for ProcessName property.</li>
+            <li id="SetSeverity"><a title="SyslogMessage" href="../classes/SyslogMessage/SetSeverity.xhtml">SetSeverity()</a>
+                — Setter for Severity property.</li>
+            <li id="SetTimestamp"><a title="SyslogMessage" href="../classes/SyslogMessage/SetTimestamp.xhtml">SetTimestamp()</a>
+                — Setter for Timestamp property.</li>
+          </ul>
+        </div>
+      </section>
     </div>
+    <footer>
+      <span/>
+    </footer>
   </body>
 </html>

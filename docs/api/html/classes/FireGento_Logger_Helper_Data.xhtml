@@ -1,169 +1,163 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "html" "">
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <title>FireGento_Logger - FireGento_Logger_Helper_Data - API Documentation</title>
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <title>phpDox - FireGento_Logger_Helper_Data</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
   <body>
-    <div class="wrapper clearfix">
-      <div class="topbar clearfix">
-        <h1>
-          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
-        </h1>
-        <ul class="nav">
-          <li class="active">
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
             <a href="../index.xhtml">Overview</a>
           </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">FireGento_Logger_Helper_Data</li>
         </ul>
       </div>
-      <div class="navigation">
-        <h3>Constants</h3>
+      <nav class="box">
         <ul>
           <li>
-            <a href="#XML_PATH_PRIORITY">XML_PATH_PRIORITY</a>
+            <a href="#introduction">Introduction</a>
           </li>
           <li>
-            <a href="#XML_PATH_MAX_DAYS">XML_PATH_MAX_DAYS</a>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#members">Members</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/app/code/community/FireGento/Logger/Helper/Data.php.xhtml#line28">Source</a>
           </li>
         </ul>
-        <h3>Members</h3>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>FireGento_Logger_Helper_Data</h1>
+        <h4>Helper Class</h4>
+        <p/>
         <ul>
-          <li>
-            <a href="#_targetMap">$_targetMap</a>
-          </li>
+          <li>Author: FireGento Team &lt;team@firegento.com&gt;</li>
         </ul>
-        <h3>Methods</h3>
-        <ul>
-          <li>
-            <a href="#addEventMetadata">addEventMetadata</a>
-          </li>
-          <li>
-            <a href="#addPriorityFilter">addPriorityFilter</a>
-          </li>
-          <li>
-            <a href="#getLoggerConfig">getLoggerConfig</a>
-          </li>
-          <li>
-            <a href="#getMappedTargets">getMappedTargets</a>
-          </li>
-          <li>
-            <a href="#getMaxDaysToKeep">getMaxDaysToKeep</a>
-          </li>
-        </ul>
-      </div>
-      <div class="content">
-        <h2><span style="font-size:60%">\</span>FireGento_Logger_Helper_Data</h2>
-        <div class="file-notice">
-          <p>Helper Class</p>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class FireGento_Logger_Helper_Data
+                extends <a title="Mage_Core_Helper_Abstract" href="../classes/Mage_Core_Helper_Abstract.xhtml">Mage_Core_Helper_Abstract</a>
+            {<br/><ul class="none"><li>// constants</li><li>const XML_PATH_PRIORITY = 'general/priority';</li><li>const XML_PATH_MAX_DAYS = 'db/max_days_to_keep';</li></ul><ul class="none"><li>// members</li><li>protected <span title="null">null</span> <a href="#members">$_targetMap</a>;
+                    </li><li>protected <span title="null">null</span> <a href="#members">$_notificationRules</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public string <a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/getLoggerConfig.xhtml">getLoggerConfig</a>()
+                    </li><li>public null|array <a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/getMappedTargets.xhtml">getMappedTargets</a>()
+                    </li><li>public string <a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/getMaxDaysToKeep.xhtml">getMaxDaysToKeep</a>()
+                    </li><li>public void <a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/addPriorityFilter.xhtml">addPriorityFilter</a>()
+                    </li><li>public void <a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/addEventMetadata.xhtml">addEventMetadata</a>()
+                    </li><li>private array <a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/filterSensibleData.xhtml">filterSensibleData</a>()
+                    </li><li>private array <a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/filterDataFromMultidimensionalKey.xhtml">filterDataFromMultidimensionalKey</a>()
+                    </li><li>public array|mixed|null <a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/getEmailNotificationRules.xhtml">getEmailNotificationRules</a>()
+                    </li><li>public FireGento_Logger_Model_Event <a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/getEventObjectFromArray.xhtml">getEventObjectFromArray</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a href="../classes/Mage_Core_Helper_Abstract.xhtml">Mage_Core_Helper_Abstract</a>
+            </li>
+          </ul>
         </div>
-        <ul class="fileinfos">
-          <li><b>Author: </b>FireGento Team &lt;team@firegento.com&gt;</li>
-        </ul>
-        <h3>Constants</h3>
-        <ul class="varlist">
-          <li><a name="XML_PATH_PRIORITY"/>XML_PATH_PRIORITY = 'general/priority'<hr/></li>
-          <li><a name="XML_PATH_MAX_DAYS"/>XML_PATH_MAX_DAYS = 'db/max_days_to_keep'<hr/></li>
-        </ul>
-        <h3>Members</h3>
-        <ul class="varlist">
-          <li>
-            <a name="_targetMap"/>
-            <h4><span class="label protected">protected</span>object 
-                
-                $_targetMap</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-        </ul>
-        <h3>Methods</h3>
-        <ul class="varlist">
-          <li>
-            <a name="addEventMetadata"/>
-            <h4><span class="label public">public</span>addEventMetadata<span style="font-size:90%;">( <span class="param-type"/><strong> &amp;$event</strong>, <span class="param-type"><span title="null|string">null|string</span></span><strong> $notAvailable</strong>, <span class="param-type"><span title="bool">bool</span></span><strong> $enableBacktrace</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Add useful metadata to the event</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>&amp;$event</code> - Event Data</li>
-                <li><code>$notAvailable</code> - Not available</li>
-                <li><code>$enableBacktrace</code> - Flag for Backtrace</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="addPriorityFilter"/>
-            <h4><span class="label public">public</span>addPriorityFilter<span style="font-size:90%;">( <span class="param-type"><span title="\\Zend_Log_Writer_Abstract">Zend_Log_Writer_Abstract</span></span><strong> $writer</strong>, <span class="param-type"><span title="null|string">null|string</span></span><strong> $configPath</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Add priority filte to writer instance</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$writer</code> - Writer Instance</li>
-                <li><code>$configPath</code> - Config Path</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getLoggerConfig"/>
-            <h4><span class="label public">public</span>getLoggerConfig<span style="font-size:90%;">( <span class="param-type">string</span><strong> $path</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Get logger config value</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$path</code> - Config Path</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>Config Value</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getMappedTargets"/>
-            <h4><span class="label public">public</span>getMappedTargets<span style="font-size:90%;">( <span class="param-type">string</span><strong> $filename</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Returns an array of targets mapped or null if there was an error or there is no map.<pre>Keys are target codes, values are bool indicating if backtrace is enabled</pre></li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$filename</code> - Filename</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>Mapped Targets</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getMaxDaysToKeep"/>
-            <h4><span class="label public">public</span>getMaxDaysToKeep<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>The maximun of days to keep log messages in the database table.</li>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>Days to keep</li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
-      </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="XML_PATH_PRIORITY">XML_PATH_PRIORITY</td>
+              <td>'general/priority'</td>
+            </tr>
+            <tr>
+              <td id="XML_PATH_MAX_DAYS">XML_PATH_MAX_DAYS</td>
+              <td>'db/max_days_to_keep'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>protected</h4>
+          <ul class="members">
+            <li id="_notificationRules"><strong>$_notificationRules</strong>
+                —
+                <a href="#">null</a></li>
+            <li id="_targetMap"><strong>$_targetMap</strong>
+                —
+                <a href="#">null</a></li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>private</h4>
+          <ul>
+            <li id="filterDataFromMultidimensionalKey"><a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/filterDataFromMultidimensionalKey.xhtml">filterDataFromMultidimensionalKey()</a>
+                — Filter the data.</li>
+            <li id="filterSensibleData"><a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/filterSensibleData.xhtml">filterSensibleData()</a>
+                — filter sensible data like credit card and password from requests</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="addEventMetadata"><a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/addEventMetadata.xhtml">addEventMetadata()</a>
+                — Add useful metadata to the event</li>
+            <li id="addPriorityFilter"><a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/addPriorityFilter.xhtml">addPriorityFilter()</a>
+                — Add priority filte to writer instance</li>
+            <li id="getEmailNotificationRules"><a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/getEmailNotificationRules.xhtml">getEmailNotificationRules()</a>
+                — Get all the notification rules.</li>
+            <li id="getEventObjectFromArray"><a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/getEventObjectFromArray.xhtml">getEventObjectFromArray()</a>
+                — Convert Array to Event Object</li>
+            <li id="getLoggerConfig"><a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/getLoggerConfig.xhtml">getLoggerConfig()</a>
+                — Get logger config value</li>
+            <li id="getMappedTargets"><a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/getMappedTargets.xhtml">getMappedTargets()</a>
+                — Returns an array of targets mapped or null if there was an error or there is no map.</li>
+            <li id="getMaxDaysToKeep"><a title="FireGento_Logger_Helper_Data" href="../classes/FireGento_Logger_Helper_Data/getMaxDaysToKeep.xhtml">getMaxDaysToKeep()</a>
+                — The maximun of days to keep log messages in the database table.</li>
+          </ul>
+        </div>
+      </section>
     </div>
+    <footer>
+      <span/>
+    </footer>
   </body>
 </html>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="SyslogFacility" namespace="" name="SyslogFacility" abstract="false" final="true" start="14" end="51">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/rsyslog" file="syslogfacility.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/rsyslog/syslogfacility.php" size="1410" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="fd88100f9b10bb727bcbe39879e780d267708b6a"/>
+<class xmlns="http://xml.phpdox.net/src" full="SyslogFacility" namespace="" name="SyslogFacility" abstract="false" final="true" start="14" end="51">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/rsyslog" file="syslogfacility.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/rsyslog/syslogfacility.php" size="1410" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="fd88100f9b10bb727bcbe39879e780d267708b6a" relative="lib/rsyslog/syslogfacility.php"/>
   <docblock>
     <description compact="Holds the possible values for Syslog Facility"/>
   </docblock>
@@ -31,7 +31,7 @@
   <method name="IsValidFacility" start="46" end="50" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="Checks if a value is a valid Syslog Facility."/>
-      <param description="value to validate." type="object" variable="The">
+      <param description="The value to validate." type="object">
         <type full="Facility" namespace="" name="Facility"/>
       </param>
       <return description="if the value is a valid Facility, False otherwise." type="object">

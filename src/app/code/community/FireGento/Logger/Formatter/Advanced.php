@@ -49,16 +49,16 @@ class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
     /**
      * Formats data into a single line to be written by the writer.
      *
-     * @param array $event
-     * @param bool $enableBacktrace
-     * @return string             formatted line to write to the log
+     * @param  FireGento_Logger_Model_Event $event           Event Data
+     * @param  bool                         $enableBacktrace Backtrace Flag
+     * @return string formatted line to write to the log
      */
     public function format($event, $enableBacktrace = FALSE)
     {
-        $helper = Mage::helper('firegento_logger'); /* @var $helper FireGento_Logger_Helper_Data */
-        $helper->addEventMetadata($event, '-', $enableBacktrace);
-        $maxDataLength = $helper->getLoggerConfig('general/max_data_length') ?: 1000;
-        $prettyPrint = $helper->getLoggerConfig('general/pretty_print') && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : 0;
+        Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
+
+        $maxDataLength = Mage::helper('firegento_logger')->getLoggerConfig('general/max_data_length') ?: 1000;
+        $prettyPrint = Mage::helper('firegento_logger')->getLoggerConfig('general/pretty_print') && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : 0;
         $output = preg_replace_callback('/%(\w+)%/', function ($match) use ($event, $maxDataLength, $prettyPrint) {
             $value = isset($event[$match[1]]) ? $event[$match[1]] : '-';
             if (is_bool($value)) {

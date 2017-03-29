@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Model_Stream" namespace="" name="FireGento_Logger_Model_Stream" abstract="false" final="false" start="28" end="71">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Stream.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Stream.php" size="2011" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="884e8c71ffe852a03a595c92702b55a6ae63e63f"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Stream" namespace="" name="FireGento_Logger_Model_Stream" abstract="false" final="false" start="28" end="73">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Stream.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Stream.php" size="2096" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="30510471a8249d3e1e2c00b28ef48660bdd13abb" relative="app/code/community/FireGento/Logger/Model/Stream.php"/>
   <docblock>
     <description compact="Like ZLWStream but overrides the formatter to use the advanced formatter"/>
     <category value="FireGento"/>
@@ -8,9 +8,9 @@
     <author value="FireGento Team &lt;team@firegento.com&gt;"/>
   </docblock>
   <extends full="Zend_Log_Writer_Stream" namespace="" name="Zend_Log_Writer_Stream"/>
-  <member name="_enableBacktrace" type="{unknown}" default="false" visibility="protected">
+  <member name="_enableBacktrace" type="{unknown}" default="false" visibility="protected" line="33">
     <docblock>
-      <description compact=""/>
+      <description/>
       <var type="object">
         <type full="bool" namespace="" name="bool"/>
       </var>
@@ -25,15 +25,20 @@
     </docblock>
     <parameter name="flag" byreference="false" type="{unknown}"/>
   </method>
-  <method name="_write" start="51" end="59" abstract="false" final="false" static="false" visibility="protected">
+  <method name="_write" start="51" end="61" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="Write a message to the log."/>
       <param description="Event Data" type="array" variable="$event"/>
-      <throws value="Zend_Log_Exception"/>
+      <throws type="object">
+        <type full="Zend_Log_Exception" namespace="" name="Zend_Log_Exception"/>
+      </throws>
     </docblock>
     <parameter name="event" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="require_once 'Zend/Log/Exception.php';" line="58"/>
+    </inline>
   </method>
-  <method name="factory" start="67" end="70" abstract="false" final="false" static="true" visibility="public">
+  <method name="factory" start="69" end="72" abstract="false" final="false" static="true" visibility="public">
     <docblock>
       <description compact="Satisfy newer Zend Framework"/>
       <param description="Configuration" type="object" variable="$config">

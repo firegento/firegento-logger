@@ -70,23 +70,32 @@
                               %timestamp%<br/>
                               %priorityName%<br/>
                               %priority%<br/>
-                              %store_code%<br/>
-                              %time_elapsed%<br/>
-                              %HOSTNAME%<br/>
-                              %REQUEST_METHOD%<br/>
-                              %REQUEST_URI%<br/>
-                              %REQUEST_DATA%<br/>
-                              %REMOTE_ADDR%<br/>
-                              %HTTP_HOST%<br/>
-                              %HTTP_USER_AGENT%<br/>
-                              %HTTP_COOKIE%<br/>
-                              %SESSION_DATA%<br/>
+                              %storeCode%<br/>
+                              %timeElapsed%<br/>
+                              %hostname%<br/>
+                              %requestMethod%<br/>
+                              %requestUri%<br/>
+                              %requestData%<br/>
+                              %remoteAddress%<br/>
+                              %httpHost%<br/>
+                              %httpCookie%<br/>
+                              %sessionData%<br/>
+                              %httpUserAgent%<br/>
                               %file%<br/>
                               %line%<br/>
                               %message%<br/>
                               %backtrace%
                             ]]></comment>
                         </format>
+                        <filter_request_data translate="label">
+                            <label>Filter Request Data</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Data of the request arrays to be filtered for security reasons.
+                                ]]></comment>
+                        </filter_request_data>
                         <max_backtrace_lines translate="label">
                             <label>Max Backtrace Lines</label>
                             <frontend_type>text</frontend_type>
@@ -120,6 +129,18 @@
                                 end of each page processing. <br />
                             ]]></comment>
                         </use_queue>
+                        <frontend_logger translate="label">
+                            <label>Frontend Logger</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                When set to "Yes", JS errors in the frontend will be send to an action to
+                                send these errors also to the configured logging backend. <br />
+                                Note: only if client is not defined in dev/restrict/allow_ips <br />
+                            ]]></comment>
+                        </frontend_logger>
                         <viewer_enabled translate="label">
                             <label>Enable Log Viewer</label>
                             <frontend_type>select</frontend_type>
@@ -176,6 +197,14 @@
                             <show_in_default>1</show_in_default>
                             <comment>Choose the lowest priority level to be logged.</comment>
                         </priority>
+                        <sendmailtransport translate="label">
+                            <label>Sendmail transport</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>05</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>If Sendmail transport (PHP mail() function that is) is not used, SMTP transport will be used.</comment>
+                        </sendmailtransport>
                         <hostname translate="label">
                             <label>Hostname</label>
                             <frontend_type>text</frontend_type>
@@ -228,6 +257,17 @@
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
                         </max_days_to_keep>
+                        <email_notification_rule>
+                            <label>Email Notification Rules</label>
+                            <frontend_model>firegento_logger/adminhtml_system_config_emailNotificationRule</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Use Regular Expressions to specify which messages should be emailed out
+                                to individuals.
+                            ]]></comment>
+                        </email_notification_rule>
                     </fields>
                 </db>
                 <xmpp translate="label">
@@ -317,17 +357,17 @@
                         </chunk_size>
                         <app_name>
                             <label>Application Name</label>
-                          <frontend_type>text</frontend_type>
-                          <sort_order>40</sort_order>
-                          <show_in_default>1</show_in_default>
-                          <comment>This value will prefix the file name as the Facility.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>This value will prefix the file name as the Facility.</comment>
                         </app_name>
                     </fields>
                 </graylog2>
                 <logglyhttps translate="label">
                     <label>Loggly (HTTPS) Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>200</sort_order>
+                    <sort_order>90</sort_order>
                     <show_in_default>1</show_in_default>
                     <comment><![CDATA[
                         Sends log messages in JSON format to <a href="http://www.loggly.com">Loggly</a>,
@@ -347,19 +387,25 @@
                             <show_in_default>1</show_in_default>
                             <comment>Choose the lowest priority level to be logged.</comment>
                         </priority>
+                        <hostname translate="label">
+                            <label>Host Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Host Name or IP Address of the Loggly server. <strong>If not sure, don't change it.</strong>
+                            ]]></comment>
+                        </hostname>
                         <inputkey translate="label">
-                            <label>Input Key</label>
+                            <label>Customer Token</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
                             <comment><![CDATA[
-                                Enter the SHA Key to be used to send the Log Messages to Loggly.
+                                Enter the customer token used to send the Log Messages to Loggly.
                                 To find this information, open your <a href="http://www.loggly.com">
-                                Loggly</a> Dashboard, navigate to the <strong>Inputs</strong> tab and
-                                click on the Input that you would like to receive the log. At the bottom
-                                of the page you will see a <strong>Configuration</strong>
-                                section, which displays the Input Key for that Input. Simply copy
-                                that key in this field.
+                                Loggly</a> Dashboard, navigate to <strong>Source Setup > Customer Tokens</strong>.
+                                Create a new token or use an existing token.
                             ]]></comment>
                         </inputkey>
                         <timeout translate="label">
@@ -383,10 +429,41 @@
                         </app_name>
                     </fields>
                 </logglyhttps>
+                <syslog translate="label comment">
+                    <label>Syslog Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>100</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <comment><![CDATA[Sends log messages to syslog.]]></comment>
+                    <fields>
+                        <priority translate="label comment">
+                            <label>Priority Level Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>firegento_logger/system_config_source_prioritydefault</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose the lowest priority level to be logged.</comment>
+                        </priority>
+                        <application translate="label comment">
+                            <label>Application Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>This value will be prefixed to the File Name.</comment>
+                        </application>
+                        <facility translate="label comment">
+                            <label>Facility</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>firegento_logger/system_config_source_syslogFacilities</source_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </facility>
+                    </fields>
+                </syslog>
                 <rsyslog translate="label">
                     <label>Remote Syslog (UDP) Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>100</sort_order>
+                    <sort_order>110</sort_order>
                     <show_in_default>1</show_in_default>
                     <comment><![CDATA[
                         Sends log messages to a Remote Syslog Server, using UDP Protocol.
@@ -470,6 +547,18 @@
                                 UDP Port to use to connect to Loggly. <strong>If not sure, don't change it.</strong>
                             ]]></comment>
                         </port>
+                        <inputkey translate="label">
+                            <label>Customer Token</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Enter the customer token used to send the Log Messages to Loggly.
+                                To find this information, open your <a href="http://www.loggly.com">
+                                Loggly</a> Dashboard, navigate to <strong>Source Setup > Customer Tokens</strong>.
+                                Create a new token or use an existing token.
+                            ]]></comment>
+                        </inputkey>
                         <timeout translate="label">
                             <label>Timeout</label>
                             <frontend_type>text</frontend_type>
@@ -486,10 +575,55 @@
                         </app_name>
                     </fields>
                 </logglysyslog>
+                <papertrailsyslog translate="label">
+                    <label>Papertrail via Remote Syslog (UDP) Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>110</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <comment><![CDATA[
+                        Sends log messages to Papertrail, using RSyslog (UDP) Protocol.
+                    ]]></comment>
+                    <fields>
+                        <priority translate="label">
+                            <label>Priority Level Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>firegento_logger/system_config_source_prioritydefault</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose the lowest priority level to be logged.</comment>
+                        </priority>
+                        <hostname translate="label">
+                            <label>Host Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Host Name of the Papertrail server.
+                                To find this information, <a href="https://papertrailapp.com/systems/setup">setup a new system on Papertrail</a>.
+                            ]]></comment>
+                        </hostname>
+                        <port translate="label">
+                            <label>Port</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                Enter UDP Port to use to connect to Papertrail.
+                            ]]></comment>
+                        </port>
+                        <app_name>
+                            <label>Application Name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>This value will be prefixed to the Log messages.</comment>
+                        </app_name>
+                    </fields>
+                </papertrailsyslog>
                 <chromelogger>
                     <label>Chromelogger Configuration</label>
                     <frontend_type>text</frontend_type>
-                    <sort_order>90</sort_order>
+                    <sort_order>120</sort_order>
                     <show_in_default>1</show_in_default>
                     <fields>
                         <priority translate="label">
@@ -502,6 +636,96 @@
                         </priority>
                     </fields>
                 </chromelogger>
+                <logstash translate="label">
+                    <label>Logstash Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>140</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <priority translate="label">
+                            <label>Priority Level Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>firegento_logger/system_config_source_prioritydefault</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose the lowest priority level to be logged.</comment>
+                        </priority>
+                        <host>
+                            <label>Host</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </host>
+                        <port>
+                            <label>Port</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-digits required-entry</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </port>
+                        <protocol>
+                            <label>Protocol</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>firegento_logger/system_config_source_protocol</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose which type of protocol do like to use.</comment>
+                        </protocol>
+                    </fields>
+                </logstash>
+                <redis translate="label">
+                    <label>Redis Logger Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>150</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <priority translate="label">
+                            <label>Priority Level Filter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>firegento_logger/system_config_source_prioritydefault</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>Choose the lowest priority level to be logged.</comment>
+                        </priority>
+                        <host>
+                            <label>Host</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </host>
+                        <port>
+                            <label>Port</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-digits required-entry</validate>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </port>
+                        <password translate="label">
+                            <label>Password</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </password>
+                        <db>
+                            <label>Redis Db Number</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-zero-or-greater</validate>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[The <a href="http://www.rediscookbook.org/multiple_databases.html">Redis database number</a>.]]></comment>
+                        </db>
+                        <key>
+                            <label>Key</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-emailSender</validate>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment>The name of a Redis list or channel.</comment>
+                        </key>
+                    </fields>
+                </redis>
             </groups>
         </logger>
     </sections>

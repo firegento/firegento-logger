@@ -1,4 +1,4 @@
-# Magento Module Advanced Logger
+# Magento Module for advanced logging
 
 The purpose of this project is to have a simple framework for different logging adapters.
 
@@ -6,6 +6,11 @@ Originally developed as Hackathon_Logger but moved forewards and will now active
 firegento community.
 
 See the [**Usage**](#usage) Chapter below to see how to use it.
+
+Please be aware of the following restrictions:
+
+* The ProxiBlue NewRelic extension use the same logic to log to NewRelic and will block
+  FireGento Logger extension.
 
 Installation Instructions
 -------------------------
@@ -51,7 +56,6 @@ Uninstallation
 --------------
 * Remove all extension files from your Magento installation
 
-<a name="usage">
 ## Usage
 
 Configure the different loggers in `System > Configuration > Advanced > Firegento Logger`
@@ -59,7 +63,7 @@ Configure the different loggers in `System > Configuration > Advanced > Firegent
 
 ## Further Information
 
-### Core Contributors
+### Contributors
 
 * Karl Spies
 * Christoph
@@ -70,6 +74,9 @@ Configure the different loggers in `System > Configuration > Advanced > Firegent
 * Marco Becker
 * Nicolai Essig
 * Daniel Kröger
+* Michael Ryvlin
+* Tobias Zander
+* Achim Rosenhagen
 
 ### Current Status of Project
 
@@ -82,23 +89,33 @@ Complete, working logger interfaces:
 - Graylog2
 - RSyslog (UDP)
 - Loggly (UDP/HTTPS)
+- Papertrail (UDP)
 - Chromelogger
+- Logstash
 
 It is possible to use **Multiple-Targets**!
 
 ### Other Features
 - Log Live View (Like a tail in terminal)
 - Report View (Shows content of a report in backend)
+- Manage modules log output (enable/disable log messages of extensions)
 
 ### Further work
 
 ### External libraries
 
 For XMPP we use https://github.com/cweiske/xmpphp.
+For ChromeLogger we use https://github.com/ccampbell/chromephp
 
 ### How to contribute
 
 Make a fork, commit to develop branch and make a pull request
+
+### Some Hints
+* There are combinations that don't work together
+  * You can't use Chromelogger with the embeded queueing model, because the queueing takes place after the response
+is send to the client
+** You can't use Papertrail with the embeded queueing model
 
 Licence
 -------

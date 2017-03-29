@@ -1,560 +1,211 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "html" "">
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <title>FireGento_Logger - GELFMessage - API Documentation</title>
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <title>phpDox - GELFMessage</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
   <body>
-    <div class="wrapper clearfix">
-      <div class="topbar clearfix">
-        <h1>
-          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
-        </h1>
-        <ul class="nav">
-          <li class="active">
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
             <a href="../index.xhtml">Overview</a>
           </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">GELFMessage</li>
         </ul>
       </div>
-      <div class="navigation">
-        <h3>Members</h3>
+      <nav class="box">
         <ul>
           <li>
-            <a href="#version">$version</a>
+            <a href="#introduction">Introduction</a>
           </li>
           <li>
-            <a href="#timestamp">$timestamp</a>
+            <a href="#synopsis">Synopsis</a>
           </li>
           <li>
-            <a href="#shortMessage">$shortMessage</a>
+            <a href="#members">Members</a>
           </li>
           <li>
-            <a href="#fullMessage">$fullMessage</a>
+            <a href="#methods">Methods</a>
           </li>
           <li>
-            <a href="#facility">$facility</a>
-          </li>
-          <li>
-            <a href="#host">$host</a>
-          </li>
-          <li>
-            <a href="#level">$level</a>
-          </li>
-          <li>
-            <a href="#file">$file</a>
-          </li>
-          <li>
-            <a href="#line">$line</a>
-          </li>
-          <li>
-            <a href="#data">$data</a>
+            <a href="../source/lib/Graylog2-gelf-php/GELFMessage.php.xhtml#line2">Source</a>
           </li>
         </ul>
-        <h3>Methods</h3>
-        <ul>
-          <li>
-            <a href="#getAdditional">getAdditional</a>
-          </li>
-          <li>
-            <a href="#getFacility">getFacility</a>
-          </li>
-          <li>
-            <a href="#getFile">getFile</a>
-          </li>
-          <li>
-            <a href="#getFullMessage">getFullMessage</a>
-          </li>
-          <li>
-            <a href="#getHost">getHost</a>
-          </li>
-          <li>
-            <a href="#getLevel">getLevel</a>
-          </li>
-          <li>
-            <a href="#getLine">getLine</a>
-          </li>
-          <li>
-            <a href="#getShortMessage">getShortMessage</a>
-          </li>
-          <li>
-            <a href="#getTimestamp">getTimestamp</a>
-          </li>
-          <li>
-            <a href="#getVersion">getVersion</a>
-          </li>
-          <li>
-            <a href="#setAdditional">setAdditional</a>
-          </li>
-          <li>
-            <a href="#setFacility">setFacility</a>
-          </li>
-          <li>
-            <a href="#setFile">setFile</a>
-          </li>
-          <li>
-            <a href="#setFullMessage">setFullMessage</a>
-          </li>
-          <li>
-            <a href="#setHost">setHost</a>
-          </li>
-          <li>
-            <a href="#setLevel">setLevel</a>
-          </li>
-          <li>
-            <a href="#setLine">setLine</a>
-          </li>
-          <li>
-            <a href="#setShortMessage">setShortMessage</a>
-          </li>
-          <li>
-            <a href="#setTimestamp">setTimestamp</a>
-          </li>
-          <li>
-            <a href="#setVersion">setVersion</a>
-          </li>
-          <li>
-            <a href="#toArray">toArray</a>
-          </li>
-        </ul>
-      </div>
-      <div class="content">
-        <h2><span style="font-size:60%">\</span>GELFMessage</h2>
-        <ul class="fileinfos"/>
-        <h3>Members</h3>
-        <ul class="varlist">
-          <li>
-            <a name="version"/>
-            <h4><span class="label private">private</span>string 
-                
-                $version</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="timestamp"/>
-            <h4><span class="label private">private</span>integer 
-                
-                $timestamp</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="shortMessage"/>
-            <h4><span class="label private">private</span>string 
-                
-                $shortMessage</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="fullMessage"/>
-            <h4><span class="label private">private</span>string 
-                
-                $fullMessage</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="facility"/>
-            <h4><span class="label private">private</span>string 
-                
-                $facility</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="host"/>
-            <h4><span class="label private">private</span>string 
-                
-                $host</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="level"/>
-            <h4><span class="label private">private</span>integer 
-                
-                $level</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="file"/>
-            <h4><span class="label private">private</span>string 
-                
-                $file</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="line"/>
-            <h4><span class="label private">private</span>integer 
-                
-                $line</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-          <li>
-            <a name="data"/>
-            <h4><span class="label private">private</span>array 
-                
-                $data</h4>
-            <ul class="varlist">
-              <li/>
-            </ul>
-          </li>
-        </ul>
-        <h3>Methods</h3>
-        <ul class="varlist">
-          <li>
-            <a name="getAdditional"/>
-            <h4><span class="label public">public</span>getAdditional<span style="font-size:90%;">( <span class="param-type"/><strong> $key</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getFacility"/>
-            <h4><span class="label public">public</span>getFacility<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getFile"/>
-            <h4><span class="label public">public</span>getFile<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getFullMessage"/>
-            <h4><span class="label public">public</span>getFullMessage<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getHost"/>
-            <h4><span class="label public">public</span>getHost<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getLevel"/>
-            <h4><span class="label public">public</span>getLevel<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getLine"/>
-            <h4><span class="label public">public</span>getLine<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getShortMessage"/>
-            <h4><span class="label public">public</span>getShortMessage<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getTimestamp"/>
-            <h4><span class="label public">public</span>getTimestamp<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getVersion"/>
-            <h4><span class="label public">public</span>getVersion<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setAdditional"/>
-            <h4><span class="label public">public</span>setAdditional<span style="font-size:90%;">( <span class="param-type">string</span><strong> $key</strong>, <span class="param-type">mixed</span><strong> $value</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$key</code> - </li>
-                <li><code>$value</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setFacility"/>
-            <h4><span class="label public">public</span>setFacility<span style="font-size:90%;">( <span class="param-type">string</span><strong> $facility</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$facility</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setFile"/>
-            <h4><span class="label public">public</span>setFile<span style="font-size:90%;">( <span class="param-type">string</span><strong> $file</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$file</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setFullMessage"/>
-            <h4><span class="label public">public</span>setFullMessage<span style="font-size:90%;">( <span class="param-type">string</span><strong> $fullMessage</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$fullMessage</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setHost"/>
-            <h4><span class="label public">public</span>setHost<span style="font-size:90%;">( <span class="param-type">string</span><strong> $host</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$host</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setLevel"/>
-            <h4><span class="label public">public</span>setLevel<span style="font-size:90%;">( <span class="param-type">integer</span><strong> $level</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$level</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setLine"/>
-            <h4><span class="label public">public</span>setLine<span style="font-size:90%;">( <span class="param-type">integer</span><strong> $line</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$line</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setShortMessage"/>
-            <h4><span class="label public">public</span>setShortMessage<span style="font-size:90%;">( <span class="param-type">string</span><strong> $shortMessage</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$shortMessage</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setTimestamp"/>
-            <h4><span class="label public">public</span>setTimestamp<span style="font-size:90%;">( <span class="param-type">integer</span><strong> $timestamp</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$timestamp</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="setVersion"/>
-            <h4><span class="label public">public</span>setVersion<span style="font-size:90%;">( <span class="param-type">string</span><strong> $version</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$version</code> - </li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="toArray"/>
-            <h4><span class="label public">public</span>toArray<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li/>
-            </p>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
-      </div>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>GELFMessage</h1>
+        <h4/>
+        <p/>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class GELFMessage
+            {<br/><ul class="none"><li>// members</li><li>private string <a href="#members">$version</a>;
+                    </li><li>private integer <a href="#members">$timestamp</a>;
+                    </li><li>private string <a href="#members">$shortMessage</a>;
+                    </li><li>private string <a href="#members">$fullMessage</a>;
+                    </li><li>private string <a href="#members">$facility</a>;
+                    </li><li>private string <a href="#members">$host</a>;
+                    </li><li>private integer <a href="#members">$level</a>;
+                    </li><li>private string <a href="#members">$file</a>;
+                    </li><li>private integer <a href="#members">$line</a>;
+                    </li><li>private array <a href="#members">$data</a>;
+                    </li></ul><ul class="none"><li>// methods</li><li>public GELFMessage <a title="GELFMessage" href="../classes/GELFMessage/setVersion.xhtml">setVersion</a>()
+                    </li><li>public string <a title="GELFMessage" href="../classes/GELFMessage/getVersion.xhtml">getVersion</a>()
+                    </li><li>public GELFMessage <a title="GELFMessage" href="../classes/GELFMessage/setTimestamp.xhtml">setTimestamp</a>()
+                    </li><li>public integer <a title="GELFMessage" href="../classes/GELFMessage/getTimestamp.xhtml">getTimestamp</a>()
+                    </li><li>public GELFMessage <a title="GELFMessage" href="../classes/GELFMessage/setShortMessage.xhtml">setShortMessage</a>()
+                    </li><li>public string <a title="GELFMessage" href="../classes/GELFMessage/getShortMessage.xhtml">getShortMessage</a>()
+                    </li><li>public GELFMessage <a title="GELFMessage" href="../classes/GELFMessage/setFullMessage.xhtml">setFullMessage</a>()
+                    </li><li>public string <a title="GELFMessage" href="../classes/GELFMessage/getFullMessage.xhtml">getFullMessage</a>()
+                    </li><li>public GELFMessage <a title="GELFMessage" href="../classes/GELFMessage/setFacility.xhtml">setFacility</a>()
+                    </li><li>public string <a title="GELFMessage" href="../classes/GELFMessage/getFacility.xhtml">getFacility</a>()
+                    </li><li>public GELFMessage <a title="GELFMessage" href="../classes/GELFMessage/setHost.xhtml">setHost</a>()
+                    </li><li>public string <a title="GELFMessage" href="../classes/GELFMessage/getHost.xhtml">getHost</a>()
+                    </li><li>public GELFMessage <a title="GELFMessage" href="../classes/GELFMessage/setLevel.xhtml">setLevel</a>()
+                    </li><li>public integer <a title="GELFMessage" href="../classes/GELFMessage/getLevel.xhtml">getLevel</a>()
+                    </li><li>public GELFMessage <a title="GELFMessage" href="../classes/GELFMessage/setFile.xhtml">setFile</a>()
+                    </li><li>public string <a title="GELFMessage" href="../classes/GELFMessage/getFile.xhtml">getFile</a>()
+                    </li><li>public GELFMessage <a title="GELFMessage" href="../classes/GELFMessage/setLine.xhtml">setLine</a>()
+                    </li><li>public integer <a title="GELFMessage" href="../classes/GELFMessage/getLine.xhtml">getLine</a>()
+                    </li><li>public GELFMessage <a title="GELFMessage" href="../classes/GELFMessage/setAdditional.xhtml">setAdditional</a>()
+                    </li><li>public mixed <a title="GELFMessage" href="../classes/GELFMessage/getAdditional.xhtml">getAdditional</a>()
+                    </li><li>public array <a title="GELFMessage" href="../classes/GELFMessage/toArray.xhtml">toArray</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="members">Members</h2>
+        <div class="styled members">
+          <h4>private</h4>
+          <ul class="members">
+            <li id="data"><strong>$data</strong>
+                —
+                array</li>
+            <li id="facility"><strong>$facility</strong>
+                —
+                string</li>
+            <li id="file"><strong>$file</strong>
+                —
+                string</li>
+            <li id="fullMessage"><strong>$fullMessage</strong>
+                —
+                string</li>
+            <li id="host"><strong>$host</strong>
+                —
+                string</li>
+            <li id="level"><strong>$level</strong>
+                —
+                integer</li>
+            <li id="line"><strong>$line</strong>
+                —
+                integer</li>
+            <li id="shortMessage"><strong>$shortMessage</strong>
+                —
+                string</li>
+            <li id="timestamp"><strong>$timestamp</strong>
+                —
+                integer</li>
+            <li id="version"><strong>$version</strong>
+                —
+                string</li>
+          </ul>
+        </div>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="getAdditional">
+              <a title="GELFMessage" href="../classes/GELFMessage/getAdditional.xhtml">getAdditional()</a>
+            </li>
+            <li id="getFacility">
+              <a title="GELFMessage" href="../classes/GELFMessage/getFacility.xhtml">getFacility()</a>
+            </li>
+            <li id="getFile">
+              <a title="GELFMessage" href="../classes/GELFMessage/getFile.xhtml">getFile()</a>
+            </li>
+            <li id="getFullMessage">
+              <a title="GELFMessage" href="../classes/GELFMessage/getFullMessage.xhtml">getFullMessage()</a>
+            </li>
+            <li id="getHost">
+              <a title="GELFMessage" href="../classes/GELFMessage/getHost.xhtml">getHost()</a>
+            </li>
+            <li id="getLevel">
+              <a title="GELFMessage" href="../classes/GELFMessage/getLevel.xhtml">getLevel()</a>
+            </li>
+            <li id="getLine">
+              <a title="GELFMessage" href="../classes/GELFMessage/getLine.xhtml">getLine()</a>
+            </li>
+            <li id="getShortMessage">
+              <a title="GELFMessage" href="../classes/GELFMessage/getShortMessage.xhtml">getShortMessage()</a>
+            </li>
+            <li id="getTimestamp">
+              <a title="GELFMessage" href="../classes/GELFMessage/getTimestamp.xhtml">getTimestamp()</a>
+            </li>
+            <li id="getVersion">
+              <a title="GELFMessage" href="../classes/GELFMessage/getVersion.xhtml">getVersion()</a>
+            </li>
+            <li id="setAdditional">
+              <a title="GELFMessage" href="../classes/GELFMessage/setAdditional.xhtml">setAdditional()</a>
+            </li>
+            <li id="setFacility">
+              <a title="GELFMessage" href="../classes/GELFMessage/setFacility.xhtml">setFacility()</a>
+            </li>
+            <li id="setFile">
+              <a title="GELFMessage" href="../classes/GELFMessage/setFile.xhtml">setFile()</a>
+            </li>
+            <li id="setFullMessage">
+              <a title="GELFMessage" href="../classes/GELFMessage/setFullMessage.xhtml">setFullMessage()</a>
+            </li>
+            <li id="setHost">
+              <a title="GELFMessage" href="../classes/GELFMessage/setHost.xhtml">setHost()</a>
+            </li>
+            <li id="setLevel">
+              <a title="GELFMessage" href="../classes/GELFMessage/setLevel.xhtml">setLevel()</a>
+            </li>
+            <li id="setLine">
+              <a title="GELFMessage" href="../classes/GELFMessage/setLine.xhtml">setLine()</a>
+            </li>
+            <li id="setShortMessage">
+              <a title="GELFMessage" href="../classes/GELFMessage/setShortMessage.xhtml">setShortMessage()</a>
+            </li>
+            <li id="setTimestamp">
+              <a title="GELFMessage" href="../classes/GELFMessage/setTimestamp.xhtml">setTimestamp()</a>
+            </li>
+            <li id="setVersion">
+              <a title="GELFMessage" href="../classes/GELFMessage/setVersion.xhtml">setVersion()</a>
+            </li>
+            <li id="toArray">
+              <a title="GELFMessage" href="../classes/GELFMessage/toArray.xhtml">toArray()</a>
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
+    <footer>
+      <span/>
+    </footer>
   </body>
 </html>

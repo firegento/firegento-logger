@@ -1,140 +1,130 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "html" "">
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <title>FireGento_Logger - FireGento_Logger_Model_Observer - API Documentation</title>
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <title>phpDox - FireGento_Logger_Model_Observer</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
   <body>
-    <div class="wrapper clearfix">
-      <div class="topbar clearfix">
-        <h1>
-          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
-        </h1>
-        <ul class="nav">
-          <li class="active">
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
             <a href="../index.xhtml">Overview</a>
           </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">FireGento_Logger_Model_Observer</li>
         </ul>
       </div>
-      <div class="navigation">
-        <h3>Constants</h3>
+      <nav class="box">
         <ul>
           <li>
-            <a href="#MAX_FILE_DAYS">MAX_FILE_DAYS</a>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/app/code/community/FireGento/Logger/Model/Observer.php.xhtml#line28">Source</a>
           </li>
         </ul>
-        <h3>Methods</h3>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>FireGento_Logger_Model_Observer</h1>
+        <h4>Observer Class</h4>
+        <p/>
         <ul>
-          <li>
-            <a href="#cleanLogsCron">cleanLogsCron</a>
-          </li>
-          <li>
-            <a href="#formatDate">formatDate</a>
-          </li>
-          <li>
-            <a href="#getArchiveName">getArchiveName</a>
-          </li>
-          <li>
-            <a href="#getFilesOlderThan">getFilesOlderThan</a>
-          </li>
-          <li>
-            <a href="#rotateLogs">rotateLogs</a>
-          </li>
+          <li>Author: FireGento Team &lt;team@firegento.com&gt;</li>
         </ul>
-      </div>
-      <div class="content">
-        <h2><span style="font-size:60%">\</span>FireGento_Logger_Model_Observer</h2>
-        <div class="file-notice">
-          <p>Observer Class</p>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class FireGento_Logger_Model_Observer
+                extends <a title="Varien_Object" href="../classes/Varien_Object.xhtml">Varien_Object</a>
+            {<br/><ul class="none"><li>// constants</li><li>const MAX_FILE_DAYS = 30;</li></ul><ul class="none"><li>// methods</li><li>public void <a title="FireGento_Logger_Model_Observer" href="../classes/FireGento_Logger_Model_Observer/cleanLogsCron.xhtml">cleanLogsCron</a>()
+                    </li><li>public void <a title="FireGento_Logger_Model_Observer" href="../classes/FireGento_Logger_Model_Observer/rotateLogs.xhtml">rotateLogs</a>()
+                    </li><li>public array <a title="FireGento_Logger_Model_Observer" href="../classes/FireGento_Logger_Model_Observer/getFilesOlderThan.xhtml">getFilesOlderThan</a>()
+                    </li><li>protected string <a title="FireGento_Logger_Model_Observer" href="../classes/FireGento_Logger_Model_Observer/getArchiveName.xhtml">getArchiveName</a>()
+                    </li><li>public string <a title="FireGento_Logger_Model_Observer" href="../classes/FireGento_Logger_Model_Observer/formatDate.xhtml">formatDate</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a href="../classes/Varien_Object.xhtml">Varien_Object</a>
+            </li>
+          </ul>
         </div>
-        <ul class="fileinfos">
-          <li><b>Author: </b>FireGento Team &lt;team@firegento.com&gt;</li>
-        </ul>
-        <h3>Constants</h3>
-        <ul class="varlist">
-          <li><a name="MAX_FILE_DAYS"/>MAX_FILE_DAYS = 30<em> </em><p><li>Constant how long the files should be kept on the filesystem before they are rotated</li></p><hr/></li>
-        </ul>
-        <h3>Methods</h3>
-        <ul class="varlist">
-          <li>
-            <a name="cleanLogsCron"/>
-            <h4><span class="label public">public</span>cleanLogsCron<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Cron job for cleaning firegento log table</li>
-            </p>
-          </li>
-          <li>
-            <a name="formatDate"/>
-            <h4><span class="label public">public</span>formatDate<span style="font-size:90%;">( <span class="param-type"><span title="string|Zend_Date">string|Zend_Date</span></span><strong> $date</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Format date to internal format</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$date</code> - Date to format</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>Formatted date</li>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="getFilesOlderThan"/>
-            <h4><span class="label public">public</span>getFilesOlderThan<span style="font-size:90%;">( <span class="param-type">int</span><strong> $days</strong>, <span class="param-type">string</span><strong> $dir</strong>, <span class="param-type">string</span><strong> $filename</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Get all files which are older than X days and containing a pattern.</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$days</code> - Days</li>
-                <li><code>$dir</code> - Directory</li>
-                <li><code>$filename</code> - Filename</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-          <li>
-            <a name="rotateLogs"/>
-            <h4><span class="label public">public</span>rotateLogs<span style="font-size:90%;">(  )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Rotate all files in var/log which ends with .log</li>
-            </p>
-          </li>
-          <li>
-            <a name="getArchiveName"/>
-            <h4><span class="label protected">protected</span>getArchiveName<span style="font-size:90%;">( <span class="param-type">string</span><strong> $filename</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Create a zip filename out of a filename with timestamp</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$filename</code> - Filename</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li/>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
-      </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="MAX_FILE_DAYS">MAX_FILE_DAYS</td>
+              <td>30</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>protected</h4>
+          <ul>
+            <li id="getArchiveName"><a title="FireGento_Logger_Model_Observer" href="../classes/FireGento_Logger_Model_Observer/getArchiveName.xhtml">getArchiveName()</a>
+                — Create a zip filename out of a filename with timestamp</li>
+          </ul>
+          <h4>public</h4>
+          <ul>
+            <li id="cleanLogsCron"><a title="FireGento_Logger_Model_Observer" href="../classes/FireGento_Logger_Model_Observer/cleanLogsCron.xhtml">cleanLogsCron()</a>
+                — Cron job for cleaning firegento log table</li>
+            <li id="formatDate"><a title="FireGento_Logger_Model_Observer" href="../classes/FireGento_Logger_Model_Observer/formatDate.xhtml">formatDate()</a>
+                — Format date to internal format</li>
+            <li id="getFilesOlderThan"><a title="FireGento_Logger_Model_Observer" href="../classes/FireGento_Logger_Model_Observer/getFilesOlderThan.xhtml">getFilesOlderThan()</a>
+                — Get all files which are older than X days and containing a pattern.</li>
+            <li id="rotateLogs"><a title="FireGento_Logger_Model_Observer" href="../classes/FireGento_Logger_Model_Observer/rotateLogs.xhtml">rotateLogs()</a>
+                — Rotate all files in var/log which ends with .log</li>
+          </ul>
+        </div>
+      </section>
     </div>
+    <footer>
+      <span/>
+    </footer>
   </body>
 </html>

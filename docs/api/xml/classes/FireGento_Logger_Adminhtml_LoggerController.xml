@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="FireGento_Logger_Adminhtml_LoggerController" namespace="" name="FireGento_Logger_Adminhtml_LoggerController" abstract="false" final="false" start="28" end="132">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/controllers/Adminhtml" file="LoggerController.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/app/code/community/FireGento/Logger/controllers/Adminhtml/LoggerController.php" size="3775" time="2013-10-12T19:23:04+02:00" unixtime="1381598584" sha1="54d1bf9a2d722ae503b4f331bd286ca67dfa621e"/>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Adminhtml_LoggerController" namespace="" name="FireGento_Logger_Adminhtml_LoggerController" abstract="false" final="false" start="28" end="201">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/controllers/Adminhtml" file="LoggerController.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/controllers/Adminhtml/LoggerController.php" size="5800" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="eafc8d3d0f070669ac55b93cd28c7a32daacaa9b" relative="app/code/community/FireGento/Logger/controllers/Adminhtml/LoggerController.php"/>
   <docblock>
     <description compact="Log/Report Viewer for the backend"/>
     <category value="FireGento"/>
@@ -8,22 +8,46 @@
     <author value="FireGento Team &lt;team@firegento.com&gt;"/>
   </docblock>
   <extends full="Mage_Adminhtml_Controller_Action" namespace="" name="Mage_Adminhtml_Controller_Action"/>
-  <method name="indexAction" start="33" end="38" abstract="false" final="false" static="false" visibility="public">
+  <member name="_loggerEntry" type="{unknown}" visibility="protected" line="30"/>
+  <method name="indexAction" start="35" end="40" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Show grid viewer"/>
     </docblock>
   </method>
-  <method name="liveViewAction" start="43" end="48" abstract="false" final="false" static="false" visibility="public">
+  <method name="testAction" start="45" end="49" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Test the logger"/>
+    </docblock>
+  </method>
+  <method name="viewAction" start="54" end="60" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Show the details of a log entry"/>
+    </docblock>
+  </method>
+  <method name="_getLoggerEntry" start="67" end="80" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Get the logger entry"/>
+      <return description="the entry" type="object">
+        <type full="FireGento_Logger_Model_Db_Entry" namespace="" name="FireGento_Logger_Model_Db_Entry"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="liveViewAction" start="85" end="90" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Show the log viewer"/>
     </docblock>
   </method>
-  <method name="reportViewAction" start="53" end="58" abstract="false" final="false" static="false" visibility="public">
+  <method name="massDeleteAction" start="95" end="117" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Action to do mass deletion"/>
+    </docblock>
+  </method>
+  <method name="reportViewAction" start="122" end="127" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Show the report viewer"/>
     </docblock>
   </method>
-  <method name="liveViewAjaxAction" start="65" end="94" abstract="false" final="false" static="false" visibility="public">
+  <method name="liveViewAjaxAction" start="134" end="163" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Ajax function for reading a log file"/>
       <return type="object">
@@ -31,7 +55,7 @@
       </return>
     </docblock>
   </method>
-  <method name="reportAjaxAction" start="101" end="118" abstract="false" final="false" static="false" visibility="public">
+  <method name="reportAjaxAction" start="170" end="187" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Ajax function for reading a report file"/>
       <return type="object">
@@ -39,7 +63,7 @@
       </return>
     </docblock>
   </method>
-  <method name="_isAllowed" start="125" end="131" abstract="false" final="false" static="false" visibility="protected">
+  <method name="_isAllowed" start="194" end="200" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="Check if admin user is allowed to view this controller actions"/>
       <return description="Flag" type="object">

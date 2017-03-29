@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Model_Logstash" namespace="" name="FireGento_Logger_Model_Logstash" abstract="false" final="false" start="28" end="155">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model" file="Logstash.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Model/Logstash.php" size="5142" time="2015-01-24T18:41:17+00:00" unixtime="1422124877" sha1="8dcb5276dd1dea8270d172cffe6a9609610aa988" relative="app/code/community/FireGento/Logger/Model/Logstash.php"/>
+  <docblock>
+    <description compact="Model for Logstash"/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Zend_Log_Writer_Abstract" namespace="" name="Zend_Log_Writer_Abstract"/>
+  <member name="_enableBacktrace" type="{unknown}" default="false" visibility="protected" line="33">
+    <docblock>
+      <description/>
+      <var description="Indicates if backtrace should be added to the Log Message." type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </var>
+    </docblock>
+  </member>
+  <member name="_logstashServer" type="{unknown}" default="false" visibility="protected" line="34"/>
+  <member name="_logstashPort" type="{unknown}" default="false" visibility="protected" line="35"/>
+  <member name="_logstashProtocol" type="{unknown}" default="false" visibility="protected" line="36"/>
+  <member name="_options" type="{unknown}" default="null" visibility="protected" line="37"/>
+  <member name="_timeout" type="integer" default="5" visibility="protected" line="41">
+    <docblock>
+      <description/>
+      <var description="The timeout to apply when sending data to Loggly servers, in seconds." type="int"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="48" end="56" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Class constructor"/>
+      <param description="Filename" type="string" variable="$filename"/>
+    </docblock>
+    <parameter name="filename" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="factory" start="64" end="67" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Satisfy newer Zend Framework"/>
+      <param description="Configuration" type="object" variable="$config">
+        <type full="array|Zend_Config" namespace="" name="array|Zend_Config"/>
+      </param>
+      <return type="object">
+        <type full="void|Zend_Log_FactoryInterface" namespace="" name="void|Zend_Log_FactoryInterface"/>
+      </return>
+    </docblock>
+    <parameter name="config" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="setEnableBacktrace" start="74" end="77" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Setter for class variable _enableBacktrace"/>
+      <param description="Flag for Backtrace" type="object" variable="$flag">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+    </docblock>
+    <parameter name="flag" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="buildJSONMessage" start="86" end="104" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Builds a JSON Message that will be sent to a Logstash Server."/>
+      <param description="A Magento Log Event." type="object" variable="$event">
+        <type full="FireGento_Logger_Model_Event" namespace="" name="FireGento_Logger_Model_Event"/>
+      </param>
+      <param description="Indicates if a backtrace should be added to the log event." type="object" variable="$enableBacktrace">
+        <type full="bool" namespace="" name="bool"/>
+      </param>
+      <return description="A JSON structure representing the message." type="string"/>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+    <parameter name="enableBacktrace" byreference="false" type="{unknown}" default="false"/>
+    <inline>
+      <comment value="udp/tcp inputs require a trailing EOL character." line="101"/>
+    </inline>
+  </method>
+  <method name="publishMessage" start="113" end="141" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Sends a JSON Message to Loggly."/>
+      <param description="The JSON-Encoded Message to be sent." type="string" variable="$message"/>
+      <throws type="object">
+        <type full="Zend_Log_Exception" namespace="" name="Zend_Log_Exception"/>
+      </throws>
+      <return description="True if message was sent correctly, False otherwise." type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="message" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="_write" start="149" end="154" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Places event line into array of lines to be used as message body."/>
+      <param description="Event data" type="array" variable="$event"/>
+      <return description="True if message was sent correctly, False otherwise." type="object">
+        <type full="bool" namespace="" name="bool"/>
+      </return>
+    </docblock>
+    <parameter name="event" byreference="false" type="{unknown}"/>
+  </method>
+</class>

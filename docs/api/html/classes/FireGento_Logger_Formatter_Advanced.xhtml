@@ -1,94 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "html" "">
-<html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
-    <meta charset="utf-8"/>
-    <title>FireGento_Logger - FireGento_Logger_Formatter_Advanced - API Documentation</title>
-    <link href="../css/normalize.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" media="all"/>
+    <title>phpDox - FireGento_Logger_Formatter_Advanced</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   </head>
   <body>
-    <div class="wrapper clearfix">
-      <div class="topbar clearfix">
-        <h1>
-          <a class="brand" href="../index.xhtml">FireGento_Logger - API Documentation</a>
-        </h1>
-        <ul class="nav">
-          <li class="active">
+    <nav class="topnav">
+      <ul>
+        <li>
+          <div class="logo"><span>/**</span>phpDox</div>
+        </li>
+        <li class="separator">
+          <a href="../index.xhtml">Overview</a>
+        </li>
+        <li class="separator">
+          <a href="../namespaces.xhtml">Namespaces</a>
+        </li>
+        <li>
+          <a href="../classes.xhtml">Classes</a>
+        </li>
+        <li class="separator">
+          <a href="../source/index.xhtml">Source</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="mainstage">
+      <div class="box">
+        <ul class="breadcrumb">
+          <li>
             <a href="../index.xhtml">Overview</a>
           </li>
+          <li class="separator">
+            <a href="../classes.xhtml">Classes</a>
+          </li>
+          <li class="separator">FireGento_Logger_Formatter_Advanced</li>
         </ul>
       </div>
-      <div class="navigation">
-        <h3>Constants</h3>
+      <nav class="box">
         <ul>
           <li>
-            <a href="#DEFAULT_FORMAT">DEFAULT_FORMAT</a>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#synopsis">Synopsis</a>
+          </li>
+          <li>
+            <a href="#hierarchy">Hierarchy</a>
+          </li>
+          <li>
+            <a href="#constants">Constants</a>
+          </li>
+          <li>
+            <a href="#methods">Methods</a>
+          </li>
+          <li>
+            <a href="../source/app/code/community/FireGento/Logger/Formatter/Advanced.php.xhtml#line28">Source</a>
           </li>
         </ul>
-        <h3>Methods</h3>
+      </nav>
+      <section>
+        <h1 id="introduction"><small>\</small>FireGento_Logger_Formatter_Advanced</h1>
+        <h4>Advanced Formatted Logger</h4>
+        <p/>
         <ul>
-          <li>
-            <a href="#__construct">__construct</a>
-          </li>
-          <li>
-            <a href="#format">format</a>
-          </li>
+          <li>Author: FireGento Team &lt;team@firegento.com&gt;</li>
         </ul>
-      </div>
-      <div class="content">
-        <h2><span style="font-size:60%">\</span>FireGento_Logger_Formatter_Advanced</h2>
-        <div class="file-notice">
-          <p>Advanced Formatted Logger</p>
+        <h2 id="synopsis">Synopsis</h2>
+        <div class="synopsis">class FireGento_Logger_Formatter_Advanced
+                extends <a title="Zend_Log_Formatter_Simple" href="../classes/Zend_Log_Formatter_Simple.xhtml">Zend_Log_Formatter_Simple</a>
+            {<br/><ul class="none"><li>// constants</li><li>const DEFAULT_FORMAT = '%timestamp% %priorityName% (%priority%): %message%';</li></ul><ul class="none"><li>// methods</li><li>public void <a title="FireGento_Logger_Formatter_Advanced" href="../classes/FireGento_Logger_Formatter_Advanced/__construct.xhtml">__construct</a>()
+                    </li><li>public string <a title="FireGento_Logger_Formatter_Advanced" href="../classes/FireGento_Logger_Formatter_Advanced/format.xhtml">format</a>()
+                    </li></ul>
+
+            }<br/></div>
+        <h2 id="hierarchy">Hierarchy</h2>
+        <div class="styled">
+          <h4>Extends</h4>
+          <ul>
+            <li>
+              <a href="../classes/Zend_Log_Formatter_Simple.xhtml">Zend_Log_Formatter_Simple</a>
+            </li>
+          </ul>
         </div>
-        <ul class="fileinfos">
-          <li><b>Author: </b>FireGento Team &lt;team@firegento.com&gt;</li>
-        </ul>
-        <h3>Constants</h3>
-        <ul class="varlist">
-          <li><a name="DEFAULT_FORMAT"/>DEFAULT_FORMAT = '%timestamp% %priorityName% (%priority%): %message%'<em> </em><p><li>Default format</li></p><hr/></li>
-        </ul>
-        <h3>Constructor</h3>
-        <ul class="varlist">
-          <li>
-            <a name="__construct"/>
-            <h4><span class="label public">public</span>__construct<span style="font-size:90%;">( <span class="param-type"><span title="null|string">null|string</span></span><strong> $format</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Class constructor</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$format</code> - Logging Format</li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <h3>Methods</h3>
-        <ul class="varlist">
-          <li>
-            <a name="format"/>
-            <h4><span class="label public">public</span>format<span style="font-size:90%;">( <span class="param-type">array</span><strong> $event</strong>, <span class="param-type"><span title="bool">bool</span></span><strong> $enableBacktrace</strong> )</span></h4>
-            <p style="font-size:110%; padding-top:5px;">
-              <li>Formats data into a single line to be written by the writer.</li>
-            </p>
-            <ul>
-              <h4 class="param">Parameters:</h4>
-              <ul class="param">
-                <li><code>$event</code> - Event Data</li>
-                <li><code>$enableBacktrace</code> - Backtrace Flag</li>
-              </ul>
-            </ul>
-            <ul>
-              <h4 class="return">Returns:</h4>
-              <ul class="return">
-                <li>formatted line to write to the log</li>
-              </ul>
-            </ul>
-          </li>
-        </ul>
-        <div class="footer">Generated using phpDox 0.5 - Copyright (C) 2010 - 2013 by Arne Blankerts</div>
-      </div>
+        <h2 id="constants">Constants</h2>
+        <table class="styled">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="DEFAULT_FORMAT">DEFAULT_FORMAT</td>
+              <td>'%timestamp% %priorityName% (%priority%): %message%'</td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="methods">Methods</h2>
+        <div class="styled">
+          <h4>public</h4>
+          <ul>
+            <li id="__construct"><a title="FireGento_Logger_Formatter_Advanced" href="../classes/FireGento_Logger_Formatter_Advanced/__construct.xhtml">__construct()</a>
+                — Class constructor</li>
+            <li id="format"><a title="FireGento_Logger_Formatter_Advanced" href="../classes/FireGento_Logger_Formatter_Advanced/format.xhtml">format()</a>
+                — Formats data into a single line to be written by the writer.</li>
+          </ul>
+        </div>
+      </section>
     </div>
+    <footer>
+      <span/>
+    </footer>
   </body>
 </html>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class xmlns="http://xml.phpdox.de/src#" full="SyslogMessage" namespace="" name="SyslogMessage" abstract="false" final="false" start="14" end="279">
-  <file path="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/rsyslog" file="syslogmessage.php" realpath="/Users/rouven/Sites/firegento/.modman/firegento-logger/src/lib/rsyslog/syslogmessage.php" size="8320" time="2013-10-12T19:11:57+02:00" unixtime="1381597917" sha1="8e50b256ea89b248eb85b1c1e30c8f732bcfa27c"/>
+<class xmlns="http://xml.phpdox.net/src" full="SyslogMessage" namespace="" name="SyslogMessage" abstract="false" final="false" start="14" end="279">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/rsyslog" file="syslogmessage.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/lib/rsyslog/syslogmessage.php" size="8320" time="2014-07-08T22:35:31+00:00" unixtime="1404858931" sha1="8e50b256ea89b248eb85b1c1e30c8f732bcfa27c" relative="lib/rsyslog/syslogmessage.php"/>
   <docblock>
     <description compact="Encapsulates a Syslog Message."/>
   </docblock>
@@ -8,14 +8,14 @@
   <constant name="MAX_TAG_LENGTH" value="1024"/>
   <constant name="DEFAULT_PROCESSNAME" value="'PHP'"/>
   <constant name="DEFAULT_HOSTNAME" value="'NONAME'"/>
-  <member name="Facility" type="{unknown}" visibility="protected"/>
-  <member name="Severity" type="{unknown}" visibility="protected"/>
-  <member name="HostName" type="{unknown}" visibility="protected"/>
-  <member name="FQDN" type="{unknown}" visibility="protected"/>
-  <member name="IPAddress" type="{unknown}" visibility="protected"/>
-  <member name="ProcessName" type="{unknown}" visibility="protected"/>
-  <member name="Message" type="{unknown}" visibility="protected"/>
-  <member name="Timestamp" type="{unknown}" visibility="protected"/>
+  <member name="Facility" type="{unknown}" visibility="protected" line="22"/>
+  <member name="Severity" type="{unknown}" visibility="protected" line="23"/>
+  <member name="HostName" type="{unknown}" visibility="protected" line="24"/>
+  <member name="FQDN" type="{unknown}" visibility="protected" line="25"/>
+  <member name="IPAddress" type="{unknown}" visibility="protected" line="26"/>
+  <member name="ProcessName" type="{unknown}" visibility="protected" line="27"/>
+  <member name="Message" type="{unknown}" visibility="protected" line="28"/>
+  <member name="Timestamp" type="{unknown}" visibility="protected" line="29"/>
   <method name="Coalesce" start="36" end="44" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="Returns the first non null value amongst the arguments."/>
@@ -51,7 +51,7 @@
   <method name="SetOptions" start="109" end="113" abstract="false" final="false" static="false" visibility="protected">
     <docblock>
       <description compact="Sets several options for the instance."/>
-      <param description="array of options that will be used to configure the" type="object" variable="An">instance.<type full="Options" namespace="" name="Options"/></param>
+      <param description="An array of options that will be used to configure the" type="object">instance.<type full="Options" namespace="" name="Options"/></param>
     </docblock>
     <parameter name="Options" byreference="false" type="array"/>
   </method>
@@ -72,6 +72,9 @@
       <description compact="Setter for ProcessName property."/>
     </docblock>
     <parameter name="ProcessName" byreference="false" type="{unknown}"/>
+    <inline>
+      <comment value="Process Name can have a maximum length of 32 characters" line="140"/>
+    </inline>
   </method>
   <method name="SetMessage" start="147" end="149" abstract="false" final="false" static="false" visibility="public">
     <docblock>
@@ -89,25 +92,25 @@
   <constructor name="__construct" start="172" end="181" abstract="false" final="false" static="false" visibility="public">
     <docblock>
       <description compact="Class constructor."/>
-      <param description="log message." type="object" variable="The">
+      <param description="The log message." type="object">
         <type full="Message" namespace="" name="Message"/>
       </param>
-      <param description="Facility that generated the message (@link SyslogFacility)." type="object" variable="The">
+      <param description="The Facility that generated the message (@link SyslogFacility)." type="object">
         <type full="Facility" namespace="" name="Facility"/>
       </param>
-      <param description="Severity of the message (@link SyslogSeverity)." type="object" variable="The">
+      <param description="The Severity of the message (@link SyslogSeverity)." type="object">
         <type full="Severity" namespace="" name="Severity"/>
       </param>
-      <param description="timestamp of the log message." type="object" variable="The">
+      <param description="The timestamp of the log message." type="object">
         <type full="Timestamp" namespace="" name="Timestamp"/>
       </param>
-      <param description="configuration options (@link Options)." type="object" variable="Additional">
+      <param description="Additional configuration options (@link Options)." type="object">
         <type full="Options" namespace="" name="Options"/>
       </param>
     </docblock>
     <parameter name="Message" byreference="false" type="{unknown}"/>
-    <parameter name="Facility" byreference="false" type="integer" default=""/>
-    <parameter name="Severity" byreference="false" type="integer" default=""/>
+    <parameter name="Facility" byreference="false" type="integer" default="16"/>
+    <parameter name="Severity" byreference="false" type="integer" default="5"/>
     <parameter name="Timestamp" byreference="false" type="{unknown}"/>
     <parameter name="Options" byreference="false" type="{unknown}" default="null"/>
   </constructor>
@@ -118,6 +121,13 @@
         <type full="A" namespace="" name="A"/>
       </return>
     </docblock>
+    <inline>
+      <comment value="It's a bit messy to format the timestamp as required by RFC3164, because" line="189"/>
+      <comment value="the Day has to be padded with spaces and date() doesn't allow it. For this" line="190"/>
+      <comment value="reason, the Timestamp is first formatted as &quot;Month %2s Hours:Minutes:Seconds&quot;," line="191"/>
+      <comment value="then this string is used with sprintf to pad the day returned by the second" line="192"/>
+      <comment value="date() statement." line="193"/>
+    </inline>
   </method>
   <method name="GetPriority" start="202" end="204" abstract="false" final="false" static="false" visibility="private">
     <docblock>
@@ -152,6 +162,15 @@
       <description compact="Returns the chunks that form the full log message. If the message is short enough, it's not split and just returned."/>
       <return description="array containing the chunk of the Log Message. If the message is" type="object">short enough, the array will contain only one value.<type full="An" namespace="" name="An"/></return>
     </docblock>
+    <inline>
+      <comment value="If the Tag+Message string is short enough to fit in a single message," line="255"/>
+      <comment value="simply return it" line="256"/>
+      <comment value="If Message is too long, split it. To make it easier to put the pieces" line="261"/>
+      <comment value="together, append a Unique ID to each piece of the message" line="262"/>
+      <comment value="Split the message in chunks, so that each one is small enough to be sent" line="265"/>
+      <comment value="with the header" line="266"/>
+      <comment value="Build a full message for each chunk, adding Tag and Message ID" line="270"/>
+    </inline>
   </method>
   <extender full="FireGento_Logger_Model_Loggly_LogglySyslogMessage" namespace="" name="FireGento_Logger_Model_Loggly_LogglySyslogMessage"/>
 </class>

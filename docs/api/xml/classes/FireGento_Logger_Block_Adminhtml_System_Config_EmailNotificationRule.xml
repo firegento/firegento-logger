@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="FireGento_Logger_Block_Adminhtml_System_Config_EmailNotificationRule" namespace="" name="FireGento_Logger_Block_Adminhtml_System_Config_EmailNotificationRule" abstract="false" final="false" start="28" end="58">
+  <file path="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config" file="EmailNotificationRule.php" realpath="/Users/datenbrille/Projects/magento.local/public/.modman/firegento-logger/src/app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/EmailNotificationRule.php" size="2114" time="2015-01-24T21:34:45+00:00" unixtime="1422135285" sha1="1dab945754963401fd249f276cbbdca767106749" relative="app/code/community/FireGento/Logger/Block/Adminhtml/System/Config/EmailNotificationRule.php"/>
+  <docblock>
+    <description compact="Backend configuration to setup email rules."/>
+    <category value="FireGento"/>
+    <package value="FireGento_Logger"/>
+    <author value="FireGento Team &lt;team@firegento.com&gt;"/>
+  </docblock>
+  <extends full="Mage_Adminhtml_Block_System_Config_Form_Field_Array_Abstract" namespace="" name="Mage_Adminhtml_Block_System_Config_Form_Field_Array_Abstract"/>
+  <method name="_prepareToRender" start="34" end="57" abstract="false" final="false" static="false" visibility="protected">
+    <docblock>
+      <description compact="Prepare fields to render"/>
+    </docblock>
+  </method>
+</class>
