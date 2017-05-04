@@ -102,7 +102,7 @@ class FireGento_Logger_Model_Manager extends Varien_Object
         if ($this->_cfg != null) {
             return $this->_cfg;
         }
-        $cfg = Mage::getStoreConfig("dev/log/disabled_modules");
+        $cfg = Mage::getStoreConfig('dev/log/disabled_modules');
         if (empty($cfg)) {
             $this->_cfg = array();
         } else {

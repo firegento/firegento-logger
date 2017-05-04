@@ -21,7 +21,7 @@
 <config>
     <modules>
         <FireGento_Logger>
-            <version>1.4.1</version>
+            <version>1.4.2</version>
         </FireGento_Logger>
     </modules>
     <crontab>
@@ -110,6 +110,10 @@
                         <label>Files (Advanced Format)</label>
                         <class>FireGento_Logger_Model_Stream</class>
                     </advanced>
+                    <json>
+                        <label>Files (JSON Lines)</label>
+                        <class>FireGento_Logger_Model_JsonStream</class>
+                    </json>
                     <mailconfig>
                         <label>Mail</label>
                         <class>FireGento_Logger_Model_Mail</class>
@@ -184,6 +188,7 @@ ADDRESS: %remoteAddress%
 USER AGENT: %httpUserAgent%
 FILE: %file%:%line%
 %message%]]></format>
+                <max_data_length>1000</max_data_length>
                 <filter_request_data><![CDATA[
 payment.cc_number
 payment.cc_cid
