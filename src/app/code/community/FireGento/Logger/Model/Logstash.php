@@ -99,15 +99,20 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         $fields['StoreCode'] = $event->getStoreCode();
         $fields['TimeElapsed'] = $event->getTimeElapsed();
         $fields['SourceHost'] = $event->getHostname();
-        $fields['Message'] = $event->getMessage();
+        $fields['message'] = $event->getMessage();
         $fields['Backtrace'] = $event->getBacktrace();
         $fields['RequestMethod'] = $event->getRequestMethod();
         $fields['RequestData'] = $event->getRequestData();
         $fields['RemoteAddress'] = $event->getRemoteAddress();
-        $fields['HttpHost'] = Mage::app()->getRequest()->getHttpHost();
+        /** this prevents different datatypes as getHttpHost() returns either string or boolean (false) */
+        $fields['HttpHost'] = (!Mage::app()->getRequest()->getHttpHost()) ? 'cli': Mage::app()->getRequest()->getHttpHost();
         $fields['LogFileName'] = $this->_logFileName;
-        $fields['SessionId'] = Mage::getSingleton("core/session")->getEncryptedSessionId();
-        $fields['CustomerId'] = Mage::getSingleton('customer/session')->getCustomerId(); 
+        /** This is to prevent infinite loops with Cm_Redis_Session because the constructor calls the logging if
+         * log_level >= Zend_Log::Debug */
+        if ((int) Mage::getConfig()->getNode('global/redis_session')->descend('log_level') < Zend_Log::DEBUG) {
+            $fields['SessionId'] = Mage::getSingleton("core/session")->getEncryptedSessionId();
+            $fields['CustomerId'] = Mage::getSingleton('customer/session')->getCustomerId();
+        }
 
         // udp/tcp inputs require a trailing EOL character.
         $encodedMessage = trim(json_encode($fields)) . "\n";
@@ -125,7 +130,6 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
     {
         /* @var $helper FireGento_Logger_Helper_Data */
         $helper = Mage::helper('firegento_logger');
-
         $fp = fsockopen(
             sprintf('%s://%s', $this->_logstashProtocol, $this->_logstashServer),
             $this->_logstashPort,

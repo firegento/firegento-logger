@@ -250,28 +250,32 @@ class XMPPHP_XMLStream {
 	}
 
 	/**
-	 * Add XPath Handler
+	 * Add XPath Handler.
 	 *
-	 * @param string $xpath
-	 * @param string $pointer
-	 * @param
+	 * @param   string  $xpath
+	 * @param   string  $pointer
+	 * @@param  mixed    $obj
 	 */
 	public function addXPathHandler($xpath, $pointer, $obj = null) {
-		if (preg_match_all("/\(?{[^\}]+}\)?(\/?)[^\/]+/", $xpath, $regs)) {
-			$ns_tags = $regs[0];
-		} else {
-			$ns_tags = array($xpath);
-		}
-		foreach($ns_tags as $ns_tag) {
-			list($l, $r) = split("}", $ns_tag);
-			if ($r != null) {
-				$xpart = array(substr($l, 1), $r);
-			} else {
-				$xpart = array(null, $l);
-			}
-			$xpath_array[] = $xpart;
-		}
-		$this->xpathhandlers[] = array($xpath_array, $pointer, $obj);
+        if (preg_match_all("/\(?{[^\}]+}\)?(\/?)[^\/]+/", $xpath, $regs)) {
+            $ns_tags = $regs[0];
+        } else {
+            $ns_tags = array($xpath);
+        }
+
+        foreach ($ns_tags as $ns_tag) {
+            list($l, $r) = explode('}', $ns_tag);
+
+            if ($r != null) {
+                $xpart = array(substr($l, 1), $r);
+            } else {
+                $xpart = array(null, $l);
+            }
+
+            $xpath_array[] = $xpart;
+        }
+
+        $this->xpathhandlers[] = array($xpath_array, $pointer, $obj);
 	}
 
 	/**
