@@ -134,7 +134,7 @@ class FireGento_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
             $msg->setAdditional('store_code', $event->getStoreCode());
             $msg->setAdditional('time_elapsed', $event->getTimeElapsed());
             $msg->setHost(php_uname('n'));
-            foreach (array('getRequestMethod', 'getRequestUri', 'getRemoteIp', 'getHttpUserAgent') as $method) {
+            foreach (array('getRequestMethod', 'getRequestUri', 'getRemoteIp', 'getHttpUserAgent','getHttpHost','getHttpCookie','getSessionData') as $method) {
                 if (is_callable(array($event, $method)) && $event->$method()) {
                     $msg->setAdditional(lcfirst(substr($method, 3)), $event->$method());
                 }

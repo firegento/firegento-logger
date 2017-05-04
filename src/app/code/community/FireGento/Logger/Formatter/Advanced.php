@@ -27,10 +27,6 @@
  */
 class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
 {
-    /**
-     * Default format
-     */
-    const DEFAULT_FORMAT = '%timestamp% %priorityName% (%priority%): %message%';
 
     /**
      * Class constructor
@@ -57,10 +53,27 @@ class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
      * @param  bool                         $enableBacktrace Backtrace Flag
      * @return string formatted line to write to the log
      */
-    public function format($event, $enableBacktrace = false)
+    public function format($event, $enableBacktrace = FALSE)
     {
         Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
 
-        return parent::format($event->getEventDataArray());
+        $maxDataLength = Mage::helper('firegento_logger')->getLoggerConfig('general/max_data_length') ?: 1000;
+        $prettyPrint = Mage::helper('firegento_logger')->getLoggerConfig('general/pretty_print') && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : 0;
+        $output = preg_replace_callback('/%(\w+)%/', function ($match) use ($event, $maxDataLength, $prettyPrint) {
+            $value = isset($event[$match[1]]) ? $event[$match[1]] : '-';
+            if (is_bool($value)) {
+                return $value ? 'TRUE' : 'FALSE';
+            } else if (is_scalar($value) || (is_object($value) && method_exists($value, '__toString'))) {
+                return "$value";
+            } else if (is_array($value)) {
+                return substr(@json_encode($value, $prettyPrint), 0, $maxDataLength);
+            } else if (is_scalar($value)) {
+                return "$value";
+            } else {
+                return gettype($value);
+            }
+        }, $this->_format);
+        return $output;
     }
+
 }

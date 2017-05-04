@@ -71,8 +71,10 @@ class FireGento_Logger_Model_Stream extends Zend_Log_Writer_Stream
         }
 
         $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
-
-        $line = $this->_formatter->format($event, $this->_enableBacktrace);
+        Mage::helper('firegento_logger')->addEventMetadata($event, NULL, $this->_enableBacktrace);
+        $eventData = $event->getEventDataArray();
+        $eventData = array_filter($eventData, 'is_null');
+        $line = @json_encode($eventData);
 
         if (false === @fwrite($this->_stream, $line)) {
             //require_once 'Zend/Log/Exception.php';

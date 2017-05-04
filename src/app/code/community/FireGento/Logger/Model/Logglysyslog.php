@@ -84,7 +84,7 @@ class FireGento_Logger_Model_Logglysyslog extends FireGento_Logger_Model_Rsyslog
             $fields['Backtrace'] = $event->getBacktrace();
         }
 
-        foreach (array('getRequestMethod', 'getRequestUri', 'getRemoteIp', 'getHttpUserAgent') as $method) {
+        foreach (array('getRequestMethod', 'getRequestUri', 'getRemoteIp', 'getHttpUserAgent','getHttpHost','getHttpCookie','getSessionData') as $method) {
             if (is_callable(array($event, $method)) && $event->$method()) {
                 $fields[lcfirst(substr($method, 3))] = $event->$method();
             }

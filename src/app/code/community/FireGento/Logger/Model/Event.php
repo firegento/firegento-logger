@@ -39,6 +39,10 @@
  * @method $this setStoreCode(string $value)
  * @method string getHttpUserAgent()
  * @method $this setHttpUserAgent(string $value)
+ * @method string getHttpCookie()
+ * @method $this setHttpCookie(string $value)
+ * @method string getHttpHost()
+ * @method $this setHttpHost(string $value)
  * @method string getFile()
  * @method $this setFile(string $value)
  * @method string getBacktrace()
@@ -55,6 +59,8 @@
  * @method $this setPriority(int $value)
  * @method int getTimestamp()
  * @method $this setTimestamp(int $value)
+ * @method string getSessionData()
+ * @method $this setSessionData(string $value)
  *
  */
 class FireGento_Logger_Model_Event extends Varien_Object implements ArrayAccess
@@ -91,6 +97,9 @@ class FireGento_Logger_Model_Event extends Varien_Object implements ArrayAccess
             'requestMethod' => $this->getRequestMethod(),
             'requestUri' => $this->getRequestUri(),
             'httpUserAgent' => $this->getHttpUserAgent(),
+            'httpHost' => $this->getHttpHost(),
+            'httpCookie' => $this->getHttpCookie(),
+            'sessionData' => $this->getSessionData(),
             'requestData' => $this->getRequestData(),
             'remoteAddress' => $this->getRemoteAddress(),
             'hostname' => $this->getHostname(),

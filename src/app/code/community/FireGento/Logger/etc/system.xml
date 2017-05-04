@@ -77,6 +77,9 @@
                               %requestUri%<br/>
                               %requestData%<br/>
                               %remoteAddress%<br/>
+                              %httpHost%<br/>
+                              %httpCookie%<br/>
+                              %sessionData%<br/>
                               %httpUserAgent%<br/>
                               %file%<br/>
                               %line%<br/>
@@ -100,6 +103,31 @@
                             <show_in_default>1</show_in_default>
                             <comment><![CDATA[Enter a number above 0 to enable the %backtrace% key in the Advanced Format or in Graylog2]]></comment>
                         </max_backtrace_lines>
+                        <pretty_print translate="label">
+                            <label>Pretty Print</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[Pretty Print JSON encoded data (request data and session data). Requires PHP 5.4+]]></comment>
+                        </pretty_print>
+                        <max_data_length translate="label">
+                            <label>Max Data Length</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>36</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[Max length of individual data fields.]]></comment>
+                        </max_data_length>
+                        <add_session_data translate="label">
+                            <label>Add Session Data</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                If "Yes", session data will be added to event data.
+                            ]]></comment>
+                        </add_session_data>
                         <use_queue translate="label">
                             <label>Queue Events</label>
                             <frontend_type>select</frontend_type>
@@ -120,6 +148,7 @@
                             <comment><![CDATA[
                                 When set to "Yes", JS errors in the frontend will be send to an action to
                                 send these errors also to the configured logging backend. <br />
+                                Note: only if client is not defined in dev/restrict/allow_ips <br />
                             ]]></comment>
                         </frontend_logger>
                         <viewer_enabled translate="label">

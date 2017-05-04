@@ -35,6 +35,6 @@ class FireGento_Logger_ErrorController extends Mage_Core_Controller_Front_Action
         $request = $this->getRequest();
         $errorMessage = 'MESSAGE|' . $request->getParam('message') . "\n";
         $errorMessage .= 'URL|' . $request->getParam('url');
-        Mage::log($errorMessage, ZEND_LOG::ERR);
+        Mage::log($errorMessage, Zend_Log::ERR);
     }
 }
