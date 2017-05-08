@@ -158,10 +158,10 @@
                         <label>Redis Logger</label>
                         <class>FireGento_Logger_Model_Redis</class>
                     </redis>
-                    <redis>
+                    <airbrake>
                         <label>Airbrake</label>
                         <class>FireGento_Logger_Model_Airbrake</class>
-                    </redis>
+                    </airbrake>
                 </writer_models>
             </core>
         </log>
