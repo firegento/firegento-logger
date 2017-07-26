@@ -71,6 +71,8 @@
                               %priorityName%<br/>
                               %priority%<br/>
                               %storeCode%<br/>
+                              %adminUserId%<br/>
+                              %adminUserName%<br/>
                               %timeElapsed%<br/>
                               %hostname%<br/>
                               %requestMethod%<br/>
