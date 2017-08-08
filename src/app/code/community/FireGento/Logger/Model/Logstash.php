@@ -107,9 +107,8 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         /** this prevents different datatypes as getHttpHost() returns either string or boolean (false) */
         $fields['HttpHost'] = (!Mage::app()->getRequest()->getHttpHost()) ? 'cli': Mage::app()->getRequest()->getHttpHost();
         $fields['LogFileName'] = $this->_logFileName;
-        /** This is to prevent infinite loops with Cm_Redis_Session because the constructor calls the logging if
-         * log_level >= Zend_Log::Debug */
-        if ((int) Mage::getConfig()->getNode('global/redis_session')->descend('log_level') < Zend_Log::DEBUG) {
+        // Only add session fields if a session was already instantiated and logger should not start a new session
+        if (isset($_SESSION)) {
             $fields['SessionId'] = Mage::getSingleton("core/session")->getEncryptedSessionId();
             $fields['CustomerId'] = Mage::getSingleton('customer/session')->getCustomerId();
         }
