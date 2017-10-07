@@ -162,6 +162,10 @@
                         <label>Redis Logger</label>
                         <class>FireGento_Logger_Model_Redis</class>
                     </redis>
+                    <airbrake>
+                        <label>Airbrake</label>
+                        <class>FireGento_Logger_Model_Airbrake</class>
+                    </airbrake>
                 </writer_models>
             </core>
         </log>
@@ -176,6 +180,7 @@
         </template>
     </global>
     <default>
+
         <logger>
             <general>
                 <targets>advanced</targets>
@@ -269,6 +274,9 @@ confirmation]]></filter_request_data>
                 <password/>
                 <type>magento-log</type>
             </redis>
+            <airbrake>
+                <timeout>60</timeout>
+            </airbrake>
         </logger>
     </default>
     <frontend>

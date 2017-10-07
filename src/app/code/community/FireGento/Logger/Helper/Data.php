@@ -130,6 +130,13 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             ->setLine($notAvailable)
             ->setBacktrace($notAvailable)
             ->setStoreCode(Mage::app()->getStore()->getCode());
+        if (Mage::app()->getStore()->isAdmin() && isset($_SESSION)) {
+            $session = Mage::getSingleton('admin/session');
+            if ($session->isLoggedIn()) {
+                $event->setAdminUserId($session->getUserId());
+                $event->setAdminUserName($session->getUser()->getName());
+            }
+        }
 
         // Add request time
         if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {

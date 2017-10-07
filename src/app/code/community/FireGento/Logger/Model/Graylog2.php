@@ -112,7 +112,7 @@ class FireGento_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
 
             Mage::helper('firegento_logger')->addEventMetadata($event);
 
-            $message = $event->getMessage();
+            $message = trim($event->getMessage());
 
             $eofMessageFirstLine = strpos($message, "\n");
             $shortMessage = (false === $eofMessageFirstLine) ? $message :
