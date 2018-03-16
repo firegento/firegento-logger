@@ -25,7 +25,7 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Logger_Model_Stream extends Zend_Log_Writer_Stream
+class FireGento_Logger_Model_JsonStream extends Zend_Log_Writer_Stream
 {
     /**
      * @var bool
