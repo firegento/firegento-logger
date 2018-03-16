@@ -76,7 +76,7 @@ class FireGento_Logger_Model_JsonStream extends Zend_Log_Writer_Stream
         $eventData = array_filter($eventData, function ($var) { return $var !== null; });
         $line = @json_encode($eventData);
 
-        if (false === @fwrite($this->_stream, $line)) {
+        if (false === @fwrite($this->_stream, $line . PHP_EOL)) {
             //require_once 'Zend/Log/Exception.php';
             throw new Zend_Log_Exception("Unable to write to stream");
         }
