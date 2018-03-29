@@ -125,15 +125,23 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function addEventMetadata(&$event, $notAvailable = null, $enableBacktrace = false)
     {
+        $event->setBacktrace($enableBacktrace ? TRUE : $notAvailable);
+
+        // Only add metadata once even if there are multiple targets
+        if ($event->getStoreCode()) {
+            return;
+        }
+
         $event
             ->setFile($notAvailable)
             ->setLine($notAvailable)
-            ->setBacktrace($notAvailable)
             ->setStoreCode(Mage::app()->getStore()->getCode());
+
+        // Add admin user data
         if (Mage::app()->getStore()->isAdmin() && isset($_SESSION)) {
             $session = Mage::getSingleton('admin/session');
             if ($session->isLoggedIn()) {
-                $event->setAdminUserId($session->getUserId());
+                $event->setAdminUserId($session->getUser()->getId());
                 $event->setAdminUserName($session->getUser()->getName());
             }
         }
@@ -145,106 +153,68 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             $event->setTimeElapsed((float) sprintf('%d', time() - $_SERVER['REQUEST_TIME']));
         }
 
-        // Find file and line where message originated from and optionally get backtrace lines
-        $basePath = dirname(Mage::getBaseDir()).'/'; // 1 level up in case deployed with symlinks from parent directory
-        $nextIsFirst = false;                        // Skip backtrace frames until we reach Mage::log(Exception)
-        $recordBacktrace = false;
-        $maxBacktraceLines = $enableBacktrace ? (int) $this->getLoggerConfig('general/max_backtrace_lines') : 0;
-        $maxDataLength = $this->getLoggerConfig('general/max_data_length') ?: 1000;
-        $prettyPrint = $this->getLoggerConfig('general/pretty_print') && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : 0;
+        // Add backtrace data as array only for now, populate 'file' and 'line'
+        if ( ! $event->getBacktraceArray()) {
+            // Find file and line where message originated from and optionally get backtrace lines
+            $basePath = dirname(Mage::getBaseDir()).'/'; // 1 level up in case deployed with symlinks from parent directory
+            $nextIsFirst = false;                        // Skip backtrace frames until we reach Mage::log(Exception)
+            $recordBacktrace = false;
+            $maxBacktraceLines = (int) $this->getLoggerConfig('general/max_backtrace_lines');
+            $maxDataLength = $this->getLoggerConfig('general/max_data_length') ?: 1000;
+            $prettyPrint = $this->getLoggerConfig('general/pretty_print') && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : 0;
 
-        $backtraceFrames = array();
-        if (version_compare(PHP_VERSION, '5.3.6') < 0 ) {
-            $debugBacktrace = debug_backtrace(false);
-        } elseif (version_compare(PHP_VERSION, '5.4.0') < 0) {
-            $debugBacktrace = debug_backtrace(
-                $maxBacktraceLines > 0 ? 0 : DEBUG_BACKTRACE_IGNORE_ARGS
-            );
-        } else {
-            $debugBacktrace = debug_backtrace(
-                $maxBacktraceLines > 0 ? 0 : DEBUG_BACKTRACE_IGNORE_ARGS,
-                $maxBacktraceLines + 10
-            );
-        }
+            $backtraceFrames = array();
+            if (version_compare(PHP_VERSION, '5.4.0') < 0) {
+                $debugBacktrace = debug_backtrace();
+            } else {
+                $debugBacktrace = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT,
+                    $maxBacktraceLines + 10
+                );
+            }
+            foreach ($debugBacktrace as $frame) {
+                if (($nextIsFirst && $frame['function'] == 'logException')
+                    || (
+                        isset($frame['type'])
+                        && $frame['type'] == '::'
+                        && $frame['class'] == 'Mage'
+                        && substr($frame['function'], 0, 3) == 'log'
+                    )
+                ) {
+                    if (isset($frame['file']) && isset($frame['line'])) {
+                        $event
+                            ->setFile(str_replace($basePath, '', $frame['file']))
+                            ->setLine($frame['line']);
+                        if ($maxBacktraceLines) {
+                            $backtraceFrames = array($frame);
+                        } elseif ($nextIsFirst) {
+                            break;
+                        } else {
+                            continue;
+                        }
+                    }
 
-        foreach ($debugBacktrace as $frame) {
-            if (($nextIsFirst && $frame['function'] == 'logException')
-                || (
-                    isset($frame['type'])
-                    && $frame['type'] == '::'
-                    && $frame['class'] == 'Mage'
-                    && substr($frame['function'], 0, 3) == 'log'
-                )
-            ) {
-                if (isset($frame['file']) && isset($frame['line'])) {
-                    $event
-                        ->setFile(str_replace($basePath, '', $frame['file']))
-                        ->setLine($frame['line']);
-                    if ($maxBacktraceLines) {
-                        $backtraceFrames = array();
-                    } elseif ($nextIsFirst) {
+                    // Don't record backtrace for Mage::logException
+                    if ($frame['function'] == 'logException') {
+                        if (isset($frame['args'][0])) {
+                            $event->setException($frame['args'][0]);
+                        }
                         break;
-                    } else {
-                        continue;
                     }
+
+                    $nextIsFirst = true;
+                    $recordBacktrace = true;
+                    continue;
                 }
 
-                // Don't record backtrace for Mage::logException
-                if ($frame['function'] == 'logException') {
-                    break;
-                }
-
-                $nextIsFirst = true;
-                $recordBacktrace = true;
-                continue;
-            }
-
-            if ($recordBacktrace) {
-                if (count($backtraceFrames) >= $maxBacktraceLines) {
-                    break;
-                }
-                $backtraceFrames[] = $frame;
-                continue;
-            }
-        }
-
-        if ($backtraceFrames) {
-            $backtrace = array();
-            foreach ($backtraceFrames as $index => $frame) {
-                // Set file
-                if (empty($frame['file'])) {
-                    $frame['file'] = 'unknown_file';
-                } else {
-                    $frame['file'] = str_replace($basePath, '', $frame['file']);
-                }
-
-                // Set line
-                if (empty($frame['line'])) {
-                    $frame['line'] = 0;
-                }
-
-                $function = (isset($frame['class']) ? "{$frame['class']}{$frame['type']}":'').$frame['function'];
-                $args = array();
-                if (isset($frame['args'])) {
-                    foreach ($frame['args'] as $value) {
-                        $args[] = (is_object($value)
-                            ? get_class($value)
-                            : ( is_array($value)
-                                ? 'array('.count($value).')'
-                                : ( is_string($value)
-                                    ? "'".(strlen($value) > 100 ? "'".substr($value, 0, 100)."...'" : $value)."'"
-                                    : gettype($value)."($value)"
-                                )
-                            )
-                        );
+                if ($recordBacktrace) {
+                    if (count($backtraceFrames) >= $maxBacktraceLines) {
+                        break;
                     }
+                    $backtraceFrames[] = $frame;
+                    continue;
                 }
-
-                $args = implode(', ', $args);
-                $backtrace[] = "#{$index} {$frame['file']}:{$frame['line']} $function($args)";
             }
-
-            $event->setBacktrace(implode("\n", $backtrace));
+            $event->setBacktraceArray($backtraceFrames);
         }
 
         if (!empty($_SERVER['REQUEST_METHOD'])) {

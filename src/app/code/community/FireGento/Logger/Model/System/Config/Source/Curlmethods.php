@@ -19,22 +19,29 @@
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
 /**
- * Simple Formatted Logger
+ * cURL methods
+ *
+ * @see https://docs.sentry.io/clients/php/config/ "curl_method" section
  *
  * @category FireGento
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Logger_Formatter_Simple extends Zend_Log_Formatter_Simple
+class FireGento_Logger_Model_System_Config_Source_Curlmethods
 {
     /**
-     * Formats data into a single line to be written by the writer.
+     * Retrieve all cURL methods
      *
-     * @param  FireGento_Logger_Model_Event $event Event Data
-     * @return string formatted line to write to the log
+     * @return array
      */
-    public function format($event)
+    public function toOptionArray()
     {
-        return parent::format($event->getEventDataArraySimple());
+        $helper = Mage::helper('firegento_logger');
+
+        return array(
+            array('label' => $helper->__('sync'), 'value' => 'sync'),
+            array('label' => $helper->__('async (default)'), 'value' => 'async'),
+            array('label' => $helper->__('exec'), 'value' => 'exec'),
+        );
     }
 }

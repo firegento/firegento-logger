@@ -18,23 +18,39 @@
  * @copyright 2013 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 /**
- * Simple Formatted Logger
+ * Abstract model for all log writers
  *
  * @category FireGento
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Logger_Formatter_Simple extends Zend_Log_Formatter_Simple
+abstract class FireGento_Logger_Model_Abstract extends Zend_Log_Writer_Abstract
 {
     /**
-     * Formats data into a single line to be written by the writer.
-     *
-     * @param  FireGento_Logger_Model_Event $event Event Data
-     * @return string formatted line to write to the log
+     * @var bool Indicates if backtrace should be added to the Log Message.
      */
-    public function format($event)
+    protected $_enableBacktrace = false;
+
+    /**
+     * Setter for class variable _enableBacktrace
+     *
+     * @param bool $flag Flag for Backtrace
+     */
+    public function setEnableBacktrace($flag)
     {
-        return parent::format($event->getEventDataArraySimple());
+        $this->_enableBacktrace = $flag;
+    }
+
+    /**
+     * Satisfy newer Zend Framework
+     *
+     * @param  array|Zend_Config $config Configuration
+     * @return void|Zend_Log_FactoryInterface
+     */
+    public static function factory($config)
+    {
+
     }
 }
