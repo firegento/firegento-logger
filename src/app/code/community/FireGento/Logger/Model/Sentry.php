@@ -84,7 +84,8 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
             self::$_ravenClient = new Raven_Client($dsn, $options);
             self::$_ravenClient->setAppPath(dirname(BP));
             self::$_ravenClient->trace = TRUE;
-            self::$_ravenClient->install();
+            $error_handler = new Raven_ErrorHandler(self::$_ravenClient, false);
+            $error_handler->registerShutdownFunction();
         }
     }
 
@@ -140,11 +141,23 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
             if ($event->getException()) {
                 self::$_ravenClient->captureException($event->getException());
             } else {
+                // Make Raven error handler transparent
+                $backtrace = $event->getBacktraceArray() ?: TRUE;
+                if (is_array($backtrace) && count($backtrace) > 3) {
+                    if (  $backtrace[0]['function'] == 'log'
+                       && $backtrace[1]['function'] == 'mageCoreErrorHandler'
+                        && $backtrace[2]['class'] == 'Raven_Breadcrumbs_ErrorHandler'
+                    ) {
+                        array_shift($backtrace);
+                        array_shift($backtrace);
+                    }
+                }
+
                 self::$_ravenClient->captureMessage(
                     $event['message'],
                     [],
                     $this->_priorityToLevelMapping[$priority],
-                    $event->getBacktraceArray() ?: TRUE
+                    $backtrace
                 );
             }
 
