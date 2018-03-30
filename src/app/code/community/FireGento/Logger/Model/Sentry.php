@@ -47,10 +47,12 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
         7 /*Zend_Log::DEBUG*/  => 'debug',
     ];
 
+    protected $_fileName;
     protected $_priorityFilter;
 
-    public function __construct()
+    public function __construct($fileName = NULL)
     {
+        $this->_fileName = $fileName ? basename($fileName) : NULL;
         $this->_priorityFilter = (int)Mage::helper('firegento_logger')->getLoggerConfig('sentry/priority');
     }
 
@@ -126,6 +128,9 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
             } else {
                 $timeElapsed = (float) sprintf('%d', time() - $_SERVER['REQUEST_TIME']);
             }
+            self::$_ravenClient->context->tags = [
+                'target' => $this->_fileName
+            ];
             self::$_ravenClient->context->extra = [
                 'storeCode' => Mage::app()->getStore()->getCode(),
                 'timeElapsed' => $timeElapsed,
