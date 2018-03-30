@@ -111,8 +111,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
             // The way this works is it sifts backwards through the log to find which module called this log.
             $codeStart = stripos($file, DS.'code'.DS);
             $moduleDir = substr($moduleDir, $codeStart +strlen(DS.'code'.DS));
-            $moduleDir = str_ireplace('community' . DS, '', $moduleDir);
-            $moduleDir = str_ireplace('local' . DS, '', $moduleDir);
+            $moduleDir = str_ireplace(['core' . DS, 'community' . DS, 'local' . DS], '', $moduleDir);
             $endIndex = stripos($moduleDir, DS, stripos($moduleDir, DS)+1);
             $moduleKey = str_replace(DS, "_", substr($moduleDir, 0, $endIndex));
             if (!Mage::getSingleton('firegento_logger/manager')->isEnabled($moduleKey)) {
