@@ -41,6 +41,20 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
     protected $_notificationRules = null;
 
     /**
+     * Return a random id for this request
+     */
+    public function getRequestId()
+    {
+        if ( ! Mage::registry('logger_request_id')) {
+            try {
+                $requestId = preg_replace('/\W/','',base64_encode(random_bytes(6)));
+                Mage::register('logger_request_id', $requestId);
+            } catch (Exception $e) {}
+        }
+        return Mage::registry('logger_request_id');
+    }
+
+    /**
      * Get logger config value
      *
      * @param  string $path Config Path
@@ -133,6 +147,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         }
 
         $event
+            ->setRequestId($this->getRequestId())
             ->setFile($notAvailable)
             ->setLine($notAvailable)
             ->setStoreCode(Mage::app()->getStore()->getCode());

@@ -25,6 +25,8 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  *
+ * @method string getRequestId()
+ * @method $this setRequestId(string $value)
  * @method string getHostname()
  * @method $this setHostname(string $value)
  * @method string getRemoteAddress()
@@ -163,6 +165,7 @@ class FireGento_Logger_Model_Event extends Varien_Object implements ArrayAccess
             'priority' => $this->getPriority(),
             'priorityName' => $this->getPriorityName(),
             'message' => $this->getMessage(),
+            'requestId' => $this->getRequestId(),
             'file' => $this->getFile(),
             'line' => $this->getLine(),
             'backtrace' => $this->getBacktrace(),

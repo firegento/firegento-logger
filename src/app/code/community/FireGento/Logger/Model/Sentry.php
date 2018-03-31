@@ -105,6 +105,8 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
     protected function _write($event)
     {
         try {
+            Mage::helper('firegento_logger')->addEventMetadata($event, NULL, $this->_enableBacktrace);
+
             $this->initRavenClient();
 
             /**
@@ -121,31 +123,35 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
             }
 
             //
-            // Add extra data (not using addEventMetadata since it repeats a lot of work with Sentry)
+            // Add extra data and tags
             //
-            if (isset($_SERVER['REQUEST_TIME_FLOAT'])) {
-                $timeElapsed = (float) sprintf('%f', microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']);
-            } else {
-                $timeElapsed = (float) sprintf('%d', time() - $_SERVER['REQUEST_TIME']);
-            }
-            self::$_ravenClient->context->tags = [
-                'target' => $this->_fileName
+            $data = [
+                'tags' => [
+                    'target' => $this->_fileName,
+                    'storeCode' => $event->getStoreCode() ?: 'unknown',
+                    'requestId' => $event->getRequestId(),
+                ],
+                'extra' => [
+                    'timeElapsed' => $event->getTimeElapsed(),
+                ]
             ];
-            self::$_ravenClient->context->extra = [
-                'storeCode' => Mage::app()->getStore()->getCode(),
-                'timeElapsed' => $timeElapsed,
-            ];
-            if (Mage::app()->getStore()->isAdmin() && isset($_SESSION)) {
-                $session = Mage::getSingleton('admin/session');
-                if ($session->isLoggedIn()) {
-                    self::$_ravenClient->context->extra['adminUserId'] = $session->getUser()->getId();
-                    self::$_ravenClient->context->extra['adminUserName'] = $session->getUser()->getName();
+            if ($event->getAdminUserId()) $data['extra']['adminUserId'] = $event->getAdminUserId();
+            if ($event->getAdminUserName()) $data['extra']['adminUserName'] = $event->getAdminUserName();
+
+            if (class_exists('Mage')) {
+                if (Mage::registry('logger_data_tags')) {
+                    $data['tags'] = array_merge($data['tags'], Mage::registry('logger_data_tags'));
+                }
+                if (Mage::registry('logger_data_extra')) {
+                    $data['extra'] = array_merge($data['extra'], Mage::registry('logger_data_extra'));
                 }
             }
 
             if ($event->getException()) {
-                self::$_ravenClient->captureException($event->getException());
+                $eventId = self::$_ravenClient->captureException($event->getException(), $data);
             } else {
+                $data['level'] = $this->_priorityToLevelMapping[$priority];
+
                 // Make Raven error handler transparent
                 $backtrace = $event->getBacktraceArray() ?: TRUE;
                 if (is_array($backtrace) && count($backtrace) > 3) {
@@ -158,13 +164,15 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
                     }
                 }
 
-                self::$_ravenClient->captureMessage(
+                $eventId = self::$_ravenClient->captureMessage(
                     $event['message'],
                     [],
-                    $this->_priorityToLevelMapping[$priority],
+                    $data,
                     $backtrace
                 );
             }
+            Mage::unregister('logger_raven_last_event_id');
+            Mage::register('logger_raven_last_event_id', $eventId);
 
         } catch (Exception $e) {
             throw new Zend_Log_Exception($e->getMessage(), $e->getCode());

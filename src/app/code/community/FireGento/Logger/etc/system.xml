@@ -86,7 +86,8 @@
                               %file%<br/>
                               %line%<br/>
                               %message%<br/>
-                              %backtrace%
+                              %backtrace%<br/>
+                              %requestId%<br/>
                             ]]></comment>
                         </format>
                         <filter_request_data translate="label">
