@@ -757,9 +757,21 @@
                                 The DSN can be found in Sentry by navigating to
                                 <nobr>[Project Name] -> Project Settings -> Client Keys (DSN).</nobr>
                                 Its template resembles the following:<br/>
-                                <nobr>{PROTOCOL}://{PUBLIC_KEY}:{SECRET_KEY}@{HOST}/{PATH}{PROJECT_ID}</nobr>
+                                <nobr>{PROTOCOL}://{PUBLIC_KEY}:{SECRET_KEY}@{HOST}/{PROJECT_ID}</nobr>
                             ]]></comment>
                         </dsn>
+                        <public_dsn translate="label comment">
+                            <label>DSN (Public)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[
+                                The DSN can be found in Sentry by navigating to
+                                <nobr>[Project Name] -> Project Settings -> Client Keys (DSN).</nobr>
+                                Its template resembles the following:<br/>
+                                <nobr>{PROTOCOL}://{PUBLIC_KEY}@{HOST}/{PROJECT_ID}</nobr>
+                            ]]></comment>
+                        </public_dsn>
                         <curl_method translate="label">
                             <label>cURL Method</label>
                             <frontend_type>select</frontend_type>
@@ -781,6 +793,35 @@
                             <show_in_default>1</show_in_default>
                             <comment>Choose the lowest priority level to be sent to Sentry.</comment>
                         </priority>
+                        <frontend_enabled translate="label comment">
+                            <label>Enable Javascript Reporting for Frontend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                                This will add the raven.js client script to the page so that frontend errors will be captured
+                                and transmitted to Sentry.io using the above Public DSN.
+                            ]]></comment>
+                        </frontend_enabled>
+                        <adminhtml_enabled translate="label comment">
+                            <label>Enable Javascript Reporting for Admin</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                                This will add the raven.js client script to the page so that adminhtml errors will be captured
+                                and transmitted to Sentry.io Public DSN.<br/>
+                                <br/>
+                                You must add this code to your page/head.phtml adminhtml template:<br/>
+                                <code>&lt;?php echo $this->getChildHtml('firegento_logger_sentry') ?&gt;</code>
+                            ]]></comment>
+                        </adminhtml_enabled>
                     </fields>
                 </sentry>
                 <airbrake translate="label">

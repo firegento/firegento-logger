@@ -318,5 +318,12 @@ confirmation]]></filter_request_data>
                 </args>
             </logger>
         </routers>
+        <layout>
+            <updates>
+                <firegento_logger>
+                    <file>firegento_logger.xml</file>
+                </firegento_logger>
+            </updates>
+        </layout>
     </frontend>
 </config>
