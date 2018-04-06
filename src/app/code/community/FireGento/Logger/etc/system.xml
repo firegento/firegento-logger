@@ -26,6 +26,8 @@
             <frontend_type>text</frontend_type>
             <sort_order>399</sort_order>
             <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
             <groups>
                 <general>
                     <label>General</label>
@@ -744,6 +746,8 @@
                     <frontend_type>text</frontend_type>
                     <sort_order>220</sort_order>
                     <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
                     <comment><![CDATA[
                         Sends data to <a href="https://sentry.io" title="Sentry main website">Sentry</a>.
                     ]]></comment>
@@ -753,6 +757,7 @@
                             <frontend_type>text</frontend_type>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
                             <comment><![CDATA[
                                 The DSN can be found in Sentry by navigating to
                                 <nobr>[Project Name] -> Project Settings -> Client Keys (DSN).</nobr>
@@ -765,6 +770,8 @@
                             <frontend_type>text</frontend_type>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
                             <comment><![CDATA[
                                 The DSN can be found in Sentry by navigating to
                                 <nobr>[Project Name] -> Project Settings -> Client Keys (DSN).</nobr>
@@ -812,8 +819,6 @@
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
                             <comment><![CDATA[
                                 This will add the raven.js client script to the page so that adminhtml errors will be captured
                                 and transmitted to Sentry.io Public DSN.<br/>
