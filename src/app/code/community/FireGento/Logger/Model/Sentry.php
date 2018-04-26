@@ -76,7 +76,7 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
     {
         if (is_null(self::$_ravenClient)) {
             require_once Mage::getBaseDir('lib') . DS . 'sentry' . DS . 'lib' . DS . 'Raven' . DS . 'Autoloader.php';
-            Raven_Autoloader::register();
+            spl_autoload_register(array('Raven_Autoloader', 'autoload'), true, true);
             $helper             = Mage::helper('firegento_logger');
             $dsn                = $helper->getLoggerConfig('sentry/dsn');
             $options            = [
