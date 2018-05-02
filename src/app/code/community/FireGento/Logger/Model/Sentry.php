@@ -157,6 +157,7 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
                 if (is_array($backtrace) && count($backtrace) > 3) {
                     if (  $backtrace[0]['function'] == 'log'
                        && $backtrace[1]['function'] == 'mageCoreErrorHandler'
+                        && isset($backtrace[2]['class'])
                         && $backtrace[2]['class'] == 'Raven_Breadcrumbs_ErrorHandler'
                     ) {
                         array_shift($backtrace);
