@@ -186,6 +186,12 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                     $maxBacktraceLines + 10
                 );
             }
+            array_shift($debugBacktrace); // FireGento_Logger_Helper_Data::addEventMetadata
+            array_shift($debugBacktrace); // FireGento_Logger_Model_*::_write
+            array_shift($debugBacktrace); // Zend_Log_Write_Abstract::write
+            array_shift($debugBacktrace); // FireGento_Logger_Model_Queue::_write
+            array_shift($debugBacktrace); // Zend_Log_Writer_Abstract::write
+            array_shift($debugBacktrace); // Zend_Log::log
             foreach ($debugBacktrace as $frame) {
                 if (($nextIsFirst && $frame['function'] == 'logException')
                     || (
@@ -213,7 +219,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                         if (isset($frame['args'][0])) {
                             $event->setException($frame['args'][0]);
                         }
-                        break;
+                        continue;
                     }
 
                     $nextIsFirst = true;
@@ -226,7 +232,6 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                         break;
                     }
                     $backtraceFrames[] = $frame;
-                    continue;
                 }
             }
             $event->setBacktraceArray($backtraceFrames);
