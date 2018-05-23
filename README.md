@@ -77,6 +77,7 @@ Configure the different loggers in `System > Configuration > Advanced > Firegent
 * Michael Ryvlin
 * Tobias Zander
 * Achim Rosenhagen
+* Lucas van Staden
 
 ### Current Status of Project
 
@@ -92,6 +93,7 @@ Complete, working logger interfaces:
 - Papertrail (UDP)
 - Chromelogger
 - Logstash
+- Airbrake
 
 It is possible to use **Multiple-Targets**!
 
