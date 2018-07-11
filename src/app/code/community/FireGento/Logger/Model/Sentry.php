@@ -78,7 +78,7 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
             require_once Mage::getBaseDir('lib') . DS . 'sentry' . DS . 'lib' . DS . 'Raven' . DS . 'Autoloader.php';
             spl_autoload_register(array('Raven_Autoloader', 'autoload'), true, true);
             $helper             = Mage::helper('firegento_logger');
-            $dsn                = $helper->getLoggerConfig('sentry/dsn');
+            $dsn                = $helper->getLoggerConfig('sentry/public_dsn');
             $options            = [
                 'trace'       => $this->_enableBacktrace,
                 'curl_method' => $helper->getLoggerConfig('sentry/curl_method'),

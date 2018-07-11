@@ -752,21 +752,8 @@
                         Sends data to <a href="https://sentry.io" title="Sentry main website">Sentry</a>.
                     ]]></comment>
                     <fields>
-                        <dsn translate="label comment">
-                            <label>DSN (Data Source Name)</label>
-                            <frontend_type>text</frontend_type>
-                            <sort_order>10</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <comment><![CDATA[
-                                The DSN can be found in Sentry by navigating to
-                                <nobr>[Project Name] -> Project Settings -> Client Keys (DSN).</nobr>
-                                Its template resembles the following:<br/>
-                                <nobr>{PROTOCOL}://{PUBLIC_KEY}:{SECRET_KEY}@{HOST}/{PROJECT_ID}</nobr>
-                            ]]></comment>
-                        </dsn>
                         <public_dsn translate="label comment">
-                            <label>DSN (Public)</label>
+                            <label>DSN</label>
                             <frontend_type>text</frontend_type>
                             <sort_order>10</sort_order>
                             <show_in_default>1</show_in_default>
@@ -774,9 +761,9 @@
                             <show_in_store>1</show_in_store>
                             <comment><![CDATA[
                                 The DSN can be found in Sentry by navigating to
-                                <nobr>[Project Name] -> Project Settings -> Client Keys (DSN).</nobr>
+                                <nobr>[Project Name] -> Settings -> Client Keys (DSN).</nobr>
                                 Its template resembles the following:<br/>
-                                <nobr>{PROTOCOL}://{PUBLIC_KEY}@{HOST}/{PROJECT_ID}</nobr>
+                                <nobr>https://{PUBLIC_KEY}@{HOST}/{PROJECT_ID}</nobr>
                             ]]></comment>
                         </public_dsn>
                         <curl_method translate="label">
