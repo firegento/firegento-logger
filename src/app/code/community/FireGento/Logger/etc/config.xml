@@ -185,14 +185,26 @@
         <events>
             <controller_action_predispatch>
                 <observers>
-                    <firegento_logger_controller_action_predispatch>
+                    <init_logger_client>
                         <class>firegento_logger/observer</class>
-                        <method>actionPreDispatch</method>
-                    </firegento_logger_controller_action_predispatch>
+                        <method>initLoggerClient</method>
+                    </init_logger_client>
                 </observers>
             </controller_action_predispatch>
         </events>
     </global>
+    <crontab>
+        <events>
+            <cron_before>
+                <observers>
+                    <init_logger_client>
+                        <class>firegento_logger/observer</class>
+                        <method>initLoggerClient</method>
+                    </init_logger_client>
+                </observers>
+            </cron_before>
+        </events>
+    </crontab>
     <default>
 
         <logger>

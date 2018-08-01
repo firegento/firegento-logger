@@ -162,18 +162,29 @@ class FireGento_Logger_Model_Observer extends Varien_Object
     }
 
     /**
-     * Predispatch controller action
+     * Predispatch controller action and before cron job
      *
      * @param Varien_Event_Observer $observer
      * @return void
      */
-    public function actionPreDispatch(Varien_Event_Observer $observer)
+    public function initLoggerClient(Varien_Event_Observer $observer)
     {
-        $targets = explode(',', Mage::helper('firegento_logger')->getLoggerConfig('general/targets'));
+        static $done;
+        if ( ! $done) {
+            $done = TRUE;
 
-        // Install Sentry client to capture all errors, not just Mage::log
-        if (in_array('sentry', $targets)) {
-            Mage::getModel('firegento_logger/sentry')->initRavenClient();
+            // Install logger clients if needed
+            $targets = explode(',', Mage::helper('firegento_logger')->getLoggerConfig('general/targets'));
+
+            // Allow Sentry to capture all errors, not just Mage::log
+            if (in_array('sentry', $targets)) {
+                try {
+                    Mage::getModel('firegento_logger/sentry')->initRavenClient();
+                } catch (Exception $e) {
+                    Mage::logException($e);
+                }
+            }
         }
     }
+
 }
