@@ -231,6 +231,16 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                     if (count($backtraceFrames) >= $maxBacktraceLines) {
                         break;
                     }
+
+                    // Avoid exposing passwords in backtrace
+                    if (preg_match('/^(login|authenticate|setPassword|validatePassword)$/', $frame['function'])) {
+                        foreach ($frame['args'] as &$arg) {
+                            if (is_string($arg)) {
+                                $arg = '**redacted**';
+                            }
+                        }
+                    }
+
                     $backtraceFrames[] = $frame;
                 }
             }
