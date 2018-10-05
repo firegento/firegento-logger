@@ -9,8 +9,8 @@ See the [**Usage**](#usage) Chapter below to see how to use it.
 
 Please be aware of the following restrictions:
 
-* The ProxiBlue NewRelic extension use the same logic to log to NewRelic and will block
-  FireGento Logger extension.
+* The ProxiBlue NewRelic extension uses the same logic to log to NewRelic and will block
+  FireGento Logger extension unless you [revise its config.xml file](https://github.com/ProxiBlue/NewRelic#compatibility-with-firegento-logger).
 
 Installation Instructions
 -------------------------
