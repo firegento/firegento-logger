@@ -193,6 +193,10 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             array_shift($debugBacktrace); // Zend_Log_Writer_Abstract::write
             array_shift($debugBacktrace); // Zend_Log::log
             foreach ($debugBacktrace as $frame) {
+                if (isset($frame['class']) && $frame['class'] == 'Zend_Log' && $frame['function'] == 'log') {
+                    array_shift($debugBacktrace);
+                    continue;
+                }
                 if (($nextIsFirst && $frame['function'] == 'logException')
                     || (
                         isset($frame['type'])
