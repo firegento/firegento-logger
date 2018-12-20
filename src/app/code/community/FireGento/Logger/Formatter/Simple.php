@@ -35,6 +35,6 @@ class FireGento_Logger_Formatter_Simple extends Zend_Log_Formatter_Simple
      */
     public function format($event)
     {
-        return parent::format($event->getEventDataArray());
+        return parent::format($event->getEventDataArraySimple());
     }
 }

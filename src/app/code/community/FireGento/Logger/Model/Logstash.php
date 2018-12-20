@@ -25,12 +25,8 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
+class FireGento_Logger_Model_Logstash extends FireGento_Logger_Model_Abstract
 {
-    /**
-     * @var bool Indicates if backtrace should be added to the Log Message.
-     */
-    protected $_enableBacktrace = false;
     protected $_logstashServer = false;
     protected $_logstashPort = false;
     protected $_logstashProtocol = false;
@@ -56,27 +52,6 @@ class FireGento_Logger_Model_Logstash extends Zend_Log_Writer_Abstract
         $logDir = Mage::getBaseDir('var') . DS . 'log' . DS;
         $this->_logFileName = str_replace($logDir, '', $filename);
 
-    }
-
-    /**
-     * Satisfy newer Zend Framework
-     *
-     * @param  array|Zend_Config $config Configuration
-     * @return void|Zend_Log_FactoryInterface
-     */
-    public static function factory($config)
-    {
-
-    }
-
-    /**
-     * Setter for class variable _enableBacktrace
-     *
-     * @param bool $flag Flag for Backtrace
-     */
-    public function setEnableBacktrace($flag)
-    {
-        $this->_enableBacktrace = $flag;
     }
 
     /**

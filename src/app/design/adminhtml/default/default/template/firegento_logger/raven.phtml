@@ -1,0 +1,13 @@
+<?php /* @var $this Mage_Core_Block_Template */ ?>
+<?php if (Mage::getStoreConfigFlag('logger/sentry/adminhtml_enabled') && Mage::getStoreConfig('logger/sentry/public_dsn')): ?>
+<script src="https://cdn.ravenjs.com/3.24.0/raven.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    Raven.config(<?php echo json_encode(Mage::getStoreConfig('logger/sentry/public_dsn')); ?>).install()
+    <?php if (Mage::getSingleton('admin/session')->isLoggedIn()): ?>
+    Raven.setUserContext(<?php echo json_encode([
+            'email' => Mage::getSingleton('admin/session')->getUser()->getEmail(),
+            'id' => Mage::getSingleton('admin/session')->getUser()->getId()
+            ]) ?>)
+    <?php endif ?>
+</script>
+<?php endif ?>

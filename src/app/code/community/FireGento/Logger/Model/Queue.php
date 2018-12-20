@@ -73,7 +73,7 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
             } else {
                 $targets = array_intersect($targets, array_keys($mappedTargets));
             }
-            //writer intstantiation
+            //writer instantiation
             foreach ($targets as $target) {
                 $class = (string) Mage::app()->getConfig()->getNode('global/log/core/writer_models/'.$target.'/class');
                 if ($class) {
@@ -100,6 +100,25 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
      */
     protected function _write($event)
     {
+        // Check if module is disabled only if there are disabled modules
+        if (Mage::getStoreConfig('dev/log/disabled_modules')) {
+            $backtrace = debug_backtrace();
+            array_shift($backtrace);
+            array_shift($backtrace);
+            array_shift($backtrace);
+            $file = $backtrace[0]['file'];
+            $moduleDir = $file;
+            // The way this works is it sifts backwards through the log to find which module called this log.
+            $codeStart = stripos($file, DS.'code'.DS);
+            $moduleDir = substr($moduleDir, $codeStart +strlen(DS.'code'.DS));
+            $moduleDir = str_ireplace(['core' . DS, 'community' . DS, 'local' . DS], '', $moduleDir);
+            $endIndex = stripos($moduleDir, DS, stripos($moduleDir, DS)+1);
+            $moduleKey = str_replace(DS, "_", substr($moduleDir, 0, $endIndex));
+            if (!Mage::getSingleton('firegento_logger/manager')->isEnabled($moduleKey)) {
+                return;
+            }
+        }
+
         /** @var $event FireGento_Logger_Model_Event */
         $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
 

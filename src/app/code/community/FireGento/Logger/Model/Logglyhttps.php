@@ -26,7 +26,7 @@ define('LOGGER_CERTIFICATESFILE', Mage::getModuleDir('', 'FireGento_Logger') . '
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
+class FireGento_Logger_Model_Logglyhttps extends FireGento_Logger_Model_Abstract
 {
     /**
      * @var string The URL of Loggly Log Server
@@ -57,21 +57,6 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
      * @var array Contains configuration options.
      */
     protected $_options = array();
-
-    /**
-     * @var bool Indicates if backtrace should be added to the Log Message.
-     */
-    protected $_enableBacktrace = false;
-
-    /**
-     * Setter for class variable _enableBacktrace
-     *
-     * @param bool $flag Flag for Backtrace
-     */
-    public function setEnableBacktrace($flag)
-    {
-        $this->_enableBacktrace = $flag;
-    }
 
     /**
      * Class constructor
@@ -185,14 +170,4 @@ class FireGento_Logger_Model_Logglyhttps extends Zend_Log_Writer_Abstract
         return $this->PublishMessage($message);
     }
 
-    /**
-     * Satisfy newer Zend Framework
-     *
-     * @param  array|Zend_Config $config Configuration
-     * @return void|Zend_Log_FactoryInterface
-     */
-    public static function factory($config)
-    {
-
-    }
 }

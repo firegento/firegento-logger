@@ -19,6 +19,16 @@
  */
  -->
 <layout>
+    <default>
+        <reference name="head">
+            <!-- Call to $this->getChildHtml('firegento_logger_sentry') must be added to head.phtml -->
+            <block type="core/template"
+                   name="firegento_logger_sentry"
+                   template="firegento_logger/raven.phtml"
+            />
+        </reference>
+    </default>
+
     <adminhtml_firegento_head>
         <reference name="head">
             <action method="addCss"><name>firegento_logger.css</name></action>

@@ -50,26 +50,6 @@ class FireGento_Logger_Model_JsonStream extends Zend_Log_Writer_Stream
      */
     protected function _write($event)
     {
-        // Check if module is disabled only if there are disabled modules
-        if (Mage::getStoreConfig('dev/log/disabled_modules')) {
-            $backtrace = debug_backtrace();
-            array_shift($backtrace);
-            array_shift($backtrace);
-            array_shift($backtrace);
-            $file = $backtrace[0]['file'];
-            $moduleDir = $file;
-            // The way this works is it sifts backwards through the log to find which module called this log.
-            $codeStart = stripos($file, DS.'code'.DS);
-            $moduleDir = substr($moduleDir, $codeStart +strlen(DS.'code'.DS));
-            $moduleDir = str_ireplace('community' . DS, '', $moduleDir);
-            $moduleDir = str_ireplace('local' . DS, '', $moduleDir);
-            $endIndex = stripos($moduleDir, DS, stripos($moduleDir, DS)+1);
-            $moduleKey = str_replace(DS, "_", substr($moduleDir, 0, $endIndex));
-            if (!Mage::getSingleton('firegento_logger/manager')->isEnabled($moduleKey)) {
-                return;
-            }
-        }
-
         $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
         Mage::helper('firegento_logger')->addEventMetadata($event, NULL, $this->_enableBacktrace);
         $eventData = $event->getEventDataArray();
@@ -82,14 +62,4 @@ class FireGento_Logger_Model_JsonStream extends Zend_Log_Writer_Stream
         }
     }
 
-    /**
-     * Satisfy newer Zend Framework
-     *
-     * @param  array|Zend_Config $config Configuration
-     * @return void|Zend_Log_Writer_Mock
-     */
-    public static function factory($config)
-    {
-
-    }
 }
