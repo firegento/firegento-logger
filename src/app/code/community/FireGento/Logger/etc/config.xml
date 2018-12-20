@@ -21,7 +21,7 @@
 <config>
     <modules>
         <FireGento_Logger>
-            <version>1.4.2</version>
+            <version>1.9.0</version>
         </FireGento_Logger>
     </modules>
     <crontab>
