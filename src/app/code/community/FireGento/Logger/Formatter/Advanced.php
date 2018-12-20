@@ -50,12 +50,11 @@ class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
      * Formats data into a single line to be written by the writer.
      *
      * @param  FireGento_Logger_Model_Event $event           Event Data
-     * @param  bool                         $enableBacktrace Backtrace Flag
      * @return string formatted line to write to the log
      */
-    public function format($event, $enableBacktrace = FALSE)
+    public function format($event)
     {
-        Mage::helper('firegento_logger')->addEventMetadata($event, '-', $enableBacktrace);
+        Mage::helper('firegento_logger')->addEventMetadata($event, '-', TRUE);
 
         $maxDataLength = Mage::helper('firegento_logger')->getLoggerConfig('general/max_data_length') ?: 1000;
         $prettyPrint = Mage::helper('firegento_logger')->getLoggerConfig('general/pretty_print') && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : 0;

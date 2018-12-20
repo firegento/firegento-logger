@@ -25,12 +25,8 @@
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Logger_Model_Redis extends Zend_Log_Writer_Abstract
+class FireGento_Logger_Model_Redis extends FireGento_Logger_Model_Abstract
 {
-    /**
-     * @var bool Indicates if backtrace should be added to the Log Message.
-     */
-    protected $_enableBacktrace = false;
     protected $_redisServer = false;
     protected $_redisPort = false;
     protected $_redisKey = false;
@@ -64,16 +60,6 @@ class FireGento_Logger_Model_Redis extends Zend_Log_Writer_Abstract
     public static function factory($config)
     {
 
-    }
-
-    /**
-     * Setter for class variable _enableBacktrace
-     *
-     * @param bool $flag Flag for Backtrace
-     */
-    public function setEnableBacktrace($flag)
-    {
-        $this->_enableBacktrace = $flag;
     }
 
     /**

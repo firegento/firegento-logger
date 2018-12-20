@@ -52,17 +52,6 @@ class FireGento_Logger_Model_Db extends Zend_Log_Writer_Db
     }
 
     /**
-     * Satisfy newer Zend Framework
-     *
-     * @param  array|Zend_Config $config Configuration
-     * @return void|Zend_Log_FactoryInterface
-     */
-    public static function factory($config)
-    {
-
-    }
-
-    /**
      * Returns log data in advanced format
      *
      * @param  FireGento_Logger_Model_Event $event the log event

@@ -1,0 +1,17 @@
+<?php /* @var $this Mage_Core_Block_Template */ ?>
+<?php if (Mage::getStoreConfigFlag('logger/sentry/frontend_enabled') && Mage::getStoreConfig('logger/sentry/public_dsn')): ?>
+    <script src="https://cdn.ravenjs.com/3.24.1/raven.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        if (typeof Raven === "function") {
+            Raven.config(<?php echo json_encode(Mage::getStoreConfig('logger/sentry/public_dsn')); ?>)
+            if (typeof Translate === "function") {
+                Raven.install()
+            } else {
+                Raven.captureMessage('Translate undefined', {
+                    level: 'error',
+                    fingerprint: ['translate-undefined']
+                })
+            }
+        }
+    </script>
+<?php endif ?>

@@ -27,7 +27,7 @@ require_once 'Graylog2-gelf-php/GELFMessagePublisher.php';
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
+class FireGento_Logger_Model_Graylog2 extends FireGento_Logger_Model_Abstract
 {
     /**
      * @var array
@@ -43,21 +43,6 @@ class FireGento_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
      * @var GELFMessagePublisher[]
      */
     protected static $_publishers = array();
-
-    /**
-     * @var bool
-     */
-    protected $_enableBacktrace = false;
-
-    /**
-     * Setter for class variable _enableBacktrace
-     *
-     * @param bool $flag Flag for Backtrace
-     */
-    public function setEnableBacktrace($flag)
-    {
-        $this->_enableBacktrace = $flag;
-    }
 
     /**
      * Use static method so all loggers share same publisher
@@ -146,14 +131,4 @@ class FireGento_Logger_Model_Graylog2 extends Zend_Log_Writer_Abstract
         }
     }
 
-    /**
-     * Satisfy newer Zend Framework
-     *
-     * @param  array|Zend_Config $config Configuration
-     * @return void|Zend_Log_FactoryInterface
-     */
-    public static function factory($config)
-    {
-
-    }
 }

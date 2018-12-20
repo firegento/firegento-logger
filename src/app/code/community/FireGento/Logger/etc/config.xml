@@ -162,6 +162,10 @@
                         <label>Redis Logger</label>
                         <class>FireGento_Logger_Model_Redis</class>
                     </redis>
+                    <sentry>
+                        <label>Sentry</label>
+                        <class>FireGento_Logger_Model_Sentry</class>
+                    </sentry>
                     <airbrake>
                         <label>Airbrake</label>
                         <class>FireGento_Logger_Model_Airbrake</class>
@@ -178,7 +182,29 @@
                 </firegento_logger_notification_email_template>
             </email>
         </template>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <init_logger_client>
+                        <class>firegento_logger/observer</class>
+                        <method>initLoggerClient</method>
+                    </init_logger_client>
+                </observers>
+            </controller_action_predispatch>
+        </events>
     </global>
+    <crontab>
+        <events>
+            <cron_before>
+                <observers>
+                    <init_logger_client>
+                        <class>firegento_logger/observer</class>
+                        <method>initLoggerClient</method>
+                    </init_logger_client>
+                </observers>
+            </cron_before>
+        </events>
+    </crontab>
     <default>
 
         <logger>
@@ -274,6 +300,10 @@ confirmation]]></filter_request_data>
                 <password/>
                 <type>magento-log</type>
             </redis>
+            <sentry>
+                <curl_method>async</curl_method>
+                <priority>4</priority>
+            </sentry>
             <airbrake>
                 <timeout>60</timeout>
             </airbrake>
@@ -300,5 +330,12 @@ confirmation]]></filter_request_data>
                 </args>
             </logger>
         </routers>
+        <layout>
+            <updates>
+                <firegento_logger>
+                    <file>firegento_logger.xml</file>
+                </firegento_logger>
+            </updates>
+        </layout>
     </frontend>
 </config>

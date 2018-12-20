@@ -24,19 +24,8 @@ require_once 'chromelogger' . DS . 'ChromePHP.php';
  * @package  FireGento_Logger
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_Logger_Model_Chromelogger extends Zend_Log_Writer_Abstract
+class FireGento_Logger_Model_Chromelogger extends FireGento_Logger_Model_Abstract
 {
-    /**
-     * Satisfy newer Zend Framework
-     *
-     * @param  array|Zend_Config $config Configuration
-     *
-     * @return void|Zend_Log_FactoryInterface
-     */
-    public static function factory($config)
-    {
-
-    }
 
     /**
      * Write the data
