@@ -28,6 +28,9 @@
 class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
 {
 
+    protected $_maxDataLength;
+    protected $_prettyPrint;
+
     /**
      * Class constructor
      *
@@ -43,6 +46,9 @@ class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
             $format = self::DEFAULT_FORMAT;
         }
 
+        $this->_maxDataLength = Mage::helper('firegento_logger')->getLoggerConfig('general/max_data_length') ?: 1000;
+        $this->_prettyPrint = Mage::helper('firegento_logger')->getLoggerConfig('general/pretty_print') && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : 0;
+
         parent::__construct($format . PHP_EOL);
     }
 
@@ -56,16 +62,14 @@ class FireGento_Logger_Formatter_Advanced extends Zend_Log_Formatter_Simple
     {
         Mage::helper('firegento_logger')->addEventMetadata($event, '-', TRUE);
 
-        $maxDataLength = Mage::helper('firegento_logger')->getLoggerConfig('general/max_data_length') ?: 1000;
-        $prettyPrint = Mage::helper('firegento_logger')->getLoggerConfig('general/pretty_print') && defined('JSON_PRETTY_PRINT') ? JSON_PRETTY_PRINT : 0;
-        $output = preg_replace_callback('/%(\w+)%/', function ($match) use ($event, $maxDataLength, $prettyPrint) {
+        $output = preg_replace_callback('/%(\w+)%/', function ($match) use ($event) {
             $value = isset($event[$match[1]]) ? $event[$match[1]] : '-';
             if (is_bool($value)) {
                 return $value ? 'TRUE' : 'FALSE';
             } else if (is_scalar($value) || (is_object($value) && method_exists($value, '__toString'))) {
                 return "$value";
             } else if (is_array($value)) {
-                return substr(@json_encode($value, $prettyPrint), 0, $maxDataLength);
+                return substr(@json_encode($value, $this->_prettyPrint), 0, $this->_maxDataLength);
             } else if (is_scalar($value)) {
                 return "$value";
             } else {

@@ -64,11 +64,11 @@ class FireGento_Logger_Model_Queue extends Zend_Log_Writer_Abstract
         $helper = Mage::helper('firegento_logger');;
 
         // Only instantiate writers that are needed for this file based on the Filename Filters
-        $targets = explode(',', $helper->getLoggerConfig('general/targets'));
+        $targets = $helper->getAllTargets();
         if ($targets) {
             $logDir = Mage::getBaseDir('var') . DS . 'log' . DS;
             $mappedTargets = $helper->getMappedTargets(substr($filename, strlen($logDir)));
-            if ($mappedTargets === null) { // No filters, enable backtrace for all targets
+            if ($mappedTargets === false) { // No filters, enable backtrace for all targets
                 $mappedTargets = array_fill_keys($targets, true);
             } else {
                 $targets = array_intersect($targets, array_keys($mappedTargets));

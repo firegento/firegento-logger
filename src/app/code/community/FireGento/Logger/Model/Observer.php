@@ -174,7 +174,7 @@ class FireGento_Logger_Model_Observer extends Varien_Object
             $done = TRUE;
 
             // Install logger clients if needed
-            $targets = explode(',', Mage::helper('firegento_logger')->getLoggerConfig('general/targets'));
+            $targets = Mage::helper('firegento_logger')->getAllTargets();
 
             // Allow Sentry to capture all errors, not just Mage::log
             if (in_array('sentry', $targets)) {
