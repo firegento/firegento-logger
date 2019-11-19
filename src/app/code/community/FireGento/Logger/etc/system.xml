@@ -766,6 +766,18 @@
                                 <nobr>https://{PUBLIC_KEY}@{HOST}/{PROJECT_ID}</nobr>
                             ]]></comment>
                         </public_dsn>
+                        <environment translate="label comment">
+                            <label>Environment</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                                Add custom environment label to allow easy filtering
+                                (see <a href="https://docs.sentry.io/enriching-error-data/environments/">https://docs.sentry.io/enriching-error-data/environments/</a>).
+                            ]]></comment>
+                        </environment>
                         <curl_method translate="label">
                             <label>cURL Method</label>
                             <frontend_type>select</frontend_type>
