@@ -83,6 +83,9 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
                 'trace'       => $this->_enableBacktrace,
                 'curl_method' => $helper->getLoggerConfig('sentry/curl_method'),
             ];
+            if ($environment = trim($helper->getLoggerConfig('sentry/environment'))) {
+                $options['environment'] = $environment;
+            }
             self::$_ravenClient = new Raven_Client($dsn, $options);
             self::$_ravenClient->setAppPath(dirname(BP));
             self::$_ravenClient->trace = TRUE;
