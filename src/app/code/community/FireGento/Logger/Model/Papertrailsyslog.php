@@ -79,34 +79,11 @@ class FireGento_Logger_Model_Papertrailsyslog extends FireGento_Logger_Model_Rsy
     protected function buildSysLogMessage($event)
     {
         $message = $this->BuildStringMessage($event, $this->_enableBacktrace);
-        $priority = $event->getPriority();
-        if ($priority !== false) {
-            switch ($priority)
-            {
-                case Zend_Log::EMERG:
-                case Zend_Log::ALERT:
-                case Zend_Log::CRIT:
-                case Zend_Log::ERR:
-                    $priority = 'error';
-                    break;
-                case Zend_Log::WARN:
-                    $priority = 'warn';
-                    break;
-                case Zend_Log::NOTICE:
-                case Zend_Log::INFO:
-                case Zend_Log::DEBUG:
-                    $priority = 'debug';
-                    break;
-                default:
-                    $priority = $event->getPriority();
-                    break;
-            }
-        }
 
         return new FireGento_Logger_Model_Papertrail_PapertrailSyslogMessage(
             $message,
             16,
-            $priority,
+            $event->getPriority(),
             strtotime($event->getTimestamp()),
             [
                 'HostName' => sprintf(
