@@ -162,7 +162,9 @@ class FireGento_Logger_Model_Rsyslog extends FireGento_Logger_Model_Abstract
     protected function _write($event)
     {
         $event = Mage::helper('firegento_logger')->getEventObjectFromArray($event);
-
+        if(!$event->getTimestamp()) {
+            $event->setTimestamp(now());
+        }
         $message = $this->buildSysLogMessage($event);
         return $this->publishMessage($message);
     }

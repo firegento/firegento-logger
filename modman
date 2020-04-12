@@ -4,6 +4,7 @@ src/app/design/adminhtml/default/default/layout/firegento_logger.xml    app/desi
 src/app/design/adminhtml/default/default/template/firegento_logger/     app/design/adminhtml/default/default/template/firegento_logger/
 src/app/design/frontend/base/default/layout/firegento_logger.xml        app/design/frontend/base/default/layout/firegento_logger.xml
 src/app/design/frontend/base/default/template/firegento_logger/         app/design/frontend/base/default/template/firegento_logger/
+src/lib/Airbrake/                                                       lib/Airbrake/
 src/lib/XMPPHP/                                                         lib/XMPPHP/
 src/lib/Graylog2-gelf-php/                                              lib/Graylog2-gelf-php/
 src/lib/rsyslog/                                                        lib/rsyslog

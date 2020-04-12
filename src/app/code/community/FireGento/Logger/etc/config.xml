@@ -235,6 +235,9 @@ confirmation]]></filter_request_data>
             <advanced>
                 <priority>default</priority>
             </advanced>
+            <json>
+                <priority>default</priority>
+            </json>
             <mailconfig>
                 <priority>default</priority>
             </mailconfig>

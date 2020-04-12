@@ -35,9 +35,12 @@ require_once Mage::getBaseDir('lib') . DS . 'Airbrake' . DS . 'Configuration.php
 class FireGento_Logger_Model_Airbrake extends Zend_Log_Writer_Abstract
 {
 
+    protected $_apiKey;
+    
     public function __construct()
     {
-        $apiKey = Mage::getStoreConfig('logger/airbrake/apikey');
+        $helper = Mage::helper('firegento_logger');
+        $this->_apiKey = $helper->getLoggerConfig('airbrake/apikey');
 
         if ($this->isDisabled()) {
             return;
@@ -58,11 +61,11 @@ class FireGento_Logger_Model_Airbrake extends Zend_Log_Writer_Abstract
         $projectRoot = explode('/', $_SERVER['PHP_SELF']);
         array_pop($projectRoot);
         $options['projectRoot'] = implode('/', $projectRoot) . '/';
-        $options['host'] = Mage::getStoreConfig('logger/airbrake/host');
-        $options['secure'] = Mage::getStoreConfig('logger/airbrake/secure');
-        $options['environmentName'] = Mage::getStoreConfig('logger/airbrake/environment');
-        $options['timeout'] = Mage::getStoreConfig('logger/airbrake/timeout');
-        $config = new Airbrake\Configuration($apiKey, $options);
+        $options['host'] = $helper->getLoggerConfig('airbrake/host');
+        $options['secure'] = $helper->getLoggerConfig('airbrake/secure');
+        $options['environmentName'] = $helper->getLoggerConfig('airbrake/environment');
+        $options['timeout'] = $helper->getLoggerConfig('airbrake/timeout');
+        $config = new Airbrake\Configuration($this->_apiKey, $options);
         $this->client = new Airbrake\Client($config);
     }
 
@@ -81,8 +84,7 @@ class FireGento_Logger_Model_Airbrake extends Zend_Log_Writer_Abstract
 
     protected function isDisabled()
     {
-        $apiKey = Mage::getStoreConfig('logger/airbrake/apikey');
-        if (strlen(trim($apiKey)) == 0) {
+        if (strlen(trim($this->_apiKey)) == 0) {
             return true;
         }
         return false;
