@@ -48,12 +48,10 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
     ];
 
     protected $_fileName;
-    protected $_priorityFilter;
 
     public function __construct($fileName = NULL)
     {
         $this->_fileName = $fileName ? basename($fileName) : NULL;
-        $this->_priorityFilter = (int)Mage::helper('firegento_logger')->getLoggerConfig('sentry/priority');
     }
 
     /**
@@ -69,16 +67,20 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
     /**
      * Create Raven_Client instance
      *
-     * @return void
+     * @return bool
      * @throws Raven_Exception
      */
     public function initRavenClient()
     {
         if (is_null(self::$_ravenClient)) {
-            require_once Mage::getBaseDir('lib') . DS . 'sentry' . DS . 'lib' . DS . 'Raven' . DS . 'Autoloader.php';
-            spl_autoload_register(array('Raven_Autoloader', 'autoload'), true, true);
             $helper             = Mage::helper('firegento_logger');
             $dsn                = $helper->getLoggerConfig('sentry/public_dsn');
+            if ( ! $dsn) {
+                self::$_ravenClient = FALSE;
+                return FALSE;
+            }
+            require_once Mage::getBaseDir('lib') . DS . 'sentry' . DS . 'lib' . DS . 'Raven' . DS . 'Autoloader.php';
+            spl_autoload_register(array('Raven_Autoloader', 'autoload'), true, true);
             $options            = [
                 'trace'       => $this->_enableBacktrace,
                 'curl_method' => $helper->getLoggerConfig('sentry/curl_method'),
@@ -92,6 +94,7 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
             $error_handler = new Raven_ErrorHandler(self::$_ravenClient, false);
             $error_handler->registerShutdownFunction();
         }
+        return !!self::$_ravenClient;
     }
 
     /**
@@ -110,7 +113,9 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
         try {
             Mage::helper('firegento_logger')->addEventMetadata($event, NULL, $this->_enableBacktrace);
 
-            $this->initRavenClient();
+            if ( ! $this->initRavenClient()) {
+                return;
+            }
 
             /**
              * Get message priority
@@ -119,11 +124,6 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
                 $this->_assumePriorityByMessage($event);
             }
             $priority = isset($event['priority']) ? $event['priority'] : 3;
-
-            // If priority is high enough, send to Sentry
-            if ($priority > $this->_priorityFilter) {
-                return;
-            }
 
             //
             // Add extra data and tags
