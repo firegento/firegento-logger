@@ -108,6 +108,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "mb-tec",
+      "name": "Matthias Büsing",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/13970869?v=4",
+      "profile": "http://www.mb-tec.eu/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
