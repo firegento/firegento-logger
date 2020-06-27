@@ -1,6 +1,6 @@
 # Magento Module for advanced logging
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-18-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-19-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 The purpose of this project is to have a simple framework for different logging adapters.
@@ -97,6 +97,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://steverobbins.com/"><img src="https://avatars0.githubusercontent.com/u/3498562?v=4" width="100px;" alt=""/><br /><sub><b>Steve Robbins</b></sub></a><br /><a href="https://github.com/firegento/firegento-logger/commits?author=steverobbins" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/sergeykalenyuk"><img src="https://avatars0.githubusercontent.com/u/1863773?v=4" width="100px;" alt=""/><br /><sub><b>Sergey Kalenyuk</b></sub></a><br /><a href="https://github.com/firegento/firegento-logger/commits?author=sergeykalenyuk" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/nhp"><img src="https://avatars3.githubusercontent.com/u/512911?v=4" width="100px;" alt=""/><br /><sub><b>Nils Preuß</b></sub></a><br /><a href="https://github.com/firegento/firegento-logger/commits?author=nhp" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.matthias-zeis.com/"><img src="https://avatars2.githubusercontent.com/u/371060?v=4" width="100px;" alt=""/><br /><sub><b>Matthias Zeis</b></sub></a><br /><a href="https://github.com/firegento/firegento-logger/commits?author=mzeis" title="Code">💻</a></td>
   </tr>
 </table>
 

@@ -171,6 +171,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "mzeis",
+      "name": "Matthias Zeis",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/371060?v=4",
+      "profile": "https://www.matthias-zeis.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
