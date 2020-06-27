@@ -144,6 +144,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "steverobbins",
+      "name": "Steve Robbins",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/3498562?v=4",
+      "profile": "https://steverobbins.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
