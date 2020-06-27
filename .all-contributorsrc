@@ -198,6 +198,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "colinodell",
+      "name": "Colin O'Dell",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/202034?v=4",
+      "profile": "https://www.colinodell.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
