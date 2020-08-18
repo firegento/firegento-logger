@@ -84,6 +84,7 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
             $options            = [
                 'trace'       => $this->_enableBacktrace,
                 'curl_method' => $helper->getLoggerConfig('sentry/curl_method'),
+                'prefixes'    => [BP],
             ];
             if ($environment = trim($helper->getLoggerConfig('sentry/environment'))) {
                 $options['environment'] = $environment;
