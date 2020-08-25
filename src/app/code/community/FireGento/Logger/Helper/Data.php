@@ -106,7 +106,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                         }
                     }
                 }
-                $this->_targetMap = $targetMap;
+                $this->_targetMap = $targets;
             } else {
                 $this->_targetMap = false;
             }
@@ -170,7 +170,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             ->setStoreCode(Mage::app()->getStore()->getCode());
 
         // Add admin user data
-        if (Mage::app()->getStore()->isAdmin() && isset($_SESSION)) {
+        if (Mage::app()->getStore()->isAdmin() && isset($_SESSION['admin'])) {
             $session = Mage::getSingleton('admin/session');
             if ($session->isLoggedIn()) {
                 $event->setAdminUserId($session->getUser()->getId());

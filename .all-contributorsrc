@@ -1,0 +1,249 @@
+{
+  "projectName": "firegento-logger",
+  "projectOwner": "firegento",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "none",
+  "contributors": [
+    {
+      "login": "colinmollenhour",
+      "name": "Colin Mollenhour",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/38738?v=4",
+      "profile": "http://colin.mollenhour.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "daim2k5",
+      "name": "Damian Luszczymak",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/656150?v=4",
+      "profile": "https://github.com/daim2k5",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "therouv",
+      "name": "Rouven Alexander Rieker",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/393419?v=4",
+      "profile": "https://rouven.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "paales",
+      "name": "Paul Hachmang",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1244416?v=4",
+      "profile": "https://www.reachdigital.nl/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "daigo75",
+      "name": "Diego",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/292434?v=4",
+      "profile": "https://aelia.co/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "arosenhagen",
+      "name": "Achim Rosenhagen",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/50462?v=4",
+      "profile": "http://www.ffuenf.de/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Schrank",
+      "name": "Fabian Blechschmidt",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/379680?v=4",
+      "profile": "http://www.fabian-blechschmidt.de/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Fgruntjes",
+      "name": "Freek Gruntjes",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/984466?v=4",
+      "profile": "https://www.hipex.io/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "wilfriedwolf",
+      "name": "Wilfried Wolf",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/23700116?v=4",
+      "profile": "https://www.sandstein.de/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "tkdb",
+      "name": "tkdb",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5831065?v=4",
+      "profile": "https://github.com/tkdb",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "sylvainraye",
+      "name": "Sylvain Rayé",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1337461?v=4",
+      "profile": "https://www.diglin.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mb-tec",
+      "name": "Matthias Büsing",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/13970869?v=4",
+      "profile": "http://www.mb-tec.eu/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "danelowe",
+      "name": "Dane Lowe",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/924802?v=4",
+      "profile": "http://avidonline.co.nz/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "LeeSaferite",
+      "name": "Lee Saferite",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/47386?v=4",
+      "profile": "https://github.com/LeeSaferite",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "JeroenVanLeusden",
+      "name": "Jeroen",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/14925052?v=4",
+      "profile": "https://github.com/JeroenVanLeusden",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "steverobbins",
+      "name": "Steve Robbins",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/3498562?v=4",
+      "profile": "https://steverobbins.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "sergeykalenyuk",
+      "name": "Sergey Kalenyuk",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1863773?v=4",
+      "profile": "https://github.com/sergeykalenyuk",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "nhp",
+      "name": "Nils Preuß",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/512911?v=4",
+      "profile": "https://github.com/nhp",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mzeis",
+      "name": "Matthias Zeis",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/371060?v=4",
+      "profile": "https://www.matthias-zeis.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "jeroenvermeulen",
+      "name": "Jeroen Vermeulen",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/658024?v=4",
+      "profile": "http://www.jeroenvermeulen.eu/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "infabo",
+      "name": "Ingo Fabbri",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/3999104?v=4",
+      "profile": "https://github.com/infabo",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "colinodell",
+      "name": "Colin O'Dell",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/202034?v=4",
+      "profile": "https://www.colinodell.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "andreasemer",
+      "name": "Andreas",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1199310?v=4",
+      "profile": "https://www.mothership.de/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "aadmathijssen",
+      "name": "Aad Mathijssen",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/3796971?v=4",
+      "profile": "http://www.aadmathijssen.nl/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ProxiBlue",
+      "name": "Lucas van Staden",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4994260?v=4",
+      "profile": "http://www.proxiblue.com.au/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kkrieger85",
+      "name": "Kevin Krieger",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/4435523?v=4",
+      "profile": "https://github.com/kkrieger85",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7
+}
