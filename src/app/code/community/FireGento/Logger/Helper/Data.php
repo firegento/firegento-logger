@@ -106,7 +106,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                         }
                     }
                 }
-                $this->_targetMap = $targetMap;
+                $this->_targetMap = $targets;
             } else {
                 $this->_targetMap = false;
             }
