@@ -122,15 +122,19 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 Complete, working logger interfaces:
 - File (Magento default)
 - File (Advanced Format)
+- File (JSON)
 - E-Mail
 - Database
 - XMPP (Jabber, Google Talk)
 - Graylog2
-- RSyslog (UDP)
 - Loggly (UDP/HTTPS)
+- Syslog
+- RSyslog (UDP)
 - Papertrail (UDP)
 - Chromelogger
 - Logstash
+- Redis
+- Sentry
 - Airbrake
 
 It is possible to use **Multiple-Targets**!
