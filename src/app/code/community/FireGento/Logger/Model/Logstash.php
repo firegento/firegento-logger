@@ -83,7 +83,7 @@ class FireGento_Logger_Model_Logstash extends FireGento_Logger_Model_Abstract
         $fields['HttpHost'] = (!Mage::app()->getRequest()->getHttpHost()) ? 'cli': Mage::app()->getRequest()->getHttpHost();
         $fields['LogFileName'] = $this->_logFileName;
         // Only add session fields if a session was already instantiated and logger should not start a new session
-        if (isset($_SESSION)) {
+        if (isset($_SESSION) && isset($_SESSION['core'])) {
             $fields['SessionId'] = Mage::getSingleton("core/session")->getEncryptedSessionId();
             $fields['CustomerId'] = Mage::getSingleton('customer/session')->getCustomerId();
         }
