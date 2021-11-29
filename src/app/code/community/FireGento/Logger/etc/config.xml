@@ -209,7 +209,8 @@
 
         <logger>
             <general>
-                <targets>advanced</targets>
+                <targets>default,advanced</targets>
+                <target_map>a:2:{s:18:"_1575507325664_664";a:4:{s:7:"pattern";s:26:"system\.log|exception\.log";s:6:"target";s:8:"advanced";s:9:"backtrace";s:1:"1";s:13:"stop_on_match";s:1:"1";}s:18:"_1575507340100_100";a:4:{s:7:"pattern";s:2:".*";s:6:"target";s:7:"default";s:9:"backtrace";s:1:"0";s:13:"stop_on_match";s:1:"1";}}</target_map>
                 <priority>7</priority>
                 <format><![CDATA[
 %timestamp% %priorityName% (%storeCode%): %requestMethod% %requestUri%
