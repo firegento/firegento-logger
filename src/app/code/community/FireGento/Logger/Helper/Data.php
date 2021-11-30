@@ -32,6 +32,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
 
     protected $_targets;
     protected $_targetMap;
+    protected $_targetsForFilename = [];
     protected $_notificationRules;
     protected $_maxBacktraceLines;
     protected $_maxDataLength;
@@ -97,21 +98,24 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
         if ($this->_targetMap === null) {
             $targetMap = $this->getLoggerConfig('general/target_map');
             if ($targetMap && ($targetMap = @unserialize($targetMap))) {
-                $targets = array();
-                foreach ($targetMap as $map) {
-                    if (@preg_match('/^'.$map['pattern'].'$/', $filename)) {
-                        $targets[$map['target']] = (int) $map['backtrace'];
-                        if ((int) $map['stop_on_match']) {
-                            break;
-                        }
-                    }
-                }
-                $this->_targetMap = $targets;
+                $this->_targetMap = $targetMap;
             } else {
-                $this->_targetMap = false;
+                $this->_targetMap = [];
             }
         }
-        return $this->_targetMap;
+        if ( ! isset($this->_targetsForFilename[$filename])) {
+            $targets = array();
+            foreach ($this->_targetMap as $map) {
+                if (@preg_match('/^'.str_replace('/', '\\/', $map['pattern']).'$/', $filename)) {
+                    $targets[$map['target']] = (int) $map['backtrace'];
+                    if ((int) $map['stop_on_match']) {
+                        break;
+                    }
+                }
+            }
+            $this->_targetsForFilename[$filename] = $targets;
+        }
+        return $this->_targetsForFilename[$filename];
     }
 
     /**
@@ -170,7 +174,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
             ->setStoreCode(Mage::app()->getStore()->getCode());
 
         // Add admin user data
-        if (Mage::app()->getStore()->isAdmin() && isset($_SESSION['admin'])) {
+        if (Mage::app()->getStore()->isAdmin() && isset($_SESSION) && isset($_SESSION['admin'])) {
             $session = Mage::getSingleton('admin/session');
             if ($session->isLoggedIn()) {
                 $event->setAdminUserId($session->getUser()->getId());
