@@ -19,6 +19,11 @@
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
 
+use Sentry\EventHint;
+use Sentry\Severity;
+use function Sentry\captureException;
+use function Sentry\captureMessage;
+
 /**
  * Model for Sentry logging
  *
@@ -44,7 +49,7 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
 
     protected $_fileName;
 
-    protected $_isInitialized = false;
+    protected static $_isInitialized = false;
 
     public function __construct($fileName = NULL)
     {
@@ -58,25 +63,30 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
      */
     public function init()
     {
-        if (!$this->_isInitialized) {
+        if (!self::$_isInitialized) {
             $helper             = Mage::helper('firegento_logger');
             $dsn                = $helper->getLoggerConfig('sentry/public_dsn');
             if (!$dsn) {
                 return false;
             }
             require_once Mage::getBaseDir('lib') . DS . 'sentry' . DS .  'Autoloader.php';
+            Sentry_Autoloader::register();
+
+            //The options
+            // "curl_method",
+            // "trace" do not exist. Defined options are: "attach_stacktrace", "before_breadcrumb", "before_send", "capture_silenced_errors", "class_serializers", "context_lines", "default_integrations", "dsn", "enable_compression", "environment", "error_types", "http_proxy", "in_app_exclude", "in_app_include", "integrations", "logger", "max_breadcrumbs", "max_request_body_size", "max_value_length", "prefixes", "release", "sample_rate", "send_attempts", "send_default_pii", "server_name", "tags", "traces_sample_rate", "traces_sampler".
             $options            = [
-                'trace'       => $this->_enableBacktrace,
-                'curl_method' => $helper->getLoggerConfig('sentry/curl_method'),
+                'dsn' => \Sentry\Dsn::createFromString($dsn),
+                'attach_stacktrace' => $this->_enableBacktrace,
                 'prefixes'    => [BP],
             ];
             if ($environment = trim($helper->getLoggerConfig('sentry/environment'))) {
                 $options['environment'] = $environment;
             }
             \Sentry\init($options);
-            $this->_isInitialized = true;
+            self::$_isInitialized = true;
         }
-        return $this->_isInitialized;
+        return self::$_isInitialized;
     }
 
     /**
@@ -118,7 +128,8 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
                 ],
                 'extra' => [
                     'timeElapsed' => $event->getTimeElapsed(),
-                ]
+                ],
+                'attach_stacktrace' => true
             ];
             if ($event->getAdminUserId()) $data['extra']['adminUserId'] = $event->getAdminUserId();
             if ($event->getAdminUserName()) $data['extra']['adminUserName'] = $event->getAdminUserName();
@@ -133,28 +144,14 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
             }
 
             if ($event->getException()) {
-                $eventId = \Sentry\captureException($event->getException(), \Sentry\EventHint::fromArray($data));
+                $eventId = captureException($event->getException(), EventHint::fromArray($data));
             } else {
-                $data['level'] = $this->_priorityToLevelMapping[$priority];
+                $level = $this->_priorityToLevelMapping[$priority];
 
-                // Make Raven error handler transparent
-                $backtrace = $event->getBacktraceArray() ?: TRUE;
-                if (is_array($backtrace) && count($backtrace) > 3) {
-                    if (  $backtrace[0]['function'] == 'log'
-                       && $backtrace[1]['function'] == 'mageCoreErrorHandler'
-                        && isset($backtrace[2]['class'])
-                        && $backtrace[2]['class'] == 'Raven_Breadcrumbs_ErrorHandler'
-                    ) {
-                        array_shift($backtrace);
-                        array_shift($backtrace);
-                    }
-                }
-                $data['stacktrace'] = $backtrace;
-
-                $eventId = \Sentry\captureMessage(
+                $eventId = captureMessage(
                     $event['message'],
-                    \Sentry\Severity::fromError($data['level']),
-                    \Sentry\EventHint::fromArray($data)
+                    $this->_getSeverityFromLevel($level),
+                    EventHint::fromArray($data)
                 );
             }
             Mage::unregister('logger_sentry_last_event_id');
@@ -177,7 +174,7 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
             stripos($event['message'], "warn") === 0 ||
             stripos($event['message'], "user warn") === 0
         ) {
-            $event['priority'] = 4;
+            $event->setPriority(4);
         }
         else if (
             stripos($event['message'], "notice") === 0 ||
@@ -185,10 +182,27 @@ class FireGento_Logger_Model_Sentry extends FireGento_Logger_Model_Abstract
             stripos($event['message'], "strict notice") === 0 ||
             stripos($event['message'], "deprecated") === 0
         ) {
-            $event['priority'] = 5;
+            $event->setPriority(5);
         }
 
         return $this;
+    }
+
+    protected function _getSeverityFromLevel(string $level): Severity
+    {
+        switch ($level) {
+            case 'fatal':
+                return Severity::fatal();
+            case 'error':
+                return Severity::error();
+            case 'warning':
+                return Severity::warning();
+            case 'info':
+                return Severity::info();
+            case 'debug':
+            default:
+                return Severity::debug();
+        }
     }
 
 }
