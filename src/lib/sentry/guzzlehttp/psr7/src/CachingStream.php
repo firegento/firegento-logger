@@ -20,6 +20,8 @@ final class CachingStream implements StreamInterface
     /** @var int Number of bytes to skip reading due to a write on the buffer */
     private $skipReadBytes = 0;
 
+    private $stream;
+
     /**
      * We will treat the buffer object as the body of the stream
      *
