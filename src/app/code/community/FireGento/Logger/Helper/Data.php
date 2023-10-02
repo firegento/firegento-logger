@@ -139,7 +139,7 @@ class FireGento_Logger_Helper_Data extends Mage_Core_Helper_Abstract
                 $priority = null;
             }
         }
-        if ( ! $configPath || ! strlen($priority)) {
+        if ( ! $configPath || ! strlen($priority ?? '')) {
             $priority = $this->getLoggerConfig(self::XML_PATH_PRIORITY);
         }
         if ($priority !== null) {
