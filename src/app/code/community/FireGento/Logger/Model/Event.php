@@ -183,16 +183,16 @@ class FireGento_Logger_Model_Event extends Varien_Object implements ArrayAccess
         );
     }
 
-    public function offsetSet($offset, $value) {
+    public function offsetSet($offset, $value): void {
         throw new Mage_Core_Exception('Log Event assignment not implemented');
     }
 
-    public function offsetExists($offset) {
+    public function offsetExists($offset): bool {
         $offset = $this->_underscore($offset);
         return isset($this->_data[$offset]);
     }
 
-    public function offsetUnset($offset) {
+    public function offsetUnset($offset): void {
         throw new Mage_Core_Exception('Log Event assignment not implemented');
     }
 

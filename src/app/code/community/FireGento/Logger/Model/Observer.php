@@ -179,7 +179,7 @@ class FireGento_Logger_Model_Observer extends Varien_Object
             // Allow Sentry to capture all errors, not just Mage::log
             if (in_array('sentry', $targets)) {
                 try {
-                    Mage::getModel('firegento_logger/sentry')->initRavenClient();
+                    Mage::getModel('firegento_logger/sentry')->init();
                 } catch (Exception $e) {
                     Mage::logException($e);
                 }
