@@ -8,7 +8,8 @@
     "magento-hackathon/magento-composer-installer": "Allows to manage this package as a dependency"
   },
   "require": {
-    "paragonie/random_compat": "^9.99"
+    "paragonie/random_compat": "^9.99",
+    "symfony/process": "^8.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^12.5"
