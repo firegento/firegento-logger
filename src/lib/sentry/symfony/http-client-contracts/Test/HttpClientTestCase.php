@@ -25,7 +25,17 @@ abstract class HttpClientTestCase extends TestCase
 {
     public static function setUpBeforeClass(): void
     {
+        if (!function_exists('ob_gzhandler')) {
+            static::markTestSkipped('The "ob_gzhandler" function is not available.');
+        }
+
         TestHttpServer::start();
+    }
+
+    public static function tearDownAfterClass(): void
+    {
+        TestHttpServer::stop(8067);
+        TestHttpServer::stop(8077);
     }
 
     abstract protected function getHttpClient(string $testCase): HttpClientInterface;
@@ -331,11 +341,16 @@ abstract class HttpClientTestCase extends TestCase
         $this->assertSame('', $response->getContent(false));
     }
 
-    public function testRedirects()
+    /**
+     * @testWith [[]]
+     *           [["Content-Length: 7"]]
+     */
+    public function testRedirects(array $headers = [])
     {
         $client = $this->getHttpClient(__FUNCTION__);
         $response = $client->request('POST', 'http://localhost:8057/301', [
             'auth_basic' => 'foo:bar',
+            'headers' => $headers,
             'body' => function () {
                 yield 'foo=bar';
             },
@@ -719,6 +734,18 @@ abstract class HttpClientTestCase extends TestCase
         $this->assertSame(200, $response->getStatusCode());
     }
 
+    public function testIPv6Resolve()
+    {
+        TestHttpServer::start(-8087);
+
+        $client = $this->getHttpClient(__FUNCTION__);
+        $response = $client->request('GET', 'http://symfony.com:8087/', [
+            'resolve' => ['symfony.com' => '::1'],
+        ]);
+
+        $this->assertSame(200, $response->getStatusCode());
+    }
+
     public function testNotATimeout()
     {
         $client = $this->getHttpClient(__FUNCTION__);
@@ -835,6 +862,39 @@ abstract class HttpClientTestCase extends TestCase
         }
     }
 
+    public function testTimeoutOnInitialize()
+    {
+        $p1 = TestHttpServer::start(8067);
+        $p2 = TestHttpServer::start(8077);
+
+        $client = $this->getHttpClient(__FUNCTION__);
+        $start = microtime(true);
+        $responses = [];
+
+        $responses[] = $client->request('GET', 'http://localhost:8067/timeout-header', ['timeout' => 0.25]);
+        $responses[] = $client->request('GET', 'http://localhost:8077/timeout-header', ['timeout' => 0.25]);
+        $responses[] = $client->request('GET', 'http://localhost:8067/timeout-header', ['timeout' => 0.25]);
+        $responses[] = $client->request('GET', 'http://localhost:8077/timeout-header', ['timeout' => 0.25]);
+
+        try {
+            foreach ($responses as $response) {
+                try {
+                    $response->getContent();
+                    $this->fail(TransportExceptionInterface::class.' expected');
+                } catch (TransportExceptionInterface $e) {
+                }
+            }
+            $responses = [];
+
+            $duration = microtime(true) - $start;
+
+            $this->assertLessThan(1.0, $duration);
+        } finally {
+            $p1->stop();
+            $p2->stop();
+        }
+    }
+
     public function testTimeoutOnDestruct()
     {
         $p1 = TestHttpServer::start(8067);
@@ -921,6 +981,24 @@ abstract class HttpClientTestCase extends TestCase
 
         $body = $response->toArray();
         $this->assertSame('Basic Zm9vOmI9YXI=', $body['HTTP_PROXY_AUTHORIZATION']);
+
+        $_SERVER['http_proxy'] = 'http://localhost:8057';
+        try {
+            $response = $client->request('GET', 'http://localhost:8057/');
+            $body = $response->toArray();
+            $this->assertSame('localhost:8057', $body['HTTP_HOST']);
+            $this->assertMatchesRegularExpression('#^http://(localhost|127\.0\.0\.1):8057/$#', $body['REQUEST_URI']);
+        } finally {
+            unset($_SERVER['http_proxy']);
+        }
+
+        $response = $client->request('GET', 'http://localhost:8057/301/proxy', [
+            'proxy' => 'http://localhost:8057',
+        ]);
+
+        $body = $response->toArray();
+        $this->assertSame('localhost:8057', $body['HTTP_HOST']);
+        $this->assertMatchesRegularExpression('#^http://(localhost|127\.0\.0\.1):8057/$#', $body['REQUEST_URI']);
     }
 
     public function testNoProxy()
@@ -1085,5 +1163,34 @@ abstract class HttpClientTestCase extends TestCase
 
         $response = $client2->request('GET', '/');
         $this->assertSame(200, $response->getStatusCode());
+    }
+
+    public function testBindToPort()
+    {
+        $client = $this->getHttpClient(__FUNCTION__);
+        $response = $client->request('GET', 'http://localhost:8057', ['bindto' => '127.0.0.1:9876']);
+        $response->getStatusCode();
+
+        $vars = $response->toArray();
+
+        self::assertSame('127.0.0.1', $vars['REMOTE_ADDR']);
+        self::assertSame('9876', $vars['REMOTE_PORT']);
+    }
+
+    public function testBindToPortV6()
+    {
+        TestHttpServer::start(-8087);
+
+        $client = $this->getHttpClient(__FUNCTION__);
+        $response = $client->request('GET', 'http://[::1]:8087', ['bindto' => '[::1]:9876']);
+        $response->getStatusCode();
+
+        $vars = $response->toArray();
+
+        self::assertSame('::1', $vars['REMOTE_ADDR']);
+
+        if ('\\' !== \DIRECTORY_SEPARATOR) {
+            self::assertSame('9876', $vars['REMOTE_PORT']);
+        }
     }
 }

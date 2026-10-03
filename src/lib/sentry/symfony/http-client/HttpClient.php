@@ -12,6 +12,7 @@
 namespace Symfony\Component\HttpClient;
 
 use Amp\Http\Client\Connection\ConnectionLimitingPool;
+use Amp\Promise;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 /**
@@ -30,7 +31,7 @@ final class HttpClient
      */
     public static function create(array $defaultOptions = [], int $maxHostConnections = 6, int $maxPendingPushes = 50): HttpClientInterface
     {
-        if ($amp = class_exists(ConnectionLimitingPool::class)) {
+        if ($amp = class_exists(ConnectionLimitingPool::class) && interface_exists(Promise::class)) {
             if (!\extension_loaded('curl')) {
                 return new AmpHttpClient($defaultOptions, null, $maxHostConnections, $maxPendingPushes);
             }
@@ -50,7 +51,7 @@ final class HttpClient
         }
 
         if (\extension_loaded('curl')) {
-            if ('\\' !== \DIRECTORY_SEPARATOR || isset($defaultOptions['cafile']) || isset($defaultOptions['capath']) || ini_get('curl.cainfo') || ini_get('openssl.cafile') || ini_get('openssl.capath')) {
+            if ('\\' !== \DIRECTORY_SEPARATOR || isset($defaultOptions['cafile']) || isset($defaultOptions['capath']) || \ini_get('curl.cainfo') || \ini_get('openssl.cafile') || \ini_get('openssl.capath')) {
                 return new CurlHttpClient($defaultOptions, $maxHostConnections, $maxPendingPushes);
             }
 
@@ -61,7 +62,7 @@ final class HttpClient
             return new AmpHttpClient($defaultOptions, null, $maxHostConnections, $maxPendingPushes);
         }
 
-        @trigger_error((\extension_loaded('curl') ? 'Upgrade' : 'Install').' the curl extension or run "composer require amphp/http-client" to perform async HTTP operations, including full HTTP/2 support', \E_USER_NOTICE);
+        @trigger_error((\extension_loaded('curl') ? 'Upgrade' : 'Install').' the curl extension or run "composer require amphp/http-client:^4.2.1" to perform async HTTP operations, including full HTTP/2 support', \E_USER_NOTICE);
 
         return new NativeHttpClient($defaultOptions, $maxHostConnections);
     }

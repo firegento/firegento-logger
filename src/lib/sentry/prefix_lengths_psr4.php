@@ -22,14 +22,13 @@
 return [
     'S' =>
         [
-            'Symfony\\Polyfill\\Uuid\\' => 22,
             'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Php73\\' => 23,
             'Symfony\\Contracts\\Service\\' => 26,
             'Symfony\\Contracts\\HttpClient\\' => 29,
             'Symfony\\Component\\OptionsResolver\\' => 34,
             'Symfony\\Component\\HttpClient\\' => 29,
-            'Sentry\\' => 7
+            'Sentry\\' => 7,
         ],
     'P' =>
         [
@@ -59,5 +58,5 @@ return [
     'C' =>
         [
             'Clue\\StreamFilter\\' => 18,
-        ]
+        ],
 ];

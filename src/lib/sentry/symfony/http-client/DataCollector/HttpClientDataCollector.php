@@ -36,26 +36,32 @@ final class HttpClientDataCollector extends DataCollector implements LateDataCol
     /**
      * {@inheritdoc}
      */
-    public function collect(Request $request, Response $response, \Throwable $exception = null)
+    public function collect(Request $request, Response $response, ?\Throwable $exception = null)
     {
-        $this->reset();
-
-        foreach ($this->clients as $name => $client) {
-            [$errorCount, $traces] = $this->collectOnClient($client);
-
-            $this->data['clients'][$name] = [
-                'traces' => $traces,
-                'error_count' => $errorCount,
-            ];
-
-            $this->data['request_count'] += \count($traces);
-            $this->data['error_count'] += $errorCount;
-        }
+        $this->lateCollect();
     }
 
     public function lateCollect()
     {
-        foreach ($this->clients as $client) {
+        $this->data['request_count'] = $this->data['request_count'] ?? 0;
+        $this->data['error_count'] = $this->data['error_count'] ?? 0;
+        $this->data += ['clients' => []];
+
+        foreach ($this->clients as $name => $client) {
+            [$errorCount, $traces] = $this->collectOnClient($client);
+
+            $this->data['clients'] += [
+                $name => [
+                    'traces' => [],
+                    'error_count' => 0,
+                ],
+            ];
+
+            $this->data['clients'][$name]['traces'] = array_merge($this->data['clients'][$name]['traces'], $traces);
+            $this->data['request_count'] += \count($traces);
+            $this->data['error_count'] += $errorCount;
+            $this->data['clients'][$name]['error_count'] += $errorCount;
+
             $client->reset();
         }
     }

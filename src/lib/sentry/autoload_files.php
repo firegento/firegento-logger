@@ -20,13 +20,11 @@
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
 return [
-    __DIR__ .'/ralouphie/getallheaders/src/getallheaders.php',
-    __DIR__ .'/symfony/polyfill-php80/bootstrap.php',
     __DIR__ .'/symfony/deprecation-contracts/function.php',
+    __DIR__ .'/symfony/polyfill-php80/bootstrap.php',
     __DIR__ .'/symfony/polyfill-php73/bootstrap.php',
     __DIR__ .'/clue/stream-filter/src/functions_include.php',
     __DIR__ .'/php-http/message/src/filters.php',
-    __DIR__ .'/guzzlehttp/promises/src/functions_include.php',
-    __DIR__ .'/symfony/polyfill-uuid/bootstrap.php',
+    __DIR__ .'/ralouphie/getallheaders/src/getallheaders.php',
     __DIR__ .'/sentry/sentry/src/functions.php'
 ];

@@ -26,7 +26,7 @@ return [
     'PhpToken' => __DIR__ .'/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
     'Stringable' => __DIR__ .'/symfony/polyfill-php80/Resources/stubs/Stringable.php',
     'UnhandledMatchError' => __DIR__ .'/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
-    'ValueError' =>  __DIR__ .'/symfony/polyfill-php80/Resources/stubs/ValueError.php',
+    'ValueError' => __DIR__ .'/symfony/polyfill-php80/Resources/stubs/ValueError.php',
 
 
     'Composer\\InstalledVersions' => __DIR__ . '/snm/composer-faker/InstalledVersions.php',

@@ -36,6 +36,7 @@ final class CurlClientState extends ClientState
     public $execCounter = \PHP_INT_MIN;
     /** @var LoggerInterface|null */
     public $logger;
+    public $performing = false;
 
     public static $curlVersion;
 
@@ -51,8 +52,8 @@ final class CurlClientState extends ClientState
         if (\defined('CURLPIPE_MULTIPLEX')) {
             curl_multi_setopt($this->handle, \CURLMOPT_PIPELINING, \CURLPIPE_MULTIPLEX);
         }
-        if (\defined('CURLMOPT_MAX_HOST_CONNECTIONS')) {
-            $maxHostConnections = curl_multi_setopt($this->handle, \CURLMOPT_MAX_HOST_CONNECTIONS, 0 < $maxHostConnections ? $maxHostConnections : \PHP_INT_MAX) ? 0 : $maxHostConnections;
+        if (\defined('CURLMOPT_MAX_HOST_CONNECTIONS') && 0 < $maxHostConnections) {
+            $maxHostConnections = curl_multi_setopt($this->handle, \CURLMOPT_MAX_HOST_CONNECTIONS, $maxHostConnections) ? 4294967295 : $maxHostConnections;
         }
         if (\defined('CURLMOPT_MAXCONNECTS') && 0 < $maxHostConnections) {
             curl_multi_setopt($this->handle, \CURLMOPT_MAXCONNECTS, $maxHostConnections);
@@ -99,7 +100,7 @@ final class CurlClientState extends ClientState
         curl_share_setopt($this->share, \CURLSHOPT_SHARE, \CURL_LOCK_DATA_DNS);
         curl_share_setopt($this->share, \CURLSHOPT_SHARE, \CURL_LOCK_DATA_SSL_SESSION);
 
-        if (\defined('CURL_LOCK_DATA_CONNECT')) {
+        if (\defined('CURL_LOCK_DATA_CONNECT') && \PHP_VERSION_ID >= 80000) {
             curl_share_setopt($this->share, \CURLSHOPT_SHARE, \CURL_LOCK_DATA_CONNECT);
         }
     }

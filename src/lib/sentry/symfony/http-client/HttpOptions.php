@@ -148,6 +148,8 @@ class HttpOptions
     }
 
     /**
+     * @param callable(int, int, array, \Closure|null=):void $callback
+     *
      * @return $this
      */
     public function setOnProgress(callable $callback)
@@ -193,6 +195,16 @@ class HttpOptions
     public function setTimeout(float $timeout)
     {
         $this->options['timeout'] = $timeout;
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setMaxDuration(float $maxDuration)
+    {
+        $this->options['max_duration'] = $maxDuration;
 
         return $this;
     }

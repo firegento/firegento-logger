@@ -1,4 +1,4 @@
-# Sentry Integration (v3.4.0)
+# Sentry Integration (v3.22.1)
 
 The content of this library provide the standard sentry/sdk without composer. Basically the `Sentry_Autoloader` - class 
 is faking the composer autoloader. It is integrated by adding
@@ -58,5 +58,4 @@ is adopted.
   * php-http/discovery
   * psr/http-message-implementation
     * (**provided by**): guzzlehttp/psr7
-  * symfony/polyfill-uuid
 * symfony/http-client

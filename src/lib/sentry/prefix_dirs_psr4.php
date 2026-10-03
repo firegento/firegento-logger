@@ -19,11 +19,8 @@
  * @copyright 2022 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
+
 return [
-    'Symfony\\Polyfill\\Uuid\\' =>
-        [
-            0 => __DIR__ . '/symfony/polyfill-uuid',
-        ],
     'Symfony\\Polyfill\\Php80\\' =>
         [
             0 => __DIR__ . '/symfony/polyfill-php80',
@@ -58,8 +55,8 @@ return [
         ],
     'Psr\\Http\\Message\\' =>
         [
-            0 => __DIR__ . '/psr/http-message/src',
-            1 => __DIR__ . '/psr/http-factory/src',
+            0 => __DIR__ . '/psr/http-factory/src',
+            1 => __DIR__ . '/psr/http-message/src',
         ],
     'Psr\\Http\\Client\\' =>
         [
