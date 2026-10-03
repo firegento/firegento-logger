@@ -6,6 +6,10 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use Http\Message\MessageFactory;
 
+if (!interface_exists(MessageFactory::class)) {
+    throw new \LogicException('You cannot use "Http\Message\MessageFactory\GuzzleMessageFactory" as the "php-http/message-factory" package is not installed. Try running "composer require php-http/message-factory". Note that this package is deprecated, use "psr/http-factory" instead');
+}
+
 /**
  * Creates Guzzle messages.
  *
@@ -15,9 +19,6 @@ use Http\Message\MessageFactory;
  */
 final class GuzzleMessageFactory implements MessageFactory
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createRequest(
         $method,
         $uri,
@@ -34,9 +35,6 @@ final class GuzzleMessageFactory implements MessageFactory
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createResponse(
         $statusCode = 200,
         $reasonPhrase = null,

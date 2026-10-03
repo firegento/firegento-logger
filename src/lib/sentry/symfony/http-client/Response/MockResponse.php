@@ -93,7 +93,7 @@ class MockResponse implements ResponseInterface, StreamableInterface
     /**
      * {@inheritdoc}
      */
-    public function getInfo(string $type = null)
+    public function getInfo(?string $type = null)
     {
         return null !== $type ? $this->info[$type] ?? null : $this->info;
     }
@@ -110,6 +110,10 @@ class MockResponse implements ResponseInterface, StreamableInterface
         } catch (TransportException $e) {
             // ignore errors when canceling
         }
+
+        $onProgress = $this->requestOptions['on_progress'] ?? static function () {};
+        $dlSize = isset($this->headers['content-encoding']) || 'HEAD' === ($this->info['http_method'] ?? null) || \in_array($this->info['http_code'], [204, 304], true) ? 0 : (int) ($this->headers['content-length'][0] ?? 0);
+        $onProgress($this->offset, $dlSize, $this->info);
     }
 
     /**
@@ -140,6 +144,7 @@ class MockResponse implements ResponseInterface, StreamableInterface
         $response->info['http_method'] = $method;
         $response->info['http_code'] = 0;
         $response->info['user_data'] = $options['user_data'] ?? null;
+        $response->info['max_duration'] = $options['max_duration'] ?? null;
         $response->info['url'] = $url;
 
         if ($mock instanceof self) {
@@ -285,6 +290,7 @@ class MockResponse implements ResponseInterface, StreamableInterface
         $response->info = [
             'start_time' => $response->info['start_time'],
             'user_data' => $response->info['user_data'],
+            'max_duration' => $response->info['max_duration'],
             'http_code' => $response->info['http_code'],
         ] + $info + $response->info;
 

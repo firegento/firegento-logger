@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Sentry;
 
 use Sentry\Serializer\RepresentationSerializerInterface;
+use Sentry\Util\PrefixStripper;
 
 /**
  * This class builds a {@see Frame} object out of a backtrace's raw frame.
@@ -22,6 +23,8 @@ use Sentry\Serializer\RepresentationSerializerInterface;
  */
 final class FrameBuilder
 {
+    use PrefixStripper;
+
     /**
      * @var Options The SDK client options
      */
@@ -66,17 +69,17 @@ final class FrameBuilder
 
         $functionName = null;
         $rawFunctionName = null;
-        $strippedFilePath = $this->stripPrefixFromFilePath($file);
+        $strippedFilePath = $this->stripPrefixFromFilePath($this->options, $file);
 
         if (isset($backtraceFrame['class']) && isset($backtraceFrame['function'])) {
             $functionName = $backtraceFrame['class'];
 
             if (str_starts_with($functionName, Frame::ANONYMOUS_CLASS_PREFIX)) {
-                $functionName = Frame::ANONYMOUS_CLASS_PREFIX . $this->stripPrefixFromFilePath(substr($backtraceFrame['class'], \strlen(Frame::ANONYMOUS_CLASS_PREFIX)));
+                $functionName = Frame::ANONYMOUS_CLASS_PREFIX . $this->stripPrefixFromFilePath($this->options, substr($backtraceFrame['class'], \strlen(Frame::ANONYMOUS_CLASS_PREFIX)));
             }
 
             $rawFunctionName = sprintf('%s::%s', $backtraceFrame['class'], $backtraceFrame['function']);
-            $functionName = sprintf('%s::%s', preg_replace('/0x[a-fA-F0-9]+$/', '', $functionName), $backtraceFrame['function']);
+            $functionName = sprintf('%s::%s', preg_replace('/(?::\d+\$|0x)[a-fA-F0-9]+$/', '', $functionName), $backtraceFrame['function']);
         } elseif (isset($backtraceFrame['function'])) {
             $functionName = $backtraceFrame['function'];
         }
@@ -90,22 +93,6 @@ final class FrameBuilder
             $this->getFunctionArguments($backtraceFrame),
             $this->isFrameInApp($file, $functionName)
         );
-    }
-
-    /**
-     * Removes from the given file path the specified prefixes.
-     *
-     * @param string $filePath The path to the file
-     */
-    private function stripPrefixFromFilePath(string $filePath): string
-    {
-        foreach ($this->options->getPrefixes() as $prefix) {
-            if (str_starts_with($filePath, $prefix)) {
-                return mb_substr($filePath, mb_strlen($prefix));
-            }
-        }
-
-        return $filePath;
     }
 
     /**
@@ -166,7 +153,7 @@ final class FrameBuilder
         $reflectionFunction = null;
 
         try {
-            if (isset($backtraceFrame['class'], $backtraceFrame['function'])) {
+            if (isset($backtraceFrame['class'])) {
                 if (method_exists($backtraceFrame['class'], $backtraceFrame['function'])) {
                     $reflectionFunction = new \ReflectionMethod($backtraceFrame['class'], $backtraceFrame['function']);
                 } elseif (isset($backtraceFrame['type']) && '::' === $backtraceFrame['type']) {

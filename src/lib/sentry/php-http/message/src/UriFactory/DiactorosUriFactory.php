@@ -7,6 +7,10 @@ use Laminas\Diactoros\Uri as LaminasUri;
 use Psr\Http\Message\UriInterface;
 use Zend\Diactoros\Uri as ZendUri;
 
+if (!interface_exists(UriFactory::class)) {
+    throw new \LogicException('You cannot use "Http\Message\MessageFactory\DiactorosUriFactory" as the "php-http/message-factory" package is not installed. Try running "composer require php-http/message-factory". Note that this package is deprecated, use "psr/http-factory" instead');
+}
+
 /**
  * Creates Diactoros URI.
  *
@@ -16,9 +20,6 @@ use Zend\Diactoros\Uri as ZendUri;
  */
 final class DiactorosUriFactory implements UriFactory
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createUri($uri)
     {
         if ($uri instanceof UriInterface) {

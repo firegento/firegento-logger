@@ -9,6 +9,10 @@ use Slim\Http\Headers;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
+if (!interface_exists(MessageFactory::class)) {
+    throw new \LogicException('You cannot use "Http\Message\MessageFactory\SlimMessageFactory" as the "php-http/message-factory" package is not installed. Try running "composer require php-http/message-factory". Note that this package is deprecated, use "psr/http-factory" instead');
+}
+
 /**
  * Creates Slim 3 messages.
  *
@@ -34,9 +38,6 @@ final class SlimMessageFactory implements MessageFactory
         $this->uriFactory = new SlimUriFactory();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createRequest(
         $method,
         $uri,
@@ -55,9 +56,6 @@ final class SlimMessageFactory implements MessageFactory
         ))->withProtocolVersion($protocolVersion);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createResponse(
         $statusCode = 200,
         $reasonPhrase = null,

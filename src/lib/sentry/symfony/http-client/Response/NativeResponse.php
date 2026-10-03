@@ -59,6 +59,7 @@ final class NativeResponse implements ResponseInterface, StreamableInterface
         $this->buffer = fopen('php://temp', 'w+');
 
         $info['user_data'] = $options['user_data'];
+        $info['max_duration'] = $options['max_duration'];
         ++$multi->responseCount;
 
         $this->initializer = static function (self $response) {
@@ -81,7 +82,7 @@ final class NativeResponse implements ResponseInterface, StreamableInterface
     /**
      * {@inheritdoc}
      */
-    public function getInfo(string $type = null)
+    public function getInfo(?string $type = null)
     {
         if (!$info = $this->finalInfo) {
             $info = $this->info;
@@ -231,7 +232,7 @@ final class NativeResponse implements ResponseInterface, StreamableInterface
      *
      * @param NativeClientState $multi
      */
-    private static function perform(ClientState $multi, array &$responses = null): void
+    private static function perform(ClientState $multi, ?array &$responses = null): void
     {
         foreach ($multi->openHandles as $i => [$pauseExpiry, $h, $buffer, $onProgress]) {
             if ($pauseExpiry) {

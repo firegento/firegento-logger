@@ -39,7 +39,7 @@ final class ContentTypePlugin implements Plugin
      *
      * Configuration options:
      *   - skip_detection: true skip detection if stream size is bigger than $size_limit
-     *   - size_limit: size stream limit for which the detection as to be skipped.
+     *   - size_limit: size stream limit for which the detection as to be skipped
      */
     public function __construct(array $config = [])
     {
@@ -57,9 +57,6 @@ final class ContentTypePlugin implements Plugin
         $this->sizeLimit = $options['size_limit'];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function handleRequest(RequestInterface $request, callable $next, callable $first): Promise
     {
         if (!$request->hasHeader('Content-Type')) {

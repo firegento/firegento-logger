@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace Sentry\HttpClient;
 
 use GuzzleHttp\RequestOptions as GuzzleHttpClientOptions;
-use Http\Adapter\Guzzle6\Client as GuzzleHttpClient;
+use Http\Adapter\Guzzle6\Client as Guzzle6HttpClient;
+use Http\Adapter\Guzzle7\Client as Guzzle7HttpClient;
 use Http\Client\Common\Plugin\AuthenticationPlugin;
 use Http\Client\Common\Plugin\DecoderPlugin;
 use Http\Client\Common\Plugin\ErrorPlugin;
@@ -32,17 +33,6 @@ use Symfony\Component\HttpClient\HttplugClient as SymfonyHttplugClient;
 final class HttpClientFactory implements HttpClientFactoryInterface
 {
     /**
-     * @var int The timeout of the request in seconds
-     */
-    private const DEFAULT_HTTP_TIMEOUT = 5;
-
-    /**
-     * @var int The default number of seconds to wait while trying to connect
-     *          to a server
-     */
-    private const DEFAULT_HTTP_CONNECT_TIMEOUT = 2;
-
-    /**
      * @var StreamFactoryInterface The PSR-17 stream factory
      */
     private $streamFactory;
@@ -65,16 +55,16 @@ final class HttpClientFactory implements HttpClientFactoryInterface
     /**
      * Constructor.
      *
-     * @param UriFactoryInterface           $uriFactory      The PSR-7 URI factory
-     * @param ResponseFactoryInterface      $responseFactory The PSR-7 response factory
+     * @param UriFactoryInterface|null      $uriFactory      The PSR-7 URI factory
+     * @param ResponseFactoryInterface|null $responseFactory The PSR-7 response factory
      * @param StreamFactoryInterface        $streamFactory   The PSR-17 stream factory
      * @param HttpAsyncClientInterface|null $httpClient      The HTTP client
      * @param string                        $sdkIdentifier   The SDK identifier
      * @param string                        $sdkVersion      The SDK version
      */
     public function __construct(
-        UriFactoryInterface $uriFactory,
-        ResponseFactoryInterface $responseFactory,
+        ?UriFactoryInterface $uriFactory,
+        ?ResponseFactoryInterface $responseFactory,
         StreamFactoryInterface $streamFactory,
         ?HttpAsyncClientInterface $httpClient,
         string $sdkIdentifier,
@@ -104,7 +94,7 @@ final class HttpClientFactory implements HttpClientFactoryInterface
         $httpClientPlugins = [
             new HeaderSetPlugin(['User-Agent' => $this->sdkIdentifier . '/' . $this->sdkVersion]),
             new AuthenticationPlugin(new SentryAuthentication($options, $this->sdkIdentifier, $this->sdkVersion)),
-            new RetryPlugin(['retries' => $options->getSendAttempts()]),
+            new RetryPlugin(['retries' => $options->getSendAttempts(false)]),
             new ErrorPlugin(['only_server_exception' => true]),
         ];
 
@@ -123,7 +113,9 @@ final class HttpClientFactory implements HttpClientFactoryInterface
     {
         if (class_exists(SymfonyHttplugClient::class)) {
             $symfonyConfig = [
-                'max_duration' => self::DEFAULT_HTTP_TIMEOUT,
+                'timeout' => $options->getHttpConnectTimeout(),
+                'max_duration' => $options->getHttpTimeout(),
+                'http_version' => $options->isCompressionEnabled() ? '1.1' : null,
             ];
 
             if (null !== $options->getHttpProxy()) {
@@ -133,23 +125,28 @@ final class HttpClientFactory implements HttpClientFactoryInterface
             return new SymfonyHttplugClient(SymfonyHttpClient::create($symfonyConfig));
         }
 
-        if (class_exists(GuzzleHttpClient::class)) {
+        if (class_exists(Guzzle7HttpClient::class) || class_exists(Guzzle6HttpClient::class)) {
             $guzzleConfig = [
-                GuzzleHttpClientOptions::TIMEOUT => self::DEFAULT_HTTP_TIMEOUT,
-                GuzzleHttpClientOptions::CONNECT_TIMEOUT => self::DEFAULT_HTTP_CONNECT_TIMEOUT,
+                GuzzleHttpClientOptions::TIMEOUT => $options->getHttpTimeout(),
+                GuzzleHttpClientOptions::CONNECT_TIMEOUT => $options->getHttpConnectTimeout(),
             ];
 
             if (null !== $options->getHttpProxy()) {
                 $guzzleConfig[GuzzleHttpClientOptions::PROXY] = $options->getHttpProxy();
             }
 
-            return GuzzleHttpClient::createWithConfig($guzzleConfig);
+            if (class_exists(Guzzle7HttpClient::class)) {
+                return Guzzle7HttpClient::createWithConfig($guzzleConfig);
+            }
+
+            return Guzzle6HttpClient::createWithConfig($guzzleConfig);
         }
 
         if (class_exists(CurlHttpClient::class)) {
             $curlConfig = [
-                \CURLOPT_TIMEOUT => self::DEFAULT_HTTP_TIMEOUT,
-                \CURLOPT_CONNECTTIMEOUT => self::DEFAULT_HTTP_CONNECT_TIMEOUT,
+                \CURLOPT_TIMEOUT => $options->getHttpTimeout(),
+                \CURLOPT_HTTP_VERSION => $options->isCompressionEnabled() ? \CURL_HTTP_VERSION_1_1 : \CURL_HTTP_VERSION_NONE,
+                \CURLOPT_CONNECTTIMEOUT => $options->getHttpConnectTimeout(),
             ];
 
             if (null !== $options->getHttpProxy()) {

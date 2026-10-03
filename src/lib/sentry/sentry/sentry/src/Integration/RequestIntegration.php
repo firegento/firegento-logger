@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Sentry\Integration;
 
-use GuzzleHttp\Psr7\Utils;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UploadedFileInterface;
 use Sentry\Event;
@@ -42,12 +41,15 @@ final class RequestIntegration implements IntegrationInterface
     /**
      * This constant is a map of maximum allowed sizes for each value of the
      * `max_request_body_size` option.
+     *
+     * @deprecated The 'none' option is deprecated since version 3.10, to be removed in 4.0
      */
     private const MAX_REQUEST_BODY_SIZE_OPTION_TO_MAX_LENGTH_MAP = [
         'none' => 0,
+        'never' => 0,
         'small' => self::REQUEST_BODY_SMALL_MAX_CONTENT_LENGTH,
         'medium' => self::REQUEST_BODY_MEDIUM_MAX_CONTENT_LENGTH,
-        'always' => -1,
+        'always' => \PHP_INT_MAX,
     ];
 
     /**
@@ -169,13 +171,16 @@ final class RequestIntegration implements IntegrationInterface
     /**
      * Removes headers containing potential PII.
      *
-     * @param array<string, string[]> $headers Array containing request headers
+     * @param array<array-key, string[]> $headers Array containing request headers
      *
      * @return array<string, string[]>
      */
     private function sanitizeHeaders(array $headers): array
     {
         foreach ($headers as $name => $values) {
+            // Cast the header name into a string, to avoid errors on numeric headers
+            $name = (string) $name;
+
             if (!\in_array(strtolower($name), $this->options['pii_sanitize_headers'], true)) {
                 continue;
             }
@@ -209,7 +214,7 @@ final class RequestIntegration implements IntegrationInterface
         }
 
         $requestData = $request->getParsedBody();
-        $requestData = array_merge(
+        $requestData = array_replace(
             $this->parseUploadedFiles($request->getUploadedFiles()),
             \is_array($requestData) ? $requestData : []
         );
@@ -218,7 +223,19 @@ final class RequestIntegration implements IntegrationInterface
             return $requestData;
         }
 
-        $requestBody = Utils::copyToString($request->getBody(), self::MAX_REQUEST_BODY_SIZE_OPTION_TO_MAX_LENGTH_MAP[$maxRequestBodySize]);
+        $requestBody = '';
+        $maxLength = self::MAX_REQUEST_BODY_SIZE_OPTION_TO_MAX_LENGTH_MAP[$maxRequestBodySize];
+
+        if (0 < $maxLength) {
+            $stream = $request->getBody();
+            while (0 < $maxLength && !$stream->eof()) {
+                if ('' === $buffer = $stream->read(min($maxLength, self::REQUEST_BODY_MEDIUM_MAX_CONTENT_LENGTH))) {
+                    break;
+                }
+                $requestBody .= $buffer;
+                $maxLength -= \strlen($buffer);
+            }
+        }
 
         if ('application/json' === $request->getHeaderLine('Content-Type')) {
             try {
@@ -266,7 +283,7 @@ final class RequestIntegration implements IntegrationInterface
             return false;
         }
 
-        if ('none' === $maxRequestBodySize) {
+        if ('none' === $maxRequestBodySize || 'never' === $maxRequestBodySize) {
             return false;
         }
 

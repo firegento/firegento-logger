@@ -3,7 +3,6 @@
 namespace Http\Message\Authentication;
 
 use Http\Message\Authentication;
-use InvalidArgumentException;
 use Psr\Http\Message\RequestInterface;
 
 /**
@@ -38,14 +37,11 @@ final class Wsse implements Authentication
         $this->username = $username;
         $this->password = $password;
         if (false === in_array($hashAlgorithm, hash_algos())) {
-            throw new InvalidArgumentException(sprintf('Unaccepted hashing algorithm: %s', $hashAlgorithm));
+            throw new \InvalidArgumentException(sprintf('Unaccepted hashing algorithm: %s', $hashAlgorithm));
         }
         $this->hashAlgorithm = $hashAlgorithm;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function authenticate(RequestInterface $request)
     {
         $nonce = substr(md5(uniqid(uniqid().'_', true)), 0, 16);

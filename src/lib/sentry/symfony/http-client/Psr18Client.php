@@ -27,10 +27,12 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
+use Symfony\Component\HttpClient\Internal\HttplugWaitLoop;
 use Symfony\Component\HttpClient\Response\StreamableInterface;
 use Symfony\Component\HttpClient\Response\StreamWrapper;
 use Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Contracts\HttpClient\ResponseInterface as HttpClientResponseInterface;
 use Symfony\Contracts\Service\ResetInterface;
 
 if (!interface_exists(RequestFactoryInterface::class)) {
@@ -56,7 +58,7 @@ final class Psr18Client implements ClientInterface, RequestFactoryInterface, Str
     private $responseFactory;
     private $streamFactory;
 
-    public function __construct(HttpClientInterface $client = null, ResponseFactoryInterface $responseFactory = null, StreamFactoryInterface $streamFactory = null)
+    public function __construct(?HttpClientInterface $client = null, ?ResponseFactoryInterface $responseFactory = null, ?StreamFactoryInterface $streamFactory = null)
     {
         $this->client = $client ?? HttpClient::create();
         $this->responseFactory = $responseFactory;
@@ -91,28 +93,18 @@ final class Psr18Client implements ClientInterface, RequestFactoryInterface, Str
                 $body->seek(0);
             }
 
-            $response = $this->client->request($request->getMethod(), (string) $request->getUri(), [
+            $options = [
                 'headers' => $request->getHeaders(),
                 'body' => $body->getContents(),
-                'http_version' => '1.0' === $request->getProtocolVersion() ? '1.0' : null,
-            ]);
+            ];
 
-            $psrResponse = $this->responseFactory->createResponse($response->getStatusCode());
-
-            foreach ($response->getHeaders(false) as $name => $values) {
-                foreach ($values as $value) {
-                    $psrResponse = $psrResponse->withAddedHeader($name, $value);
-                }
+            if ('1.0' === $request->getProtocolVersion()) {
+                $options['http_version'] = '1.0';
             }
 
-            $body = $response instanceof StreamableInterface ? $response->toStream(false) : StreamWrapper::createResource($response, $this->client);
-            $body = $this->streamFactory->createStreamFromResource($body);
+            $response = $this->client->request($request->getMethod(), (string) $request->getUri(), $options);
 
-            if ($body->isSeekable()) {
-                $body->seek(0);
-            }
-
-            return $psrResponse->withBody($body);
+            return HttplugWaitLoop::createPsr7Response($this->responseFactory, $this->streamFactory, $this->client, $response, false);
         } catch (TransportExceptionInterface $e) {
             if ($e instanceof \InvalidArgumentException) {
                 throw new Psr18RequestException($e, $request);

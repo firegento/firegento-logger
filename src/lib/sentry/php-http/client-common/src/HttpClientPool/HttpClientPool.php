@@ -46,23 +46,17 @@ abstract class HttpClientPool implements HttpClientPoolInterface
     /**
      * Return an http client given a specific strategy.
      *
-     * @throws HttpClientNotFoundException When no http client has been found into the pool
-     *
      * @return HttpClientPoolItem Return a http client that can do both sync or async
+     *
+     * @throws HttpClientNotFoundException When no http client has been found into the pool
      */
     abstract protected function chooseHttpClient(): HttpClientPoolItem;
 
-    /**
-     * {@inheritdoc}
-     */
     public function sendAsyncRequest(RequestInterface $request)
     {
         return $this->chooseHttpClient()->sendAsyncRequest($request);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function sendRequest(RequestInterface $request): ResponseInterface
     {
         return $this->chooseHttpClient()->sendRequest($request);

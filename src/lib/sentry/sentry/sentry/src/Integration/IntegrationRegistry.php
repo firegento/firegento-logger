@@ -126,14 +126,18 @@ final class IntegrationRegistry
             return [];
         }
 
-        return [
-            new ExceptionListenerIntegration(),
-            new ErrorListenerIntegration(),
-            new FatalErrorListenerIntegration(),
+        $integrations = [
             new RequestIntegration(),
             new TransactionIntegration(),
             new FrameContextifierIntegration(),
             new EnvironmentIntegration(),
+            new ModulesIntegration(),
         ];
+
+        if (null !== $options->getDsn()) {
+            array_unshift($integrations, new ExceptionListenerIntegration(), new ErrorListenerIntegration(), new FatalErrorListenerIntegration());
+        }
+
+        return $integrations;
     }
 }
